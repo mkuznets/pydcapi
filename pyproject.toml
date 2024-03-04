@@ -1,0 +1,61 @@
+[project]
+name = "pydcapi"
+version = "0.1.0"
+description = "Unofficial Python library for Adobe Document Cloud"
+authors = [
+    { name = "Max Kuznetsov", email = "maks.kuznetsov@gmail.com" }
+]
+dependencies = [
+    "httpx>=0.24.0",
+    "uritemplate>=4.1.1",
+    "pydantic>=2.6.3",
+]
+readme = "README.md"
+requires-python = ">= 3.8"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.rye]
+managed = true
+dev-dependencies = [
+    "ruff==0.3.0",
+    "mypy==1.8.0",
+    "pytest>=8.1.0",
+    "python-dotenv>=1.0.1",
+]
+
+[tool.hatch.metadata]
+allow-direct-references = true
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/pydcapi"]
+
+[tool.hatch.build.targets.sdist]
+only-include = ["src/pydcapi"]
+exclude = [".gitignore"]
+
+[tool.ruff]
+exclude = ["src/pydcapi/models", "src/pydcapi/resources"]
+line-length = 256
+
+[tool.ruff.format]
+line-ending = "lf"
+quote-style = "double"
+
+[tool.ruff.lint]
+select = ["F", "E", "W", "N"]
+ignore = [
+    "E501", # line length violations
+    "F722", # syntax error in forward annotation (false positives in models)
+]
+
+[tool.mypy]
+python_version = "3.8"
+disallow_untyped_defs = true
+files = ["src/pydcapi"]
+
+[[tool.mypy.overrides]]
+module = ["pydcapi.models.*"]
+disable_error_code = ["valid-type"] # caused by con* types in models. Can be fixed by --field-constraints
