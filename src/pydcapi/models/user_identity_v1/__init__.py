@@ -3,7 +3,7 @@
 
 from __future__ import annotations
 
-from typing import Any, Dict, Literal
+from typing import Any, Dict, Literal, Optional
 
 from pydantic import BaseModel, ConfigDict
 
@@ -13,7 +13,7 @@ class Model(BaseModel):
         extra='allow',
         frozen=True,
     )
-    analytics_plan_code: str
+    analytics_plan_code: Optional[str] = None
     """
     An account description to include with analytics events.
     """

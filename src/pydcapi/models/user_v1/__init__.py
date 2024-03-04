@@ -13,7 +13,7 @@ class Identity(BaseModel):
         extra='allow',
         frozen=True,
     )
-    analytics_plan_code: str
+    analytics_plan_code: Optional[str] = None
     """
     An account description to include with analytics events.
     """
