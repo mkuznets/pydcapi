@@ -62,6 +62,7 @@ ignore = [
 python_version = "3.8"
 disallow_untyped_defs = true
 files = ["src/pydcapi"]
+exclude = ["src/pydcapi/models"]  # TODO: reenable when all upstream issues are fixed
 
 [[tool.mypy.overrides]]
 module = ["pydcapi.models.*"]
