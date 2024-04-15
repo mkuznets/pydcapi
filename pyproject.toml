@@ -67,3 +67,10 @@ exclude = ["src/pydcapi/models"]  # TODO: reenable when all upstream issues are 
 [[tool.mypy.overrides]]
 module = ["pydcapi.models.*"]
 disable_error_code = ["valid-type"] # caused by con* types in models. Can be fixed by --field-constraints
+
+[tool.pyright]
+venvPath = "."
+venv = ".venv"
+strict = ["**"]
+include = ["src/pydcapi"]
+exclude = ["src/pydcapi/models"]
