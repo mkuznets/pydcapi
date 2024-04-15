@@ -14,12 +14,10 @@ class Credentials(TypedDict, total=False):
 
 class CredentialsProvider(Protocol):
     @abc.abstractmethod
-    def get(self) -> Credentials:
-        ...
+    def get(self) -> Credentials: ...
 
     @abc.abstractmethod
-    def set(self, credentials: Credentials) -> None:
-        ...
+    def set(self, credentials: Credentials) -> None: ...
 
 
 class StaticCredentialsProvider:

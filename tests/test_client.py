@@ -16,6 +16,6 @@ def test_folders_list_root(client_from_env: pydcapi.Client) -> None:
 
 
 def test_users_get_user(client_from_env: pydcapi.Client) -> None:
-    user = client_from_env.users.get_user(fields='identity')
-    assert user.identity and user.identity.category == 'adobeid'
+    user = client_from_env.users.get_user(fields="identity")
+    assert user.identity and user.identity.category == "adobeid"
     assert user.identity.email
