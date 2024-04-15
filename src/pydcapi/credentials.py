@@ -54,7 +54,15 @@ class JSONFileCredentialsProvider:
     def get(self) -> Credentials:
         with open(self.__path, "r") as file:
             try:
-                return json.load(file)
+                data = json.load(file)
+                credentials: Credentials = {
+                    "ims_sid": str(data.get("ims_sid", "")) or None,
+                    "aux_sid": str(data.get("aux_sid", "")) or None,
+                    "token": str(data.get("token", "")) or None,
+                    "expiry": int(data.get("expiry", 0)) or None,
+                }
+                return credentials
+
             except json.JSONDecodeError:
                 return {}
 
