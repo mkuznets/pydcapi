@@ -28,12 +28,12 @@ class Connector:
         ).uri
         headers: Dict[str, str] = {}
         headers["Accept"] = 'application/vnd.adobe.dc+json; profile="https://dc-api.adobe.io/schemas/connector_delete_response_v1.json"'
+
         resp = self._client.request(
             "DELETE",
             url,
             headers=headers,
         )
-
         content_type = resp.headers["Content-Type"]
 
         if re.search(r"schemas/connector_delete_response_v1\.json", content_type):
@@ -52,13 +52,13 @@ class Connector:
         ).uri
         headers: Dict[str, str] = {}
         headers["Accept"] = 'application/vnd.adobe.dc+json; profile="https://dc-api.adobe.io/schemas/connector_info_v1.json"'
+
         resp = self._client.request(
             "POST",
             url,
             headers=headers,
             json=_data.model_dump(),
         )
-
         content_type = resp.headers["Content-Type"]
 
         if re.search(r"schemas/connector_info_v1\.json", content_type):
@@ -77,12 +77,12 @@ class Connector:
         ).uri
         headers: Dict[str, str] = {}
         headers["Accept"] = 'application/vnd.adobe.dc+json; profile="https://dc-api.adobe.io/schemas/connector_listing_v1.json"'
+
         resp = self._client.request(
             "GET",
             url,
             headers=headers,
         )
-
         content_type = resp.headers["Content-Type"]
 
         if re.search(r"schemas/connector_listing_v1\.json", content_type):

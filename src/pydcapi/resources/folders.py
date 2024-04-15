@@ -27,12 +27,12 @@ class Folders:
         ).uri
         headers: Dict[str, str] = {}
         headers["Accept"] = 'application/vnd.adobe.dc+json; profile="https://dc-api.adobe.io/schemas/folder_breadcrumbs_v1.json"'
+
         resp = self._client.request(
             "GET",
             url,
             headers=headers,
         )
-
         content_type = resp.headers["Content-Type"]
 
         if re.search(r"schemas/folder_breadcrumbs_v1\.json", content_type):
@@ -46,13 +46,13 @@ class Folders:
         url = "https://dc-api-v2.adobe.io/{expiry}/folders"
         headers: Dict[str, str] = {}
         headers["Accept"] = 'application/vnd.adobe.dc+json; profile="https://dc-api.adobe.io/schemas/folder_v1.json"'
+
         resp = self._client.request(
             "POST",
             url,
             headers=headers,
             json=_data.model_dump(),
         )
-
         content_type = resp.headers["Content-Type"]
 
         if re.search(r"schemas/folder_v1\.json", content_type):
@@ -68,7 +68,8 @@ class Folders:
             },
         ).uri
         headers: Dict[str, str] = {}
-        resp = self._client.request(
+
+        self._client.request(
             "DELETE",
             url,
             headers=headers,
@@ -85,12 +86,12 @@ class Folders:
         ).uri
         headers: Dict[str, str] = {}
         headers["Accept"] = 'application/vnd.adobe.dc+json; profile="https://dc-api.adobe.io/schemas/folder_metadata_basic_v1.json"'
+
         resp = self._client.request(
             "GET",
             url,
             headers=headers,
         )
-
         content_type = resp.headers["Content-Type"]
 
         if re.search(r"schemas/folder_metadata_basic_v1\.json", content_type):
@@ -110,12 +111,12 @@ class Folders:
         ).uri
         headers: Dict[str, str] = {}
         headers["Accept"] = 'application/vnd.adobe.dc+json; profile="https://dc-api.adobe.io/schemas/folder_metadata_field_v1.json"'
+
         resp = self._client.request(
             "GET",
             url,
             headers=headers,
         )
-
         content_type = resp.headers["Content-Type"]
 
         if re.search(r"schemas/folder_metadata_field_v1\.json", content_type):
@@ -129,12 +130,12 @@ class Folders:
         url = "https://dc-api-v2.adobe.io/{expiry}/folders/root"
         headers: Dict[str, str] = {}
         headers["Accept"] = 'application/vnd.adobe.dc+json; profile="https://dc-api.adobe.io/schemas/root_v1.json"'
+
         resp = self._client.request(
             "GET",
             url,
             headers=headers,
         )
-
         content_type = resp.headers["Content-Type"]
 
         if re.search(r"schemas/root_v1\.json", content_type):
@@ -148,12 +149,12 @@ class Folders:
         url = "https://dc-api-v2.adobe.io/{expiry}/folders/system_folders"
         headers: Dict[str, str] = {}
         headers["Accept"] = 'application/vnd.adobe.dc+json; profile="https://dc-api.adobe.io/schemas/system_folders_v1.json"'
+
         resp = self._client.request(
             "GET",
             url,
             headers=headers,
         )
-
         content_type = resp.headers["Content-Type"]
 
         if re.search(r"schemas/system_folders_v1\.json", content_type):
@@ -176,12 +177,12 @@ class Folders:
         ).uri
         headers: Dict[str, str] = {}
         headers["Accept"] = 'application/vnd.adobe.dc+json; profile="https://dc-api.adobe.io/schemas/folder_listing_v1.json"'
+
         resp = self._client.request(
             "GET",
             url,
             headers=headers,
         )
-
         content_type = resp.headers["Content-Type"]
 
         if re.search(r"schemas/folder_listing_v1\.json", content_type):
@@ -200,12 +201,12 @@ class Folders:
         ).uri
         headers: Dict[str, str] = {}
         headers["Accept"] = 'application/vnd.adobe.dc+json; profile="https://dc-api.adobe.io/schemas/folder_listing_v1.json"'
+
         resp = self._client.request(
             "GET",
             url,
             headers=headers,
         )
-
         content_type = resp.headers["Content-Type"]
 
         if re.search(r"schemas/folder_listing_v1\.json", content_type):
@@ -225,13 +226,13 @@ class Folders:
         ).uri
         headers: Dict[str, str] = {}
         headers["Accept"] = 'application/vnd.adobe.dc+json; profile="https://dc-api.adobe.io/schemas/folder_metadata_field_v1.json"'
+
         resp = self._client.request(
             "PATCH",
             url,
             headers=headers,
             json=_data.model_dump(),
         )
-
         content_type = resp.headers["Content-Type"]
 
         if re.search(r"schemas/folder_metadata_field_v1\.json", content_type):
@@ -248,7 +249,8 @@ class Folders:
             },
         ).uri
         headers: Dict[str, str] = {}
-        resp = self._client.request(
+
+        self._client.request(
             "PUT",
             url,
             headers=headers,

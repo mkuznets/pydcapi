@@ -47,13 +47,13 @@ class Assets:
         url = "https://dc-api-v2.adobe.io/{expiry}/assets/authorize/client/verb"
         headers: Dict[str, str] = {}
         headers["Accept"] = "application/json"
+
         resp = self._client.request(
             "PUT",
             url,
             headers=headers,
             json=_data.model_dump(),
         )
-
         content_type = resp.headers["Content-Type"]
 
         if re.search(r"application/json", content_type):
@@ -72,13 +72,13 @@ class Assets:
         ).uri
         headers: Dict[str, str] = {}
         headers["Accept"] = 'application/vnd.adobe.dc+json; profile="https://dc-api.adobe.io/schemas/asset_block_upload_extend_v1.json"'
+
         resp = self._client.request(
             "PUT",
             url,
             headers=headers,
             json=_data.model_dump(),
         )
-
         content_type = resp.headers["Content-Type"]
 
         if re.search(r"schemas/asset_block_upload_extend_v1\.json", content_type):
@@ -97,13 +97,13 @@ class Assets:
         ).uri
         headers: Dict[str, str] = {}
         headers["Accept"] = 'application/vnd.adobe.dc+json; profile="https://dc-api.adobe.io/schemas/asset_block_upload_finalize_v1.json"'
+
         resp = self._client.request(
             "PUT",
             url,
             headers=headers,
             json=_data.model_dump(),
         )
-
         content_type = resp.headers["Content-Type"]
 
         if re.search(r"schemas/asset_block_upload_finalize_v1\.json", content_type):
@@ -117,13 +117,13 @@ class Assets:
         url = "https://dc-api-v2.adobe.io/{expiry}/assets/block_upload/initialize"
         headers: Dict[str, str] = {}
         headers["Accept"] = 'application/vnd.adobe.dc+json; profile="https://dc-api.adobe.io/schemas/asset_block_upload_initialize_v1.json"'
+
         resp = self._client.request(
             "POST",
             url,
             headers=headers,
             json=_data.model_dump(),
         )
-
         content_type = resp.headers["Content-Type"]
 
         if re.search(r"schemas/asset_block_upload_initialize_v1\.json", content_type):
@@ -137,13 +137,13 @@ class Assets:
         url = "https://dc-api-v2.adobe.io/{expiry}/assets?operation=createpdf"
         headers: Dict[str, str] = {}
         headers["Accept"] = 'application/vnd.adobe.dc+json; profile="https://dc-api.adobe.io/schemas/new_asset_job_v1.json"'
+
         resp = self._client.request(
             "POST",
             url,
             headers=headers,
             json=_data.model_dump(),
         )
-
         content_type = resp.headers["Content-Type"]
 
         if re.search(r"schemas/new_asset_job_v1\.json", content_type):
@@ -157,13 +157,13 @@ class Assets:
         url = "https://dc-api-v2.adobe.io/{expiry}/assets?operation=createpdf_from_html"
         headers: Dict[str, str] = {}
         headers["Accept"] = 'application/vnd.adobe.dc+json; profile="https://dc-api.adobe.io/schemas/new_asset_job_v1.json"'
+
         resp = self._client.request(
             "POST",
             url,
             headers=headers,
             json=_data.model_dump(),
         )
-
         content_type = resp.headers["Content-Type"]
 
         if re.search(r"schemas/new_asset_job_v1\.json", content_type):
@@ -179,7 +179,8 @@ class Assets:
             },
         ).uri
         headers: Dict[str, str] = {}
-        resp = self._client.request(
+
+        self._client.request(
             "DELETE",
             url,
             headers=headers,
@@ -194,7 +195,8 @@ class Assets:
             },
         ).uri
         headers: Dict[str, str] = {}
-        resp = self._client.request(
+
+        self._client.request(
             "DELETE",
             url,
             headers=headers,
@@ -211,12 +213,12 @@ class Assets:
         ).uri
         headers: Dict[str, str] = {}
         headers["Accept"] = "application/cbor; application/json; application/octet-stream; application/pdf; text/html; */*"
+
         resp = self._client.request(
             "GET",
             url,
             headers=headers,
         )
-
         content_type = resp.headers["Content-Type"]
 
         if re.search(r"application/cbor", content_type):
@@ -245,12 +247,12 @@ class Assets:
         ).uri
         headers: Dict[str, str] = {}
         headers["Accept"] = 'application/vnd.adobe.dc+json; profile="https://dc-api.adobe.io/schemas/asset_document_rendition_status_v1.json"'
+
         resp = self._client.request(
             "GET",
             url,
             headers=headers,
         )
-
         content_type = resp.headers["Content-Type"]
 
         if re.search(r"schemas/asset_document_rendition_status_v1\.json", content_type):
@@ -267,12 +269,12 @@ class Assets:
         ).uri
         headers: Dict[str, str] = {}
         headers["Accept"] = "*/*"
+
         resp = self._client.request(
             "GET",
             url,
             headers=headers,
         )
-
         content_type = resp.headers["Content-Type"]
 
         if re.search(r".*", content_type):
@@ -293,12 +295,12 @@ class Assets:
         ).uri
         headers: Dict[str, str] = {}
         headers["Accept"] = 'application/vnd.adobe.dc+json; profile="https://dc-api.adobe.io/schemas/asset_uri_download_v1.json"'
+
         resp = self._client.request(
             "GET",
             url,
             headers=headers,
         )
-
         content_type = resp.headers["Content-Type"]
 
         if re.search(r"schemas/asset_uri_download_v1\.json", content_type):
@@ -317,13 +319,13 @@ class Assets:
         ).uri
         headers: Dict[str, str] = {}
         headers["Accept"] = 'application/vnd.adobe.dc+json; profile="https://dc-api.adobe.io/schemas/new_asset_job_v1.json"'
+
         resp = self._client.request(
             "POST",
             url,
             headers=headers,
             json=_data.model_dump(),
         )
-
         content_type = resp.headers["Content-Type"]
 
         if re.search(r"schemas/new_asset_job_v1\.json", content_type):
@@ -337,13 +339,13 @@ class Assets:
         url = "https://dc-api-v2.adobe.io/{expiry}/assets?operation=exportpdf"
         headers: Dict[str, str] = {}
         headers["Accept"] = 'application/vnd.adobe.dc+json; profile="https://dc-api.adobe.io/schemas/new_asset_job_v1.json"'
+
         resp = self._client.request(
             "POST",
             url,
             headers=headers,
             json=_data.model_dump(),
         )
-
         content_type = resp.headers["Content-Type"]
 
         if re.search(r"schemas/new_asset_job_v1\.json", content_type):
@@ -362,12 +364,12 @@ class Assets:
         ).uri
         headers: Dict[str, str] = {}
         headers["Accept"] = 'application/vnd.adobe.dc+json; profile="https://dc-api.adobe.io/schemas/asset_metadata_basic_v1.json"'
+
         resp = self._client.request(
             "GET",
             url,
             headers=headers,
         )
-
         content_type = resp.headers["Content-Type"]
 
         if re.search(r"schemas/asset_metadata_basic_v1\.json", content_type):
@@ -387,12 +389,12 @@ class Assets:
         ).uri
         headers: Dict[str, str] = {}
         headers["Accept"] = 'application/vnd.adobe.dc+json; profile="https://dc-api.adobe.io/schemas/asset_metadata_field_v1.json"'
+
         resp = self._client.request(
             "GET",
             url,
             headers=headers,
         )
-
         content_type = resp.headers["Content-Type"]
 
         if re.search(r"schemas/asset_metadata_field_v1\.json", content_type):
@@ -406,13 +408,13 @@ class Assets:
         url = "https://dc-api-v2.adobe.io/{expiry}/assets?operation=import"
         headers: Dict[str, str] = {}
         headers["Accept"] = 'application/vnd.adobe.dc+json; profile="https://dc-api.adobe.io/schemas/new_asset_job_v1.json"'
+
         resp = self._client.request(
             "POST",
             url,
             headers=headers,
             json=_data.model_dump(),
         )
-
         content_type = resp.headers["Content-Type"]
 
         if re.search(r"schemas/new_asset_job_v1\.json", content_type):
@@ -432,13 +434,13 @@ class Assets:
         ).uri
         headers: Dict[str, str] = {}
         headers["Accept"] = 'application/vnd.adobe.dc+json; profile="https://dc-api.adobe.io/schemas/asset_metadata_field_v1.json"'
+
         resp = self._client.request(
             "PATCH",
             url,
             headers=headers,
             json=_data.model_dump(),
         )
-
         content_type = resp.headers["Content-Type"]
 
         if re.search(r"schemas/asset_metadata_field_v1\.json", content_type):
@@ -452,13 +454,13 @@ class Assets:
         url = "https://dc-api-v2.adobe.io/{expiry}/assets?operation=pdf_actions"
         headers: Dict[str, str] = {}
         headers["Accept"] = 'application/vnd.adobe.dc+json; profile="https://dc-api.adobe.io/schemas/new_asset_job_v1.json"'
+
         resp = self._client.request(
             "POST",
             url,
             headers=headers,
             json=_data.model_dump(),
         )
-
         content_type = resp.headers["Content-Type"]
 
         if re.search(r"schemas/new_asset_job_v1\.json", content_type):
@@ -475,7 +477,8 @@ class Assets:
             },
         ).uri
         headers: Dict[str, str] = {}
-        resp = self._client.request(
+
+        self._client.request(
             "PUT",
             url,
             headers=headers,
@@ -499,12 +502,12 @@ class Assets:
         ).uri
         headers: Dict[str, str] = {}
         headers["Accept"] = "image/jpeg; image/png; image/*; */*"
+
         resp = self._client.request(
             "GET",
             url,
             headers=headers,
         )
-
         content_type = resp.headers["Content-Type"]
 
         if re.search(r"image/jpeg", content_type):
@@ -535,12 +538,12 @@ class Assets:
         ).uri
         headers: Dict[str, str] = {}
         headers["Accept"] = "image/jpeg; image/png; image/*; */*"
+
         resp = self._client.request(
             "GET",
             url,
             headers=headers,
         )
-
         content_type = resp.headers["Content-Type"]
 
         if re.search(r"image/jpeg", content_type):
@@ -567,12 +570,12 @@ class Assets:
         ).uri
         headers: Dict[str, str] = {}
         headers["Accept"] = 'application/vnd.adobe.dc+json; profile="https://dc-api.adobe.io/schemas/asset_uri_rendition_v1.json"'
+
         resp = self._client.request(
             "GET",
             url,
             headers=headers,
         )
-
         content_type = resp.headers["Content-Type"]
 
         if re.search(r"schemas/asset_uri_rendition_v1\.json", content_type):
@@ -586,13 +589,13 @@ class Assets:
         url = "https://dc-api-v2.adobe.io/{expiry}/assets?operation=splitpdf"
         headers: Dict[str, str] = {}
         headers["Accept"] = 'application/vnd.adobe.dc+json; profile="https://dc-api.adobe.io/schemas/new_asset_job_v1.json"'
+
         resp = self._client.request(
             "POST",
             url,
             headers=headers,
             json=_data.model_dump(),
         )
-
         content_type = resp.headers["Content-Type"]
 
         if re.search(r"schemas/new_asset_job_v1\.json", content_type):
@@ -612,13 +615,13 @@ class Assets:
         ).uri
         headers: Dict[str, str] = {}
         headers["Accept"] = "application/pdf; application/zip"
+
         resp = self._client.request(
             "POST",
             url,
             headers=headers,
             content=_pdf,
         )
-
         content_type = resp.headers["Content-Type"]
 
         if re.search(r"application/pdf", content_type):
@@ -634,13 +637,13 @@ class Assets:
         url = "https://sensei.adobe.io/services/v1/predict"
         headers: Dict[str, str] = {}
         headers["Accept"] = 'application/vnd.adobe.dc+json; profile="https://dc-api.adobe.io/schemas/asset_tag_sensei_v1.json"'
+
         resp = self._client.request(
             "POST",
             url,
             headers=headers,
             files={"file": _file},
         )
-
         content_type = resp.headers["Content-Type"]
 
         if re.search(r"schemas/asset_tag_sensei_v1\.json", content_type):
@@ -656,7 +659,8 @@ class Assets:
             },
         ).uri
         headers: Dict[str, str] = {}
-        resp = self._client.request(
+
+        self._client.request(
             "PUT",
             url,
             headers=headers,
@@ -669,13 +673,13 @@ class Assets:
         url = "https://dc-api-v2.adobe.io/{expiry}/assets"
         headers: Dict[str, str] = {}
         headers["Accept"] = 'application/vnd.adobe.dc+json; profile="https://dc-api.adobe.io/schemas/asset_v1.json"'
+
         resp = self._client.request(
             "POST",
             url,
             headers=headers,
             files={"file": _file},
         )
-
         content_type = resp.headers["Content-Type"]
 
         if re.search(r"schemas/asset_v1\.json", content_type):
@@ -694,12 +698,12 @@ class Assets:
         ).uri
         headers: Dict[str, str] = {}
         headers["Accept"] = 'application/vnd.adobe.dc+json; profile="https://dc-api.adobe.io/schemas/upload_status_v1.json"'
+
         resp = self._client.request(
             "GET",
             url,
             headers=headers,
         )
-
         content_type = resp.headers["Content-Type"]
 
         if re.search(r"schemas/upload_status_v1\.json", content_type):
@@ -716,12 +720,12 @@ class Assets:
         ).uri
         headers: Dict[str, str] = {}
         headers["Accept"] = "application/zip"
+
         resp = self._client.request(
             "GET",
             url,
             headers=headers,
         )
-
         content_type = resp.headers["Content-Type"]
 
         if re.search(r"application/zip", content_type):
@@ -735,13 +739,13 @@ class Assets:
         url = "https://dc-api-v2.adobe.io/{expiry}/assets/zip/uri/download"
         headers: Dict[str, str] = {}
         headers["Accept"] = 'application/vnd.adobe.dc+json; profile="https://dc-api.adobe.io/schemas/zip_download_uri_v1.json"'
+
         resp = self._client.request(
             "POST",
             url,
             headers=headers,
             json=_data.model_dump(),
         )
-
         content_type = resp.headers["Content-Type"]
 
         if re.search(r"schemas/zip_download_uri_v1\.json", content_type):

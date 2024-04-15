@@ -24,7 +24,8 @@ class Users:
             },
         ).uri
         headers: Dict[str, str] = {}
-        resp = self._client.request(
+
+        self._client.request(
             "DELETE",
             url,
             headers=headers,
@@ -41,12 +42,12 @@ class Users:
         ).uri
         headers: Dict[str, str] = {}
         headers["Accept"] = 'application/vnd.adobe.dc+json; profile="https://dc-api.adobe.io/schemas/user_cohorts_v1.json"'
+
         resp = self._client.request(
             "GET",
             url,
             headers=headers,
         )
-
         content_type = resp.headers["Content-Type"]
 
         if re.search(r"schemas/user_cohorts_v1\.json", content_type):
@@ -65,12 +66,12 @@ class Users:
         ).uri
         headers: Dict[str, str] = {}
         headers["Accept"] = 'application/vnd.adobe.dc+json; profile="https://dc-api.adobe.io/schemas/user_identity_v1.json"'
+
         resp = self._client.request(
             "GET",
             url,
             headers=headers,
         )
-
         content_type = resp.headers["Content-Type"]
 
         if re.search(r"schemas/user_identity_v1\.json", content_type):
@@ -89,12 +90,12 @@ class Users:
         ).uri
         headers: Dict[str, str] = {}
         headers["Accept"] = 'application/vnd.adobe.dc+json; profile="https://dc-api.adobe.io/schemas/user_limits_acrobat_v1.json"'
+
         resp = self._client.request(
             "GET",
             url,
             headers=headers,
         )
-
         content_type = resp.headers["Content-Type"]
 
         if re.search(r"schemas/user_limits_acrobat_v1\.json", content_type):
@@ -113,12 +114,12 @@ class Users:
         ).uri
         headers: Dict[str, str] = {}
         headers["Accept"] = 'application/vnd.adobe.dc+json; profile="https://dc-api.adobe.io/schemas/user_limits_conversions_v1.json"'
+
         resp = self._client.request(
             "GET",
             url,
             headers=headers,
         )
-
         content_type = resp.headers["Content-Type"]
 
         if re.search(r"schemas/user_limits_conversions_v1\.json", content_type):
@@ -137,12 +138,12 @@ class Users:
         ).uri
         headers: Dict[str, str] = {}
         headers["Accept"] = 'application/vnd.adobe.dc+json; profile="https://dc-api.adobe.io/schemas/user_limits_esign_v1.json"'
+
         resp = self._client.request(
             "GET",
             url,
             headers=headers,
         )
-
         content_type = resp.headers["Content-Type"]
 
         if re.search(r"schemas/user_limits_esign_v1\.json", content_type):
@@ -161,12 +162,12 @@ class Users:
         ).uri
         headers: Dict[str, str] = {}
         headers["Accept"] = 'application/vnd.adobe.dc+json; profile="https://dc-api.adobe.io/schemas/user_limits_fillsign_v1.json"'
+
         resp = self._client.request(
             "GET",
             url,
             headers=headers,
         )
-
         content_type = resp.headers["Content-Type"]
 
         if re.search(r"schemas/user_limits_fillsign_v1\.json", content_type):
@@ -185,12 +186,12 @@ class Users:
         ).uri
         headers: Dict[str, str] = {}
         headers["Accept"] = 'application/vnd.adobe.dc+json; profile="https://dc-api.adobe.io/schemas/user_limits_pdf_services_v1.json"'
+
         resp = self._client.request(
             "GET",
             url,
             headers=headers,
         )
-
         content_type = resp.headers["Content-Type"]
 
         if re.search(r"schemas/user_limits_pdf_services_v1\.json", content_type):
@@ -209,12 +210,12 @@ class Users:
         ).uri
         headers: Dict[str, str] = {}
         headers["Accept"] = 'application/vnd.adobe.dc+json; profile="https://dc-api.adobe.io/schemas/user_limits_review_v1.json"'
+
         resp = self._client.request(
             "GET",
             url,
             headers=headers,
         )
-
         content_type = resp.headers["Content-Type"]
 
         if re.search(r"schemas/user_limits_review_v1\.json", content_type):
@@ -233,12 +234,12 @@ class Users:
         ).uri
         headers: Dict[str, str] = {}
         headers["Accept"] = 'application/vnd.adobe.dc+json; profile="https://dc-api.adobe.io/schemas/user_limits_send_v1.json"'
+
         resp = self._client.request(
             "GET",
             url,
             headers=headers,
         )
-
         content_type = resp.headers["Content-Type"]
 
         if re.search(r"schemas/user_limits_send_v1\.json", content_type):
@@ -257,12 +258,12 @@ class Users:
         ).uri
         headers: Dict[str, str] = {}
         headers["Accept"] = 'application/vnd.adobe.dc+json; profile="https://dc-api.adobe.io/schemas/user_limits_storage_document_cloud_v1.json"'
+
         resp = self._client.request(
             "GET",
             url,
             headers=headers,
         )
-
         content_type = resp.headers["Content-Type"]
 
         if re.search(r"schemas/user_limits_storage_document_cloud_v1\.json", content_type):
@@ -281,12 +282,12 @@ class Users:
         ).uri
         headers: Dict[str, str] = {}
         headers["Accept"] = 'application/vnd.adobe.dc+json; profile="https://dc-api.adobe.io/schemas/user_limits_verbs_v1.json"'
+
         resp = self._client.request(
             "GET",
             url,
             headers=headers,
         )
-
         content_type = resp.headers["Content-Type"]
 
         if re.search(r"schemas/user_limits_verbs_v1\.json", content_type):
@@ -306,12 +307,12 @@ class Users:
         ).uri
         headers: Dict[str, str] = {}
         headers["Accept"] = 'application/vnd.adobe.dc+json; profile="https://dc-api.adobe.io/schemas/user_prefs_v1.json"'
+
         resp = self._client.request(
             "GET",
             url,
             headers=headers,
         )
-
         content_type = resp.headers["Content-Type"]
 
         if re.search(r"schemas/user_prefs_v1\.json", content_type):
@@ -330,12 +331,12 @@ class Users:
         ).uri
         headers: Dict[str, str] = {}
         headers["Accept"] = 'application/vnd.adobe.dc+json; profile="https://dc-api.adobe.io/schemas/recent_searches_v1.json"'
+
         resp = self._client.request(
             "GET",
             url,
             headers=headers,
         )
-
         content_type = resp.headers["Content-Type"]
 
         if re.search(r"schemas/recent_searches_v1\.json", content_type):
@@ -354,12 +355,12 @@ class Users:
         ).uri
         headers: Dict[str, str] = {}
         headers["Accept"] = 'application/vnd.adobe.dc+json; profile="https://dc-api.adobe.io/schemas/user_storage_document_cloud_v1.json"'
+
         resp = self._client.request(
             "GET",
             url,
             headers=headers,
         )
-
         content_type = resp.headers["Content-Type"]
 
         if re.search(r"schemas/user_storage_document_cloud_v1\.json", content_type):
@@ -378,12 +379,12 @@ class Users:
         ).uri
         headers: Dict[str, str] = {}
         headers["Accept"] = 'application/vnd.adobe.dc+json; profile="https://dc-api.adobe.io/schemas/user_subscriptions_v1.json"'
+
         resp = self._client.request(
             "GET",
             url,
             headers=headers,
         )
-
         content_type = resp.headers["Content-Type"]
 
         if re.search(r"schemas/user_subscriptions_v1\.json", content_type):
@@ -403,12 +404,12 @@ class Users:
         ).uri
         headers: Dict[str, str] = {}
         headers["Accept"] = 'application/vnd.adobe.dc+json; profile="https://dc-api.adobe.io/schemas/user_upsell_v1.json"'
+
         resp = self._client.request(
             "GET",
             url,
             headers=headers,
         )
-
         content_type = resp.headers["Content-Type"]
 
         if re.search(r"schemas/user_upsell_v1\.json", content_type):
@@ -428,12 +429,12 @@ class Users:
         ).uri
         headers: Dict[str, str] = {}
         headers["Accept"] = 'application/vnd.adobe.dc+json; profile="https://dc-api.adobe.io/schemas/user_v1.json"'
+
         resp = self._client.request(
             "GET",
             url,
             headers=headers,
         )
-
         content_type = resp.headers["Content-Type"]
 
         if re.search(r"schemas/user_v1\.json", content_type):
@@ -449,7 +450,8 @@ class Users:
             },
         ).uri
         headers: Dict[str, str] = {}
-        resp = self._client.request(
+
+        self._client.request(
             "POST",
             url,
             headers=headers,
@@ -464,7 +466,8 @@ class Users:
             },
         ).uri
         headers: Dict[str, str] = {}
-        resp = self._client.request(
+
+        self._client.request(
             "PUT",
             url,
             headers=headers,
@@ -480,7 +483,8 @@ class Users:
             },
         ).uri
         headers: Dict[str, str] = {}
-        resp = self._client.request(
+
+        self._client.request(
             "PUT",
             url,
             headers=headers,

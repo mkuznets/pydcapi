@@ -17,7 +17,8 @@ class System:
     def log(self, *, _data: "system_log_parameters_v1.Model") -> None:
         url = "https://dc-api-v2.adobe.io/system/log"
         headers: Dict[str, str] = {}
-        resp = self._client.request(
+
+        self._client.request(
             "POST",
             url,
             headers=headers,
@@ -28,12 +29,12 @@ class System:
         url = "https://taggedpdf.adobe.io/{expiry}/system/time"
         headers: Dict[str, str] = {}
         headers["Accept"] = "text/plain"
+
         resp = self._client.request(
             "GET",
             url,
             headers=headers,
         )
-
         content_type = resp.headers["Content-Type"]
 
         if re.search(r"text/plain", content_type):

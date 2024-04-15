@@ -16,7 +16,8 @@ class Feedback:
     def create(self, *, _data: "feedback_creation_v1.Model") -> None:
         url = "https://dc-api-v2.adobe.io/{expiry}/feedback/create"
         headers: Dict[str, str] = {}
-        resp = self._client.request(
+
+        self._client.request(
             "POST",
             url,
             headers=headers,

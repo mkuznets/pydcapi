@@ -21,12 +21,12 @@ class Discovery:
         url = "https://dc-api-v2.adobe.io/{expiry}/discovery/resources/assets/createpdf/options"
         headers: Dict[str, str] = {}
         headers["Accept"] = 'application/vnd.adobe.dc+json; profile="https://dc-api.adobe.io/schemas/createpdf_options_v1.json"'
+
         resp = self._client.request(
             "GET",
             url,
             headers=headers,
         )
-
         content_type = resp.headers["Content-Type"]
 
         if re.search(r"schemas/createpdf_options_v1\.json", content_type):
@@ -40,12 +40,12 @@ class Discovery:
         url = "https://dc-api-v2.adobe.io/discovery"
         headers: Dict[str, str] = {}
         headers["Accept"] = 'application/vnd.adobe.dc+json; profile="https://dc-api.adobe.io/schemas/discovery_v1.json"'
+
         resp = self._client.request(
             "GET",
             url,
             headers=headers,
         )
-
         content_type = resp.headers["Content-Type"]
 
         if re.search(r"schemas/discovery_v1\.json", content_type):
@@ -59,12 +59,12 @@ class Discovery:
         url = "https://dc-api-v2.adobe.io/{expiry}/discovery/resources/assets/exportpdf/options"
         headers: Dict[str, str] = {}
         headers["Accept"] = 'application/vnd.adobe.dc+json; profile="https://dc-api.adobe.io/schemas/exportpdf_options_v1.json"'
+
         resp = self._client.request(
             "GET",
             url,
             headers=headers,
         )
-
         content_type = resp.headers["Content-Type"]
 
         if re.search(r"schemas/exportpdf_options_v1\.json", content_type):
@@ -78,12 +78,12 @@ class Discovery:
         url = "https://dc-api-v2.adobe.io/{expiry}/discovery/services"
         headers: Dict[str, str] = {}
         headers["Accept"] = 'application/vnd.adobe.dc+json; profile="https://dc-api.adobe.io/schemas/services_v1.json"'
+
         resp = self._client.request(
             "GET",
             url,
             headers=headers,
         )
-
         content_type = resp.headers["Content-Type"]
 
         if re.search(r"schemas/services_v1\.json", content_type):
@@ -97,12 +97,12 @@ class Discovery:
         url = "https://dc-api-v2.adobe.io/{expiry}/discovery/resources/assets/source/options"
         headers: Dict[str, str] = {}
         headers["Accept"] = 'application/vnd.adobe.dc+json; profile="https://dc-api.adobe.io/schemas/source_options_v1.json"'
+
         resp = self._client.request(
             "GET",
             url,
             headers=headers,
         )
-
         content_type = resp.headers["Content-Type"]
 
         if re.search(r"schemas/source_options_v1\.json", content_type):
