@@ -51,7 +51,7 @@ class Assets:
             "PUT",
             url,
             headers=headers,
-            json=_data.dict(),
+            json=_data.model_dump(),
         )
 
         content_type = resp.headers["Content-Type"]
@@ -76,7 +76,7 @@ class Assets:
             "PUT",
             url,
             headers=headers,
-            json=_data.dict(),
+            json=_data.model_dump(),
         )
 
         content_type = resp.headers["Content-Type"]
@@ -101,7 +101,7 @@ class Assets:
             "PUT",
             url,
             headers=headers,
-            json=_data.dict(),
+            json=_data.model_dump(),
         )
 
         content_type = resp.headers["Content-Type"]
@@ -121,7 +121,7 @@ class Assets:
             "POST",
             url,
             headers=headers,
-            json=_data.dict(),
+            json=_data.model_dump(),
         )
 
         content_type = resp.headers["Content-Type"]
@@ -141,7 +141,7 @@ class Assets:
             "POST",
             url,
             headers=headers,
-            json=_data.dict(),
+            json=_data.model_dump(),
         )
 
         content_type = resp.headers["Content-Type"]
@@ -161,7 +161,7 @@ class Assets:
             "POST",
             url,
             headers=headers,
-            json=_data.dict(),
+            json=_data.model_dump(),
         )
 
         content_type = resp.headers["Content-Type"]
@@ -321,7 +321,7 @@ class Assets:
             "POST",
             url,
             headers=headers,
-            json=_data.dict(),
+            json=_data.model_dump(),
         )
 
         content_type = resp.headers["Content-Type"]
@@ -341,7 +341,7 @@ class Assets:
             "POST",
             url,
             headers=headers,
-            json=_data.dict(),
+            json=_data.model_dump(),
         )
 
         content_type = resp.headers["Content-Type"]
@@ -410,7 +410,7 @@ class Assets:
             "POST",
             url,
             headers=headers,
-            json=_data.dict(),
+            json=_data.model_dump(),
         )
 
         content_type = resp.headers["Content-Type"]
@@ -436,7 +436,7 @@ class Assets:
             "PATCH",
             url,
             headers=headers,
-            json=_data.dict(),
+            json=_data.model_dump(),
         )
 
         content_type = resp.headers["Content-Type"]
@@ -456,7 +456,7 @@ class Assets:
             "POST",
             url,
             headers=headers,
-            json=_data.dict(),
+            json=_data.model_dump(),
         )
 
         content_type = resp.headers["Content-Type"]
@@ -479,7 +479,7 @@ class Assets:
             "PUT",
             url,
             headers=headers,
-            json=_data.dict(),
+            json=_data.model_dump(),
         )
 
     def rendition(self, *, download: bool, format: Literal["png", "jpg"], page: int, rendition_class: str, size: str, asset_rendition_uri: str, markup: bool = True, processing_hint: Literal["speed_over_quality", "quality_over_speed"] = "speed_over_quality", wait: int = 10) -> bytes:
@@ -590,7 +590,7 @@ class Assets:
             "POST",
             url,
             headers=headers,
-            json=_data.dict(),
+            json=_data.model_dump(),
         )
 
         content_type = resp.headers["Content-Type"]
@@ -739,7 +739,7 @@ class Assets:
             "POST",
             url,
             headers=headers,
-            json=_data.dict(),
+            json=_data.model_dump(),
         )
 
         content_type = resp.headers["Content-Type"]

@@ -50,7 +50,7 @@ class Folders:
             "POST",
             url,
             headers=headers,
-            json=_data.dict(),
+            json=_data.model_dump(),
         )
 
         content_type = resp.headers["Content-Type"]
@@ -229,7 +229,7 @@ class Folders:
             "PATCH",
             url,
             headers=headers,
-            json=_data.dict(),
+            json=_data.model_dump(),
         )
 
         content_type = resp.headers["Content-Type"]
@@ -252,5 +252,5 @@ class Folders:
             "PUT",
             url,
             headers=headers,
-            json=_data.dict(),
+            json=_data.model_dump(),
         )

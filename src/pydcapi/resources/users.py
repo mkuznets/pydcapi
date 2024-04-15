@@ -453,7 +453,7 @@ class Users:
             "POST",
             url,
             headers=headers,
-            json=_data.dict(),
+            json=_data.model_dump(),
         )
 
     def put_identity(self, *, _data: "user_put_identity_v1.Model", user_uri: str = "https://dc-api-v2.adobe.io/{expiry}/users/self") -> None:
@@ -468,7 +468,7 @@ class Users:
             "PUT",
             url,
             headers=headers,
-            json=_data.dict(),
+            json=_data.model_dump(),
         )
 
     def put_prefs(self, *, _data: "user_prefs_v1.Model", category: Literal["dcweb", "recent_assets", "recent_assets_timestamp", "common", "acrobat", "fillsign"], user_uri: str = "https://dc-api-v2.adobe.io/{expiry}/users/self") -> None:
@@ -484,5 +484,5 @@ class Users:
             "PUT",
             url,
             headers=headers,
-            json=_data.dict(),
+            json=_data.model_dump(),
         )

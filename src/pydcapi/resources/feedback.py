@@ -20,5 +20,5 @@ class Feedback:
             "POST",
             url,
             headers=headers,
-            json=_data.dict(),
+            json=_data.model_dump(),
         )
