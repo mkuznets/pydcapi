@@ -40,7 +40,7 @@ pydantic==2.6.3
     # via pydcapi
 pydantic-core==2.16.3
     # via pydantic
-pytest==8.1.0
+pytest==8.1.1
 python-dotenv==1.0.1
 ruff==0.3.0
 sniffio==1.3.1
