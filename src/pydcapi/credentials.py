@@ -35,7 +35,7 @@ class StaticCredentialsProvider:
 
 class EnvCredentialsProvider:
     def __init__(self, prefix: str = "") -> None:
-        self.credentials = {
+        self.credentials: Credentials = {
             "ims_sid": os.environ.get(f"{prefix}IMS_SID"),
             "aux_sid": os.environ.get(f"{prefix}AUX_SID"),
             "token": os.environ.get(f"{prefix}TOKEN"),
