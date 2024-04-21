@@ -110,6 +110,7 @@ class CredentialsTransport(httpx.BaseTransport):
                 token = credentials.get("token") or ""
                 try:
                     httpx_client = httpx.Client(transport=StaticTokenTransport(token=token))
+                    # noinspection PyTypeChecker
                     schema = discovery.Discovery(httpx_client).discover()
                 except httpx.HTTPStatusError as ex:
                     if ex.response.status_code == 401:
