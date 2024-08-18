@@ -1888,12 +1888,34 @@ class Acroprefs(BaseModel):
     prefsync_enabled: Optional[bool] = None
 
 
+class DcConsent(BaseModel):
+    model_config = ConfigDict(
+        extra='allow',
+        frozen=True,
+    )
+    latest_version: Optional[str] = Field(None, alias='latest version')
+    """
+    version of the latest consent needed
+    """
+    status: Optional[bool] = None
+    """
+    indicates the current status of user consent
+    """
+    version: Optional[str] = None
+    """
+    version of the consent data
+    """
+
+
 class Genai(BaseModel):
     model_config = ConfigDict(
         extra='allow',
         frozen=True,
     )
-    dc_beta_consent: Optional[bool] = None
+    dc_consent: Optional[DcConsent] = None
+    """
+    provides essential information about user consent
+    """
 
 
 class PrefsCommon(BaseModel):
@@ -1936,6 +1958,44 @@ class PrefsDcweb(BaseModel):
     fte: Optional[Fte] = None
     """
     First Time Experience Tracking
+    """
+
+
+class AuthorizationRule(BaseModel):
+    model_config = ConfigDict(
+        extra='allow',
+        frozen=True,
+    )
+    app_name: str
+    """
+    Name of the app
+    """
+    rule_id: str
+    """
+    Rule id to initiate request access workflow
+    """
+
+
+class RequestAccess(BaseModel):
+    model_config = ConfigDict(
+        extra='allow',
+        frozen=True,
+    )
+    application_url: str
+    """
+    A link to a user experience that invokes the rule.
+    """
+    authorization_rules: List[AuthorizationRule] = Field(..., min_length=0)
+    """
+    Auth rules for making the access requests for various apps.
+    """
+    licenses_available: bool
+    """
+    If user posses licenses in context of app onboarded on access platform.
+    """
+    request_access_enabled: bool
+    """
+    If the org-admin has enabled request access workflow for the users.
     """
 
 
@@ -2110,6 +2170,7 @@ class Model(BaseModel):
     """
     DC Web common preferences
     """
+    request_access: Optional[RequestAccess] = None
     storage_document_cloud: Optional[StorageDocumentCloud] = Field(
         None, alias='storage/document_cloud'
     )

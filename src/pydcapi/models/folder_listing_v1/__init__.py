@@ -180,7 +180,7 @@ class Model(BaseModel):
     """
     parent_uri: Optional[AnyUrl] = None
     """
-    The total number of items in this folder.
+    URI of the parent folder of this folder.  If there is no parent (e.g. for the root), this value is not present.
     """
     uri: AnyUrl
     """

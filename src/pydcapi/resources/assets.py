@@ -202,11 +202,11 @@ class Assets:
             headers=headers,
         )
 
-    def document_rendition(self, *, format: Literal["ftpdf", "jcos", "owp"], asset_rendition_uri: str, fallback: Literal["original", "none"] = "original") -> Union[Any, bytes, str]:
+    def document_rendition(self, *, format_: Literal["ftpdf", "jcos", "owp"], asset_rendition_uri: str, fallback: Literal["original", "none"] = "original") -> Union[Any, bytes, str]:
         url = uritemplate.partial(
             uri="{+asset_rendition_uri}{&format,fallback}",
             var_dict={
-                "format": format,
+                "format": format_,
                 "asset_rendition_uri": asset_rendition_uri,
                 "fallback": fallback,
             },
@@ -485,12 +485,12 @@ class Assets:
             json=_data.model_dump(),
         )
 
-    def rendition(self, *, download: bool, format: Literal["png", "jpg"], page: int, rendition_class: str, size: str, asset_rendition_uri: str, markup: bool = True, processing_hint: Literal["speed_over_quality", "quality_over_speed"] = "speed_over_quality", wait: int = 10) -> bytes:
+    def rendition(self, *, download: bool, format_: Literal["png", "jpg"], page: int, rendition_class: str, size: str, asset_rendition_uri: str, markup: bool = True, processing_hint: Literal["speed_over_quality", "quality_over_speed"] = "speed_over_quality", wait: int = 10) -> bytes:
         url = uritemplate.partial(
             uri="{+asset_rendition_uri}{&format,size,wait,page,markup,processing_hint,download,rendition_class}",
             var_dict={
                 "download": download,
-                "format": format,
+                "format": format_,
                 "page": page,
                 "rendition_class": rendition_class,
                 "size": size,
@@ -521,13 +521,13 @@ class Assets:
         else:
             raise ValueError(f"Unexpected content type: {content_type}")
 
-    def rendition_direct(self, *, asset_id: str, download: bool, format: Literal["png", "jpg"], page: int, rendition_class: str, size: str, markup: bool = True, processing_hint: Literal["speed_over_quality", "quality_over_speed"] = "speed_over_quality", wait: int = 10) -> bytes:
+    def rendition_direct(self, *, asset_id: str, download: bool, format_: Literal["png", "jpg"], page: int, rendition_class: str, size: str, markup: bool = True, processing_hint: Literal["speed_over_quality", "quality_over_speed"] = "speed_over_quality", wait: int = 10) -> bytes:
         url = uritemplate.partial(
             uri="https://dc-api-v2.adobecontent.io/{expiry}/assets/download/{+asset_id}/rendition{?format,size,wait,page,markup,processing_hint,download,rendition_class}",
             var_dict={
                 "asset_id": asset_id,
                 "download": download,
-                "format": format,
+                "format": format_,
                 "page": page,
                 "rendition_class": rendition_class,
                 "size": size,
@@ -557,7 +557,7 @@ class Assets:
         else:
             raise ValueError(f"Unexpected content type: {content_type}")
 
-    def rendition_uri(self, *, make_ticket: bool, asset_uri: str, type: Literal["paged", "document"] = "paged") -> "asset_uri_rendition_v1.Model":
+    def rendition_uri(self, *, make_ticket: bool, asset_uri: str, type_: Literal["paged", "document"] = "paged") -> "asset_uri_rendition_v1.Model":
         from ..models import asset_uri_rendition_v1
 
         url = uritemplate.partial(
@@ -565,7 +565,7 @@ class Assets:
             var_dict={
                 "make_ticket": make_ticket,
                 "asset_uri": asset_uri,
-                "type": type,
+                "type": type_,
             },
         ).uri
         headers: Dict[str, str] = {}
@@ -603,14 +603,14 @@ class Assets:
         else:
             raise ValueError(f"Unexpected content type: {content_type}")
 
-    def tag(self, *, _pdf: bytes, async_: bool, client_version: str, qualify: bool, format: Literal["instance_data", "fully_tagged_pdf"] = "instance_data") -> bytes:
+    def tag(self, *, _pdf: bytes, async_: bool, client_version: str, qualify: bool, format_: Literal["instance_data", "fully_tagged_pdf"] = "instance_data") -> bytes:
         url = uritemplate.partial(
             uri="https://taggedpdf.adobe.io/{expiry}/assets?operation=tag{&format,async,qualify,client_version}",
             var_dict={
                 "async": async_,
                 "client_version": client_version,
                 "qualify": qualify,
-                "format": format,
+                "format": format_,
             },
         ).uri
         headers: Dict[str, str] = {}

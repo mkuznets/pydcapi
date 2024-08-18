@@ -16,7 +16,7 @@ class Connector:
     def __init__(self, client: Client):
         self._client: Client = client
 
-    def delete(self, *, cloud_id: Literal["msft", "gdrive", "box", "dropbox"], connector_id: str) -> "connector_delete_response_v1.Model":
+    def delete(self, *, cloud_id: Literal["msft", "teams", "gdrive", "box", "dropbox"], connector_id: str) -> "connector_delete_response_v1.Model":
         from ..models import connector_delete_response_v1
 
         url = uritemplate.partial(
@@ -41,7 +41,7 @@ class Connector:
         else:
             raise ValueError(f"Unexpected content type: {content_type}")
 
-    def link(self, *, _data: "connector_link_parameters_v1.Model", cloud_id: Literal["msft", "gdrive", "box", "dropbox"]) -> "connector_info_v1.Model":
+    def link(self, *, _data: "connector_link_parameters_v1.Model", cloud_id: Literal["msft", "teams", "gdrive", "box", "dropbox"]) -> "connector_info_v1.Model":
         from ..models import connector_info_v1
 
         url = uritemplate.partial(
@@ -66,7 +66,7 @@ class Connector:
         else:
             raise ValueError(f"Unexpected content type: {content_type}")
 
-    def list(self, *, cloud_id: Literal["msft", "gdrive", "box", "dropbox"]) -> "connector_listing_v1.Model":
+    def list(self, *, cloud_id: Literal["msft", "teams", "gdrive", "box", "dropbox"]) -> "connector_listing_v1.Model":
         from ..models import connector_listing_v1
 
         url = uritemplate.partial(

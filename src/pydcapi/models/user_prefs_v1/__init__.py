@@ -5,7 +5,7 @@ from __future__ import annotations
 
 from typing import Any, Dict, Literal, Optional
 
-from pydantic import BaseModel, ConfigDict, constr
+from pydantic import BaseModel, ConfigDict, Field, constr
 
 
 class Acroprefs(BaseModel):
@@ -16,12 +16,34 @@ class Acroprefs(BaseModel):
     prefsync_enabled: Optional[bool] = None
 
 
+class DcConsent(BaseModel):
+    model_config = ConfigDict(
+        extra='allow',
+        frozen=True,
+    )
+    latest_version: Optional[str] = Field(None, alias='latest version')
+    """
+    version of the latest consent needed
+    """
+    status: Optional[bool] = None
+    """
+    indicates the current status of user consent
+    """
+    version: Optional[str] = None
+    """
+    version of the consent data
+    """
+
+
 class Genai(BaseModel):
     model_config = ConfigDict(
         extra='allow',
         frozen=True,
     )
-    dc_beta_consent: Optional[bool] = None
+    dc_consent: Optional[DcConsent] = None
+    """
+    provides essential information about user consent
+    """
 
 
 class Common(BaseModel):

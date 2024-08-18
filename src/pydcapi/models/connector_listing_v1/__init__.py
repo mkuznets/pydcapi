@@ -17,6 +17,10 @@ class ListItem(BaseModel):
     """
     External cloud linked account access token.
     """
+    cloudUserId: Optional[str] = None
+    """
+    External cloud linked account user id.
+    """
     connectedAt: Optional[float] = None
     """
     External cloud account connected time.
@@ -29,7 +33,9 @@ class ListItem(BaseModel):
     """
     GUID for uniquely identifying each external cloud account linked or ready to be linked.
     """
-    connectorType: Literal['OneDrive', 'SharePoint', 'GDrive', 'Box', 'DropBox']
+    connectorType: Literal[
+        'Teams', 'OneDrive', 'SharePoint', 'GDrive', 'Box', 'DropBox'
+    ]
     """
     Identifier for Connector class.
     """
@@ -40,6 +46,10 @@ class ListItem(BaseModel):
     expiresIn: Optional[float] = None
     """
     It represents remaining validity(in seconds) of the access token in connector Info.
+    """
+    proxyToken: Optional[str] = None
+    """
+    Proxy token linked to external cloud connector.
     """
     status: Literal['ACTIVE', 'EXPIRED']
     """
