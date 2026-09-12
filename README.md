@@ -16,7 +16,7 @@ can break without notice and it is your responsibility to stay within Adobe's te
 pip install pydcapi
 ```
 
-Python 3.8+. Dependencies: `httpx`, `pydantic>=2`, `uritemplate`.
+Python 3.9+. Dependencies: `httpx`, `pydantic>=2`, `uritemplate`.
 
 ## Quickstart
 
@@ -98,13 +98,14 @@ documented. If your session stops working the client raises
 ## Development
 
 ```
-uv venv --python 3.12 .venv
-uv pip install --python .venv/bin/python -e . pytest python-dotenv ruff==0.3.0 mypy==1.8.0
+uv sync
 cp .env.example .env   # then paste your IMS_SID
-.venv/bin/python -m pytest
+uv run pytest
+uv run ruff check && uv run ruff format --check && uv run mypy
 ```
 
-The tests are live integration tests against your account and are skipped
-without credentials.
+`tests/test_client.py` holds live integration tests against your account; they
+are skipped without credentials. The rest runs offline. CI runs the same
+commands on the oldest and newest supported Python.
 
 `src/pydcapi/models` and `src/pydcapi/resources` are generated; do not edit by hand.
