@@ -11,9 +11,7 @@ from pydcapi import credentials
 def client_from_env() -> pydcapi.Client:
     dotenv.load_dotenv()
 
-    ims_sid = os.environ.get("IMS_SID")
-    aux_sid = os.environ.get("AUX_SID")
-    if ims_sid is None or aux_sid is None:
-        pytest.skip("No credentials provided: IMS_SID and AUX_SID environment variables are required")
+    if not os.environ.get("IMS_SID"):
+        pytest.skip("No credentials provided: IMS_SID environment variable is required")
 
     return pydcapi.Client(credentials.EnvCredentialsProvider())

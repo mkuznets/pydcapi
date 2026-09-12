@@ -84,15 +84,15 @@ The cookie itself is issued with a one-year expiry, and every token refresh
 rotates it (old values stay valid). What ends a session server-side is
 signing out in the browser, changing the password, revoking sessions in the
 Adobe account settings, or Adobe's own inactivity limit, which is not
-documented. If your session stops working you will see
-`RuntimeError: no token in response: {'error': 'invalid_credentials'}`; log in
-again and copy a fresh `ims_sid`.
+documented. If your session stops working the client raises
+`pydcapi.AuthenticationError`; log in again and copy a fresh `ims_sid`.
 
 ### Credential providers
 
 - `StaticCredentialsProvider(dict)` for in-memory use.
 - `EnvCredentialsProvider(prefix="")` reads `IMS_SID`, `AUX_SID`, `TOKEN`, `EXPIRY`.
 - `JSONFileCredentialsProvider(path)` reads and writes a JSON file, including the renewed token.
+  `~` is expanded, the file is created on first write with mode `0600`.
 - Anything with `get() -> Credentials` and `set(Credentials) -> None`.
 
 ## Development

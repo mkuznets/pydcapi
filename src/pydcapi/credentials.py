@@ -2,7 +2,7 @@ import abc
 import datetime
 import json
 import os
-from typing import Optional, TypedDict, Protocol
+from typing import Any, Optional, TypedDict, Protocol
 
 
 class Credentials(TypedDict, total=False):
@@ -34,10 +34,10 @@ class StaticCredentialsProvider:
 class EnvCredentialsProvider:
     def __init__(self, prefix: str = "") -> None:
         self.credentials: Credentials = {
-            "ims_sid": os.environ.get(f"{prefix}IMS_SID"),
-            "aux_sid": os.environ.get(f"{prefix}AUX_SID"),
-            "token": os.environ.get(f"{prefix}TOKEN"),
-            "expiry": int(os.environ.get(f"{prefix}EXPIRY", 0)),
+            "ims_sid": os.environ.get(f"{prefix}IMS_SID") or None,
+            "aux_sid": os.environ.get(f"{prefix}AUX_SID") or None,
+            "token": os.environ.get(f"{prefix}TOKEN") or None,
+            "expiry": _parse_expiry(os.environ.get(f"{prefix}EXPIRY")),
         }
 
     def get(self) -> Credentials:
@@ -49,25 +49,46 @@ class EnvCredentialsProvider:
 
 class JSONFileCredentialsProvider:
     def __init__(self, path: str):
-        self.__path = path
+        self.__path = os.path.expanduser(path)
+
+    @property
+    def path(self) -> str:
+        return self.__path
 
     def get(self) -> Credentials:
-        with open(self.__path, "r") as file:
-            try:
+        try:
+            with open(self.__path, "r") as file:
                 data = json.load(file)
-                credentials: Credentials = {
-                    "ims_sid": str(data.get("ims_sid", "")) or None,
-                    "aux_sid": str(data.get("aux_sid", "")) or None,
-                    "token": str(data.get("token", "")) or None,
-                    "expiry": int(data.get("expiry", 0)) or None,
-                }
-                return credentials
+        except (FileNotFoundError, json.JSONDecodeError):
+            return {}
 
-            except json.JSONDecodeError:
-                return {}
+        if not isinstance(data, dict):
+            return {}
+
+        credentials: Credentials = {
+            "ims_sid": str(data.get("ims_sid") or "") or None,
+            "aux_sid": str(data.get("aux_sid") or "") or None,
+            "token": str(data.get("token") or "") or None,
+            "expiry": _parse_expiry(data.get("expiry")),
+        }
+        return credentials
 
     def set(self, credentials: Credentials) -> None:
-        with open(self.__path, "w") as file:
-            data = dict(credentials.copy())
-            data["updated_at"] = datetime.datetime.now(tz=datetime.timezone.utc).isoformat()
+        directory = os.path.dirname(self.__path)
+        if directory:
+            os.makedirs(directory, mode=0o700, exist_ok=True)
+
+        data = dict(credentials.copy())
+        data["updated_at"] = datetime.datetime.now(tz=datetime.timezone.utc).isoformat()
+
+        fd = os.open(self.__path, os.O_WRONLY | os.O_CREAT | os.O_TRUNC, 0o600)
+        with os.fdopen(fd, "w") as file:
             json.dump(data, file, indent=2)
+        os.chmod(self.__path, 0o600)
+
+
+def _parse_expiry(value: Any) -> Optional[int]:
+    try:
+        return int(float(value)) or None
+    except (TypeError, ValueError):
+        return None
