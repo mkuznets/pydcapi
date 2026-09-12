@@ -16,7 +16,7 @@ can break without notice and it is your responsibility to stay within Adobe's te
 pip install pydcapi
 ```
 
-Python 3.9+. Dependencies: `httpx`, `pydantic>=2`, `uritemplate`.
+Python 3.10+. Dependencies: `httpx2`, `pydantic>=2`, `uritemplate`.
 
 ## Quickstart
 

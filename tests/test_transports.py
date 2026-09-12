@@ -3,7 +3,7 @@ import json
 import time
 from typing import Dict, List, Optional
 
-import httpx
+import httpx2
 import pytest
 
 from pydcapi import credentials, transports
@@ -23,27 +23,27 @@ class FakeAdobe:
     def __init__(self, token_response: Optional[Dict[str, object]] = None, set_cookies: Optional[Dict[str, str]] = None) -> None:
         self.token_response: Dict[str, object] = token_response if token_response is not None else {"access_token": make_jwt()}
         self.set_cookies = set_cookies or {}
-        self.requests: List[httpx.Request] = []
+        self.requests: List[httpx2.Request] = []
 
-    def transport(self) -> httpx.MockTransport:
-        return httpx.MockTransport(self.handle)
+    def transport(self) -> httpx2.MockTransport:
+        return httpx2.MockTransport(self.handle)
 
-    def handle(self, request: httpx.Request) -> httpx.Response:
+    def handle(self, request: httpx2.Request) -> httpx2.Response:
         self.requests.append(request)
         if request.url.host == TOKEN_HOST:
             headers = [("set-cookie", f"{name}={value}; Domain=.services.adobe.com; Path=/") for name, value in self.set_cookies.items()]
-            return httpx.Response(200, json=self.token_response, headers=headers)
+            return httpx2.Response(200, json=self.token_response, headers=headers)
         if request.url.host == API_HOST and request.url.path == "/discovery":
-            return httpx.Response(
+            return httpx2.Response(
                 200,
                 json={"expiry": int(time.time()) + 3600, "resources": {}},
                 headers={"Content-Type": 'application/vnd.adobe.dc+json; profile="https://dc-api.adobe.io/schemas/discovery_v1.json"'},
             )
         if request.url.host == API_HOST:
-            return httpx.Response(200, json={"path": request.url.path, "authorization": request.headers.get("Authorization")})
+            return httpx2.Response(200, json={"path": request.url.path, "authorization": request.headers.get("Authorization")})
         raise AssertionError(f"unexpected request: {request.method} {request.url}")
 
-    def token_requests(self) -> List[httpx.Request]:
+    def token_requests(self) -> List[httpx2.Request]:
         return [r for r in self.requests if r.url.host == TOKEN_HOST]
 
 
@@ -149,7 +149,7 @@ def test_valid_token_is_reused_without_refresh() -> None:
     provider = credentials.StaticCredentialsProvider({"ims_sid": "sid", "token": token, "expiry": int(time.time()) + 3600})
     transport = transports.CredentialsTransport(provider, base=adobe.transport())
 
-    with httpx.Client(transport=transport) as client:
+    with httpx2.Client(transport=transport) as client:
         response = client.get(f"https://{API_HOST}/{{expiry}}/folders")
 
     assert adobe.token_requests() == []
@@ -174,7 +174,7 @@ def test_base_transport_survives_authentication() -> None:
     provider = credentials.StaticCredentialsProvider({"ims_sid": "sid"})
     transport = transports.CredentialsTransport(provider, base=adobe.transport())
 
-    with httpx.Client(transport=transport) as client:
+    with httpx2.Client(transport=transport) as client:
         first = client.get(f"https://{API_HOST}/{{expiry}}/first")
         second = client.get(f"https://{API_HOST}/{{expiry}}/second")
 

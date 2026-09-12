@@ -3,7 +3,7 @@ import json
 import time
 from typing import Optional, Literal, Dict
 
-import httpx
+import httpx2
 import uritemplate
 
 from pydcapi.credentials import Credentials, CredentialsProvider
@@ -28,23 +28,23 @@ _COMMON_HEADERS: Dict[str, str] = {
 }
 
 
-class _SharedTransport(httpx.BaseTransport):
-    # Wraps a transport owned by someone else so a temporary httpx.Client cannot close it.
-    def __init__(self, base: httpx.BaseTransport):
+class _SharedTransport(httpx2.BaseTransport):
+    # Wraps a transport owned by someone else so a temporary httpx2.Client cannot close it.
+    def __init__(self, base: httpx2.BaseTransport):
         self.__base = base
 
-    def handle_request(self, request: httpx.Request) -> httpx.Response:
+    def handle_request(self, request: httpx2.Request) -> httpx2.Response:
         return self.__base.handle_request(request)
 
     def close(self) -> None:
         pass
 
 
-class CommonTransport(httpx.BaseTransport):
-    def __init__(self, *, base: Optional[httpx.BaseTransport] = None):
-        self.__base = base or httpx.HTTPTransport()
+class CommonTransport(httpx2.BaseTransport):
+    def __init__(self, *, base: Optional[httpx2.BaseTransport] = None):
+        self.__base = base or httpx2.HTTPTransport()
 
-    def handle_request(self, request: httpx.Request) -> httpx.Response:
+    def handle_request(self, request: httpx2.Request) -> httpx2.Response:
         request.headers.update(_COMMON_HEADERS)
         return self.__base.handle_request(request)
 
@@ -52,12 +52,12 @@ class CommonTransport(httpx.BaseTransport):
         self.__base.close()
 
 
-class StaticTokenTransport(httpx.BaseTransport):
-    def __init__(self, token: str, *, base: Optional[httpx.BaseTransport] = None):
+class StaticTokenTransport(httpx2.BaseTransport):
+    def __init__(self, token: str, *, base: Optional[httpx2.BaseTransport] = None):
         self.__token = token
-        self.__base = CommonTransport(base=base or httpx.HTTPTransport())
+        self.__base = CommonTransport(base=base or httpx2.HTTPTransport())
 
-    def handle_request(self, request: httpx.Request) -> httpx.Response:
+    def handle_request(self, request: httpx2.Request) -> httpx2.Response:
         request.headers["Authorization"] = f"Bearer {self.__token}"
         return self.__base.handle_request(request)
 
@@ -65,22 +65,22 @@ class StaticTokenTransport(httpx.BaseTransport):
         self.__base.close()
 
 
-class CredentialsTransport(httpx.BaseTransport):
+class CredentialsTransport(httpx2.BaseTransport):
     def __init__(
         self,
         credentials_provider: CredentialsProvider,
         *,
-        base: Optional[httpx.BaseTransport] = None,
+        base: Optional[httpx2.BaseTransport] = None,
     ):
-        self.__base = base or httpx.HTTPTransport()
+        self.__base = base or httpx2.HTTPTransport()
         self.__common = CommonTransport(base=_SharedTransport(self.__base))
         self.__credentials_provider = credentials_provider
 
-    def handle_request(self, request: httpx.Request) -> httpx.Response:
+    def handle_request(self, request: httpx2.Request) -> httpx2.Response:
         credentials = self.authenticate()
 
         path = uritemplate.expand(request.url.path, expiry=str(credentials.get("expiry", 0)))
-        request.url = httpx.URL(request.url, path=path)
+        request.url = httpx2.URL(request.url, path=path)
         request.headers["Authorization"] = f"Bearer {credentials.get('token', '')}"
 
         return self.__common.handle_request(request)
@@ -124,10 +124,10 @@ class CredentialsTransport(httpx.BaseTransport):
                 token = credentials.get("token") or ""
                 try:
                     transport = StaticTokenTransport(token=token, base=_SharedTransport(self.__base))
-                    with httpx.Client(transport=transport) as httpx_client:
+                    with httpx2.Client(transport=transport) as httpx_client:
                         # noinspection PyTypeChecker
                         schema = discovery.Discovery(httpx_client).discover()
-                except httpx.HTTPStatusError as ex:
+                except httpx2.HTTPStatusError as ex:
                     if ex.response.status_code == 401:
                         state = "authenticate"
                         continue
@@ -160,7 +160,7 @@ class CredentialsTransport(httpx.BaseTransport):
             cookies["aux_sid"] = aux_sid
 
         transport = CommonTransport(base=_SharedTransport(self.__base))
-        with httpx.Client(transport=transport, cookies=cookies) as client:
+        with httpx2.Client(transport=transport, cookies=cookies) as client:
             resp = client.post(_TOKEN_URL, data={"client_id": _TOKEN_CLIENT_ID, "scope": _TOKEN_SCOPE})
 
         if not resp.is_success:

@@ -14,7 +14,7 @@ import datetime
 import json
 import sys
 
-import httpx
+import httpx2
 
 TOKEN_URL = "https://adobeid-na1.services.adobe.com/ims/check/v6/token"
 HEADERS = {
@@ -39,7 +39,7 @@ def main() -> int:
     now = datetime.datetime.now(tz=datetime.timezone.utc)
     captured = datetime.datetime.fromisoformat(data.get("captured_at", now.isoformat()))
 
-    with httpx.Client(headers=HEADERS, cookies={"ims_sid": data["ims_sid"]}) as client:
+    with httpx2.Client(headers=HEADERS, cookies={"ims_sid": data["ims_sid"]}) as client:
         resp = client.post(TOKEN_URL, data={"client_id": "dc-prod-virgoweb", "scope": "AdobeID,openid,DCAPI"})
         body = resp.json()
         ok = resp.status_code == 200 and "access_token" in body

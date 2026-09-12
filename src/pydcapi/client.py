@@ -1,6 +1,6 @@
 from typing import TYPE_CHECKING
 
-import httpx
+import httpx2
 
 from pydcapi import credentials, transports
 
@@ -21,7 +21,7 @@ if TYPE_CHECKING:
 class Client:
     def __init__(self, credentials_provider: credentials.CredentialsProvider) -> None:
         transport = transports.CredentialsTransport(credentials_provider)
-        self.http_client = httpx.Client(transport=transport)
+        self.http_client = httpx2.Client(transport=transport)
 
     @property
     def discovery(self) -> "discovery.Discovery":
