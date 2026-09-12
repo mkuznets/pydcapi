@@ -2,8 +2,7 @@ from typing import TYPE_CHECKING
 
 import httpx
 
-from pydcapi import credentials
-from pydcapi import transports
+from pydcapi import credentials, transports
 
 if TYPE_CHECKING:
     from pydcapi.resources import (
