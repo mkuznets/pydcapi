@@ -1,0 +1,95 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "additionalProperties": false,
+  "properties": {
+    "subscriptions": {
+      "items": {
+        "additionalProperties": false,
+        "properties": {
+          "billing_term": {
+            "description": "This value will not be available for document cloud offerings sold to team (CCT) and enterprise (CCE) subscriptions.",
+            "enum": [
+              "Monthly",
+              "AnnualBilledMonthly",
+              "AnnualBilledAnnually"
+            ],
+            "type": "string"
+          },
+          "biz_source": {
+            "description": "The business source associated with this product purchase.",
+            "type": "string"
+          },
+          "level": {
+            "description": "The service level.  All paid products have only a 'Basic' service level.",
+            "enum": [
+              "Free",
+              "Basic",
+              "Plus",
+              "VIP"
+            ],
+            "type": "string"
+          },
+          "name": {
+            "description": "The subscription name.",
+            "enum": [
+              "CreatePDF",
+              "PDFPack",
+              "ExportPDF",
+              "Files",
+              "DCGlobal",
+              "DCEnterprise",
+              "AcrobatPlus",
+              "AcrobatStd",
+              "SendNow",
+              "FillAndSign",
+              "ESign",
+              "Review",
+              "FormsCentral",
+              "EditPDF",
+              "OcrPDF",
+              "DCLite",
+              "ScanPlus",
+              "AdobeScan",
+              "GenAIServices",
+              "PersistentChatHistory",
+              "SecuredLinkSharing",
+              "AcrobatDesktopMode"
+            ],
+            "type": "string"
+          },
+          "status": {
+            "description": "Account status.  Any status other than `Active` indicates that services are not available to this account.",
+            "enum": [
+              "Active",
+              "Suspended",
+              "Suspended30",
+              "Closed",
+              "Stopped"
+            ],
+            "type": "string"
+          },
+          "sub_ref": {
+            "description": "A UUID value that allows this product to be correlated to the Adobe store API values. This will be NULL for document cloud offerings sold to team (CCT) and enterprise (CCE) subscriptions as these users are entitled by an admin and do not have subscription record associated with them.",
+            "type": "string"
+          },
+          "subscription_params": {
+            "description": "Map of additional params present for this subscription, if any.",
+            "type": "object"
+          }
+        },
+        "required": [
+          "name",
+          "level",
+          "status"
+        ],
+        "type": "object"
+      },
+      "minItems": 1,
+      "type": "array"
+    }
+  },
+  "required": [
+    "subscriptions"
+  ],
+  "type": "object"
+}

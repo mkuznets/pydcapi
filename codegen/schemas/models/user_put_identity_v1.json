@@ -1,0 +1,52 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "additionalProperties": false,
+  "properties": {
+    "first_name": {
+      "description": "Deprecated, no longer editable. This parameter should be omitted and will be ignored if provided.",
+      "maxLength": 255,
+      "minLength": 1,
+      "type": "string"
+    },
+    "language": {
+      "description": "The language chosen for communication with this user.",
+      "enum": [
+        "en-US",
+        "en-GB",
+        "de-DE",
+        "es-ES",
+        "fr-FR",
+        "it-IT",
+        "ja-JP",
+        "da-DK",
+        "nl-NL",
+        "nb-NO",
+        "pt-BR",
+        "fi-FI",
+        "sv-SE",
+        "ko-KR",
+        "zh-CN",
+        "zh-TW",
+        "cs-CZ",
+        "pl-PL",
+        "ru-RU",
+        "tr-TR"
+      ],
+      "type": "string"
+    },
+    "last_name": {
+      "description": "Deprecated, no longer editable. This parameter should be omitted and will be ignored if provided.",
+      "maxLength": 255,
+      "minLength": 1,
+      "type": "string"
+    },
+    "mrkt_perm_email": {
+      "description": "Deprecated, no longer editable. This parameter should be omitted and will be ignored if provided.",
+      "type": "boolean"
+    }
+  },
+  "required": [
+    "language"
+  ],
+  "type": "object"
+}

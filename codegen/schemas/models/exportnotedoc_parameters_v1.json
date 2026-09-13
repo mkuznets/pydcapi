@@ -1,0 +1,53 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "additionalProperties": false,
+  "properties": {
+    "asset_uri": {
+      "description": "URI identifying the Asset.",
+      "format": "uri",
+      "type": "string"
+    },
+    "format": {
+      "default": "docx",
+      "description": "The exportnotedoc format.",
+      "enum": [
+        "docx"
+      ],
+      "type": "string"
+    },
+    "name": {
+      "description": "Name of the new asset. Duplicate asset name behavior can be set by on_dup_policy.",
+      "minLength": 1,
+      "type": "string"
+    },
+    "on_dup_name": {
+      "default": "auto_rename",
+      "description": "How to handle a duplicate name conflict in target collection for output file.",
+      "enum": [
+        "error",
+        "auto_rename",
+        "overwrite"
+      ],
+      "type": "string"
+    },
+    "parent_uri": {
+      "description": "The uri of folder to put the asset in. If not specified, the default depends on the operation. Conversions will be placed in the same folder as the source asset.",
+      "format": "uri",
+      "type": "string"
+    },
+    "persistence": {
+      "default": "transient",
+      "description": "Asset storage aspect as short-term transient vs. long-term permanent. \"transient\" creates an asset that will be available for several hours before being garbage collected and deleted. For operations that convert and download immediately, \"transient\" is the appropriate choice.",
+      "enum": [
+        "transient",
+        "permanent"
+      ],
+      "type": "string"
+    }
+  },
+  "required": [
+    "asset_uri",
+    "name"
+  ],
+  "title": "Export Note doc request parameters schema"
+}

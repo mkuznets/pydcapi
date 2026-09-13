@@ -1,0 +1,92 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "additionalProperties": false,
+  "properties": {
+    "asset_uri": {
+      "description": "URI identifying the PDF asset to redact.",
+      "format": "uri",
+      "type": "string"
+    },
+    "format": {
+      "default": "pdf",
+      "description": "Output format of the redacted document.",
+      "enum": [
+        "pdf"
+      ],
+      "type": "string"
+    },
+    "name": {
+      "description": "Name of the output asset.",
+      "minLength": 1,
+      "type": "string"
+    },
+    "persistence": {
+      "default": "transient",
+      "description": "Asset storage aspect as short-term transient vs. long-term permanent. \"transient\" creates an asset that will be available for several hours before being garbage collected and deleted.  For operations that convert and download immediately, \"transient\" is the appropriate choice",
+      "enum": [
+        "transient",
+        "permanent"
+      ],
+      "type": "string"
+    },
+    "redact_locations": {
+      "description": "List of page locations to redact.",
+      "items": {
+        "additionalProperties": false,
+        "properties": {
+          "coordinates": {
+            "description": "Bounding box rectangles defining the redaction area on the page.",
+            "items": {
+              "additionalProperties": false,
+              "properties": {
+                "bottom": {
+                  "description": "Bottom coordinate of the redaction rectangle.",
+                  "type": "number"
+                },
+                "left": {
+                  "description": "Left coordinate of the redaction rectangle.",
+                  "type": "number"
+                },
+                "right": {
+                  "description": "Right coordinate of the redaction rectangle.",
+                  "type": "number"
+                },
+                "top": {
+                  "description": "Top coordinate of the redaction rectangle.",
+                  "type": "number"
+                }
+              },
+              "required": [
+                "left",
+                "top",
+                "right",
+                "bottom"
+              ],
+              "type": "object"
+            },
+            "type": "array"
+          },
+          "pageNumber": {
+            "description": "1-based page number where the redaction is applied.",
+            "type": "integer"
+          }
+        },
+        "required": [
+          "pageNumber",
+          "coordinates"
+        ],
+        "type": "object"
+      },
+      "type": "array"
+    },
+    "sanitize": {
+      "default": false,
+      "description": "Whether to sanitize the PDF document metadata.",
+      "type": "boolean"
+    }
+  },
+  "required": [
+    "asset_uri",
+    "name"
+  ]
+}

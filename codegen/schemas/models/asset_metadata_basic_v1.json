@@ -1,0 +1,107 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "properties": {
+    "asset_id": {
+      "description": "The asset id (in URN form).  Use the \"asset_uri\" uri template in the \"templates\" section of the discovery info to transform to an asset uri.",
+      "type": "string"
+    },
+    "created": {
+      "description": "The creation date of the asset.",
+      "format": "date-time",
+      "type": "string"
+    },
+    "created_by_client": {
+      "description": "An indication of which API client first uploaded the asset.",
+      "type": "string"
+    },
+    "custom_tags": {
+      "description": "An array of custom tags for client application use.",
+      "items": {
+        "description": "A short client application defined tag.",
+        "type": "string"
+      },
+      "type": "array"
+    },
+    "favorite": {
+      "description": "True if the user has marked this asset a favorite.",
+      "type": "boolean"
+    },
+    "last_access": {
+      "description": "The time the asset was last accessed.",
+      "format": "date-time",
+      "type": "string"
+    },
+    "last_pagenum": {
+      "description": "The number of the page last viewed.  This number is 0 based - the first page is 0, second page is 1, etc.",
+      "type": "number"
+    },
+    "md5_digest": {
+      "description": "The hex digest of 128 bit MD5 digest of the asset - a 32 character string containing only hexadecimal digits.  May not be available immediately after uploading or updating a file.",
+      "type": "string"
+    },
+    "modified": {
+      "description": "The modification date of the asset.",
+      "format": "date-time",
+      "type": "string"
+    },
+    "name": {
+      "description": "Name of the asset.",
+      "type": "string"
+    },
+    "page_count": {
+      "description": "The number of pages in the asset.  Only present for assets in which the page count has been determined.  Page count discovery happens while generating renditions for supported asset types (e.g. pdf).",
+      "type": "number"
+    },
+    "parent_id": {
+      "description": "Folder id (in URN form) of the parent folder of this asset.  If there is no parent (e.g. for a transient asset), this value is not present.",
+      "type": "string"
+    },
+    "parent_uri": {
+      "description": "URI of the parent folder of this asset.  If there is no parent (e.g. for a transient asset), this value is not present.",
+      "format": "uri",
+      "type": "string"
+    },
+    "sign": {
+      "description": "sign metadata for Adobe Cloud Platform (ACP) storage users (Signatures experience in Acrobat), Sign metadata :[Sign metadata](https://wiki.corp.adobe.com/x/CSj9o).",
+      "type": "string"
+    },
+    "size": {
+      "description": "File size in bytes",
+      "type": "number"
+    },
+    "source": {
+      "description": "Where the asset resides.  Currently either \"native\" or \"creative_cloud\"",
+      "type": "string"
+    },
+    "starred": {
+      "description": "True if the user has starred this asset.",
+      "type": "boolean"
+    },
+    "tags": {
+      "description": "An array of tags.",
+      "items": {
+        "description": "A short user defined tag.",
+        "type": "string"
+      },
+      "type": "array"
+    },
+    "type": {
+      "description": "The file's content type (mime-type)",
+      "type": "string"
+    },
+    "uri": {
+      "description": "URI representing the asset",
+      "format": "uri",
+      "type": "string"
+    }
+  },
+  "required": [
+    "name",
+    "uri",
+    "size",
+    "type",
+    "created",
+    "modified"
+  ],
+  "type": "object"
+}

@@ -1,0 +1,74 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "properties": {
+    "_links": {
+      "additionalProperties": false,
+      "properties": {
+        "extend_link": {
+          "additionalProperties": false,
+          "description": "URL object for doing Extend call for getting more pre-signed URLs.",
+          "properties": {
+            "uri": {
+              "description": "Url for doing Extend call for getting more pre-signed URLs.",
+              "format": "uri",
+              "type": "string"
+            }
+          },
+          "required": [
+            "uri"
+          ],
+          "type": "object"
+        },
+        "finalize_link": {
+          "additionalProperties": false,
+          "description": "URL object for completing the upload.",
+          "properties": {
+            "uri": {
+              "description": "Url for completing the upload.",
+              "format": "uri",
+              "type": "string"
+            }
+          },
+          "required": [
+            "uri"
+          ],
+          "type": "object"
+        },
+        "upload_links": {
+          "description": "List of Pre-signed URLs for doing the upload for each block.  The upload URLs MUST have the same block size as before.  Clients should immediately start using URLs provided in the extend call , as the service may change the values of existing URLs. However, the Service MUST permit clients to use URLs from any previous version of the URLs received in the initialize/extend call (for the same upload), as it is possible that clients have other inflight-requests already in progress",
+          "items": {
+            "additionalProperties": false,
+            "description": "Upload URL object for uploading each block.",
+            "properties": {
+              "uri": {
+                "description": "Pre-signed URL for the uploading each block.",
+                "format": "uri",
+                "type": "string"
+              }
+            },
+            "required": [
+              "uri"
+            ],
+            "type": "object"
+          },
+          "minItems": 1,
+          "type": "array"
+        }
+      },
+      "required": [
+        "upload_links",
+        "finalize_link",
+        "extend_link"
+      ],
+      "type": "object"
+    },
+    "upload_info": {
+      "description": "Encrypted upload info related to this specific upload will be returned in response which needs to be provided as input in extend and finalize calls for extending and finalizing this upload.",
+      "type": "string"
+    }
+  },
+  "required": [
+    "_links",
+    "upload_info"
+  ]
+}

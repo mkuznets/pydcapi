@@ -1,0 +1,64 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "oneOf": [
+    {
+      "items": {
+        "additionalProperties": {
+          "type": "string"
+        },
+        "dependencies": {},
+        "properties": {
+          "level": {
+            "description": "Log level: debug, info, warn, error.",
+            "enum": [
+              "debug",
+              "info",
+              "warn",
+              "error"
+            ],
+            "type": "string"
+          },
+          "message": {
+            "description": "Message to add to system log.",
+            "maxLength": 2048,
+            "type": "string"
+          }
+        },
+        "required": [
+          "message",
+          "level"
+        ],
+        "type": "object"
+      },
+      "type": "array"
+    },
+    {
+      "additionalProperties": {
+        "type": "string"
+      },
+      "dependencies": {},
+      "properties": {
+        "level": {
+          "description": "Log level: debug, info, warn, error.",
+          "enum": [
+            "debug",
+            "info",
+            "warn",
+            "error"
+          ],
+          "type": "string"
+        },
+        "message": {
+          "description": "Message to add to system log.",
+          "maxLength": 2048,
+          "type": "string"
+        }
+      },
+      "required": [
+        "message",
+        "level"
+      ],
+      "type": "object"
+    }
+  ]
+}

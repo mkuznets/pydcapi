@@ -1,0 +1,75 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "additionalProperties": false,
+  "properties": {
+    "analytics_plan_code": {
+      "description": "An account description to include with analytics events.",
+      "type": "string"
+    },
+    "category": {
+      "description": "An enum indicating the type of account. One of: \"adobeid\" (type 1), \"enterprise\" (type 2) or \"federated\" (type 3) or \"business\" (type 2e).",
+      "enum": [
+        "adobeid",
+        "enterprise",
+        "federated",
+        "business"
+      ],
+      "type": "string"
+    },
+    "country_code": {
+      "description": "The country associated with this user.",
+      "type": "string"
+    },
+    "display_name": {
+      "description": "The user's full name.",
+      "type": "string"
+    },
+    "email": {
+      "description": "Email address registered with this user.",
+      "type": "string"
+    },
+    "first_name": {
+      "description": "A first name associated with this user.",
+      "type": "string"
+    },
+    "first_time": {
+      "description": "A map of first-time indicators. e.g. dex_web_app. In the case of dex_web_app, this value will be true if they have never visited cloud.acrobat.com.",
+      "type": "object"
+    },
+    "language": {
+      "description": "The language chosen for communication with this user.",
+      "type": "string"
+    },
+    "last_name": {
+      "description": "A last name / family name associated with this user.",
+      "type": "string"
+    },
+    "mrkt_perm_email": {
+      "description": "If true, the user has chosen to accept marketing material vie e-mail.",
+      "type": "boolean"
+    },
+    "user_id": {
+      "description": "The id for this user.",
+      "type": "string"
+    },
+    "user_uri": {
+      "description": "The URI used to access this user.",
+      "type": "string"
+    }
+  },
+  "required": [
+    "display_name",
+    "first_name",
+    "last_name",
+    "email",
+    "user_uri",
+    "mrkt_perm_email",
+    "language",
+    "country_code",
+    "first_time",
+    "analytics_plan_code",
+    "category",
+    "user_id"
+  ],
+  "type": "object"
+}

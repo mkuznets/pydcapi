@@ -1,0 +1,78 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "additionalProperties": false,
+  "dependencies": {},
+  "properties": {
+    "asset_uri": {
+      "description": "URI identifying the Asset.",
+      "format": "uri",
+      "type": "string"
+    },
+    "on_dup_name": {
+      "default": [
+        "auto_rename"
+      ],
+      "description": "How to handle a duplicate name conflict in target collection for output file.",
+      "enum": [
+        "error",
+        "auto_rename",
+        "overwrite"
+      ],
+      "type": "string"
+    },
+    "params": {
+      "additionalProperties": false,
+      "description": "Params for specifying how to split a PDF document into multiple documents by simply specifying the page ranges.",
+      "properties": {
+        "page_ranges": {
+          "description": "Page ranges on the basis of which to split the input PDF file. Each page range corresponds to a single output file having the pages specified in the page range. The page ranges may not overlap.",
+          "items": {
+            "additionalProperties": false,
+            "properties": {
+              "end": {
+                "description": "End page of this page range.",
+                "type": "number"
+              },
+              "start": {
+                "description": "Start page of this page range.",
+                "type": "number"
+              }
+            },
+            "required": [
+              "start"
+            ],
+            "type": "object"
+          },
+          "type": "array"
+        }
+      },
+      "required": [
+        "page_ranges"
+      ],
+      "type": "object"
+    },
+    "parent_uri": {
+      "description": "The uri of folder to put the asset in.  This parameter is relevant only for permanent assets.  If not specified, the default depends on the operation.  Conversions will be placed in the same folder as the source asset.",
+      "format": "uri",
+      "type": "string"
+    },
+    "persistence": {
+      "default": "transient",
+      "description": "Asset storage aspect as short-term transient vs. long-term permanent. \"transient\" creates an asset that will be available for several hours before being garbage collected and deleted.  For operations that convert and download immediately, \"transient\" is the appropriate choice",
+      "enum": [
+        "transient",
+        "permanent"
+      ],
+      "type": "string"
+    },
+    "prefix_name": {
+      "description": "Prefix name of the new asset(s). Duplicate asset name behaviour can be set by on_dup_policy.",
+      "minLength": 1,
+      "type": "string"
+    }
+  },
+  "required": [
+    "asset_uri",
+    "params"
+  ]
+}

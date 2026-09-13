@@ -1,0 +1,19 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "additionalProperties": false,
+  "properties": {
+    "size": {
+      "description": "The updated total size of the file in bytes. The upper bound is the available storage quota for the user's account in case of permanent asset.",
+      "type": "number"
+    },
+    "upload_info": {
+      "description": "Upload info returned in initialize call.",
+      "type": "string"
+    }
+  },
+  "required": [
+    "size",
+    "upload_info"
+  ],
+  "title": "Asset extend block upload parameters schema"
+}

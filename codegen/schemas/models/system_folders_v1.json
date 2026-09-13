@@ -1,0 +1,76 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "properties": {
+    "roots": {
+      "description": "An object with a field for each root folder available to this user.",
+      "properties": {
+        "creative_cloud": {
+          "properties": {
+            "folder_id": {
+              "description": "The folder id (in URN form).",
+              "type": "string"
+            },
+            "root_uri": {
+              "description": "The URI of the creative cloud root folder.",
+              "format": "uri",
+              "type": "string"
+            }
+          },
+          "required": [
+            "root_uri",
+            "folder_id"
+          ],
+          "type": "object"
+        },
+        "document_cloud": {
+          "properties": {
+            "folder_id": {
+              "description": "The folder id (in URN form).",
+              "type": "string"
+            },
+            "root_uri": {
+              "description": "The URI of the document cloud root folder.",
+              "format": "uri",
+              "type": "string"
+            }
+          },
+          "required": [
+            "root_uri",
+            "folder_id"
+          ],
+          "type": "object"
+        }
+      },
+      "required": [
+        "document_cloud"
+      ],
+      "type": "object"
+    },
+    "system_folders": {
+      "additionalProperties": {
+        "properties": {
+          "folder_id": {
+            "description": "The folder id (in URN form).",
+            "type": "string"
+          },
+          "folder_uri": {
+            "description": "URI representing the system folder.",
+            "format": "uri",
+            "type": "string"
+          }
+        },
+        "required": [
+          "folder_uri",
+          "folder_id"
+        ],
+        "type": "object"
+      },
+      "description": "An object containing a field for each system folder available to this user. The name of the property is the name of the system folder.  By nature these system folders are often considered private to the service that needs them, so the exact names aren't documented here.",
+      "type": "object"
+    }
+  },
+  "required": [
+    "roots",
+    "system_folders"
+  ]
+}

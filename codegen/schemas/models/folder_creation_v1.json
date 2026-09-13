@@ -1,0 +1,31 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "additionalProperties": false,
+  "properties": {
+    "name": {
+      "description": "The name for the folder.",
+      "minLength": 1,
+      "type": "string"
+    },
+    "on_dup_name": {
+      "default": "error",
+      "description": "How to handle a duplicate name.",
+      "enum": [
+        "error",
+        "auto_rename"
+      ],
+      "type": "string"
+    },
+    "parent_uri": {
+      "description": "The uri of folder to create the new folder in.",
+      "format": "uri",
+      "type": "string"
+    }
+  },
+  "required": [
+    "parent_uri",
+    "name"
+  ],
+  "title": "Folder creation parameters schema",
+  "type": "object"
+}

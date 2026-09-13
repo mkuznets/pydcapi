@@ -1,0 +1,210 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "additionalProperties": false,
+  "dependencies": {
+    "do_ocr": {},
+    "image_params": {
+      "properties": {
+        "format": {
+          "enum": [
+            "image"
+          ]
+        }
+      },
+      "required": [
+        "format"
+      ]
+    },
+    "ocr_lang": {
+      "properties": {
+        "do_ocr": {
+          "enum": [
+            true
+          ],
+          "type": "boolean"
+        }
+      }
+    },
+    "parent_uri": {
+      "properties": {
+        "persistence": {
+          "enum": [
+            "permanent"
+          ]
+        }
+      },
+      "required": [
+        "persistence"
+      ]
+    }
+  },
+  "properties": {
+    "asset_uri": {
+      "description": "URI identifying the Asset.",
+      "format": "uri",
+      "type": "string"
+    },
+    "do_ocr": {
+      "default": false,
+      "description": "Whether OCR processing is performed on the PDF file or not. This setting is ignored for exportpdf to image.",
+      "type": "boolean"
+    },
+    "format": {
+      "default": "docx",
+      "description": "The exportpdf format. For image file formats, the output is a zip file containing images of all the pages.",
+      "enum": [
+        "doc",
+        "docx",
+        "xls",
+        "xlsx",
+        "pptx",
+        "rtf",
+        "image"
+      ],
+      "type": "string"
+    },
+    "image_params": {
+      "additionalProperties": false,
+      "dependencies": {
+        "use_transparent_background": {}
+      },
+      "description": "Set of properties that are applicable when exporting to an image format.",
+      "properties": {
+        "draw_annotations": {
+          "default": true,
+          "description": "Specify whether to include PDF annotations in the output image file(s).",
+          "type": "boolean"
+        },
+        "image_format": {
+          "default": [
+            "jpeg"
+          ],
+          "description": "The format of the image to generate.",
+          "enum": [
+            "jpeg",
+            "png",
+            "tiff"
+          ],
+          "type": "string"
+        },
+        "max_dimension": {
+          "description": "Max dimension of any image in pixels. This can range from 32 to 8192.",
+          "maximum": 8192,
+          "minimum": 32,
+          "type": "integer"
+        },
+        "pages": {
+          "default": "1-",
+          "description": "Page range to be included. Page numbers are 1-based, comma seperated, and can include spaces (0x20, ignored) and a dash ('-', 0x2D) -- used to denote a range of pages.",
+          "pattern": "^([1-9 ]+[0-9 ]*-?[0-9 ]*)(,[1-9 ]+[0-9 ]*-?[0-9 ]*)*$",
+          "type": "string"
+        },
+        "quality": {
+          "default": "medium",
+          "description": "Controls the lossy compression setting.  \"max\" is best quality.  \"min\" is smallest file size",
+          "enum": [
+            "min",
+            "low",
+            "medium",
+            "high",
+            "max"
+          ],
+          "type": "string"
+        },
+        "resolution_dpi": {
+          "default": 72,
+          "description": "Dots per inch. This can range from 9 to 600.",
+          "maximum": 600,
+          "minimum": 9,
+          "type": "integer"
+        },
+        "use_transparent_background": {
+          "default": false,
+          "description": "If true, render the page backgrounds transparent.  Not applicable if the output is jpeg.",
+          "type": "boolean"
+        }
+      },
+      "type": "object"
+    },
+    "name": {
+      "description": "Name of the new asset. Duplicate asset name behavior can be set by on_dup_policy.",
+      "minLength": 1,
+      "type": "string"
+    },
+    "ocr_lang": {
+      "default": "en-US",
+      "description": "Locale to use for optical character recognition (when `do_ocr` is true).",
+      "enum": [
+        "da-DK",
+        "lt-LT",
+        "sl-SI",
+        "el-GR",
+        "ru-RU",
+        "en-US",
+        "zh-HK",
+        "hu-HU",
+        "et-EE",
+        "pt-BR",
+        "uk-UA",
+        "nb-NO",
+        "pl-PL",
+        "lv-LV",
+        "fi-FI",
+        "ja-JP",
+        "es-ES",
+        "bg-BG",
+        "en-GB",
+        "cs-CZ",
+        "mt-MT",
+        "de-DE",
+        "hr-HR",
+        "sk-SK",
+        "sr-SR",
+        "ca-CA",
+        "mk-MK",
+        "ko-KR",
+        "de-CH",
+        "nl-NL",
+        "zh-CN",
+        "sv-SE",
+        "it-IT",
+        "no-NO",
+        "tr-TR",
+        "fr-FR",
+        "ro-RO",
+        "iw-IL"
+      ],
+      "type": "string"
+    },
+    "on_dup_name": {
+      "default": [
+        "auto_rename"
+      ],
+      "description": "How to handle a duplicate name conflict in target collection for output file.",
+      "enum": [
+        "error",
+        "auto_rename",
+        "overwrite"
+      ],
+      "type": "string"
+    },
+    "parent_uri": {
+      "description": "The uri of folder to put the asset in.  This parameter is relevant only for permanent assets.  If not specified, the default depends on the operation.  Conversions will be placed in the same folder as the source asset.",
+      "format": "uri",
+      "type": "string"
+    },
+    "persistence": {
+      "default": "transient",
+      "description": "Asset storage aspect as short-term transient vs. long-term permanent. \"transient\" creates an asset that will be available for several hours before being garbage collected and deleted.  For operations that convert and download immediately, \"transient\" is the appropriate choice",
+      "enum": [
+        "transient",
+        "permanent"
+      ],
+      "type": "string"
+    }
+  },
+  "required": [
+    "asset_uri",
+    "name"
+  ]
+}

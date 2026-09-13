@@ -1,0 +1,46 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "properties": {
+    "rename_info": {
+      "description": "If on_dup_name was auto_rename and the name was illegal or a duplicate was encountered, contains details on the rename.",
+      "properties": {
+        "duplicate_of": {
+          "properties": {
+            "asset_uri": {
+              "description": "If present, the uri of the asset the original_name collided with.",
+              "format": "uri",
+              "type": "string"
+            },
+            "folder_uri": {
+              "description": "If present, the uri of the folder the original_name collided with.",
+              "format": "uri",
+              "type": "string"
+            }
+          },
+          "type": "object"
+        },
+        "name": {
+          "description": "The name actually used.",
+          "type": "string"
+        },
+        "original_name": {
+          "description": "The original name.",
+          "type": "string"
+        }
+      },
+      "required": [
+        "original_name",
+        "name"
+      ],
+      "type": "object"
+    },
+    "uri": {
+      "description": "URI to perform actions on an asset",
+      "format": "uri",
+      "type": "string"
+    }
+  },
+  "required": [
+    "uri"
+  ]
+}

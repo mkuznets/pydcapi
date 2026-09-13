@@ -1,0 +1,3582 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "properties": {
+    "cohorts": {
+      "additionalProperties": {
+        "type": "string"
+      },
+      "description": "A json object with key-value pairs corresponding to cohorts and their values assigned to the current user for all the currently active experiments.",
+      "type": "object"
+    },
+    "identity": {
+      "additionalProperties": false,
+      "properties": {
+        "analytics_plan_code": {
+          "description": "An account description to include with analytics events.",
+          "type": "string"
+        },
+        "category": {
+          "description": "An enum indicating the type of account. One of: \"adobeid\" (type 1), \"enterprise\" (type 2) or \"federated\" (type 3) or \"business\" (type 2e).",
+          "enum": [
+            "adobeid",
+            "enterprise",
+            "federated",
+            "business"
+          ],
+          "type": "string"
+        },
+        "country_code": {
+          "description": "The country associated with this user.",
+          "type": "string"
+        },
+        "display_name": {
+          "description": "The user's full name.",
+          "type": "string"
+        },
+        "email": {
+          "description": "Email address registered with this user.",
+          "type": "string"
+        },
+        "first_name": {
+          "description": "A first name associated with this user.",
+          "type": "string"
+        },
+        "first_time": {
+          "description": "A map of first-time indicators. e.g. dex_web_app. In the case of dex_web_app, this value will be true if they have never visited cloud.acrobat.com.",
+          "type": "object"
+        },
+        "language": {
+          "description": "The language chosen for communication with this user.",
+          "type": "string"
+        },
+        "last_name": {
+          "description": "A last name / family name associated with this user.",
+          "type": "string"
+        },
+        "mrkt_perm_email": {
+          "description": "If true, the user has chosen to accept marketing material vie e-mail.",
+          "type": "boolean"
+        },
+        "user_id": {
+          "description": "The id for this user.",
+          "type": "string"
+        },
+        "user_uri": {
+          "description": "The URI used to access this user.",
+          "type": "string"
+        }
+      },
+      "required": [
+        "display_name",
+        "first_name",
+        "last_name",
+        "email",
+        "user_uri",
+        "mrkt_perm_email",
+        "language",
+        "country_code",
+        "first_time",
+        "analytics_plan_code",
+        "category",
+        "user_id"
+      ],
+      "type": "object"
+    },
+    "limits/acrobat": {
+      "additionalProperties": false,
+      "properties": {
+        "acrobat_desktop_mode": {
+          "description": "Indicates whether the user is entitled to Acrobat Lite GenAI.",
+          "type": "string"
+        },
+        "acrobat_pro": {
+          "description": "Indicates whether the user is entitled to download/install Acrobat Pro.",
+          "type": "boolean"
+        },
+        "acrobat_std": {
+          "description": "Indicates whether the user is entitled to download/install Acrobat Standard.",
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "acrobat_pro",
+        "acrobat_std",
+        "acrobat_desktop_mode"
+      ],
+      "type": "object"
+    },
+    "limits/conversions": {
+      "additionalProperties": false,
+      "properties": {
+        "combine_pdf_conversions": {
+          "additionalProperties": false,
+          "description": "Number of combine operations that user is allowed to do",
+          "properties": {
+            "remaining": {
+              "type": "integer"
+            }
+          },
+          "required": [
+            "remaining"
+          ],
+          "type": "object"
+        },
+        "combine_pdf_documents": {
+          "additionalProperties": false,
+          "description": "Maximum number of files that may be combined in one CombinePDF operation",
+          "properties": {
+            "limit": {
+              "type": "integer"
+            }
+          },
+          "required": [
+            "limit"
+          ],
+          "type": "object"
+        },
+        "combine_pdf_max_file_size": {
+          "additionalProperties": false,
+          "description": "Maximum size (in kilobytes) of a file that can be accepted by CombinePDF",
+          "properties": {
+            "limit": {
+              "type": "integer"
+            }
+          },
+          "required": [
+            "limit"
+          ],
+          "type": "object"
+        },
+        "create_pdf_conversions": {
+          "additionalProperties": false,
+          "description": "Number of documents that can be converted to PDF",
+          "properties": {
+            "remaining": {
+              "type": "integer"
+            }
+          },
+          "required": [
+            "remaining"
+          ],
+          "type": "object"
+        },
+        "create_pdf_max_file_size": {
+          "additionalProperties": false,
+          "description": "Maximum size (in kilobytes) of a file that can be converted by CreatePDF",
+          "properties": {
+            "limit": {
+              "type": "integer"
+            }
+          },
+          "required": [
+            "limit"
+          ],
+          "type": "object"
+        },
+        "edit_pdf_max_file_size": {
+          "additionalProperties": false,
+          "description": "Maximum size (in kilobytes) of a PDF that can be edited",
+          "properties": {
+            "limit": {
+              "type": "integer"
+            }
+          },
+          "required": [
+            "limit"
+          ],
+          "type": "object"
+        },
+        "edit_pdf_ops": {
+          "additionalProperties": false,
+          "description": "Number of PDF documents that can be edited",
+          "properties": {
+            "remaining": {
+              "type": "integer"
+            }
+          },
+          "required": [
+            "remaining"
+          ],
+          "type": "object"
+        },
+        "export_pdf_conversions": {
+          "additionalProperties": false,
+          "description": "Number of documents that can be exported from PDF",
+          "properties": {
+            "remaining": {
+              "type": "integer"
+            }
+          },
+          "required": [
+            "remaining"
+          ],
+          "type": "object"
+        },
+        "export_pdf_max_file_size": {
+          "additionalProperties": false,
+          "description": "Maximum size (in kilobytes) of a file that can be exported by ExportPDF",
+          "properties": {
+            "limit": {
+              "type": "integer"
+            }
+          },
+          "required": [
+            "limit"
+          ],
+          "type": "object"
+        },
+        "ocr_pdf_conversions": {
+          "additionalProperties": false,
+          "description": "Number of PDF documents that can have an OCR operation applied",
+          "properties": {
+            "remaining": {
+              "type": "integer"
+            }
+          },
+          "required": [
+            "remaining"
+          ],
+          "type": "object"
+        },
+        "ocr_pdf_max_file_size": {
+          "additionalProperties": false,
+          "description": "Maximum size (in kilobytes) of a PDF that can be accepted for OCR",
+          "properties": {
+            "limit": {
+              "type": "integer"
+            }
+          },
+          "required": [
+            "limit"
+          ],
+          "type": "object"
+        },
+        "optimize_pdf_max_file_size": {
+          "additionalProperties": false,
+          "description": "Maximum size (in kilobytes) of a PDF that can be accepted for optimization",
+          "properties": {
+            "limit": {
+              "type": "integer"
+            }
+          },
+          "required": [
+            "limit"
+          ],
+          "type": "object"
+        },
+        "optimize_pdf_ops": {
+          "additionalProperties": false,
+          "description": "Number of PDF documents that can be optimized",
+          "properties": {
+            "remaining": {
+              "type": "integer"
+            }
+          },
+          "required": [
+            "remaining"
+          ],
+          "type": "object"
+        },
+        "organize_pdf_conversions": {
+          "additionalProperties": false,
+          "description": "Number of organize operations that user is allowed to do",
+          "properties": {
+            "remaining": {
+              "type": "integer"
+            }
+          },
+          "required": [
+            "remaining"
+          ],
+          "type": "object"
+        },
+        "organize_pdf_documents": {
+          "additionalProperties": false,
+          "description": "Maximum number of files that may be combined in one organize operation",
+          "properties": {
+            "limit": {
+              "type": "integer"
+            }
+          },
+          "required": [
+            "limit"
+          ],
+          "type": "object"
+        },
+        "organize_pdf_max_file_size": {
+          "additionalProperties": false,
+          "description": "Maximum size (in kilobytes) of a file that can be accepted by organize",
+          "properties": {
+            "limit": {
+              "type": "integer"
+            }
+          },
+          "required": [
+            "limit"
+          ],
+          "type": "object"
+        },
+        "password_encrypt_max_file_size": {
+          "additionalProperties": false,
+          "description": "Maximum size (in kilobytes) of a PDF that can be accepted for password encryption",
+          "properties": {
+            "limit": {
+              "type": "integer"
+            }
+          },
+          "required": [
+            "limit"
+          ],
+          "type": "object"
+        },
+        "password_encrypt_ops": {
+          "additionalProperties": false,
+          "description": "Number of PDF documents that can be password encrypted",
+          "properties": {
+            "remaining": {
+              "type": "integer"
+            }
+          },
+          "required": [
+            "remaining"
+          ],
+          "type": "object"
+        },
+        "split_pdf_conversions": {
+          "additionalProperties": false,
+          "description": "Number of PDF documents that can be splitted",
+          "properties": {
+            "remaining": {
+              "type": "integer"
+            }
+          },
+          "required": [
+            "remaining"
+          ],
+          "type": "object"
+        },
+        "split_pdf_max_file_size": {
+          "additionalProperties": false,
+          "description": "Maximum size (in kilobytes) of a PDF that can be splitted",
+          "properties": {
+            "limit": {
+              "type": "integer"
+            }
+          },
+          "required": [
+            "limit"
+          ],
+          "type": "object"
+        },
+        "split_pdf_max_split_points": {
+          "additionalProperties": false,
+          "description": "Maximum number of split points in input PDF file that will be allowed in one SplitPDF operation",
+          "properties": {
+            "limit": {
+              "type": "integer"
+            }
+          },
+          "required": [
+            "limit"
+          ],
+          "type": "object"
+        }
+      },
+      "required": [
+        "combine_pdf_conversions",
+        "combine_pdf_max_file_size",
+        "combine_pdf_documents",
+        "organize_pdf_conversions",
+        "organize_pdf_max_file_size",
+        "organize_pdf_documents",
+        "create_pdf_conversions",
+        "create_pdf_max_file_size",
+        "export_pdf_conversions",
+        "export_pdf_max_file_size",
+        "ocr_pdf_conversions",
+        "ocr_pdf_max_file_size",
+        "password_encrypt_ops",
+        "password_encrypt_max_file_size",
+        "optimize_pdf_ops",
+        "optimize_pdf_max_file_size",
+        "edit_pdf_ops",
+        "edit_pdf_max_file_size",
+        "split_pdf_conversions",
+        "split_pdf_max_file_size",
+        "split_pdf_max_split_points"
+      ],
+      "type": "object"
+    },
+    "limits/esign": {
+      "additionalProperties": false,
+      "properties": {
+        "esign_access": {
+          "description": " * `no_access` - User does not have access to Echosign. This represents a new user to Echosign.\n* `read_only` - User can read his contracts but cannot use any paid functionality like sending contracts. This represents a user who had Echosign at some point but has cancelled his subscription or allowed it to expire.\n* `pro` - User has individual offering with no team management features.\n* `team` - (tentative, pending review) User is part of a team where an admin can do basic customizations like branding.\n* `enterprise` - User has extended team offering that enables creation of groups and allows the admin to configure an extensive list of settings per group.\n* `global` - User has the most advanced team offering and provides access to advanced services like customized workflows.",
+          "enum": [
+            "no_access",
+            "read_only",
+            "pro",
+            "team",
+            "enterprise",
+            "global"
+          ],
+          "type": "string"
+        },
+        "legal_templates_access": {
+          "description": " *  `true` - The user can create customisable legal agreements.\n*  `false` - The user does not have access to create customisable legal agreements.",
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "esign_access",
+        "legal_templates_access"
+      ],
+      "type": "object"
+    },
+    "limits/fillsign": {
+      "additionalProperties": false,
+      "properties": {
+        "file_formats": {
+          "description": "List of supported file types that can be used to create a form",
+          "items": {
+            "additionalProperties": {
+              "properties": {
+                "analytic_type": {
+                  "type": "string"
+                },
+                "mime_type": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "mime_type",
+                "analytic_type"
+              ],
+              "type": "object"
+            },
+            "type": "object"
+          },
+          "minItems": 1,
+          "type": "array"
+        },
+        "max_file_size": {
+          "description": "Maximum allowed file size in bytes that can be used to create a form",
+          "type": "integer"
+        },
+        "max_num_of_fields": {
+          "description": "Maximum allowed number of fields per page",
+          "type": "integer"
+        },
+        "max_num_of_pages": {
+          "description": "Maximum allowed number of pages in PDF that can be used to create a form",
+          "type": "integer"
+        }
+      },
+      "required": [
+        "file_formats",
+        "max_file_size",
+        "max_num_of_fields",
+        "max_num_of_pages"
+      ],
+      "type": "object"
+    },
+    "limits/pdf_services": {
+      "additionalProperties": false,
+      "properties": {
+        "access": {
+          "description": "If false, then the user does not have access to any PDF services. If true, then the user has access to some set of PDF services. Use other limits APIs to confirm which specific services.  e.g. /limits/conversions",
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "access"
+      ],
+      "type": "object"
+    },
+    "limits/review": {
+      "additionalProperties": false,
+      "properties": {
+        "review_count": {
+          "additionalProperties": false,
+          "description": "A value of -1 Indicates that the user has unlimited access. A value of 0 Indicates that the user has no access.",
+          "properties": {
+            "remaining": {
+              "type": "integer"
+            }
+          },
+          "required": [
+            "remaining"
+          ],
+          "type": "object"
+        }
+      },
+      "required": [
+        "review_count"
+      ],
+      "type": "object"
+    },
+    "limits/send": {
+      "additionalProperties": false,
+      "properties": {
+        "can_custom_brand": {
+          "description": "Users who have purchased a subscription to the service can add custom branding to the shared files recipients page.",
+          "type": "boolean"
+        },
+        "can_send_av": {
+          "description": "Users who have purchased a subscription to the service can send audio or video files to recipients.<br/>If this limit is false, a parcel created that includes audio or video files will fail with an error from the API request.",
+          "type": "boolean"
+        },
+        "can_send_secure_link": {
+          "description": "Users who have purchased a subscription to the service can create and send private sharing links within an organisation.",
+          "type": "boolean"
+        },
+        "can_send_to_individuals": {
+          "description": "Users who have purchased a subscription to the service can have custom e-mails sent to recipients. Free users can generate only a single public url that they can paste into an e-mail or post on discussion boards.<br/>If this limit is `false`, a parcel created that includes recipients other than the constant `PARCEL_PUBLIC_SHARING` will result in an error from the API request.",
+          "type": "boolean"
+        },
+        "max_daily_send": {
+          "description": "The maximum number of emails the user can send in a day through the Send & Track service. This is based on the user's subscription and will initially be set to 50 for free users and 2500 for paid users. This setting is intended to replace the can_send_to_individuals setting, which will eventually be removed.",
+          "type": "number"
+        },
+        "max_send_recipients": {
+          "description": "The maximum number of recipients that can be added to an individual parcel. This is based on the user's subscription and will initially be set to 10 for free users and 250 for paid users.",
+          "type": "number"
+        }
+      },
+      "required": [
+        "can_send_to_individuals",
+        "can_send_av",
+        "can_custom_brand",
+        "max_send_recipients",
+        "max_daily_send",
+        "can_send_secure_link"
+      ],
+      "type": "object"
+    },
+    "limits/storage_document_cloud": {
+      "additionalProperties": false,
+      "properties": {
+        "storage_quota": {
+          "description": "The user storage quota in GB.",
+          "type": "number"
+        },
+        "storage_remaining": {
+          "description": "Space remaining in the user quota in GB (storage_quota - storage_used).",
+          "type": "number"
+        },
+        "storage_slop": {
+          "description": "The user storage slop in GB.",
+          "type": "number"
+        },
+        "storage_used": {
+          "description": "Storage charged against the user quota in GB.",
+          "type": "number"
+        }
+      },
+      "required": [
+        "storage_quota",
+        "storage_slop",
+        "storage_used",
+        "storage_remaining"
+      ],
+      "type": "object"
+    },
+    "limits/verbs": {
+      "additionalProperties": false,
+      "properties": {
+        "combine-pdf": {
+          "description": "Limits in uber response represents the actual limits provided for user at uber level. Client can refer remaining transactions, next_available and frequency fields. Interpretation of remaining, next_available and frequency is similar to verb response.",
+          "properties": {
+            "configuration": {
+              "description": "various configurations applicable to relevant tile for the user. For example, the max_file_size field which signifies the maximum file size that is support for this tile/pdf operation. More fields wrt operation configuration can be added here as and when needed.",
+              "properties": {
+                "max_file_size": {
+                  "description": "Maximum file size supported by the operation, if applicable",
+                  "type": "integer"
+                },
+                "max_number_files": {
+                  "description": "Maximum number of files supported by the operation, if applicable",
+                  "type": "integer"
+                }
+              },
+              "type": "object"
+            },
+            "limits": {
+              "description": "specifies the applicable transactions details for the user.",
+              "properties": {
+                "quota_details": {
+                  "description": "Adjacent to remaining, represents quota details including next available and applicable frequency per verb, operation level or uber level.",
+                  "properties": {
+                    "frequency": {
+                      "description": "the frequency at which quota refreshes. Value will be -1 when frequency is not applicable, like when user has unlimited transactions.",
+                      "type": "integer"
+                    },
+                    "next_available": {
+                      "description": "tells in seconds when next transactions will become available. Value will be -1 if transactions are still remaining for the the user.",
+                      "type": "integer"
+                    }
+                  },
+                  "type": "object"
+                },
+                "remaining": {
+                  "description": "tells how many transactions are remaining for the verb. 0 means none remaining, positive integer tells the count that are remaining, -1 means unlimited transactions remaining.",
+                  "type": "integer"
+                }
+              },
+              "type": "object"
+            }
+          },
+          "type": "object"
+        },
+        "compress-pdf": {
+          "description": "Limits in uber response represents the actual limits provided for user at uber level. Client can refer remaining transactions, next_available and frequency fields. Interpretation of remaining, next_available and frequency is similar to verb response.",
+          "properties": {
+            "configuration": {
+              "description": "various configurations applicable to relevant tile for the user. For example, the max_file_size field which signifies the maximum file size that is support for this tile/pdf operation. More fields wrt operation configuration can be added here as and when needed.",
+              "properties": {
+                "max_file_size": {
+                  "description": "Maximum file size supported by the operation, if applicable",
+                  "type": "integer"
+                }
+              },
+              "type": "object"
+            },
+            "limits": {
+              "description": "specifies the applicable transactions details for the user.",
+              "properties": {
+                "quota_details": {
+                  "description": "Adjacent to remaining, represents quota details including next available and applicable frequency per verb, operation level or uber level.",
+                  "properties": {
+                    "frequency": {
+                      "description": "the frequency at which quota refreshes. Value will be -1 when frequency is not applicable, like when user has unlimited transactions.",
+                      "type": "integer"
+                    },
+                    "next_available": {
+                      "description": "tells in seconds when next transactions will become available. Value will be -1 if transactions are still remaining for the the user.",
+                      "type": "integer"
+                    }
+                  },
+                  "type": "object"
+                },
+                "remaining": {
+                  "description": "tells how many transactions are remaining for the verb. 0 means none remaining, positive integer tells the count that are remaining, -1 means unlimited transactions remaining.",
+                  "type": "integer"
+                }
+              },
+              "type": "object"
+            }
+          },
+          "type": "object"
+        },
+        "createpdf": {
+          "description": "Limits in uber response represents the actual limits provided for user at uber level. Client can refer remaining transactions, next_available and frequency fields. Interpretation of remaining, next_available and frequency is similar to verb response.",
+          "properties": {
+            "configuration": {
+              "description": "various configurations applicable to relevant tile for the user. For example, the max_file_size field which signifies the maximum file size that is support for this tile/pdf operation. More fields wrt operation configuration can be added here as and when needed.",
+              "properties": {
+                "max_file_size": {
+                  "description": "Maximum file size supported by the operation, if applicable",
+                  "type": "integer"
+                }
+              },
+              "type": "object"
+            },
+            "limits": {
+              "description": "specifies the applicable transactions details for the user.",
+              "properties": {
+                "quota_details": {
+                  "description": "Adjacent to remaining, represents quota details including next available and applicable frequency per verb, operation level or uber level.",
+                  "properties": {
+                    "frequency": {
+                      "description": "the frequency at which quota refreshes. Value will be -1 when frequency is not applicable, like when user has unlimited transactions.",
+                      "type": "integer"
+                    },
+                    "next_available": {
+                      "description": "tells in seconds when next transactions will become available. Value will be -1 if transactions are still remaining for the the user.",
+                      "type": "integer"
+                    }
+                  },
+                  "type": "object"
+                },
+                "remaining": {
+                  "description": "tells how many transactions are remaining for the verb. 0 means none remaining, positive integer tells the count that are remaining, -1 means unlimited transactions remaining.",
+                  "type": "integer"
+                }
+              },
+              "type": "object"
+            }
+          },
+          "type": "object"
+        },
+        "crop-pages": {
+          "description": "Limits in uber response represents the actual limits provided for user at uber level. Client can refer remaining transactions, next_available and frequency fields. Interpretation of remaining, next_available and frequency is similar to verb response.",
+          "properties": {
+            "configuration": {
+              "description": "various configurations applicable to relevant tile for the user. For example, the max_file_size field which signifies the maximum file size that is support for this tile/pdf operation. More fields wrt operation configuration can be added here as and when needed.",
+              "properties": {
+                "max_file_size": {
+                  "description": "Maximum file size supported by the operation, if applicable",
+                  "type": "integer"
+                }
+              },
+              "type": "object"
+            },
+            "limits": {
+              "description": "specifies the applicable transactions details for the user.",
+              "properties": {
+                "quota_details": {
+                  "description": "Adjacent to remaining, represents quota details including next available and applicable frequency per verb, operation level or uber level.",
+                  "properties": {
+                    "frequency": {
+                      "description": "the frequency at which quota refreshes. Value will be -1 when frequency is not applicable, like when user has unlimited transactions.",
+                      "type": "integer"
+                    },
+                    "next_available": {
+                      "description": "tells in seconds when next transactions will become available. Value will be -1 if transactions are still remaining for the the user.",
+                      "type": "integer"
+                    }
+                  },
+                  "type": "object"
+                },
+                "remaining": {
+                  "description": "tells how many transactions are remaining for the verb. 0 means none remaining, positive integer tells the count that are remaining, -1 means unlimited transactions remaining.",
+                  "type": "integer"
+                }
+              },
+              "type": "object"
+            }
+          },
+          "type": "object"
+        },
+        "delete-pages": {
+          "description": "Limits in uber response represents the actual limits provided for user at uber level. Client can refer remaining transactions, next_available and frequency fields. Interpretation of remaining, next_available and frequency is similar to verb response.",
+          "properties": {
+            "configuration": {
+              "description": "various configurations applicable to relevant tile for the user. For example, the max_file_size field which signifies the maximum file size that is support for this tile/pdf operation. More fields wrt operation configuration can be added here as and when needed.",
+              "properties": {
+                "max_file_size": {
+                  "description": "Maximum file size supported by the operation, if applicable",
+                  "type": "integer"
+                },
+                "max_number_files": {
+                  "description": "Maximum number of files supported by the operation, if applicable",
+                  "type": "integer"
+                }
+              },
+              "type": "object"
+            },
+            "limits": {
+              "description": "specifies the applicable transactions details for the user.",
+              "properties": {
+                "quota_details": {
+                  "description": "Adjacent to remaining, represents quota details including next available and applicable frequency per verb, operation level or uber level.",
+                  "properties": {
+                    "frequency": {
+                      "description": "the frequency at which quota refreshes. Value will be -1 when frequency is not applicable, like when user has unlimited transactions.",
+                      "type": "integer"
+                    },
+                    "next_available": {
+                      "description": "tells in seconds when next transactions will become available. Value will be -1 if transactions are still remaining for the the user.",
+                      "type": "integer"
+                    }
+                  },
+                  "type": "object"
+                },
+                "remaining": {
+                  "description": "tells how many transactions are remaining for the verb. 0 means none remaining, positive integer tells the count that are remaining, -1 means unlimited transactions remaining.",
+                  "type": "integer"
+                }
+              },
+              "type": "object"
+            }
+          },
+          "type": "object"
+        },
+        "edit-pdf": {
+          "description": "Limits in uber response represents the actual limits provided for user at uber level. Client can refer remaining transactions, next_available and frequency fields. Interpretation of remaining, next_available and frequency is similar to verb response.",
+          "properties": {
+            "configuration": {
+              "description": "various configurations applicable to relevant tile for the user. For example, the max_file_size field which signifies the maximum file size that is support for this tile/pdf operation. More fields wrt operation configuration can be added here as and when needed.",
+              "properties": {
+                "max_file_size": {
+                  "description": "Maximum file size supported by the operation, if applicable",
+                  "type": "integer"
+                }
+              },
+              "type": "object"
+            },
+            "limits": {
+              "description": "specifies the applicable transactions details for the user.",
+              "properties": {
+                "quota_details": {
+                  "description": "Adjacent to remaining, represents quota details including next available and applicable frequency per verb, operation level or uber level.",
+                  "properties": {
+                    "frequency": {
+                      "description": "the frequency at which quota refreshes. Value will be -1 when frequency is not applicable, like when user has unlimited transactions.",
+                      "type": "integer"
+                    },
+                    "next_available": {
+                      "description": "tells in seconds when next transactions will become available. Value will be -1 if transactions are still remaining for the the user.",
+                      "type": "integer"
+                    }
+                  },
+                  "type": "object"
+                },
+                "remaining": {
+                  "description": "tells how many transactions are remaining for the verb. 0 means none remaining, positive integer tells the count that are remaining, -1 means unlimited transactions remaining.",
+                  "type": "integer"
+                }
+              },
+              "type": "object"
+            }
+          },
+          "type": "object"
+        },
+        "excel-to-pdf": {
+          "description": "Limits in uber response represents the actual limits provided for user at uber level. Client can refer remaining transactions, next_available and frequency fields. Interpretation of remaining, next_available and frequency is similar to verb response.",
+          "properties": {
+            "configuration": {
+              "description": "various configurations applicable to relevant tile for the user. For example, the max_file_size field which signifies the maximum file size that is support for this tile/pdf operation. More fields wrt operation configuration can be added here as and when needed.",
+              "properties": {
+                "max_file_size": {
+                  "description": "Maximum file size supported by the operation, if applicable",
+                  "type": "integer"
+                }
+              },
+              "type": "object"
+            },
+            "limits": {
+              "description": "specifies the applicable transactions details for the user.",
+              "properties": {
+                "quota_details": {
+                  "description": "Adjacent to remaining, represents quota details including next available and applicable frequency per verb, operation level or uber level.",
+                  "properties": {
+                    "frequency": {
+                      "description": "the frequency at which quota refreshes. Value will be -1 when frequency is not applicable, like when user has unlimited transactions.",
+                      "type": "integer"
+                    },
+                    "next_available": {
+                      "description": "tells in seconds when next transactions will become available. Value will be -1 if transactions are still remaining for the the user.",
+                      "type": "integer"
+                    }
+                  },
+                  "type": "object"
+                },
+                "remaining": {
+                  "description": "tells how many transactions are remaining for the verb. 0 means none remaining, positive integer tells the count that are remaining, -1 means unlimited transactions remaining.",
+                  "type": "integer"
+                }
+              },
+              "type": "object"
+            }
+          },
+          "type": "object"
+        },
+        "export-pdf": {
+          "description": "Limits in uber response represents the actual limits provided for user at uber level. Client can refer remaining transactions, next_available and frequency fields. Interpretation of remaining, next_available and frequency is similar to verb response.",
+          "properties": {
+            "configuration": {
+              "description": "various configurations applicable to relevant tile for the user. For example, the max_file_size field which signifies the maximum file size that is support for this tile/pdf operation. More fields wrt operation configuration can be added here as and when needed.",
+              "properties": {
+                "max_file_size": {
+                  "description": "Maximum file size supported by the operation, if applicable",
+                  "type": "integer"
+                }
+              },
+              "type": "object"
+            },
+            "limits": {
+              "description": "specifies the applicable transactions details for the user.",
+              "properties": {
+                "quota_details": {
+                  "description": "Adjacent to remaining, represents quota details including next available and applicable frequency per verb, operation level or uber level.",
+                  "properties": {
+                    "frequency": {
+                      "description": "the frequency at which quota refreshes. Value will be -1 when frequency is not applicable, like when user has unlimited transactions.",
+                      "type": "integer"
+                    },
+                    "next_available": {
+                      "description": "tells in seconds when next transactions will become available. Value will be -1 if transactions are still remaining for the the user.",
+                      "type": "integer"
+                    }
+                  },
+                  "type": "object"
+                },
+                "remaining": {
+                  "description": "tells how many transactions are remaining for the verb. 0 means none remaining, positive integer tells the count that are remaining, -1 means unlimited transactions remaining.",
+                  "type": "integer"
+                }
+              },
+              "type": "object"
+            }
+          },
+          "type": "object"
+        },
+        "extract-pages": {
+          "description": "Limits in uber response represents the actual limits provided for user at uber level. Client can refer remaining transactions, next_available and frequency fields. Interpretation of remaining, next_available and frequency is similar to verb response.",
+          "properties": {
+            "configuration": {
+              "description": "various configurations applicable to relevant tile for the user. For example, the max_file_size field which signifies the maximum file size that is support for this tile/pdf operation. More fields wrt operation configuration can be added here as and when needed.",
+              "properties": {
+                "max_file_size": {
+                  "description": "Maximum file size supported by the operation, if applicable",
+                  "type": "integer"
+                },
+                "max_number_files": {
+                  "description": "Maximum number of files supported by the operation, if applicable",
+                  "type": "integer"
+                }
+              },
+              "type": "object"
+            },
+            "limits": {
+              "description": "specifies the applicable transactions details for the user.",
+              "properties": {
+                "quota_details": {
+                  "description": "Adjacent to remaining, represents quota details including next available and applicable frequency per verb, operation level or uber level.",
+                  "properties": {
+                    "frequency": {
+                      "description": "the frequency at which quota refreshes. Value will be -1 when frequency is not applicable, like when user has unlimited transactions.",
+                      "type": "integer"
+                    },
+                    "next_available": {
+                      "description": "tells in seconds when next transactions will become available. Value will be -1 if transactions are still remaining for the the user.",
+                      "type": "integer"
+                    }
+                  },
+                  "type": "object"
+                },
+                "remaining": {
+                  "description": "tells how many transactions are remaining for the verb. 0 means none remaining, positive integer tells the count that are remaining, -1 means unlimited transactions remaining.",
+                  "type": "integer"
+                }
+              },
+              "type": "object"
+            }
+          },
+          "type": "object"
+        },
+        "high-speed-scan": {
+          "description": "Limits in uber response represents the actual limits provided for user at uber level. Client can refer remaining transactions, next_available and frequency fields. Interpretation of remaining, next_available and frequency is similar to verb response.",
+          "properties": {
+            "limits": {
+              "description": "specifies the applicable transactions details for the user.",
+              "properties": {
+                "quota_details": {
+                  "description": "Adjacent to remaining, represents quota details including next available and applicable frequency per verb, operation level or uber level.",
+                  "properties": {
+                    "frequency": {
+                      "description": "the frequency at which quota refreshes. Value will be -1 when frequency is not applicable, like when user has unlimited transactions.",
+                      "type": "integer"
+                    },
+                    "next_available": {
+                      "description": "tells in seconds when next transactions will become available. Value will be -1 if transactions are still remaining for the the user.",
+                      "type": "integer"
+                    }
+                  },
+                  "type": "object"
+                },
+                "remaining": {
+                  "description": "tells how many transactions are remaining for the verb. 0 means none remaining, positive integer tells the count that are remaining, -1 means unlimited transactions remaining.",
+                  "type": "integer"
+                }
+              },
+              "type": "object"
+            }
+          },
+          "type": "object"
+        },
+        "html-to-pdf": {
+          "description": "Limits in uber response represents the actual limits provided for user at uber level. Client can refer remaining transactions, next_available and frequency fields. Interpretation of remaining, next_available and frequency is similar to verb response.",
+          "properties": {
+            "configuration": {
+              "description": "various configurations applicable to relevant tile for the user. For example, the max_file_size field which signifies the maximum file size that is support for this tile/pdf operation. More fields wrt operation configuration can be added here as and when needed.",
+              "properties": {
+                "max_file_size": {
+                  "description": "Maximum file size supported by the operation, if applicable",
+                  "type": "integer"
+                }
+              },
+              "type": "object"
+            },
+            "limits": {
+              "description": "specifies the applicable transactions details for the user.",
+              "properties": {
+                "quota_details": {
+                  "description": "Adjacent to remaining, represents quota details including next available and applicable frequency per verb, operation level or uber level.",
+                  "properties": {
+                    "frequency": {
+                      "description": "the frequency at which quota refreshes. Value will be -1 when frequency is not applicable, like when user has unlimited transactions.",
+                      "type": "integer"
+                    },
+                    "next_available": {
+                      "description": "tells in seconds when next transactions will become available. Value will be -1 if transactions are still remaining for the the user.",
+                      "type": "integer"
+                    }
+                  },
+                  "type": "object"
+                },
+                "remaining": {
+                  "description": "tells how many transactions are remaining for the verb. 0 means none remaining, positive integer tells the count that are remaining, -1 means unlimited transactions remaining.",
+                  "type": "integer"
+                }
+              },
+              "type": "object"
+            }
+          },
+          "type": "object"
+        },
+        "insert-pdf": {
+          "description": "Limits in uber response represents the actual limits provided for user at uber level. Client can refer remaining transactions, next_available and frequency fields. Interpretation of remaining, next_available and frequency is similar to verb response.",
+          "properties": {
+            "configuration": {
+              "description": "various configurations applicable to relevant tile for the user. For example, the max_file_size field which signifies the maximum file size that is support for this tile/pdf operation. More fields wrt operation configuration can be added here as and when needed.",
+              "properties": {
+                "max_file_size": {
+                  "description": "Maximum file size supported by the operation, if applicable",
+                  "type": "integer"
+                },
+                "max_number_files": {
+                  "description": "Maximum number of files supported by the operation, if applicable",
+                  "type": "integer"
+                }
+              },
+              "type": "object"
+            },
+            "limits": {
+              "description": "specifies the applicable transactions details for the user.",
+              "properties": {
+                "quota_details": {
+                  "description": "Adjacent to remaining, represents quota details including next available and applicable frequency per verb, operation level or uber level.",
+                  "properties": {
+                    "frequency": {
+                      "description": "the frequency at which quota refreshes. Value will be -1 when frequency is not applicable, like when user has unlimited transactions.",
+                      "type": "integer"
+                    },
+                    "next_available": {
+                      "description": "tells in seconds when next transactions will become available. Value will be -1 if transactions are still remaining for the the user.",
+                      "type": "integer"
+                    }
+                  },
+                  "type": "object"
+                },
+                "remaining": {
+                  "description": "tells how many transactions are remaining for the verb. 0 means none remaining, positive integer tells the count that are remaining, -1 means unlimited transactions remaining.",
+                  "type": "integer"
+                }
+              },
+              "type": "object"
+            }
+          },
+          "type": "object"
+        },
+        "jpg-to-pdf": {
+          "description": "Limits in uber response represents the actual limits provided for user at uber level. Client can refer remaining transactions, next_available and frequency fields. Interpretation of remaining, next_available and frequency is similar to verb response.",
+          "properties": {
+            "configuration": {
+              "description": "various configurations applicable to relevant tile for the user. For example, the max_file_size field which signifies the maximum file size that is support for this tile/pdf operation. More fields wrt operation configuration can be added here as and when needed.",
+              "properties": {
+                "max_file_size": {
+                  "description": "Maximum file size supported by the operation, if applicable",
+                  "type": "integer"
+                }
+              },
+              "type": "object"
+            },
+            "limits": {
+              "description": "specifies the applicable transactions details for the user.",
+              "properties": {
+                "quota_details": {
+                  "description": "Adjacent to remaining, represents quota details including next available and applicable frequency per verb, operation level or uber level.",
+                  "properties": {
+                    "frequency": {
+                      "description": "the frequency at which quota refreshes. Value will be -1 when frequency is not applicable, like when user has unlimited transactions.",
+                      "type": "integer"
+                    },
+                    "next_available": {
+                      "description": "tells in seconds when next transactions will become available. Value will be -1 if transactions are still remaining for the the user.",
+                      "type": "integer"
+                    }
+                  },
+                  "type": "object"
+                },
+                "remaining": {
+                  "description": "tells how many transactions are remaining for the verb. 0 means none remaining, positive integer tells the count that are remaining, -1 means unlimited transactions remaining.",
+                  "type": "integer"
+                }
+              },
+              "type": "object"
+            }
+          },
+          "type": "object"
+        },
+        "number-pages": {
+          "description": "Limits in uber response represents the actual limits provided for user at uber level. Client can refer remaining transactions, next_available and frequency fields. Interpretation of remaining, next_available and frequency is similar to verb response.",
+          "properties": {
+            "configuration": {
+              "description": "various configurations applicable to relevant tile for the user. For example, the max_file_size field which signifies the maximum file size that is support for this tile/pdf operation. More fields wrt operation configuration can be added here as and when needed.",
+              "properties": {
+                "max_file_size": {
+                  "description": "Maximum file size supported by the operation, if applicable",
+                  "type": "integer"
+                }
+              },
+              "type": "object"
+            },
+            "limits": {
+              "description": "specifies the applicable transactions details for the user.",
+              "properties": {
+                "quota_details": {
+                  "description": "Adjacent to remaining, represents quota details including next available and applicable frequency per verb, operation level or uber level.",
+                  "properties": {
+                    "frequency": {
+                      "description": "the frequency at which quota refreshes. Value will be -1 when frequency is not applicable, like when user has unlimited transactions.",
+                      "type": "integer"
+                    },
+                    "next_available": {
+                      "description": "tells in seconds when next transactions will become available. Value will be -1 if transactions are still remaining for the the user.",
+                      "type": "integer"
+                    }
+                  },
+                  "type": "object"
+                },
+                "remaining": {
+                  "description": "tells how many transactions are remaining for the verb. 0 means none remaining, positive integer tells the count that are remaining, -1 means unlimited transactions remaining.",
+                  "type": "integer"
+                }
+              },
+              "type": "object"
+            }
+          },
+          "type": "object"
+        },
+        "ocr-pdf": {
+          "description": "Limits in uber response represents the actual limits provided for user at uber level. Client can refer remaining transactions, next_available and frequency fields. Interpretation of remaining, next_available and frequency is similar to verb response.",
+          "properties": {
+            "configuration": {
+              "description": "various configurations applicable to relevant tile for the user. For example, the max_file_size field which signifies the maximum file size that is support for this tile/pdf operation. More fields wrt operation configuration can be added here as and when needed.",
+              "properties": {
+                "max_file_size": {
+                  "description": "Maximum file size supported by the operation, if applicable",
+                  "type": "integer"
+                }
+              },
+              "type": "object"
+            },
+            "limits": {
+              "description": "specifies the applicable transactions details for the user.",
+              "properties": {
+                "quota_details": {
+                  "description": "Adjacent to remaining, represents quota details including next available and applicable frequency per verb, operation level or uber level.",
+                  "properties": {
+                    "frequency": {
+                      "description": "the frequency at which quota refreshes. Value will be -1 when frequency is not applicable, like when user has unlimited transactions.",
+                      "type": "integer"
+                    },
+                    "next_available": {
+                      "description": "tells in seconds when next transactions will become available. Value will be -1 if transactions are still remaining for the the user.",
+                      "type": "integer"
+                    }
+                  },
+                  "type": "object"
+                },
+                "remaining": {
+                  "description": "tells how many transactions are remaining for the verb. 0 means none remaining, positive integer tells the count that are remaining, -1 means unlimited transactions remaining.",
+                  "type": "integer"
+                }
+              },
+              "type": "object"
+            }
+          },
+          "type": "object"
+        },
+        "operations": {
+          "description": "Operation level response for user, if applicable",
+          "properties": {
+            "combine-pdf": {
+              "description": "Limits in uber response represents the actual limits provided for user at uber level. Client can refer remaining transactions, next_available and frequency fields. Interpretation of remaining, next_available and frequency is similar to verb response.",
+              "properties": {
+                "configuration": {
+                  "description": "various configurations applicable to relevant tile for the user. For example, the max_file_size field which signifies the maximum file size that is support for this tile/pdf operation. More fields wrt operation configuration can be added here as and when needed.",
+                  "properties": {
+                    "max_file_size": {
+                      "description": "Maximum file size supported by the operation, if applicable",
+                      "type": "integer"
+                    },
+                    "max_number_files": {
+                      "description": "Maximum number of files supported by the operation, if applicable",
+                      "type": "integer"
+                    }
+                  },
+                  "type": "object"
+                },
+                "limits": {
+                  "description": "specifies the applicable transactions details for the user.",
+                  "properties": {
+                    "quota_details": {
+                      "description": "Adjacent to remaining, represents quota details including next available and applicable frequency per verb, operation level or uber level.",
+                      "properties": {
+                        "frequency": {
+                          "description": "the frequency at which quota refreshes. Value will be -1 when frequency is not applicable, like when user has unlimited transactions.",
+                          "type": "integer"
+                        },
+                        "next_available": {
+                          "description": "tells in seconds when next transactions will become available. Value will be -1 if transactions are still remaining for the the user.",
+                          "type": "integer"
+                        }
+                      },
+                      "type": "object"
+                    },
+                    "remaining": {
+                      "description": "tells how many transactions are remaining for the verb. 0 means none remaining, positive integer tells the count that are remaining, -1 means unlimited transactions remaining.",
+                      "type": "integer"
+                    }
+                  },
+                  "type": "object"
+                }
+              },
+              "type": "object"
+            },
+            "compress-pdf": {
+              "description": "Limits in uber response represents the actual limits provided for user at uber level. Client can refer remaining transactions, next_available and frequency fields. Interpretation of remaining, next_available and frequency is similar to verb response.",
+              "properties": {
+                "configuration": {
+                  "description": "various configurations applicable to relevant tile for the user. For example, the max_file_size field which signifies the maximum file size that is support for this tile/pdf operation. More fields wrt operation configuration can be added here as and when needed.",
+                  "properties": {
+                    "max_file_size": {
+                      "description": "Maximum file size supported by the operation, if applicable",
+                      "type": "integer"
+                    }
+                  },
+                  "type": "object"
+                },
+                "limits": {
+                  "description": "specifies the applicable transactions details for the user.",
+                  "properties": {
+                    "quota_details": {
+                      "description": "Adjacent to remaining, represents quota details including next available and applicable frequency per verb, operation level or uber level.",
+                      "properties": {
+                        "frequency": {
+                          "description": "the frequency at which quota refreshes. Value will be -1 when frequency is not applicable, like when user has unlimited transactions.",
+                          "type": "integer"
+                        },
+                        "next_available": {
+                          "description": "tells in seconds when next transactions will become available. Value will be -1 if transactions are still remaining for the the user.",
+                          "type": "integer"
+                        }
+                      },
+                      "type": "object"
+                    },
+                    "remaining": {
+                      "description": "tells how many transactions are remaining for the verb. 0 means none remaining, positive integer tells the count that are remaining, -1 means unlimited transactions remaining.",
+                      "type": "integer"
+                    }
+                  },
+                  "type": "object"
+                }
+              },
+              "type": "object"
+            },
+            "createpdf": {
+              "description": "Limits in uber response represents the actual limits provided for user at uber level. Client can refer remaining transactions, next_available and frequency fields. Interpretation of remaining, next_available and frequency is similar to verb response.",
+              "properties": {
+                "configuration": {
+                  "description": "various configurations applicable to relevant tile for the user. For example, the max_file_size field which signifies the maximum file size that is support for this tile/pdf operation. More fields wrt operation configuration can be added here as and when needed.",
+                  "properties": {
+                    "max_file_size": {
+                      "description": "Maximum file size supported by the operation, if applicable",
+                      "type": "integer"
+                    }
+                  },
+                  "type": "object"
+                },
+                "limits": {
+                  "description": "specifies the applicable transactions details for the user.",
+                  "properties": {
+                    "quota_details": {
+                      "description": "Adjacent to remaining, represents quota details including next available and applicable frequency per verb, operation level or uber level.",
+                      "properties": {
+                        "frequency": {
+                          "description": "the frequency at which quota refreshes. Value will be -1 when frequency is not applicable, like when user has unlimited transactions.",
+                          "type": "integer"
+                        },
+                        "next_available": {
+                          "description": "tells in seconds when next transactions will become available. Value will be -1 if transactions are still remaining for the the user.",
+                          "type": "integer"
+                        }
+                      },
+                      "type": "object"
+                    },
+                    "remaining": {
+                      "description": "tells how many transactions are remaining for the verb. 0 means none remaining, positive integer tells the count that are remaining, -1 means unlimited transactions remaining.",
+                      "type": "integer"
+                    }
+                  },
+                  "type": "object"
+                }
+              },
+              "type": "object"
+            },
+            "edit-pdf": {
+              "description": "Limits in uber response represents the actual limits provided for user at uber level. Client can refer remaining transactions, next_available and frequency fields. Interpretation of remaining, next_available and frequency is similar to verb response.",
+              "properties": {
+                "configuration": {
+                  "description": "various configurations applicable to relevant tile for the user. For example, the max_file_size field which signifies the maximum file size that is support for this tile/pdf operation. More fields wrt operation configuration can be added here as and when needed.",
+                  "properties": {
+                    "max_file_size": {
+                      "description": "Maximum file size supported by the operation, if applicable",
+                      "type": "integer"
+                    }
+                  },
+                  "type": "object"
+                },
+                "limits": {
+                  "description": "specifies the applicable transactions details for the user.",
+                  "properties": {
+                    "quota_details": {
+                      "description": "Adjacent to remaining, represents quota details including next available and applicable frequency per verb, operation level or uber level.",
+                      "properties": {
+                        "frequency": {
+                          "description": "the frequency at which quota refreshes. Value will be -1 when frequency is not applicable, like when user has unlimited transactions.",
+                          "type": "integer"
+                        },
+                        "next_available": {
+                          "description": "tells in seconds when next transactions will become available. Value will be -1 if transactions are still remaining for the the user.",
+                          "type": "integer"
+                        }
+                      },
+                      "type": "object"
+                    },
+                    "remaining": {
+                      "description": "tells how many transactions are remaining for the verb. 0 means none remaining, positive integer tells the count that are remaining, -1 means unlimited transactions remaining.",
+                      "type": "integer"
+                    }
+                  },
+                  "type": "object"
+                }
+              },
+              "type": "object"
+            },
+            "export-pdf": {
+              "description": "Limits in uber response represents the actual limits provided for user at uber level. Client can refer remaining transactions, next_available and frequency fields. Interpretation of remaining, next_available and frequency is similar to verb response.",
+              "properties": {
+                "configuration": {
+                  "description": "various configurations applicable to relevant tile for the user. For example, the max_file_size field which signifies the maximum file size that is support for this tile/pdf operation. More fields wrt operation configuration can be added here as and when needed.",
+                  "properties": {
+                    "max_file_size": {
+                      "description": "Maximum file size supported by the operation, if applicable",
+                      "type": "integer"
+                    }
+                  },
+                  "type": "object"
+                },
+                "limits": {
+                  "description": "specifies the applicable transactions details for the user.",
+                  "properties": {
+                    "quota_details": {
+                      "description": "Adjacent to remaining, represents quota details including next available and applicable frequency per verb, operation level or uber level.",
+                      "properties": {
+                        "frequency": {
+                          "description": "the frequency at which quota refreshes. Value will be -1 when frequency is not applicable, like when user has unlimited transactions.",
+                          "type": "integer"
+                        },
+                        "next_available": {
+                          "description": "tells in seconds when next transactions will become available. Value will be -1 if transactions are still remaining for the the user.",
+                          "type": "integer"
+                        }
+                      },
+                      "type": "object"
+                    },
+                    "remaining": {
+                      "description": "tells how many transactions are remaining for the verb. 0 means none remaining, positive integer tells the count that are remaining, -1 means unlimited transactions remaining.",
+                      "type": "integer"
+                    }
+                  },
+                  "type": "object"
+                }
+              },
+              "type": "object"
+            },
+            "high-speed-scan": {
+              "description": "Limits in uber response represents the actual limits provided for user at uber level. Client can refer remaining transactions, next_available and frequency fields. Interpretation of remaining, next_available and frequency is similar to verb response.",
+              "properties": {
+                "limits": {
+                  "description": "specifies the applicable transactions details for the user.",
+                  "properties": {
+                    "quota_details": {
+                      "description": "Adjacent to remaining, represents quota details including next available and applicable frequency per verb, operation level or uber level.",
+                      "properties": {
+                        "frequency": {
+                          "description": "the frequency at which quota refreshes. Value will be -1 when frequency is not applicable, like when user has unlimited transactions.",
+                          "type": "integer"
+                        },
+                        "next_available": {
+                          "description": "tells in seconds when next transactions will become available. Value will be -1 if transactions are still remaining for the the user.",
+                          "type": "integer"
+                        }
+                      },
+                      "type": "object"
+                    },
+                    "remaining": {
+                      "description": "tells how many transactions are remaining for the verb. 0 means none remaining, positive integer tells the count that are remaining, -1 means unlimited transactions remaining.",
+                      "type": "integer"
+                    }
+                  },
+                  "type": "object"
+                }
+              },
+              "type": "object"
+            },
+            "ocr-pdf": {
+              "description": "Limits in uber response represents the actual limits provided for user at uber level. Client can refer remaining transactions, next_available and frequency fields. Interpretation of remaining, next_available and frequency is similar to verb response.",
+              "properties": {
+                "configuration": {
+                  "description": "various configurations applicable to relevant tile for the user. For example, the max_file_size field which signifies the maximum file size that is support for this tile/pdf operation. More fields wrt operation configuration can be added here as and when needed.",
+                  "properties": {
+                    "max_file_size": {
+                      "description": "Maximum file size supported by the operation, if applicable",
+                      "type": "integer"
+                    }
+                  },
+                  "type": "object"
+                },
+                "limits": {
+                  "description": "specifies the applicable transactions details for the user.",
+                  "properties": {
+                    "quota_details": {
+                      "description": "Adjacent to remaining, represents quota details including next available and applicable frequency per verb, operation level or uber level.",
+                      "properties": {
+                        "frequency": {
+                          "description": "the frequency at which quota refreshes. Value will be -1 when frequency is not applicable, like when user has unlimited transactions.",
+                          "type": "integer"
+                        },
+                        "next_available": {
+                          "description": "tells in seconds when next transactions will become available. Value will be -1 if transactions are still remaining for the the user.",
+                          "type": "integer"
+                        }
+                      },
+                      "type": "object"
+                    },
+                    "remaining": {
+                      "description": "tells how many transactions are remaining for the verb. 0 means none remaining, positive integer tells the count that are remaining, -1 means unlimited transactions remaining.",
+                      "type": "integer"
+                    }
+                  },
+                  "type": "object"
+                }
+              },
+              "type": "object"
+            },
+            "organize-pdf": {
+              "description": "Limits in uber response represents the actual limits provided for user at uber level. Client can refer remaining transactions, next_available and frequency fields. Interpretation of remaining, next_available and frequency is similar to verb response.",
+              "properties": {
+                "configuration": {
+                  "description": "various configurations applicable to relevant tile for the user. For example, the max_file_size field which signifies the maximum file size that is support for this tile/pdf operation. More fields wrt operation configuration can be added here as and when needed.",
+                  "properties": {
+                    "max_file_size": {
+                      "description": "Maximum file size supported by the operation, if applicable",
+                      "type": "integer"
+                    },
+                    "max_number_files": {
+                      "description": "Maximum number of files supported by the operation, if applicable",
+                      "type": "integer"
+                    }
+                  },
+                  "type": "object"
+                },
+                "limits": {
+                  "description": "specifies the applicable transactions details for the user.",
+                  "properties": {
+                    "quota_details": {
+                      "description": "Adjacent to remaining, represents quota details including next available and applicable frequency per verb, operation level or uber level.",
+                      "properties": {
+                        "frequency": {
+                          "description": "the frequency at which quota refreshes. Value will be -1 when frequency is not applicable, like when user has unlimited transactions.",
+                          "type": "integer"
+                        },
+                        "next_available": {
+                          "description": "tells in seconds when next transactions will become available. Value will be -1 if transactions are still remaining for the the user.",
+                          "type": "integer"
+                        }
+                      },
+                      "type": "object"
+                    },
+                    "remaining": {
+                      "description": "tells how many transactions are remaining for the verb. 0 means none remaining, positive integer tells the count that are remaining, -1 means unlimited transactions remaining.",
+                      "type": "integer"
+                    }
+                  },
+                  "type": "object"
+                }
+              },
+              "type": "object"
+            },
+            "protect-pdf": {
+              "description": "Limits in uber response represents the actual limits provided for user at uber level. Client can refer remaining transactions, next_available and frequency fields. Interpretation of remaining, next_available and frequency is similar to verb response.",
+              "properties": {
+                "configuration": {
+                  "description": "various configurations applicable to relevant tile for the user. For example, the max_file_size field which signifies the maximum file size that is support for this tile/pdf operation. More fields wrt operation configuration can be added here as and when needed.",
+                  "properties": {
+                    "max_file_size": {
+                      "description": "Maximum file size supported by the operation, if applicable",
+                      "type": "integer"
+                    }
+                  },
+                  "type": "object"
+                },
+                "limits": {
+                  "description": "specifies the applicable transactions details for the user.",
+                  "properties": {
+                    "quota_details": {
+                      "description": "Adjacent to remaining, represents quota details including next available and applicable frequency per verb, operation level or uber level.",
+                      "properties": {
+                        "frequency": {
+                          "description": "the frequency at which quota refreshes. Value will be -1 when frequency is not applicable, like when user has unlimited transactions.",
+                          "type": "integer"
+                        },
+                        "next_available": {
+                          "description": "tells in seconds when next transactions will become available. Value will be -1 if transactions are still remaining for the the user.",
+                          "type": "integer"
+                        }
+                      },
+                      "type": "object"
+                    },
+                    "remaining": {
+                      "description": "tells how many transactions are remaining for the verb. 0 means none remaining, positive integer tells the count that are remaining, -1 means unlimited transactions remaining.",
+                      "type": "integer"
+                    }
+                  },
+                  "type": "object"
+                }
+              },
+              "type": "object"
+            }
+          },
+          "type": "object"
+        },
+        "organize-pdf": {
+          "description": "Limits in uber response represents the actual limits provided for user at uber level. Client can refer remaining transactions, next_available and frequency fields. Interpretation of remaining, next_available and frequency is similar to verb response.",
+          "properties": {
+            "configuration": {
+              "description": "various configurations applicable to relevant tile for the user. For example, the max_file_size field which signifies the maximum file size that is support for this tile/pdf operation. More fields wrt operation configuration can be added here as and when needed.",
+              "properties": {
+                "max_file_size": {
+                  "description": "Maximum file size supported by the operation, if applicable",
+                  "type": "integer"
+                },
+                "max_number_files": {
+                  "description": "Maximum number of files supported by the operation, if applicable",
+                  "type": "integer"
+                }
+              },
+              "type": "object"
+            },
+            "limits": {
+              "description": "specifies the applicable transactions details for the user.",
+              "properties": {
+                "quota_details": {
+                  "description": "Adjacent to remaining, represents quota details including next available and applicable frequency per verb, operation level or uber level.",
+                  "properties": {
+                    "frequency": {
+                      "description": "the frequency at which quota refreshes. Value will be -1 when frequency is not applicable, like when user has unlimited transactions.",
+                      "type": "integer"
+                    },
+                    "next_available": {
+                      "description": "tells in seconds when next transactions will become available. Value will be -1 if transactions are still remaining for the the user.",
+                      "type": "integer"
+                    }
+                  },
+                  "type": "object"
+                },
+                "remaining": {
+                  "description": "tells how many transactions are remaining for the verb. 0 means none remaining, positive integer tells the count that are remaining, -1 means unlimited transactions remaining.",
+                  "type": "integer"
+                }
+              },
+              "type": "object"
+            }
+          },
+          "type": "object"
+        },
+        "pdf-to-excel": {
+          "description": "Limits in uber response represents the actual limits provided for user at uber level. Client can refer remaining transactions, next_available and frequency fields. Interpretation of remaining, next_available and frequency is similar to verb response.",
+          "properties": {
+            "configuration": {
+              "description": "various configurations applicable to relevant tile for the user. For example, the max_file_size field which signifies the maximum file size that is support for this tile/pdf operation. More fields wrt operation configuration can be added here as and when needed.",
+              "properties": {
+                "max_file_size": {
+                  "description": "Maximum file size supported by the operation, if applicable",
+                  "type": "integer"
+                }
+              },
+              "type": "object"
+            },
+            "limits": {
+              "description": "specifies the applicable transactions details for the user.",
+              "properties": {
+                "quota_details": {
+                  "description": "Adjacent to remaining, represents quota details including next available and applicable frequency per verb, operation level or uber level.",
+                  "properties": {
+                    "frequency": {
+                      "description": "the frequency at which quota refreshes. Value will be -1 when frequency is not applicable, like when user has unlimited transactions.",
+                      "type": "integer"
+                    },
+                    "next_available": {
+                      "description": "tells in seconds when next transactions will become available. Value will be -1 if transactions are still remaining for the the user.",
+                      "type": "integer"
+                    }
+                  },
+                  "type": "object"
+                },
+                "remaining": {
+                  "description": "tells how many transactions are remaining for the verb. 0 means none remaining, positive integer tells the count that are remaining, -1 means unlimited transactions remaining.",
+                  "type": "integer"
+                }
+              },
+              "type": "object"
+            }
+          },
+          "type": "object"
+        },
+        "pdf-to-image": {
+          "description": "Limits in uber response represents the actual limits provided for user at uber level. Client can refer remaining transactions, next_available and frequency fields. Interpretation of remaining, next_available and frequency is similar to verb response.",
+          "properties": {
+            "configuration": {
+              "description": "various configurations applicable to relevant tile for the user. For example, the max_file_size field which signifies the maximum file size that is support for this tile/pdf operation. More fields wrt operation configuration can be added here as and when needed.",
+              "properties": {
+                "max_file_size": {
+                  "description": "Maximum file size supported by the operation, if applicable",
+                  "type": "integer"
+                }
+              },
+              "type": "object"
+            },
+            "limits": {
+              "description": "specifies the applicable transactions details for the user.",
+              "properties": {
+                "quota_details": {
+                  "description": "Adjacent to remaining, represents quota details including next available and applicable frequency per verb, operation level or uber level.",
+                  "properties": {
+                    "frequency": {
+                      "description": "the frequency at which quota refreshes. Value will be -1 when frequency is not applicable, like when user has unlimited transactions.",
+                      "type": "integer"
+                    },
+                    "next_available": {
+                      "description": "tells in seconds when next transactions will become available. Value will be -1 if transactions are still remaining for the the user.",
+                      "type": "integer"
+                    }
+                  },
+                  "type": "object"
+                },
+                "remaining": {
+                  "description": "tells how many transactions are remaining for the verb. 0 means none remaining, positive integer tells the count that are remaining, -1 means unlimited transactions remaining.",
+                  "type": "integer"
+                }
+              },
+              "type": "object"
+            }
+          },
+          "type": "object"
+        },
+        "pdf-to-ppt": {
+          "description": "Limits in uber response represents the actual limits provided for user at uber level. Client can refer remaining transactions, next_available and frequency fields. Interpretation of remaining, next_available and frequency is similar to verb response.",
+          "properties": {
+            "configuration": {
+              "description": "various configurations applicable to relevant tile for the user. For example, the max_file_size field which signifies the maximum file size that is support for this tile/pdf operation. More fields wrt operation configuration can be added here as and when needed.",
+              "properties": {
+                "max_file_size": {
+                  "description": "Maximum file size supported by the operation, if applicable",
+                  "type": "integer"
+                }
+              },
+              "type": "object"
+            },
+            "limits": {
+              "description": "specifies the applicable transactions details for the user.",
+              "properties": {
+                "quota_details": {
+                  "description": "Adjacent to remaining, represents quota details including next available and applicable frequency per verb, operation level or uber level.",
+                  "properties": {
+                    "frequency": {
+                      "description": "the frequency at which quota refreshes. Value will be -1 when frequency is not applicable, like when user has unlimited transactions.",
+                      "type": "integer"
+                    },
+                    "next_available": {
+                      "description": "tells in seconds when next transactions will become available. Value will be -1 if transactions are still remaining for the the user.",
+                      "type": "integer"
+                    }
+                  },
+                  "type": "object"
+                },
+                "remaining": {
+                  "description": "tells how many transactions are remaining for the verb. 0 means none remaining, positive integer tells the count that are remaining, -1 means unlimited transactions remaining.",
+                  "type": "integer"
+                }
+              },
+              "type": "object"
+            }
+          },
+          "type": "object"
+        },
+        "pdf-to-word": {
+          "description": "Limits in uber response represents the actual limits provided for user at uber level. Client can refer remaining transactions, next_available and frequency fields. Interpretation of remaining, next_available and frequency is similar to verb response.",
+          "properties": {
+            "configuration": {
+              "description": "various configurations applicable to relevant tile for the user. For example, the max_file_size field which signifies the maximum file size that is support for this tile/pdf operation. More fields wrt operation configuration can be added here as and when needed.",
+              "properties": {
+                "max_file_size": {
+                  "description": "Maximum file size supported by the operation, if applicable",
+                  "type": "integer"
+                }
+              },
+              "type": "object"
+            },
+            "limits": {
+              "description": "specifies the applicable transactions details for the user.",
+              "properties": {
+                "quota_details": {
+                  "description": "Adjacent to remaining, represents quota details including next available and applicable frequency per verb, operation level or uber level.",
+                  "properties": {
+                    "frequency": {
+                      "description": "the frequency at which quota refreshes. Value will be -1 when frequency is not applicable, like when user has unlimited transactions.",
+                      "type": "integer"
+                    },
+                    "next_available": {
+                      "description": "tells in seconds when next transactions will become available. Value will be -1 if transactions are still remaining for the the user.",
+                      "type": "integer"
+                    }
+                  },
+                  "type": "object"
+                },
+                "remaining": {
+                  "description": "tells how many transactions are remaining for the verb. 0 means none remaining, positive integer tells the count that are remaining, -1 means unlimited transactions remaining.",
+                  "type": "integer"
+                }
+              },
+              "type": "object"
+            }
+          },
+          "type": "object"
+        },
+        "ppt-to-pdf": {
+          "description": "Limits in uber response represents the actual limits provided for user at uber level. Client can refer remaining transactions, next_available and frequency fields. Interpretation of remaining, next_available and frequency is similar to verb response.",
+          "properties": {
+            "configuration": {
+              "description": "various configurations applicable to relevant tile for the user. For example, the max_file_size field which signifies the maximum file size that is support for this tile/pdf operation. More fields wrt operation configuration can be added here as and when needed.",
+              "properties": {
+                "max_file_size": {
+                  "description": "Maximum file size supported by the operation, if applicable",
+                  "type": "integer"
+                }
+              },
+              "type": "object"
+            },
+            "limits": {
+              "description": "specifies the applicable transactions details for the user.",
+              "properties": {
+                "quota_details": {
+                  "description": "Adjacent to remaining, represents quota details including next available and applicable frequency per verb, operation level or uber level.",
+                  "properties": {
+                    "frequency": {
+                      "description": "the frequency at which quota refreshes. Value will be -1 when frequency is not applicable, like when user has unlimited transactions.",
+                      "type": "integer"
+                    },
+                    "next_available": {
+                      "description": "tells in seconds when next transactions will become available. Value will be -1 if transactions are still remaining for the the user.",
+                      "type": "integer"
+                    }
+                  },
+                  "type": "object"
+                },
+                "remaining": {
+                  "description": "tells how many transactions are remaining for the verb. 0 means none remaining, positive integer tells the count that are remaining, -1 means unlimited transactions remaining.",
+                  "type": "integer"
+                }
+              },
+              "type": "object"
+            }
+          },
+          "type": "object"
+        },
+        "protect-pdf": {
+          "description": "Limits in uber response represents the actual limits provided for user at uber level. Client can refer remaining transactions, next_available and frequency fields. Interpretation of remaining, next_available and frequency is similar to verb response.",
+          "properties": {
+            "configuration": {
+              "description": "various configurations applicable to relevant tile for the user. For example, the max_file_size field which signifies the maximum file size that is support for this tile/pdf operation. More fields wrt operation configuration can be added here as and when needed.",
+              "properties": {
+                "max_file_size": {
+                  "description": "Maximum file size supported by the operation, if applicable",
+                  "type": "integer"
+                }
+              },
+              "type": "object"
+            },
+            "limits": {
+              "description": "specifies the applicable transactions details for the user.",
+              "properties": {
+                "quota_details": {
+                  "description": "Adjacent to remaining, represents quota details including next available and applicable frequency per verb, operation level or uber level.",
+                  "properties": {
+                    "frequency": {
+                      "description": "the frequency at which quota refreshes. Value will be -1 when frequency is not applicable, like when user has unlimited transactions.",
+                      "type": "integer"
+                    },
+                    "next_available": {
+                      "description": "tells in seconds when next transactions will become available. Value will be -1 if transactions are still remaining for the the user.",
+                      "type": "integer"
+                    }
+                  },
+                  "type": "object"
+                },
+                "remaining": {
+                  "description": "tells how many transactions are remaining for the verb. 0 means none remaining, positive integer tells the count that are remaining, -1 means unlimited transactions remaining.",
+                  "type": "integer"
+                }
+              },
+              "type": "object"
+            }
+          },
+          "type": "object"
+        },
+        "reorder-pages": {
+          "description": "Limits in uber response represents the actual limits provided for user at uber level. Client can refer remaining transactions, next_available and frequency fields. Interpretation of remaining, next_available and frequency is similar to verb response.",
+          "properties": {
+            "configuration": {
+              "description": "various configurations applicable to relevant tile for the user. For example, the max_file_size field which signifies the maximum file size that is support for this tile/pdf operation. More fields wrt operation configuration can be added here as and when needed.",
+              "properties": {
+                "max_file_size": {
+                  "description": "Maximum file size supported by the operation, if applicable",
+                  "type": "integer"
+                },
+                "max_number_files": {
+                  "description": "Maximum number of files supported by the operation, if applicable",
+                  "type": "integer"
+                }
+              },
+              "type": "object"
+            },
+            "limits": {
+              "description": "specifies the applicable transactions details for the user.",
+              "properties": {
+                "quota_details": {
+                  "description": "Adjacent to remaining, represents quota details including next available and applicable frequency per verb, operation level or uber level.",
+                  "properties": {
+                    "frequency": {
+                      "description": "the frequency at which quota refreshes. Value will be -1 when frequency is not applicable, like when user has unlimited transactions.",
+                      "type": "integer"
+                    },
+                    "next_available": {
+                      "description": "tells in seconds when next transactions will become available. Value will be -1 if transactions are still remaining for the the user.",
+                      "type": "integer"
+                    }
+                  },
+                  "type": "object"
+                },
+                "remaining": {
+                  "description": "tells how many transactions are remaining for the verb. 0 means none remaining, positive integer tells the count that are remaining, -1 means unlimited transactions remaining.",
+                  "type": "integer"
+                }
+              },
+              "type": "object"
+            }
+          },
+          "type": "object"
+        },
+        "rotate-pages": {
+          "description": "Limits in uber response represents the actual limits provided for user at uber level. Client can refer remaining transactions, next_available and frequency fields. Interpretation of remaining, next_available and frequency is similar to verb response.",
+          "properties": {
+            "configuration": {
+              "description": "various configurations applicable to relevant tile for the user. For example, the max_file_size field which signifies the maximum file size that is support for this tile/pdf operation. More fields wrt operation configuration can be added here as and when needed.",
+              "properties": {
+                "max_file_size": {
+                  "description": "Maximum file size supported by the operation, if applicable",
+                  "type": "integer"
+                },
+                "max_number_files": {
+                  "description": "Maximum number of files supported by the operation, if applicable",
+                  "type": "integer"
+                }
+              },
+              "type": "object"
+            },
+            "limits": {
+              "description": "specifies the applicable transactions details for the user.",
+              "properties": {
+                "quota_details": {
+                  "description": "Adjacent to remaining, represents quota details including next available and applicable frequency per verb, operation level or uber level.",
+                  "properties": {
+                    "frequency": {
+                      "description": "the frequency at which quota refreshes. Value will be -1 when frequency is not applicable, like when user has unlimited transactions.",
+                      "type": "integer"
+                    },
+                    "next_available": {
+                      "description": "tells in seconds when next transactions will become available. Value will be -1 if transactions are still remaining for the the user.",
+                      "type": "integer"
+                    }
+                  },
+                  "type": "object"
+                },
+                "remaining": {
+                  "description": "tells how many transactions are remaining for the verb. 0 means none remaining, positive integer tells the count that are remaining, -1 means unlimited transactions remaining.",
+                  "type": "integer"
+                }
+              },
+              "type": "object"
+            }
+          },
+          "type": "object"
+        },
+        "split-pdf": {
+          "description": "Limits in uber response represents the actual limits provided for user at uber level. Client can refer remaining transactions, next_available and frequency fields. Interpretation of remaining, next_available and frequency is similar to verb response.",
+          "properties": {
+            "configuration": {
+              "description": "various configurations applicable to relevant tile for the user. For example, the max_file_size field which signifies the maximum file size that is support for this tile/pdf operation. More fields wrt operation configuration can be added here as and when needed.",
+              "properties": {
+                "max_file_size": {
+                  "description": "Maximum file size supported by the operation, if applicable",
+                  "type": "integer"
+                },
+                "max_split_points": {
+                  "description": "Maximum number of split points supported by the operation, if applicable",
+                  "type": "integer"
+                }
+              },
+              "type": "object"
+            },
+            "limits": {
+              "description": "specifies the applicable transactions details for the user.",
+              "properties": {
+                "quota_details": {
+                  "description": "Adjacent to remaining, represents quota details including next available and applicable frequency per verb, operation level or uber level.",
+                  "properties": {
+                    "frequency": {
+                      "description": "the frequency at which quota refreshes. Value will be -1 when frequency is not applicable, like when user has unlimited transactions.",
+                      "type": "integer"
+                    },
+                    "next_available": {
+                      "description": "tells in seconds when next transactions will become available. Value will be -1 if transactions are still remaining for the the user.",
+                      "type": "integer"
+                    }
+                  },
+                  "type": "object"
+                },
+                "remaining": {
+                  "description": "tells how many transactions are remaining for the verb. 0 means none remaining, positive integer tells the count that are remaining, -1 means unlimited transactions remaining.",
+                  "type": "integer"
+                }
+              },
+              "type": "object"
+            }
+          },
+          "type": "object"
+        },
+        "uber": {
+          "description": "Limits in uber response represents the actual limits provided for user at uber level. Client can refer remaining transactions, next_available and frequency fields. Interpretation of remaining, next_available and frequency is similar to verb response.",
+          "properties": {
+            "limits": {
+              "description": "specifies the applicable transactions details for the user.",
+              "properties": {
+                "quota_details": {
+                  "description": "Adjacent to remaining, represents quota details including next available and applicable frequency per verb, operation level or uber level.",
+                  "properties": {
+                    "frequency": {
+                      "description": "the frequency at which quota refreshes. Value will be -1 when frequency is not applicable, like when user has unlimited transactions.",
+                      "type": "integer"
+                    },
+                    "next_available": {
+                      "description": "tells in seconds when next transactions will become available. Value will be -1 if transactions are still remaining for the the user.",
+                      "type": "integer"
+                    }
+                  },
+                  "type": "object"
+                },
+                "remaining": {
+                  "description": "tells how many transactions are remaining for the verb. 0 means none remaining, positive integer tells the count that are remaining, -1 means unlimited transactions remaining.",
+                  "type": "integer"
+                }
+              },
+              "type": "object"
+            }
+          },
+          "type": "object"
+        },
+        "word-to-pdf": {
+          "description": "Limits in uber response represents the actual limits provided for user at uber level. Client can refer remaining transactions, next_available and frequency fields. Interpretation of remaining, next_available and frequency is similar to verb response.",
+          "properties": {
+            "configuration": {
+              "description": "various configurations applicable to relevant tile for the user. For example, the max_file_size field which signifies the maximum file size that is support for this tile/pdf operation. More fields wrt operation configuration can be added here as and when needed.",
+              "properties": {
+                "max_file_size": {
+                  "description": "Maximum file size supported by the operation, if applicable",
+                  "type": "integer"
+                }
+              },
+              "type": "object"
+            },
+            "limits": {
+              "description": "specifies the applicable transactions details for the user.",
+              "properties": {
+                "quota_details": {
+                  "description": "Adjacent to remaining, represents quota details including next available and applicable frequency per verb, operation level or uber level.",
+                  "properties": {
+                    "frequency": {
+                      "description": "the frequency at which quota refreshes. Value will be -1 when frequency is not applicable, like when user has unlimited transactions.",
+                      "type": "integer"
+                    },
+                    "next_available": {
+                      "description": "tells in seconds when next transactions will become available. Value will be -1 if transactions are still remaining for the the user.",
+                      "type": "integer"
+                    }
+                  },
+                  "type": "object"
+                },
+                "remaining": {
+                  "description": "tells how many transactions are remaining for the verb. 0 means none remaining, positive integer tells the count that are remaining, -1 means unlimited transactions remaining.",
+                  "type": "integer"
+                }
+              },
+              "type": "object"
+            }
+          },
+          "type": "object"
+        }
+      },
+      "required": [
+        "uber",
+        "createpdf",
+        "word-to-pdf",
+        "ppt-to-pdf",
+        "excel-to-pdf",
+        "jpg-to-pdf",
+        "ocr-pdf",
+        "html-to-pdf",
+        "organize-pdf",
+        "reorder-pages",
+        "delete-pages",
+        "rotate-pages",
+        "insert-pdf",
+        "extract-pages",
+        "export-pdf",
+        "pdf-to-image",
+        "pdf-to-excel",
+        "pdf-to-ppt",
+        "pdf-to-word",
+        "combine-pdf",
+        "protect-pdf",
+        "compress-pdf",
+        "split-pdf",
+        "edit-pdf",
+        "crop-pages",
+        "number-pages",
+        "high-speed-scan",
+        "operations"
+      ],
+      "type": "object"
+    },
+    "limits/verbsV2": {
+      "additionalProperties": false,
+      "properties": {
+        "combinepdf": {
+          "description": "Limits in uber response represents the actual limits provided for user at uber level. Client can refer remaining transactions, next_available and frequency fields. Interpretation of remaining, next_available and frequency is similar to verb response.",
+          "properties": {
+            "configuration": {
+              "description": "various configurations applicable to relevant tile for the user. For example, the max_file_size field which signifies the maximum file size that is support for this tile/pdf operation. More fields wrt operation configuration can be added here as and when needed.",
+              "properties": {
+                "max_file_size": {
+                  "description": "Maximum file size supported by the operation, if applicable",
+                  "type": "integer"
+                },
+                "max_number_files": {
+                  "description": "Maximum number of files supported by the operation, if applicable",
+                  "type": "integer"
+                }
+              },
+              "type": "object"
+            },
+            "limits": {
+              "description": "specifies the applicable transactions details for the user.",
+              "properties": {
+                "quota_details": {
+                  "description": "Adjacent to remaining, represents quota details including next available and applicable frequency per verb or uber level.",
+                  "properties": {
+                    "frequency": {
+                      "description": "the frequency at which quota refreshes. Value will be -1 when frequency is not applicable, like when user has unlimited transactions.",
+                      "type": "integer"
+                    },
+                    "next_available": {
+                      "description": "tells in seconds when next transactions will become available. Value will be -1 if transactions are still remaining for the the user.",
+                      "type": "integer"
+                    }
+                  },
+                  "type": "object"
+                },
+                "remaining": {
+                  "description": "tells how many transactions are remaining for the verb. 0 means none remaining, positive integer tells the count that are remaining, -1 means unlimited transactions remaining.",
+                  "type": "integer"
+                }
+              },
+              "type": "object"
+            }
+          },
+          "type": "object"
+        },
+        "compresspdf": {
+          "description": "Limits in uber response represents the actual limits provided for user at uber level. Client can refer remaining transactions, next_available and frequency fields. Interpretation of remaining, next_available and frequency is similar to verb response.",
+          "properties": {
+            "configuration": {
+              "description": "various configurations applicable to relevant tile for the user. For example, the max_file_size field which signifies the maximum file size that is support for this tile/pdf operation. More fields wrt operation configuration can be added here as and when needed.",
+              "properties": {
+                "max_file_size": {
+                  "description": "Maximum file size supported by the operation, if applicable",
+                  "type": "integer"
+                }
+              },
+              "type": "object"
+            },
+            "limits": {
+              "description": "specifies the applicable transactions details for the user.",
+              "properties": {
+                "quota_details": {
+                  "description": "Adjacent to remaining, represents quota details including next available and applicable frequency per verb or uber level.",
+                  "properties": {
+                    "frequency": {
+                      "description": "the frequency at which quota refreshes. Value will be -1 when frequency is not applicable, like when user has unlimited transactions.",
+                      "type": "integer"
+                    },
+                    "next_available": {
+                      "description": "tells in seconds when next transactions will become available. Value will be -1 if transactions are still remaining for the the user.",
+                      "type": "integer"
+                    }
+                  },
+                  "type": "object"
+                },
+                "remaining": {
+                  "description": "tells how many transactions are remaining for the verb. 0 means none remaining, positive integer tells the count that are remaining, -1 means unlimited transactions remaining.",
+                  "type": "integer"
+                }
+              },
+              "type": "object"
+            }
+          },
+          "type": "object"
+        },
+        "createpdf": {
+          "description": "Limits in uber response represents the actual limits provided for user at uber level. Client can refer remaining transactions, next_available and frequency fields. Interpretation of remaining, next_available and frequency is similar to verb response.",
+          "properties": {
+            "configuration": {
+              "description": "various configurations applicable to relevant tile for the user. For example, the max_file_size field which signifies the maximum file size that is support for this tile/pdf operation. More fields wrt operation configuration can be added here as and when needed.",
+              "properties": {
+                "max_file_size": {
+                  "description": "Maximum file size supported by the operation, if applicable",
+                  "type": "integer"
+                }
+              },
+              "type": "object"
+            },
+            "limits": {
+              "description": "specifies the applicable transactions details for the user.",
+              "properties": {
+                "quota_details": {
+                  "description": "Adjacent to remaining, represents quota details including next available and applicable frequency per verb or uber level.",
+                  "properties": {
+                    "frequency": {
+                      "description": "the frequency at which quota refreshes. Value will be -1 when frequency is not applicable, like when user has unlimited transactions.",
+                      "type": "integer"
+                    },
+                    "next_available": {
+                      "description": "tells in seconds when next transactions will become available. Value will be -1 if transactions are still remaining for the the user.",
+                      "type": "integer"
+                    }
+                  },
+                  "type": "object"
+                },
+                "remaining": {
+                  "description": "tells how many transactions are remaining for the verb. 0 means none remaining, positive integer tells the count that are remaining, -1 means unlimited transactions remaining.",
+                  "type": "integer"
+                }
+              },
+              "type": "object"
+            }
+          },
+          "type": "object"
+        },
+        "croppages": {
+          "description": "Limits in uber response represents the actual limits provided for user at uber level. Client can refer remaining transactions, next_available and frequency fields. Interpretation of remaining, next_available and frequency is similar to verb response.",
+          "properties": {
+            "configuration": {
+              "description": "various configurations applicable to relevant tile for the user. For example, the max_file_size field which signifies the maximum file size that is support for this tile/pdf operation. More fields wrt operation configuration can be added here as and when needed.",
+              "properties": {
+                "max_file_size": {
+                  "description": "Maximum file size supported by the operation, if applicable",
+                  "type": "integer"
+                }
+              },
+              "type": "object"
+            },
+            "limits": {
+              "description": "specifies the applicable transactions details for the user.",
+              "properties": {
+                "quota_details": {
+                  "description": "Adjacent to remaining, represents quota details including next available and applicable frequency per verb or uber level.",
+                  "properties": {
+                    "frequency": {
+                      "description": "the frequency at which quota refreshes. Value will be -1 when frequency is not applicable, like when user has unlimited transactions.",
+                      "type": "integer"
+                    },
+                    "next_available": {
+                      "description": "tells in seconds when next transactions will become available. Value will be -1 if transactions are still remaining for the the user.",
+                      "type": "integer"
+                    }
+                  },
+                  "type": "object"
+                },
+                "remaining": {
+                  "description": "tells how many transactions are remaining for the verb. 0 means none remaining, positive integer tells the count that are remaining, -1 means unlimited transactions remaining.",
+                  "type": "integer"
+                }
+              },
+              "type": "object"
+            }
+          },
+          "type": "object"
+        },
+        "deletepages": {
+          "description": "Limits in uber response represents the actual limits provided for user at uber level. Client can refer remaining transactions, next_available and frequency fields. Interpretation of remaining, next_available and frequency is similar to verb response.",
+          "properties": {
+            "configuration": {
+              "description": "various configurations applicable to relevant tile for the user. For example, the max_file_size field which signifies the maximum file size that is support for this tile/pdf operation. More fields wrt operation configuration can be added here as and when needed.",
+              "properties": {
+                "max_file_size": {
+                  "description": "Maximum file size supported by the operation, if applicable",
+                  "type": "integer"
+                },
+                "max_number_files": {
+                  "description": "Maximum number of files supported by the operation, if applicable",
+                  "type": "integer"
+                }
+              },
+              "type": "object"
+            },
+            "limits": {
+              "description": "specifies the applicable transactions details for the user.",
+              "properties": {
+                "quota_details": {
+                  "description": "Adjacent to remaining, represents quota details including next available and applicable frequency per verb or uber level.",
+                  "properties": {
+                    "frequency": {
+                      "description": "the frequency at which quota refreshes. Value will be -1 when frequency is not applicable, like when user has unlimited transactions.",
+                      "type": "integer"
+                    },
+                    "next_available": {
+                      "description": "tells in seconds when next transactions will become available. Value will be -1 if transactions are still remaining for the the user.",
+                      "type": "integer"
+                    }
+                  },
+                  "type": "object"
+                },
+                "remaining": {
+                  "description": "tells how many transactions are remaining for the verb. 0 means none remaining, positive integer tells the count that are remaining, -1 means unlimited transactions remaining.",
+                  "type": "integer"
+                }
+              },
+              "type": "object"
+            }
+          },
+          "type": "object"
+        },
+        "editpdf": {
+          "description": "Limits in uber response represents the actual limits provided for user at uber level. Client can refer remaining transactions, next_available and frequency fields. Interpretation of remaining, next_available and frequency is similar to verb response.",
+          "properties": {
+            "configuration": {
+              "description": "various configurations applicable to relevant tile for the user. For example, the max_file_size field which signifies the maximum file size that is support for this tile/pdf operation. More fields wrt operation configuration can be added here as and when needed.",
+              "properties": {
+                "max_file_size": {
+                  "description": "Maximum file size supported by the operation, if applicable",
+                  "type": "integer"
+                }
+              },
+              "type": "object"
+            },
+            "limits": {
+              "description": "specifies the applicable transactions details for the user.",
+              "properties": {
+                "quota_details": {
+                  "description": "Adjacent to remaining, represents quota details including next available and applicable frequency per verb or uber level.",
+                  "properties": {
+                    "frequency": {
+                      "description": "the frequency at which quota refreshes. Value will be -1 when frequency is not applicable, like when user has unlimited transactions.",
+                      "type": "integer"
+                    },
+                    "next_available": {
+                      "description": "tells in seconds when next transactions will become available. Value will be -1 if transactions are still remaining for the the user.",
+                      "type": "integer"
+                    }
+                  },
+                  "type": "object"
+                },
+                "remaining": {
+                  "description": "tells how many transactions are remaining for the verb. 0 means none remaining, positive integer tells the count that are remaining, -1 means unlimited transactions remaining.",
+                  "type": "integer"
+                }
+              },
+              "type": "object"
+            }
+          },
+          "type": "object"
+        },
+        "exceltopdf": {
+          "description": "Limits in uber response represents the actual limits provided for user at uber level. Client can refer remaining transactions, next_available and frequency fields. Interpretation of remaining, next_available and frequency is similar to verb response.",
+          "properties": {
+            "configuration": {
+              "description": "various configurations applicable to relevant tile for the user. For example, the max_file_size field which signifies the maximum file size that is support for this tile/pdf operation. More fields wrt operation configuration can be added here as and when needed.",
+              "properties": {
+                "max_file_size": {
+                  "description": "Maximum file size supported by the operation, if applicable",
+                  "type": "integer"
+                }
+              },
+              "type": "object"
+            },
+            "limits": {
+              "description": "specifies the applicable transactions details for the user.",
+              "properties": {
+                "quota_details": {
+                  "description": "Adjacent to remaining, represents quota details including next available and applicable frequency per verb or uber level.",
+                  "properties": {
+                    "frequency": {
+                      "description": "the frequency at which quota refreshes. Value will be -1 when frequency is not applicable, like when user has unlimited transactions.",
+                      "type": "integer"
+                    },
+                    "next_available": {
+                      "description": "tells in seconds when next transactions will become available. Value will be -1 if transactions are still remaining for the the user.",
+                      "type": "integer"
+                    }
+                  },
+                  "type": "object"
+                },
+                "remaining": {
+                  "description": "tells how many transactions are remaining for the verb. 0 means none remaining, positive integer tells the count that are remaining, -1 means unlimited transactions remaining.",
+                  "type": "integer"
+                }
+              },
+              "type": "object"
+            }
+          },
+          "type": "object"
+        },
+        "exportpdf": {
+          "description": "Limits in uber response represents the actual limits provided for user at uber level. Client can refer remaining transactions, next_available and frequency fields. Interpretation of remaining, next_available and frequency is similar to verb response.",
+          "properties": {
+            "configuration": {
+              "description": "various configurations applicable to relevant tile for the user. For example, the max_file_size field which signifies the maximum file size that is support for this tile/pdf operation. More fields wrt operation configuration can be added here as and when needed.",
+              "properties": {
+                "max_file_size": {
+                  "description": "Maximum file size supported by the operation, if applicable",
+                  "type": "integer"
+                }
+              },
+              "type": "object"
+            },
+            "limits": {
+              "description": "specifies the applicable transactions details for the user.",
+              "properties": {
+                "quota_details": {
+                  "description": "Adjacent to remaining, represents quota details including next available and applicable frequency per verb or uber level.",
+                  "properties": {
+                    "frequency": {
+                      "description": "the frequency at which quota refreshes. Value will be -1 when frequency is not applicable, like when user has unlimited transactions.",
+                      "type": "integer"
+                    },
+                    "next_available": {
+                      "description": "tells in seconds when next transactions will become available. Value will be -1 if transactions are still remaining for the the user.",
+                      "type": "integer"
+                    }
+                  },
+                  "type": "object"
+                },
+                "remaining": {
+                  "description": "tells how many transactions are remaining for the verb. 0 means none remaining, positive integer tells the count that are remaining, -1 means unlimited transactions remaining.",
+                  "type": "integer"
+                }
+              },
+              "type": "object"
+            }
+          },
+          "type": "object"
+        },
+        "extractpages": {
+          "description": "Limits in uber response represents the actual limits provided for user at uber level. Client can refer remaining transactions, next_available and frequency fields. Interpretation of remaining, next_available and frequency is similar to verb response.",
+          "properties": {
+            "configuration": {
+              "description": "various configurations applicable to relevant tile for the user. For example, the max_file_size field which signifies the maximum file size that is support for this tile/pdf operation. More fields wrt operation configuration can be added here as and when needed.",
+              "properties": {
+                "max_file_size": {
+                  "description": "Maximum file size supported by the operation, if applicable",
+                  "type": "integer"
+                },
+                "max_number_files": {
+                  "description": "Maximum number of files supported by the operation, if applicable",
+                  "type": "integer"
+                }
+              },
+              "type": "object"
+            },
+            "limits": {
+              "description": "specifies the applicable transactions details for the user.",
+              "properties": {
+                "quota_details": {
+                  "description": "Adjacent to remaining, represents quota details including next available and applicable frequency per verb or uber level.",
+                  "properties": {
+                    "frequency": {
+                      "description": "the frequency at which quota refreshes. Value will be -1 when frequency is not applicable, like when user has unlimited transactions.",
+                      "type": "integer"
+                    },
+                    "next_available": {
+                      "description": "tells in seconds when next transactions will become available. Value will be -1 if transactions are still remaining for the the user.",
+                      "type": "integer"
+                    }
+                  },
+                  "type": "object"
+                },
+                "remaining": {
+                  "description": "tells how many transactions are remaining for the verb. 0 means none remaining, positive integer tells the count that are remaining, -1 means unlimited transactions remaining.",
+                  "type": "integer"
+                }
+              },
+              "type": "object"
+            }
+          },
+          "type": "object"
+        },
+        "highspeedscan": {
+          "description": "Limits in uber response represents the actual limits provided for user at uber level. Client can refer remaining transactions, next_available and frequency fields. Interpretation of remaining, next_available and frequency is similar to verb response.",
+          "properties": {
+            "limits": {
+              "description": "specifies the applicable transactions details for the user.",
+              "properties": {
+                "quota_details": {
+                  "description": "Adjacent to remaining, represents quota details including next available and applicable frequency per verb or uber level.",
+                  "properties": {
+                    "frequency": {
+                      "description": "the frequency at which quota refreshes. Value will be -1 when frequency is not applicable, like when user has unlimited transactions.",
+                      "type": "integer"
+                    },
+                    "next_available": {
+                      "description": "tells in seconds when next transactions will become available. Value will be -1 if transactions are still remaining for the the user.",
+                      "type": "integer"
+                    }
+                  },
+                  "type": "object"
+                },
+                "remaining": {
+                  "description": "tells how many transactions are remaining for the verb. 0 means none remaining, positive integer tells the count that are remaining, -1 means unlimited transactions remaining.",
+                  "type": "integer"
+                }
+              },
+              "type": "object"
+            }
+          },
+          "type": "object"
+        },
+        "htmltopdf": {
+          "description": "Limits in uber response represents the actual limits provided for user at uber level. Client can refer remaining transactions, next_available and frequency fields. Interpretation of remaining, next_available and frequency is similar to verb response.",
+          "properties": {
+            "configuration": {
+              "description": "various configurations applicable to relevant tile for the user. For example, the max_file_size field which signifies the maximum file size that is support for this tile/pdf operation. More fields wrt operation configuration can be added here as and when needed.",
+              "properties": {
+                "max_file_size": {
+                  "description": "Maximum file size supported by the operation, if applicable",
+                  "type": "integer"
+                }
+              },
+              "type": "object"
+            },
+            "limits": {
+              "description": "specifies the applicable transactions details for the user.",
+              "properties": {
+                "quota_details": {
+                  "description": "Adjacent to remaining, represents quota details including next available and applicable frequency per verb or uber level.",
+                  "properties": {
+                    "frequency": {
+                      "description": "the frequency at which quota refreshes. Value will be -1 when frequency is not applicable, like when user has unlimited transactions.",
+                      "type": "integer"
+                    },
+                    "next_available": {
+                      "description": "tells in seconds when next transactions will become available. Value will be -1 if transactions are still remaining for the the user.",
+                      "type": "integer"
+                    }
+                  },
+                  "type": "object"
+                },
+                "remaining": {
+                  "description": "tells how many transactions are remaining for the verb. 0 means none remaining, positive integer tells the count that are remaining, -1 means unlimited transactions remaining.",
+                  "type": "integer"
+                }
+              },
+              "type": "object"
+            }
+          },
+          "type": "object"
+        },
+        "insertpdf": {
+          "description": "Limits in uber response represents the actual limits provided for user at uber level. Client can refer remaining transactions, next_available and frequency fields. Interpretation of remaining, next_available and frequency is similar to verb response.",
+          "properties": {
+            "configuration": {
+              "description": "various configurations applicable to relevant tile for the user. For example, the max_file_size field which signifies the maximum file size that is support for this tile/pdf operation. More fields wrt operation configuration can be added here as and when needed.",
+              "properties": {
+                "max_file_size": {
+                  "description": "Maximum file size supported by the operation, if applicable",
+                  "type": "integer"
+                },
+                "max_number_files": {
+                  "description": "Maximum number of files supported by the operation, if applicable",
+                  "type": "integer"
+                }
+              },
+              "type": "object"
+            },
+            "limits": {
+              "description": "specifies the applicable transactions details for the user.",
+              "properties": {
+                "quota_details": {
+                  "description": "Adjacent to remaining, represents quota details including next available and applicable frequency per verb or uber level.",
+                  "properties": {
+                    "frequency": {
+                      "description": "the frequency at which quota refreshes. Value will be -1 when frequency is not applicable, like when user has unlimited transactions.",
+                      "type": "integer"
+                    },
+                    "next_available": {
+                      "description": "tells in seconds when next transactions will become available. Value will be -1 if transactions are still remaining for the the user.",
+                      "type": "integer"
+                    }
+                  },
+                  "type": "object"
+                },
+                "remaining": {
+                  "description": "tells how many transactions are remaining for the verb. 0 means none remaining, positive integer tells the count that are remaining, -1 means unlimited transactions remaining.",
+                  "type": "integer"
+                }
+              },
+              "type": "object"
+            }
+          },
+          "type": "object"
+        },
+        "jpgtopdf": {
+          "description": "Limits in uber response represents the actual limits provided for user at uber level. Client can refer remaining transactions, next_available and frequency fields. Interpretation of remaining, next_available and frequency is similar to verb response.",
+          "properties": {
+            "configuration": {
+              "description": "various configurations applicable to relevant tile for the user. For example, the max_file_size field which signifies the maximum file size that is support for this tile/pdf operation. More fields wrt operation configuration can be added here as and when needed.",
+              "properties": {
+                "max_file_size": {
+                  "description": "Maximum file size supported by the operation, if applicable",
+                  "type": "integer"
+                }
+              },
+              "type": "object"
+            },
+            "limits": {
+              "description": "specifies the applicable transactions details for the user.",
+              "properties": {
+                "quota_details": {
+                  "description": "Adjacent to remaining, represents quota details including next available and applicable frequency per verb or uber level.",
+                  "properties": {
+                    "frequency": {
+                      "description": "the frequency at which quota refreshes. Value will be -1 when frequency is not applicable, like when user has unlimited transactions.",
+                      "type": "integer"
+                    },
+                    "next_available": {
+                      "description": "tells in seconds when next transactions will become available. Value will be -1 if transactions are still remaining for the the user.",
+                      "type": "integer"
+                    }
+                  },
+                  "type": "object"
+                },
+                "remaining": {
+                  "description": "tells how many transactions are remaining for the verb. 0 means none remaining, positive integer tells the count that are remaining, -1 means unlimited transactions remaining.",
+                  "type": "integer"
+                }
+              },
+              "type": "object"
+            }
+          },
+          "type": "object"
+        },
+        "numberpages": {
+          "description": "Limits in uber response represents the actual limits provided for user at uber level. Client can refer remaining transactions, next_available and frequency fields. Interpretation of remaining, next_available and frequency is similar to verb response.",
+          "properties": {
+            "configuration": {
+              "description": "various configurations applicable to relevant tile for the user. For example, the max_file_size field which signifies the maximum file size that is support for this tile/pdf operation. More fields wrt operation configuration can be added here as and when needed.",
+              "properties": {
+                "max_file_size": {
+                  "description": "Maximum file size supported by the operation, if applicable",
+                  "type": "integer"
+                }
+              },
+              "type": "object"
+            },
+            "limits": {
+              "description": "specifies the applicable transactions details for the user.",
+              "properties": {
+                "quota_details": {
+                  "description": "Adjacent to remaining, represents quota details including next available and applicable frequency per verb or uber level.",
+                  "properties": {
+                    "frequency": {
+                      "description": "the frequency at which quota refreshes. Value will be -1 when frequency is not applicable, like when user has unlimited transactions.",
+                      "type": "integer"
+                    },
+                    "next_available": {
+                      "description": "tells in seconds when next transactions will become available. Value will be -1 if transactions are still remaining for the the user.",
+                      "type": "integer"
+                    }
+                  },
+                  "type": "object"
+                },
+                "remaining": {
+                  "description": "tells how many transactions are remaining for the verb. 0 means none remaining, positive integer tells the count that are remaining, -1 means unlimited transactions remaining.",
+                  "type": "integer"
+                }
+              },
+              "type": "object"
+            }
+          },
+          "type": "object"
+        },
+        "ocrpdf": {
+          "description": "Limits in uber response represents the actual limits provided for user at uber level. Client can refer remaining transactions, next_available and frequency fields. Interpretation of remaining, next_available and frequency is similar to verb response.",
+          "properties": {
+            "configuration": {
+              "description": "various configurations applicable to relevant tile for the user. For example, the max_file_size field which signifies the maximum file size that is support for this tile/pdf operation. More fields wrt operation configuration can be added here as and when needed.",
+              "properties": {
+                "max_file_size": {
+                  "description": "Maximum file size supported by the operation, if applicable",
+                  "type": "integer"
+                }
+              },
+              "type": "object"
+            },
+            "limits": {
+              "description": "specifies the applicable transactions details for the user.",
+              "properties": {
+                "quota_details": {
+                  "description": "Adjacent to remaining, represents quota details including next available and applicable frequency per verb or uber level.",
+                  "properties": {
+                    "frequency": {
+                      "description": "the frequency at which quota refreshes. Value will be -1 when frequency is not applicable, like when user has unlimited transactions.",
+                      "type": "integer"
+                    },
+                    "next_available": {
+                      "description": "tells in seconds when next transactions will become available. Value will be -1 if transactions are still remaining for the the user.",
+                      "type": "integer"
+                    }
+                  },
+                  "type": "object"
+                },
+                "remaining": {
+                  "description": "tells how many transactions are remaining for the verb. 0 means none remaining, positive integer tells the count that are remaining, -1 means unlimited transactions remaining.",
+                  "type": "integer"
+                }
+              },
+              "type": "object"
+            }
+          },
+          "type": "object"
+        },
+        "organizepdf": {
+          "description": "Limits in uber response represents the actual limits provided for user at uber level. Client can refer remaining transactions, next_available and frequency fields. Interpretation of remaining, next_available and frequency is similar to verb response.",
+          "properties": {
+            "configuration": {
+              "description": "various configurations applicable to relevant tile for the user. For example, the max_file_size field which signifies the maximum file size that is support for this tile/pdf operation. More fields wrt operation configuration can be added here as and when needed.",
+              "properties": {
+                "max_file_size": {
+                  "description": "Maximum file size supported by the operation, if applicable",
+                  "type": "integer"
+                },
+                "max_number_files": {
+                  "description": "Maximum number of files supported by the operation, if applicable",
+                  "type": "integer"
+                }
+              },
+              "type": "object"
+            },
+            "limits": {
+              "description": "specifies the applicable transactions details for the user.",
+              "properties": {
+                "quota_details": {
+                  "description": "Adjacent to remaining, represents quota details including next available and applicable frequency per verb or uber level.",
+                  "properties": {
+                    "frequency": {
+                      "description": "the frequency at which quota refreshes. Value will be -1 when frequency is not applicable, like when user has unlimited transactions.",
+                      "type": "integer"
+                    },
+                    "next_available": {
+                      "description": "tells in seconds when next transactions will become available. Value will be -1 if transactions are still remaining for the the user.",
+                      "type": "integer"
+                    }
+                  },
+                  "type": "object"
+                },
+                "remaining": {
+                  "description": "tells how many transactions are remaining for the verb. 0 means none remaining, positive integer tells the count that are remaining, -1 means unlimited transactions remaining.",
+                  "type": "integer"
+                }
+              },
+              "type": "object"
+            }
+          },
+          "type": "object"
+        },
+        "pdftoexcel": {
+          "description": "Limits in uber response represents the actual limits provided for user at uber level. Client can refer remaining transactions, next_available and frequency fields. Interpretation of remaining, next_available and frequency is similar to verb response.",
+          "properties": {
+            "configuration": {
+              "description": "various configurations applicable to relevant tile for the user. For example, the max_file_size field which signifies the maximum file size that is support for this tile/pdf operation. More fields wrt operation configuration can be added here as and when needed.",
+              "properties": {
+                "max_file_size": {
+                  "description": "Maximum file size supported by the operation, if applicable",
+                  "type": "integer"
+                }
+              },
+              "type": "object"
+            },
+            "limits": {
+              "description": "specifies the applicable transactions details for the user.",
+              "properties": {
+                "quota_details": {
+                  "description": "Adjacent to remaining, represents quota details including next available and applicable frequency per verb or uber level.",
+                  "properties": {
+                    "frequency": {
+                      "description": "the frequency at which quota refreshes. Value will be -1 when frequency is not applicable, like when user has unlimited transactions.",
+                      "type": "integer"
+                    },
+                    "next_available": {
+                      "description": "tells in seconds when next transactions will become available. Value will be -1 if transactions are still remaining for the the user.",
+                      "type": "integer"
+                    }
+                  },
+                  "type": "object"
+                },
+                "remaining": {
+                  "description": "tells how many transactions are remaining for the verb. 0 means none remaining, positive integer tells the count that are remaining, -1 means unlimited transactions remaining.",
+                  "type": "integer"
+                }
+              },
+              "type": "object"
+            }
+          },
+          "type": "object"
+        },
+        "pdftoimage": {
+          "description": "Limits in uber response represents the actual limits provided for user at uber level. Client can refer remaining transactions, next_available and frequency fields. Interpretation of remaining, next_available and frequency is similar to verb response.",
+          "properties": {
+            "configuration": {
+              "description": "various configurations applicable to relevant tile for the user. For example, the max_file_size field which signifies the maximum file size that is support for this tile/pdf operation. More fields wrt operation configuration can be added here as and when needed.",
+              "properties": {
+                "max_file_size": {
+                  "description": "Maximum file size supported by the operation, if applicable",
+                  "type": "integer"
+                }
+              },
+              "type": "object"
+            },
+            "limits": {
+              "description": "specifies the applicable transactions details for the user.",
+              "properties": {
+                "quota_details": {
+                  "description": "Adjacent to remaining, represents quota details including next available and applicable frequency per verb or uber level.",
+                  "properties": {
+                    "frequency": {
+                      "description": "the frequency at which quota refreshes. Value will be -1 when frequency is not applicable, like when user has unlimited transactions.",
+                      "type": "integer"
+                    },
+                    "next_available": {
+                      "description": "tells in seconds when next transactions will become available. Value will be -1 if transactions are still remaining for the the user.",
+                      "type": "integer"
+                    }
+                  },
+                  "type": "object"
+                },
+                "remaining": {
+                  "description": "tells how many transactions are remaining for the verb. 0 means none remaining, positive integer tells the count that are remaining, -1 means unlimited transactions remaining.",
+                  "type": "integer"
+                }
+              },
+              "type": "object"
+            }
+          },
+          "type": "object"
+        },
+        "pdftoppt": {
+          "description": "Limits in uber response represents the actual limits provided for user at uber level. Client can refer remaining transactions, next_available and frequency fields. Interpretation of remaining, next_available and frequency is similar to verb response.",
+          "properties": {
+            "configuration": {
+              "description": "various configurations applicable to relevant tile for the user. For example, the max_file_size field which signifies the maximum file size that is support for this tile/pdf operation. More fields wrt operation configuration can be added here as and when needed.",
+              "properties": {
+                "max_file_size": {
+                  "description": "Maximum file size supported by the operation, if applicable",
+                  "type": "integer"
+                }
+              },
+              "type": "object"
+            },
+            "limits": {
+              "description": "specifies the applicable transactions details for the user.",
+              "properties": {
+                "quota_details": {
+                  "description": "Adjacent to remaining, represents quota details including next available and applicable frequency per verb or uber level.",
+                  "properties": {
+                    "frequency": {
+                      "description": "the frequency at which quota refreshes. Value will be -1 when frequency is not applicable, like when user has unlimited transactions.",
+                      "type": "integer"
+                    },
+                    "next_available": {
+                      "description": "tells in seconds when next transactions will become available. Value will be -1 if transactions are still remaining for the the user.",
+                      "type": "integer"
+                    }
+                  },
+                  "type": "object"
+                },
+                "remaining": {
+                  "description": "tells how many transactions are remaining for the verb. 0 means none remaining, positive integer tells the count that are remaining, -1 means unlimited transactions remaining.",
+                  "type": "integer"
+                }
+              },
+              "type": "object"
+            }
+          },
+          "type": "object"
+        },
+        "pdftoword": {
+          "description": "Limits in uber response represents the actual limits provided for user at uber level. Client can refer remaining transactions, next_available and frequency fields. Interpretation of remaining, next_available and frequency is similar to verb response.",
+          "properties": {
+            "configuration": {
+              "description": "various configurations applicable to relevant tile for the user. For example, the max_file_size field which signifies the maximum file size that is support for this tile/pdf operation. More fields wrt operation configuration can be added here as and when needed.",
+              "properties": {
+                "max_file_size": {
+                  "description": "Maximum file size supported by the operation, if applicable",
+                  "type": "integer"
+                }
+              },
+              "type": "object"
+            },
+            "limits": {
+              "description": "specifies the applicable transactions details for the user.",
+              "properties": {
+                "quota_details": {
+                  "description": "Adjacent to remaining, represents quota details including next available and applicable frequency per verb or uber level.",
+                  "properties": {
+                    "frequency": {
+                      "description": "the frequency at which quota refreshes. Value will be -1 when frequency is not applicable, like when user has unlimited transactions.",
+                      "type": "integer"
+                    },
+                    "next_available": {
+                      "description": "tells in seconds when next transactions will become available. Value will be -1 if transactions are still remaining for the the user.",
+                      "type": "integer"
+                    }
+                  },
+                  "type": "object"
+                },
+                "remaining": {
+                  "description": "tells how many transactions are remaining for the verb. 0 means none remaining, positive integer tells the count that are remaining, -1 means unlimited transactions remaining.",
+                  "type": "integer"
+                }
+              },
+              "type": "object"
+            }
+          },
+          "type": "object"
+        },
+        "ppttopdf": {
+          "description": "Limits in uber response represents the actual limits provided for user at uber level. Client can refer remaining transactions, next_available and frequency fields. Interpretation of remaining, next_available and frequency is similar to verb response.",
+          "properties": {
+            "configuration": {
+              "description": "various configurations applicable to relevant tile for the user. For example, the max_file_size field which signifies the maximum file size that is support for this tile/pdf operation. More fields wrt operation configuration can be added here as and when needed.",
+              "properties": {
+                "max_file_size": {
+                  "description": "Maximum file size supported by the operation, if applicable",
+                  "type": "integer"
+                }
+              },
+              "type": "object"
+            },
+            "limits": {
+              "description": "specifies the applicable transactions details for the user.",
+              "properties": {
+                "quota_details": {
+                  "description": "Adjacent to remaining, represents quota details including next available and applicable frequency per verb or uber level.",
+                  "properties": {
+                    "frequency": {
+                      "description": "the frequency at which quota refreshes. Value will be -1 when frequency is not applicable, like when user has unlimited transactions.",
+                      "type": "integer"
+                    },
+                    "next_available": {
+                      "description": "tells in seconds when next transactions will become available. Value will be -1 if transactions are still remaining for the the user.",
+                      "type": "integer"
+                    }
+                  },
+                  "type": "object"
+                },
+                "remaining": {
+                  "description": "tells how many transactions are remaining for the verb. 0 means none remaining, positive integer tells the count that are remaining, -1 means unlimited transactions remaining.",
+                  "type": "integer"
+                }
+              },
+              "type": "object"
+            }
+          },
+          "type": "object"
+        },
+        "protectpdf": {
+          "description": "Limits in uber response represents the actual limits provided for user at uber level. Client can refer remaining transactions, next_available and frequency fields. Interpretation of remaining, next_available and frequency is similar to verb response.",
+          "properties": {
+            "configuration": {
+              "description": "various configurations applicable to relevant tile for the user. For example, the max_file_size field which signifies the maximum file size that is support for this tile/pdf operation. More fields wrt operation configuration can be added here as and when needed.",
+              "properties": {
+                "max_file_size": {
+                  "description": "Maximum file size supported by the operation, if applicable",
+                  "type": "integer"
+                }
+              },
+              "type": "object"
+            },
+            "limits": {
+              "description": "specifies the applicable transactions details for the user.",
+              "properties": {
+                "quota_details": {
+                  "description": "Adjacent to remaining, represents quota details including next available and applicable frequency per verb or uber level.",
+                  "properties": {
+                    "frequency": {
+                      "description": "the frequency at which quota refreshes. Value will be -1 when frequency is not applicable, like when user has unlimited transactions.",
+                      "type": "integer"
+                    },
+                    "next_available": {
+                      "description": "tells in seconds when next transactions will become available. Value will be -1 if transactions are still remaining for the the user.",
+                      "type": "integer"
+                    }
+                  },
+                  "type": "object"
+                },
+                "remaining": {
+                  "description": "tells how many transactions are remaining for the verb. 0 means none remaining, positive integer tells the count that are remaining, -1 means unlimited transactions remaining.",
+                  "type": "integer"
+                }
+              },
+              "type": "object"
+            }
+          },
+          "type": "object"
+        },
+        "redactpdf": {
+          "description": "Limits in uber response represents the actual limits provided for user at uber level. Client can refer remaining transactions, next_available and frequency fields. Interpretation of remaining, next_available and frequency is similar to verb response.",
+          "properties": {
+            "configuration": {
+              "description": "various configurations applicable to relevant tile for the user. For example, the max_file_size field which signifies the maximum file size that is support for this tile/pdf operation. More fields wrt operation configuration can be added here as and when needed.",
+              "properties": {
+                "max_file_size": {
+                  "description": "Maximum file size supported by the operation, if applicable",
+                  "type": "integer"
+                }
+              },
+              "type": "object"
+            },
+            "limits": {
+              "description": "specifies the applicable transactions details for the user.",
+              "properties": {
+                "quota_details": {
+                  "description": "Adjacent to remaining, represents quota details including next available and applicable frequency per verb or uber level.",
+                  "properties": {
+                    "frequency": {
+                      "description": "the frequency at which quota refreshes. Value will be -1 when frequency is not applicable, like when user has unlimited transactions.",
+                      "type": "integer"
+                    },
+                    "next_available": {
+                      "description": "tells in seconds when next transactions will become available. Value will be -1 if transactions are still remaining for the the user.",
+                      "type": "integer"
+                    }
+                  },
+                  "type": "object"
+                },
+                "remaining": {
+                  "description": "tells how many transactions are remaining for the verb. 0 means none remaining, positive integer tells the count that are remaining, -1 means unlimited transactions remaining.",
+                  "type": "integer"
+                }
+              },
+              "type": "object"
+            }
+          },
+          "type": "object"
+        },
+        "reorderpages": {
+          "description": "Limits in uber response represents the actual limits provided for user at uber level. Client can refer remaining transactions, next_available and frequency fields. Interpretation of remaining, next_available and frequency is similar to verb response.",
+          "properties": {
+            "configuration": {
+              "description": "various configurations applicable to relevant tile for the user. For example, the max_file_size field which signifies the maximum file size that is support for this tile/pdf operation. More fields wrt operation configuration can be added here as and when needed.",
+              "properties": {
+                "max_file_size": {
+                  "description": "Maximum file size supported by the operation, if applicable",
+                  "type": "integer"
+                },
+                "max_number_files": {
+                  "description": "Maximum number of files supported by the operation, if applicable",
+                  "type": "integer"
+                }
+              },
+              "type": "object"
+            },
+            "limits": {
+              "description": "specifies the applicable transactions details for the user.",
+              "properties": {
+                "quota_details": {
+                  "description": "Adjacent to remaining, represents quota details including next available and applicable frequency per verb or uber level.",
+                  "properties": {
+                    "frequency": {
+                      "description": "the frequency at which quota refreshes. Value will be -1 when frequency is not applicable, like when user has unlimited transactions.",
+                      "type": "integer"
+                    },
+                    "next_available": {
+                      "description": "tells in seconds when next transactions will become available. Value will be -1 if transactions are still remaining for the the user.",
+                      "type": "integer"
+                    }
+                  },
+                  "type": "object"
+                },
+                "remaining": {
+                  "description": "tells how many transactions are remaining for the verb. 0 means none remaining, positive integer tells the count that are remaining, -1 means unlimited transactions remaining.",
+                  "type": "integer"
+                }
+              },
+              "type": "object"
+            }
+          },
+          "type": "object"
+        },
+        "rotatepages": {
+          "description": "Limits in uber response represents the actual limits provided for user at uber level. Client can refer remaining transactions, next_available and frequency fields. Interpretation of remaining, next_available and frequency is similar to verb response.",
+          "properties": {
+            "configuration": {
+              "description": "various configurations applicable to relevant tile for the user. For example, the max_file_size field which signifies the maximum file size that is support for this tile/pdf operation. More fields wrt operation configuration can be added here as and when needed.",
+              "properties": {
+                "max_file_size": {
+                  "description": "Maximum file size supported by the operation, if applicable",
+                  "type": "integer"
+                },
+                "max_number_files": {
+                  "description": "Maximum number of files supported by the operation, if applicable",
+                  "type": "integer"
+                }
+              },
+              "type": "object"
+            },
+            "limits": {
+              "description": "specifies the applicable transactions details for the user.",
+              "properties": {
+                "quota_details": {
+                  "description": "Adjacent to remaining, represents quota details including next available and applicable frequency per verb or uber level.",
+                  "properties": {
+                    "frequency": {
+                      "description": "the frequency at which quota refreshes. Value will be -1 when frequency is not applicable, like when user has unlimited transactions.",
+                      "type": "integer"
+                    },
+                    "next_available": {
+                      "description": "tells in seconds when next transactions will become available. Value will be -1 if transactions are still remaining for the the user.",
+                      "type": "integer"
+                    }
+                  },
+                  "type": "object"
+                },
+                "remaining": {
+                  "description": "tells how many transactions are remaining for the verb. 0 means none remaining, positive integer tells the count that are remaining, -1 means unlimited transactions remaining.",
+                  "type": "integer"
+                }
+              },
+              "type": "object"
+            }
+          },
+          "type": "object"
+        },
+        "splitpdf": {
+          "description": "Limits in uber response represents the actual limits provided for user at uber level. Client can refer remaining transactions, next_available and frequency fields. Interpretation of remaining, next_available and frequency is similar to verb response.",
+          "properties": {
+            "configuration": {
+              "description": "various configurations applicable to relevant tile for the user. For example, the max_file_size field which signifies the maximum file size that is support for this tile/pdf operation. More fields wrt operation configuration can be added here as and when needed.",
+              "properties": {
+                "max_file_size": {
+                  "description": "Maximum file size supported by the operation, if applicable",
+                  "type": "integer"
+                },
+                "max_split_points": {
+                  "description": "Maximum number of split points supported by the operation, if applicable",
+                  "type": "integer"
+                }
+              },
+              "type": "object"
+            },
+            "limits": {
+              "description": "specifies the applicable transactions details for the user.",
+              "properties": {
+                "quota_details": {
+                  "description": "Adjacent to remaining, represents quota details including next available and applicable frequency per verb or uber level.",
+                  "properties": {
+                    "frequency": {
+                      "description": "the frequency at which quota refreshes. Value will be -1 when frequency is not applicable, like when user has unlimited transactions.",
+                      "type": "integer"
+                    },
+                    "next_available": {
+                      "description": "tells in seconds when next transactions will become available. Value will be -1 if transactions are still remaining for the the user.",
+                      "type": "integer"
+                    }
+                  },
+                  "type": "object"
+                },
+                "remaining": {
+                  "description": "tells how many transactions are remaining for the verb. 0 means none remaining, positive integer tells the count that are remaining, -1 means unlimited transactions remaining.",
+                  "type": "integer"
+                }
+              },
+              "type": "object"
+            }
+          },
+          "type": "object"
+        },
+        "uber": {
+          "description": "Limits in uber response represents the actual limits provided for user at uber level. Client can refer remaining transactions, next_available and frequency fields.",
+          "properties": {
+            "limits": {
+              "description": "specifies the applicable transactions details for the user.",
+              "properties": {
+                "quota_details": {
+                  "description": "Adjacent to remaining, represents quota details including next available and applicable frequency per verb or uber level.",
+                  "properties": {
+                    "frequency": {
+                      "description": "the frequency at which quota refreshes. Value will be -1 when frequency is not applicable, like when user has unlimited transactions.",
+                      "type": "integer"
+                    },
+                    "next_available": {
+                      "description": "tells in seconds when next transactions will become available. Value will be -1 if transactions are still remaining for the the user.",
+                      "type": "integer"
+                    }
+                  },
+                  "type": "object"
+                },
+                "remaining": {
+                  "description": "tells how many transactions are remaining for the verb. 0 means none remaining, positive integer tells the count that are remaining, -1 means unlimited transactions remaining.",
+                  "type": "integer"
+                }
+              },
+              "type": "object"
+            }
+          },
+          "type": "object"
+        },
+        "wordtopdf": {
+          "description": "Limits in uber response represents the actual limits provided for user at uber level. Client can refer remaining transactions, next_available and frequency fields. Interpretation of remaining, next_available and frequency is similar to verb response.",
+          "properties": {
+            "configuration": {
+              "description": "various configurations applicable to relevant tile for the user. For example, the max_file_size field which signifies the maximum file size that is support for this tile/pdf operation. More fields wrt operation configuration can be added here as and when needed.",
+              "properties": {
+                "max_file_size": {
+                  "description": "Maximum file size supported by the operation, if applicable",
+                  "type": "integer"
+                }
+              },
+              "type": "object"
+            },
+            "limits": {
+              "description": "specifies the applicable transactions details for the user.",
+              "properties": {
+                "quota_details": {
+                  "description": "Adjacent to remaining, represents quota details including next available and applicable frequency per verb or uber level.",
+                  "properties": {
+                    "frequency": {
+                      "description": "the frequency at which quota refreshes. Value will be -1 when frequency is not applicable, like when user has unlimited transactions.",
+                      "type": "integer"
+                    },
+                    "next_available": {
+                      "description": "tells in seconds when next transactions will become available. Value will be -1 if transactions are still remaining for the the user.",
+                      "type": "integer"
+                    }
+                  },
+                  "type": "object"
+                },
+                "remaining": {
+                  "description": "tells how many transactions are remaining for the verb. 0 means none remaining, positive integer tells the count that are remaining, -1 means unlimited transactions remaining.",
+                  "type": "integer"
+                }
+              },
+              "type": "object"
+            }
+          },
+          "type": "object"
+        }
+      },
+      "required": [
+        "uber",
+        "createpdf",
+        "wordtopdf",
+        "ppttopdf",
+        "exceltopdf",
+        "jpgtopdf",
+        "ocrpdf",
+        "htmltopdf",
+        "organizepdf",
+        "reorderpages",
+        "deletepages",
+        "rotatepages",
+        "insertpdf",
+        "extractpages",
+        "exportpdf",
+        "pdftoimage",
+        "pdftoexcel",
+        "pdftoppt",
+        "pdftoword",
+        "combinepdf",
+        "protectpdf",
+        "compresspdf",
+        "splitpdf",
+        "editpdf",
+        "croppages",
+        "numberpages",
+        "highspeedscan",
+        "redactpdf"
+      ],
+      "type": "object"
+    },
+    "prefs/common": {
+      "description": "DC Common Preferences across clients",
+      "properties": {
+        "acroprefs": {
+          "description": "user preference to sync his acrobat  preferences",
+          "properties": {
+            "prefsync_enabled": {
+              "type": "boolean"
+            }
+          },
+          "type": "object"
+        },
+        "genai": {
+          "description": "user preference related to genAI feature",
+          "properties": {
+            "dc_consent": {
+              "description": "provides essential information about user consent",
+              "properties": {
+                "latest version": {
+                  "description": "version of the latest consent needed",
+                  "type": "string"
+                },
+                "status": {
+                  "description": "indicates the current status of user consent",
+                  "type": "boolean"
+                },
+                "version": {
+                  "description": "version of the consent data",
+                  "type": "string"
+                }
+              },
+              "type": "object"
+            }
+          },
+          "type": "object"
+        },
+        "lastToolUsed": {
+          "description": "last tool used by user",
+          "type": "string"
+        },
+        "sync_favorite_files": {
+          "description": "users pin to cloud preferences",
+          "type": "boolean"
+        }
+      },
+      "type": "object"
+    },
+    "prefs/dcweb": {
+      "description": "DC Web common preferences",
+      "properties": {
+        "fte": {
+          "description": "First Time Experience Tracking",
+          "properties": {
+            "launch_count": {
+              "default": 0,
+              "type": "number"
+            },
+            "welcome_dialog_dismissed": {
+              "default": false,
+              "type": "boolean"
+            }
+          },
+          "type": "object"
+        }
+      },
+      "type": "object"
+    },
+    "request_access": {
+      "additionalProperties": false,
+      "properties": {
+        "application_url": {
+          "description": "A link to a user experience that invokes the rule.",
+          "type": "string"
+        },
+        "authorization_rules": {
+          "description": "Auth rules for making the access requests for various apps.",
+          "items": {
+            "additionalProperties": false,
+            "properties": {
+              "app_name": {
+                "description": "Name of the app",
+                "type": "string"
+              },
+              "rule_id": {
+                "description": "Rule id to initiate request access workflow",
+                "type": "string"
+              }
+            },
+            "required": [
+              "app_name",
+              "rule_id"
+            ],
+            "type": "object"
+          },
+          "minItems": 0,
+          "type": "array"
+        },
+        "licenses_available": {
+          "description": "If user posses licenses in context of app onboarded on access platform.",
+          "type": "boolean"
+        },
+        "request_access_enabled": {
+          "description": "If the org-admin has enabled request access workflow for the users.",
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "licenses_available",
+        "request_access_enabled",
+        "application_url",
+        "authorization_rules"
+      ],
+      "type": "object"
+    },
+    "storage/document_cloud": {
+      "additionalProperties": false,
+      "properties": {
+        "encryption_key_status": {
+          "description": "An enum indicating shared cloud encryption key status. The value could be either `enabled` or `disabled`.",
+          "enum": [
+            "enabled",
+            "disabled"
+          ],
+          "type": "string"
+        },
+        "region": {
+          "description": "an enum indicating region for document cloud data storage. Currently, its value could be one of `US`, `EU`, or `AP`.",
+          "enum": [
+            "US",
+            "EU",
+            "AP"
+          ],
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "subscriptions": {
+      "additionalProperties": false,
+      "properties": {
+        "subscriptions": {
+          "items": {
+            "additionalProperties": false,
+            "properties": {
+              "billing_term": {
+                "description": "This value will not be available for document cloud offerings sold to team (CCT) and enterprise (CCE) subscriptions.",
+                "enum": [
+                  "Monthly",
+                  "AnnualBilledMonthly",
+                  "AnnualBilledAnnually"
+                ],
+                "type": "string"
+              },
+              "biz_source": {
+                "description": "The business source associated with this product purchase.",
+                "type": "string"
+              },
+              "level": {
+                "description": "The service level.  All paid products have only a 'Basic' service level.",
+                "enum": [
+                  "Free",
+                  "Basic",
+                  "Plus",
+                  "VIP"
+                ],
+                "type": "string"
+              },
+              "name": {
+                "description": "The subscription name.",
+                "enum": [
+                  "CreatePDF",
+                  "PDFPack",
+                  "ExportPDF",
+                  "Files",
+                  "DCGlobal",
+                  "DCEnterprise",
+                  "AcrobatPlus",
+                  "AcrobatStd",
+                  "SendNow",
+                  "FillAndSign",
+                  "ESign",
+                  "Review",
+                  "FormsCentral",
+                  "EditPDF",
+                  "OcrPDF",
+                  "DCLite",
+                  "ScanPlus",
+                  "AdobeScan",
+                  "GenAIServices",
+                  "PersistentChatHistory",
+                  "SecuredLinkSharing",
+                  "AcrobatDesktopMode"
+                ],
+                "type": "string"
+              },
+              "status": {
+                "description": "Account status.  Any status other than `Active` indicates that services are not available to this account.",
+                "enum": [
+                  "Active",
+                  "Suspended",
+                  "Suspended30",
+                  "Closed",
+                  "Stopped"
+                ],
+                "type": "string"
+              },
+              "sub_ref": {
+                "description": "A UUID value that allows this product to be correlated to the Adobe store API values. This will be NULL for document cloud offerings sold to team (CCT) and enterprise (CCE) subscriptions as these users are entitled by an admin and do not have subscription record associated with them.",
+                "type": "string"
+              },
+              "subscription_params": {
+                "description": "Map of additional params present for this subscription, if any.",
+                "type": "object"
+              }
+            },
+            "required": [
+              "name",
+              "level",
+              "status"
+            ],
+            "type": "object"
+          },
+          "minItems": 1,
+          "type": "array"
+        }
+      },
+      "required": [
+        "subscriptions"
+      ],
+      "type": "object"
+    },
+    "upsell": {
+      "properties": {
+        "upsell": {
+          "items": {
+            "additionalProperties": false,
+            "properties": {
+              "billing_term": {
+                "enum": [
+                  "Monthly",
+                  "AnnualBilledMonthly",
+                  "AnnualBilledAnnually"
+                ],
+                "type": "string"
+              },
+              "entitlement_name": {
+                "description": "Will match `entitlement` parameter if specified.",
+                "enum": [
+                  "can_send_to_individuals",
+                  "can_send_av",
+                  "create_pdf_conversions",
+                  "combine_pdf_conversions",
+                  "export_pdf_conversions",
+                  "export_pdf2ppt_conversions",
+                  "export_pdf2img_conversions",
+                  "acrobat_pro"
+                ],
+                "type": "string"
+              },
+              "mandatory": {
+                "description": "'true' if showing the upsell is mandatory and 'false' otherwise. For purchases, there are locations where showing multiple purchase options are mandatory. This flag will be true for those geos.",
+                "type": "boolean"
+              },
+              "purchase_sku": {
+                "description": "The purchase sku number using which a user could get to the given entitlement. his field is available for both purchase and upgrade as there were use cases where upgrade was invoked with a purchase sku and clients need to translate from a purchase sku to an upgrade sku..",
+                "type": "string"
+              },
+              "sitecatalyst_plan_code": {
+                "description": "This is the string that will be sent to sitecatalyst with the purchase/upgrade event.<br/> -> Refer to the \"In-app upgrades\" section of the SiteCatalyst Instrumentation - Plan Info wiki to get the analytics name for upgrades<br/> -> Refer to the \"<New Plan>\" row in the \"Anyware cart instrumentation\" section of SiteCatalyst Instrumentation - Page Name and Custom Variables to get the analytics name for purchases.",
+                "type": "string"
+              },
+              "subscription_name": {
+                "description": "Additional subscriptions may be added in the future.",
+                "enum": [
+                  "CreatePDF",
+                  "PDFPack",
+                  "ExportPDF",
+                  "Files",
+                  "DCGlobal",
+                  "DCEnterprise",
+                  "AcrobatPlus",
+                  "AcrobatStd",
+                  "SendNow",
+                  "FillAndSign",
+                  "ESign",
+                  "Review",
+                  "FormsCentral",
+                  "EditPDF",
+                  "OcrPDF",
+                  "DCLite",
+                  "ScanPlus",
+                  "AdobeScan",
+                  "GenAIServices",
+                  "PersistentChatHistory",
+                  "SecuredLinkSharing",
+                  "AcrobatDesktopMode"
+                ],
+                "type": "string"
+              },
+              "upgrade_sku": {
+                "description": "The upgrade sku number for this user for the given entitlement. This field is an empty string when upsell_type is purchase.",
+                "type": "string"
+              },
+              "upsell_type": {
+                "enum": [
+                  "purchase",
+                  "upgrade"
+                ],
+                "type": "string"
+              },
+              "url": {
+                "description": "URL which can be used by the client to invoke the upgrade or purchase workflow. Clients already running in the app may need to process the URL to navigate without reloading the app.",
+                "type": "string"
+              }
+            },
+            "required": [
+              "entitlement_name",
+              "upsell_type",
+              "url",
+              "subscription_name",
+              "upgrade_sku",
+              "purchase_sku",
+              "billing_term",
+              "mandatory",
+              "sitecatalyst_plan_code"
+            ],
+            "type": "object"
+          },
+          "type": "array"
+        }
+      },
+      "required": [
+        "upsell"
+      ],
+      "type": "object"
+    }
+  },
+  "type": "object"
+}

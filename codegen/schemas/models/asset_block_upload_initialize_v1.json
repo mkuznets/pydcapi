@@ -1,0 +1,84 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "properties": {
+    "_links": {
+      "additionalProperties": false,
+      "properties": {
+        "extend_link": {
+          "additionalProperties": false,
+          "description": "URL object for doing Extend call for getting more pre-signed URLs.",
+          "properties": {
+            "uri": {
+              "description": "Url for doing Extend call for getting more pre-signed URLs.",
+              "format": "uri",
+              "type": "string"
+            }
+          },
+          "required": [
+            "uri"
+          ],
+          "type": "object"
+        },
+        "finalize_link": {
+          "additionalProperties": false,
+          "description": "URL object for completing the upload.",
+          "properties": {
+            "uri": {
+              "description": "Url for completing the upload.",
+              "format": "uri",
+              "type": "string"
+            }
+          },
+          "required": [
+            "uri"
+          ],
+          "type": "object"
+        },
+        "upload_links": {
+          "description": "List of Pre-signed URLs for doing the upload for each block. The client applications should use these pre-signed URLs for doing the upload. In the finalize upload call, the client needs to return these URLs. The upload_urls which are not used by the client should be removed from the request body in the finalize call..",
+          "items": {
+            "additionalProperties": false,
+            "description": "Upload URL object for uploading each block.",
+            "properties": {
+              "uri": {
+                "description": "Pre-signed URL for the uploading each block.",
+                "format": "uri",
+                "type": "string"
+              }
+            },
+            "required": [
+              "uri"
+            ],
+            "type": "object"
+          },
+          "minItems": 1,
+          "type": "array"
+        }
+      },
+      "required": [
+        "upload_links",
+        "finalize_link",
+        "extend_link"
+      ],
+      "type": "object"
+    },
+    "block_size": {
+      "description": "Block size that the client is required to use in bytes.",
+      "type": "number"
+    },
+    "expires": {
+      "description": "Expiry time of the upload in ISO 8601 format. After this time, all the pre-signed URLs corresponding to this upload will become invalid and the content of the uploaded blocks will be deleted.",
+      "type": "string"
+    },
+    "upload_info": {
+      "description": "Encrypted upload info related to this specific upload will be returned in response which needs to be provided as input in extend and finalize calls for extending and finalizing this upload.",
+      "type": "string"
+    }
+  },
+  "required": [
+    "block_size",
+    "_links",
+    "upload_info",
+    "expires"
+  ]
+}

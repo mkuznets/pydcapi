@@ -1,0 +1,24 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "additionalProperties": false,
+  "properties": {
+    "acrobat_desktop_mode": {
+      "description": "Indicates whether the user is entitled to Acrobat Lite GenAI.",
+      "type": "string"
+    },
+    "acrobat_pro": {
+      "description": "Indicates whether the user is entitled to download/install Acrobat Pro.",
+      "type": "boolean"
+    },
+    "acrobat_std": {
+      "description": "Indicates whether the user is entitled to download/install Acrobat Standard.",
+      "type": "boolean"
+    }
+  },
+  "required": [
+    "acrobat_pro",
+    "acrobat_std",
+    "acrobat_desktop_mode"
+  ],
+  "type": "object"
+}

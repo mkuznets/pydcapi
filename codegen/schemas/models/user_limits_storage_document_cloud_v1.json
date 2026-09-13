@@ -1,0 +1,29 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "additionalProperties": false,
+  "properties": {
+    "storage_quota": {
+      "description": "The user storage quota in GB.",
+      "type": "number"
+    },
+    "storage_remaining": {
+      "description": "Space remaining in the user quota in GB (storage_quota - storage_used).",
+      "type": "number"
+    },
+    "storage_slop": {
+      "description": "The user storage slop in GB.",
+      "type": "number"
+    },
+    "storage_used": {
+      "description": "Storage charged against the user quota in GB.",
+      "type": "number"
+    }
+  },
+  "required": [
+    "storage_quota",
+    "storage_slop",
+    "storage_used",
+    "storage_remaining"
+  ],
+  "type": "object"
+}

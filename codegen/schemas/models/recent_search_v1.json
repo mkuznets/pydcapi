@@ -1,0 +1,41 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "additionalProperties": false,
+  "description": "A JSON object representing a single recent search.",
+  "properties": {
+    "created": {
+      "description": "The UNIX UTC timestamp of when the recent search was created",
+      "minimum": 0,
+      "type": "integer"
+    },
+    "uss_packet": {
+      "description": "A uss packet in JSON format.",
+      "properties": {
+        "q": {
+          "maxLength": 1024,
+          "minLength": 1,
+          "type": "string"
+        },
+        "scope": {
+          "items": {
+            "maxLength": 256,
+            "minLength": 1,
+            "type": "string"
+          },
+          "maxItems": 10,
+          "minItems": 0,
+          "type": "array"
+        }
+      },
+      "required": [
+        "q",
+        "scope"
+      ],
+      "type": "object"
+    }
+  },
+  "required": [
+    "uss_packet"
+  ],
+  "type": "object"
+}

@@ -1,0 +1,169 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "additionalProperties": false,
+  "dependencies": {
+    "bbox_page_range": {
+      "properties": {
+        "compute_bbox": {
+          "enum": [
+            true
+          ],
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "compute_bbox"
+      ]
+    },
+    "ocr_lang": {
+      "properties": {
+        "do_ocr": {
+          "enum": [
+            true
+          ],
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "do_ocr"
+      ]
+    },
+    "parent_uri": {
+      "properties": {
+        "persistence": {
+          "enum": [
+            "permanent"
+          ]
+        }
+      },
+      "required": [
+        "persistence"
+      ]
+    }
+  },
+  "properties": {
+    "asset_uri": {
+      "description": "URI identifying the Asset to convert to PDF",
+      "format": "uri",
+      "type": "string"
+    },
+    "bbox_page_range": {
+      "description": "It is the page range to generate bounding boxes. A page range in the format X (a single page) or X-Y (a range of pages). Page numbers are 1-based. A hyphen after a page number will not be considered unless followed by another page number. E.g : 2-3 is a valid page range.(when compute_bbox is true).",
+      "type": "string"
+    },
+    "compute_bbox": {
+      "default": false,
+      "description": "Whether to generate bounding boxes on the input file or not. This setting is applicable only for pdf input files.",
+      "type": "boolean"
+    },
+    "do_ocr": {
+      "default": false,
+      "description": "Whether OCR processing is performed on the input file or not. This setting is applicable only when converting image formats to PDF.",
+      "type": "boolean"
+    },
+    "markup": {
+      "default": false,
+      "description": "If specified, include comments and review markup from the source document in the PDF result. This setting only applies when converting Microsoft Word files with inline comments and markup to PDF.",
+      "type": "boolean"
+    },
+    "name": {
+      "description": "Name of the new asset. Duplicate asset name behavior can be set by on_dup_policy.",
+      "minLength": 1,
+      "type": "string"
+    },
+    "ocr_lang": {
+      "default": "en-US",
+      "description": "Locale to use for optical character recognition (when `do_ocr` is true).",
+      "enum": [
+        "da-DK",
+        "lt-LT",
+        "sl-SI",
+        "el-GR",
+        "ru-RU",
+        "en-US",
+        "zh-HK",
+        "hu-HU",
+        "et-EE",
+        "pt-BR",
+        "uk-UA",
+        "nb-NO",
+        "pl-PL",
+        "lv-LV",
+        "fi-FI",
+        "ja-JP",
+        "es-ES",
+        "bg-BG",
+        "en-GB",
+        "cs-CZ",
+        "mt-MT",
+        "de-DE",
+        "hr-HR",
+        "sk-SK",
+        "sr-SR",
+        "ca-CA",
+        "mk-MK",
+        "ko-KR",
+        "de-CH",
+        "nl-NL",
+        "zh-CN",
+        "sv-SE",
+        "it-IT",
+        "no-NO",
+        "tr-TR",
+        "fr-FR",
+        "ro-RO",
+        "iw-IL"
+      ],
+      "type": "string"
+    },
+    "ocr_type": {
+      "default": "searchable_image",
+      "description": "OCR option to use for optical character recognition (when do_ocr is true).",
+      "enum": [
+        "searchable_image",
+        "editable_text_and_images",
+        "searchable_image_exact"
+      ],
+      "type": "string"
+    },
+    "on_dup_name": {
+      "default": [
+        "auto_rename"
+      ],
+      "description": "How to handle a duplicate name conflict in target collection for output file.",
+      "enum": [
+        "error",
+        "auto_rename",
+        "overwrite"
+      ],
+      "type": "string"
+    },
+    "parent_uri": {
+      "description": "The uri of folder to put the asset in.  This parameter is relevant only for permanent assets.  If not specified, the default depends on the operation.  Conversions will be placed in the same folder as the source asset.",
+      "format": "uri",
+      "type": "string"
+    },
+    "persistence": {
+      "default": "transient",
+      "description": "Asset storage aspect as short-term transient vs. long-term permanent. \"transient\" creates an asset that will be available for several hours before being garbage collected and deleted.  For operations that convert and download immediately, \"transient\" is the appropriate choice",
+      "enum": [
+        "transient",
+        "permanent"
+      ],
+      "type": "string"
+    },
+    "tagged_pdf_format": {
+      "default": "well_tagged_pdf",
+      "description": "If specified, apply the selected type of PDF tagging. This setting applies only when converting Microsoft Word files to PDF.",
+      "enum": [
+        "fully_tagged_pdf",
+        "well_tagged_pdf"
+      ],
+      "type": "string"
+    }
+  },
+  "required": [
+    "asset_uri",
+    "name"
+  ]
+}

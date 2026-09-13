@@ -1,0 +1,41 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "additionalProperties": false,
+  "properties": {
+    "asset_uris": {
+      "description": "An array of asset uris.",
+      "items": {
+        "description": "The uri of an asset to include in the downloaded zip file.",
+        "format": "uri",
+        "type": "string"
+      },
+      "minItems": 1,
+      "type": "array"
+    },
+    "folder_uri": {
+      "description": "The uri of folder to download as a zip file.",
+      "format": "uri",
+      "type": "string"
+    },
+    "make_ticket": {
+      "default": false,
+      "description": "If true, generate a download ticket valid for 1 minute and include it in the uri.  Defaults to false.  Set true only for URLs that will be used from a web browser in cases that do not support setting an Authorization header. In all other circumstances, set false and use standard authorization.",
+      "type": "boolean"
+    },
+    "time_zone_offset_minutes": {
+      "default": 0,
+      "description": "Time zone offset, in minutes, of the client's local time from GMT (e.g. for EDT, tzo=240). If this parameter is not specified the file modification dates in the zip file will be in GMT, this parameter allows the client to get a zip file with client local time mod times.",
+      "maximum": 1440,
+      "minimum": -1440,
+      "type": "number"
+    },
+    "zip_file_name": {
+      "default": "documents.zip or the name of the folder for folders",
+      "description": "The name to give the downloaded zip file.  If not provided, the default is documents.zip for assets, or the name of the folder for folders.",
+      "minLength": 1,
+      "type": "string"
+    }
+  },
+  "title": "Parameters for zip download",
+  "type": "object"
+}

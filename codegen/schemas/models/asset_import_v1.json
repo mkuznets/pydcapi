@@ -1,0 +1,81 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "additionalProperties": false,
+  "properties": {
+    "asset_data": {
+      "additionalProperties": false,
+      "description": "Set of properties that are applicable for asset data.",
+      "properties": {
+        "name": {
+          "description": "The name for the asset. The preferred way of specifying the filename, because the encoding can be specified as utf-8 for the options part to ensure that names that aren't strict ascii are properly handled. If not present the name is taken from the filename in the Content-Disposition header of the file part.",
+          "minLength": 1,
+          "type": "string"
+        },
+        "parent_uri": {
+          "description": "The uri of folder to put the asset in.  This parameter is relevant only for permanent assets.",
+          "format": "uri",
+          "type": "string"
+        },
+        "persistence": {
+          "default": "transient",
+          "description": "Asset storage aspect as short-term transient vs. long-term permanent.",
+          "enum": [
+            "transient",
+            "permanent"
+          ],
+          "type": "string"
+        },
+        "temp_folder_urn": {
+          "description": "The id of the temp folder of a directory to put the asset in. This parameter is relevant for temp folders only.",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "external_asset_data": {
+      "additionalProperties": false,
+      "description": "Set of properties that are applicable for external asset data.",
+      "properties": {
+        "access_token": {
+          "description": "External token for 3rd party.",
+          "minLength": 1,
+          "type": "string"
+        },
+        "asset": {
+          "description": "External asset identifier.",
+          "minLength": 1,
+          "type": "string"
+        },
+        "cloud_type": {
+          "description": "External cloud type identifier for 3rd party.",
+          "enum": [
+            "DROPBOX",
+            "ONEDRIVE",
+            "GDRIVE",
+            "BOX"
+          ],
+          "type": "string"
+        },
+        "path_type": {
+          "description": "External asset identifier type.",
+          "enum": [
+            "ID",
+            "FILE_PATH",
+            "URI"
+          ],
+          "type": "string"
+        }
+      },
+      "required": [
+        "cloud_type",
+        "asset",
+        "path_type",
+        "access_token"
+      ],
+      "type": "object"
+    }
+  },
+  "required": [
+    "external_asset_data"
+  ]
+}

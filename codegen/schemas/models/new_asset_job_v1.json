@@ -1,0 +1,142 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "dependencies": {
+    "asset_result": {
+      "properties": {
+        "status": {
+          "enum": [
+            "done"
+          ]
+        }
+      }
+    },
+    "error": {
+      "properties": {
+        "status": {
+          "enum": [
+            "failed"
+          ]
+        }
+      }
+    },
+    "job_uri": {
+      "properties": {
+        "status": {
+          "enum": [
+            "queued",
+            "in progress"
+          ]
+        }
+      }
+    },
+    "multiple_asset_result": {
+      "properties": {
+        "status": {
+          "enum": [
+            "done"
+          ]
+        }
+      }
+    }
+  },
+  "properties": {
+    "asset_result": {
+      "description": "If the status is 'done', this will contain the details of the new asset",
+      "properties": {
+        "mimetype": {
+          "description": "The IANA Mime type",
+          "type": "string"
+        },
+        "name": {
+          "description": "the new asset",
+          "type": "string"
+        },
+        "uri": {
+          "description": "Asset URI reference",
+          "type": "string"
+        }
+      },
+      "required": [
+        "name",
+        "uri",
+        "mimetype"
+      ],
+      "type": "object"
+    },
+    "error": {
+      "description": "If the status is 'failed', this will contain the error details",
+      "properties": {
+        "code": {
+          "description": "**Code** | **Description** | **Affected Operations** | **Corrective Action**\n--- | --- | --- | ---\nQuotaExceeded | The operation failed because some aspect of the user quota on the relevant storage cloud was exceeded. | All | Increase quotas or reduce usage.\nCloudError | An error from the supporting cloud storage | All | Report Error to Adobe.\nUnsupportedMimeType | Input file type cannot be converted to PDF | createpdf, createpdf_from_html | Cannot convert this document.\nDocumentCorrupted | The file appears to be corrupted and cannot be converted. | exportpdf, pdf_actions | Cannot convert this document.\nPDFIsPortfolio | This file cannot be converted because it is a portfolio. | exportpdf | Extract Portfolio contents and process them individually.\nPDFNoTables | This file cannot be converted as a spreadsheet because it does not appear to contain a table. | exportpdf | Cannot convert this document.\nSourceIsEncrypted | This file is encrypted and cannot be converted. | All | Remove document encryption.\nTimeOut | This file could not be converted because it took too long to convert. | All | Simplify content.\nPDFIsEncryptedOrForm | Source PDF is either encrypted or is a Form | exportpdf, combinedpdf | Remove document encryption or flatten the XFA Form.\nPDFPolicyProtected | Source PDF is policy protected and cannot be opened. | exportpdf, pdf_actions | Remove Policy protection.\nUnknown | An unknown conversion error has occurred.  Please report the error details. | All | Document cannot be converted. Report Error to Adobe.\nSourceIsEmpty | The file being converted was a zero length file. | All  | Cannot convert this document.\nSourceTooLarge  | The file being converted was greater than 100 MB in size.  | All | Cannot convert this document.\nInvalidPageRange | The page range specified for combine was invalid. Either invalid range syntax, bad page references, or results in a PDF with too many pages relative to the input PDF(s). | exportpdf, pdf_actions | Fix input parameters.\nGeneralFormError | Error processing a Form File. | Form processing | Cannot convert this document.\nPDFIsCertified | PDF cannot be processed due to document certification. | pdf_actions, exportpdf | Remove document certification.\nPDFIsXFAForm | PDF cannot be processed because it is XFA-based. | pdf_actions, exportpdf  | Flatten the XFA-PDF to a regular PDF file.\nInvalidHTMLInput | Cannot create PDF from the provided HTML. | createpdf_from_html  | Look at the message for hints on how to correct the HTML zip package.\nMaxPagesSupported | This request has exceeded the maximum number of pages | createpdf, pdf_actions | Use file with less than 100 pages.\nFileCountLimitExceeded | This request has exceeded the maximum number of files that can be combined | pdf_actions | Use multiple requests to combine large numbers of files.\nInputMustBePDF | Input file(s) for this request must have a mime type: application/pdf | pdf_actions, exportpdf | Convert file(s) to PDF before attempting this operation.\nInvalidDestination | This asset cannot be exported to the specified desitnation provider. | export | Check discovery.source_options for allowed destinations.\nInvalidAssetOrigins | Unable to mix assets from multiple origins. | pdf_actions, export | Only perform operations with assets from the same origin.\nExternalAssetError | Unable to complete the request operation with the specified external asset(s). | All | Review error message for details on the external asset failure.\nDuplicateName | You can't have two things with the same name in the same folder. | All | Use a different name.\nFileNotQualified | This PDF file will not convert well into fully taggged pdf | pdf_actions | View file in classic view \nIncompatibleClientVersion | The version specified in the client_version field is not supported by the server. | pdf_actions | Render file in classic view and, optionally, prompt user to upgrade client software.\nUserPasswordLengthExceeded | User password too long | pdf_actions | Keep password length less than 128 characters.\nOwnerPasswordLengthExceeded | Owner password too long. | pdf_actions | Keep password length less than 128 characters.\nInvalidPermission | The document access permission is either invalid or not supported. | pdf_actions | Use valid values for permissions.\t\nInvalidContentToEncrypt | Specified content encryption setting is invalid. | pdf_actions | Use a valid type for the content to encrypt.\nInvalidEncryptionAlgorithm | Encryption algorithm is either invalid or not supported. | pdf_actions | Use a valid encryption algorithm.\nSameUserAndOwnerPassword | User and owner password can not be same. | pdf_actions | Provide different values for user and owner passwords.\nPDFIsSignedOrCertified| \tSource PDF file is either digitally signed or protected by a certificate.| \tpdf_actions | \tRemove digital signatures.\nPDFHasFileAttachments| \tPDF document containing file attachments is not supported.| \tpdf_actions |  Remove file attachments.\nPDFIsNotPasswordProtected| \tSource PDF file is not password protected.| \tpdf_actions | Cannot remove security from this document.\nInvalidPassword| \tThe password is not authorized to remove the security.| \tpdf_actions | Provide valid password.\nInvalidSplitParams| Zero or more than one params provided for splitting PDF document. |  splitpdf | Provide valid params.\nInvalidSplitPageRanges | The page range specified for split was invalid. | splitpdf | Fix input parameters.\nMaxOutputFilesSupported | The input PDF cannot be split into more than 20 output PDFs. | splitpdf | Reduce the number of split points.\n",
+          "type": "string"
+        },
+        "message": {
+          "description": "An English language string that contains more information about the error. This is not intended as information to be presented to an end user, but will instead be helpful for logging and debugging.",
+          "type": "string"
+        },
+        "status": {
+          "description": "The http status code.",
+          "type": "integer"
+        }
+      },
+      "required": [
+        "code",
+        "message"
+      ],
+      "type": "object"
+    },
+    "job_uri": {
+      "description": "If the job state is either 'queued' or 'in progress', use this URI to poll for completion.  Note that this method should be called only after the interval specified in: retry_interval",
+      "format": "uri",
+      "type": "string"
+    },
+    "multiple_asset_result": {
+      "description": "If the status is 'done', this will contain the details of the new assets list",
+      "items": {
+        "additionalProperties": false,
+        "properties": {
+          "mimetype": {
+            "description": "The IANA Mime type",
+            "type": "string"
+          },
+          "name": {
+            "description": "the new asset",
+            "type": "string"
+          },
+          "uri": {
+            "description": "Asset URI reference",
+            "type": "string"
+          }
+        },
+        "required": [
+          "name",
+          "uri",
+          "mimetype"
+        ],
+        "type": "object"
+      },
+      "type": "array"
+    },
+    "progress": {
+      "description": "A value from zero to one hundred indicating the job completion progress",
+      "type": "number"
+    },
+    "retry_interval": {
+      "description": "If the status is 'queued' or 'in progress' this specifies the number of milliseconds to wait before re-querying the job status",
+      "type": "integer"
+    },
+    "status": {
+      "description": "job status",
+      "enum": [
+        "done",
+        "queued",
+        "in progress",
+        "failed"
+      ],
+      "type": "string"
+    }
+  },
+  "required": [
+    "status"
+  ]
+}

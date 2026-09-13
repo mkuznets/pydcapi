@@ -1,0 +1,121 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "properties": {
+    "cas_responses": {
+      "items": {
+        "properties": {
+          "analyzer_id": {
+            "description": "Unique service ID, also known as Analyzer ID",
+            "type": "string"
+          },
+          "result": {
+            "properties": {
+              "response": {
+                "items": {
+                  "properties": {
+                    "_comment": {
+                      "description": "",
+                      "type": "string"
+                    },
+                    "classification": {
+                      "items": {
+                        "properties": {
+                          "classification_entries": {
+                            "items": {
+                              "properties": {
+                                "_comment": {
+                                  "type": "string"
+                                },
+                                "class_label": {
+                                  "type": "string"
+                                },
+                                "score": {
+                                  "format": "float",
+                                  "type": "number"
+                                }
+                              },
+                              "type": "object"
+                            },
+                            "type": "array"
+                          }
+                        },
+                        "type": "object"
+                      },
+                      "type": "array"
+                    },
+                    "location": {
+                      "properties": {
+                        "polygon": {
+                          "properties": {
+                            "coordList": {
+                              "items": {
+                                "properties": {
+                                  "x": {
+                                    "format": "float",
+                                    "type": "number"
+                                  },
+                                  "y": {
+                                    "format": "float",
+                                    "type": "number"
+                                  }
+                                },
+                                "type": "object"
+                              },
+                              "type": "array"
+                            }
+                          },
+                          "type": "object"
+                        }
+                      },
+                      "type": "object"
+                    },
+                    "meta_info": {
+                      "properties": {
+                        "page_number": {
+                          "type": "number"
+                        },
+                        "type": {
+                          "type": "string"
+                        }
+                      },
+                      "type": "object"
+                    }
+                  },
+                  "type": "object"
+                },
+                "type": "array"
+              },
+              "response_type": {
+                "description": "ANNOTATION",
+                "type": "string"
+              }
+            },
+            "type": "object"
+          },
+          "status": {
+            "description": "Status code for the response",
+            "type": "integer"
+          }
+        },
+        "type": "object"
+      },
+      "type": "array"
+    },
+    "content_id": {
+      "description": "A string that identifies the request; if the request included the content_id field, the response will have that value as well.  Otherwise, it will be the URL or file name of the input image",
+      "type": "string"
+    },
+    "error": {
+      "items": {
+        "type": "object"
+      },
+      "type": "array"
+    },
+    "status": {
+      "description": "HTTP response status code",
+      "type": "integer"
+    }
+  },
+  "title": "Sensei Tag Pdf Response Format",
+  "type": "object"
+}

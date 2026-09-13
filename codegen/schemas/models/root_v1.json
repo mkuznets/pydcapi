@@ -1,0 +1,18 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "properties": {
+    "folder_id": {
+      "description": "The folder id (in URN form).",
+      "type": "string"
+    },
+    "root_uri": {
+      "description": "The URI of the root folder.",
+      "format": "uri",
+      "type": "string"
+    }
+  },
+  "required": [
+    "root_uri",
+    "folder_id"
+  ]
+}

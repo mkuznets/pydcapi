@@ -1,0 +1,53 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "properties": {
+    "document_rendition_status": {
+      "description": "status of each type of document rendition - ftpdf, jcos and owp",
+      "properties": {
+        "ftpdf": {
+          "description": "FTPDF document rendition status:\n  * \"not_started\" - Rendition generation process has not yet started\n  * \"in_progress\" - Rendition generation process is in progress\n  * \"failed\" - Rendition generation has failed because requested rendition cannot be generated for this document\n  * \"eligible\" - Document is eligible/qualified for that rendition\n  * \"not_eligible\" - Document is not eligible/qualified for that rendition\n  * \"original\" - Original document is already in the requested format\n  * \"available\" - Requested rendition format is now available\n",
+          "enum": [
+            "not_started",
+            "in_progress",
+            "failed",
+            "eligible",
+            "not_eligible",
+            "original",
+            "available"
+          ],
+          "type": "string"
+        },
+        "jcos": {
+          "description": "jCOS document rendition status:\n  * \"not_started\" - Rendition generation process has not yet started\n  * \"in_progress\" - Rendition generation process is in progress\n  * \"failed\" - Rendition generation has failed because requested rendition cannot be generated for this document\n  * \"eligible\" - Document is eligible/qualified for that rendition\n  * \"not_eligible\" - Document is not eligible/qualified for that rendition\n  * \"original\" - Original document is already in the requested format\n  * \"available\" - Requested rendition format is now available\n",
+          "enum": [
+            "not_started",
+            "in_progress",
+            "failed",
+            "eligible",
+            "not_eligible",
+            "original",
+            "available"
+          ],
+          "type": "string"
+        },
+        "owp": {
+          "description": "OWP document rendition status:\n  * \"not_started\" - Rendition generation process has not yet started\n  * \"in_progress\" - Rendition generation process is in progress\n  * \"failed\" - Rendition generation has failed because requested rendition cannot be generated for this document\n  * \"eligible\" - Document is eligible/qualified for that rendition\n  * \"not_eligible\" - Document is not eligible/qualified for that rendition\n  * \"original\" - Original document is already in the requested format\n  * \"available\" - Requested rendition format is now available\n",
+          "enum": [
+            "not_started",
+            "in_progress",
+            "failed",
+            "eligible",
+            "not_eligible",
+            "original",
+            "available"
+          ],
+          "type": "string"
+        }
+      },
+      "type": "object"
+    }
+  },
+  "required": [
+    "document_rendition_status"
+  ]
+}

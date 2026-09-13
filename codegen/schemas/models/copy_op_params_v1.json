@@ -1,0 +1,44 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "additionalProperties": false,
+  "properties": {
+    "source": {
+      "additionalProperties": false,
+      "description": "The thing to copy.",
+      "properties": {
+        "asset_uri": {
+          "description": "The uri of the asset to copy.",
+          "format": "uri",
+          "type": "string"
+        }
+      },
+      "required": [
+        "asset_uri"
+      ],
+      "type": "object"
+    },
+    "target": {
+      "additionalProperties": false,
+      "description": "Where to copy it to.",
+      "properties": {
+        "name": {
+          "description": "If present, the new name for the asset.",
+          "minLength": 1,
+          "type": "string"
+        },
+        "parent_uri": {
+          "description": "If present, the uri of the folder to copy this asset into.",
+          "format": "uri",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    }
+  },
+  "required": [
+    "source",
+    "target"
+  ],
+  "title": "Operation parameters schema",
+  "type": "object"
+}

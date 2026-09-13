@@ -1,0 +1,56 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "description": "Object consisting of patch instructions for a field of metadata",
+  "minProperties": 1,
+  "properties": {
+    "custom_tags": {
+      "description": "An array of patch instructions to modify the tags metadata field.",
+      "items": {
+        "description": "A patch op",
+        "properties": {
+          "op": {
+            "description": "Wether to insert or delete the specified value from the tags array.",
+            "enum": [
+              "insert",
+              "delete"
+            ],
+            "type": "string"
+          },
+          "value": {
+            "description": "A short user defined tag value to insert or delete.",
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
+      "maxItems": 10,
+      "minItems": 1,
+      "type": "array"
+    },
+    "tags": {
+      "description": "An array of patch instructions to modify the tags metadata field.",
+      "items": {
+        "description": "A patch op",
+        "properties": {
+          "op": {
+            "description": "Wether to insert or delete the specified value from the tags array.",
+            "enum": [
+              "insert",
+              "delete"
+            ],
+            "type": "string"
+          },
+          "value": {
+            "description": "A short user defined tag value to insert or delete.",
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
+      "maxItems": 10,
+      "minItems": 1,
+      "type": "array"
+    }
+  },
+  "type": "object"
+}

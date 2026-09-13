@@ -1,0 +1,31 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "additionalProperties": false,
+  "properties": {
+    "code": {
+      "description": "Authorization code recieved after OAuth URL redirection.",
+      "type": "string"
+    },
+    "connectorData": {
+      "description": "Stringified JSON data representing connector preferences to be stored in db.",
+      "type": "string"
+    },
+    "connectorType": {
+      "description": "Identifier for Connector class.",
+      "enum": [
+        "Teams",
+        "OneDrive",
+        "SharePoint",
+        "GDrive",
+        "Box",
+        "DropBox"
+      ],
+      "type": "string"
+    }
+  },
+  "required": [
+    "code",
+    "connectorType"
+  ],
+  "title": "Connector link request parameters schema"
+}

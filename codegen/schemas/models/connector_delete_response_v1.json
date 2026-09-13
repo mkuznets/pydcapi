@@ -1,0 +1,14 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "additionalProperties": false,
+  "properties": {
+    "success": {
+      "description": "Connector unlinking success response.",
+      "type": "boolean"
+    }
+  },
+  "required": [
+    "success"
+  ],
+  "title": "Connector Delete Response"
+}

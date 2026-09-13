@@ -1,0 +1,27 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "additionalProperties": false,
+  "properties": {
+    "esign_access": {
+      "description": " * `no_access` - User does not have access to Echosign. This represents a new user to Echosign.\n* `read_only` - User can read his contracts but cannot use any paid functionality like sending contracts. This represents a user who had Echosign at some point but has cancelled his subscription or allowed it to expire.\n* `pro` - User has individual offering with no team management features.\n* `team` - (tentative, pending review) User is part of a team where an admin can do basic customizations like branding.\n* `enterprise` - User has extended team offering that enables creation of groups and allows the admin to configure an extensive list of settings per group.\n* `global` - User has the most advanced team offering and provides access to advanced services like customized workflows.",
+      "enum": [
+        "no_access",
+        "read_only",
+        "pro",
+        "team",
+        "enterprise",
+        "global"
+      ],
+      "type": "string"
+    },
+    "legal_templates_access": {
+      "description": " *  `true` - The user can create customisable legal agreements.\n*  `false` - The user does not have access to create customisable legal agreements.",
+      "type": "boolean"
+    }
+  },
+  "required": [
+    "esign_access",
+    "legal_templates_access"
+  ],
+  "type": "object"
+}

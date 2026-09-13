@@ -1,0 +1,14 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "additionalProperties": false,
+  "properties": {
+    "access": {
+      "description": "If false, then the user does not have access to any PDF services. If true, then the user has access to some set of PDF services. Use other limits APIs to confirm which specific services.  e.g. /limits/conversions",
+      "type": "boolean"
+    }
+  },
+  "required": [
+    "access"
+  ],
+  "type": "object"
+}

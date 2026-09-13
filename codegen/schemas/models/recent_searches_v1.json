@@ -1,0 +1,55 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "description": "Returns a list of up to 25 of the most recently used searches in JSON format.",
+  "properties": {
+    "recent_searches": {
+      "description": "An array of USS packets along with their timestamps.",
+      "items": {
+        "description": "USS packets in JSON format along with their UNIX UTC created timestamp.",
+        "properties": {
+          "created": {
+            "description": "The UNIX UTC timestamp of when the recent search was created",
+            "minimum": 0,
+            "type": "integer"
+          },
+          "uss_packet": {
+            "description": "A uss packet in JSON format.",
+            "properties": {
+              "q": {
+                "maxLength": 1024,
+                "minLength": 1,
+                "type": "string"
+              },
+              "scope": {
+                "items": {
+                  "maxLength": 256,
+                  "minLength": 1,
+                  "type": "string"
+                },
+                "maxItems": 10,
+                "minItems": 0,
+                "type": "array"
+              }
+            },
+            "required": [
+              "q",
+              "scope"
+            ],
+            "type": "object"
+          }
+        },
+        "required": [
+          "uss_packet"
+        ],
+        "type": "object"
+      },
+      "maxItems": 25,
+      "minItems": 0,
+      "type": "array"
+    }
+  },
+  "required": [
+    "recent_searches"
+  ],
+  "type": "object"
+}

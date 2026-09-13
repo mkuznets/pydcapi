@@ -1,0 +1,61 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "additionalProperties": false,
+  "properties": {
+    "on_dup_name": {
+      "default": "error",
+      "description": "How to handle a duplicate name.",
+      "enum": [
+        "error",
+        "auto_rename"
+      ],
+      "type": "string"
+    },
+    "source": {
+      "additionalProperties": false,
+      "description": "The thing to move.",
+      "properties": {
+        "object_uri": {
+          "description": "The uri of object (asset or folder) to move.",
+          "format": "uri",
+          "type": "string"
+        },
+        "object_uris": {
+          "description": "An array of uris of assets and/or folders to move.",
+          "items": {
+            "description": "The uri of an asset or folder to move.",
+            "format": "uri",
+            "type": "string"
+          },
+          "maxItems": 200,
+          "minItems": 1,
+          "type": "array"
+        }
+      },
+      "type": "object"
+    },
+    "target": {
+      "additionalProperties": false,
+      "description": "Where to move it to.",
+      "properties": {
+        "name": {
+          "description": "If present, the new name for the object.",
+          "minLength": 1,
+          "type": "string"
+        },
+        "parent_uri": {
+          "description": "If present, the uri of the folder to move this object into.",
+          "format": "uri",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    }
+  },
+  "required": [
+    "source",
+    "target"
+  ],
+  "title": "Operation parameters schema",
+  "type": "object"
+}

@@ -1,0 +1,48 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "additionalProperties": false,
+  "properties": {
+    "file_formats": {
+      "description": "List of supported file types that can be used to create a form",
+      "items": {
+        "additionalProperties": {
+          "properties": {
+            "analytic_type": {
+              "type": "string"
+            },
+            "mime_type": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "mime_type",
+            "analytic_type"
+          ],
+          "type": "object"
+        },
+        "type": "object"
+      },
+      "minItems": 1,
+      "type": "array"
+    },
+    "max_file_size": {
+      "description": "Maximum allowed file size in bytes that can be used to create a form",
+      "type": "integer"
+    },
+    "max_num_of_fields": {
+      "description": "Maximum allowed number of fields per page",
+      "type": "integer"
+    },
+    "max_num_of_pages": {
+      "description": "Maximum allowed number of pages in PDF that can be used to create a form",
+      "type": "integer"
+    }
+  },
+  "required": [
+    "file_formats",
+    "max_file_size",
+    "max_num_of_fields",
+    "max_num_of_pages"
+  ],
+  "type": "object"
+}

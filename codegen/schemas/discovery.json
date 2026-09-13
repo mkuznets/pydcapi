@@ -1,0 +1,4425 @@
+{
+  "acpc_temp_folder_details": {
+    "links": {
+      "http://ns.adobe.com/adobecloud/rel/block/init": [
+        {
+          "additionalFields": {
+            "repo:maxSingleTransferSize": 10485760,
+            "repo:minBlockTransferSize": 1
+          },
+          "href": "https://platform-cs-edge-irl1.adobe.io/content/storage/id/urn:aaid:sc:EU:14dabcae-3fde-5566-b4fe-96a26060667d/:block_upload",
+          "mode": "id",
+          "templated": false
+        },
+        {
+          "additionalFields": {
+            "repo:maxSingleTransferSize": 10485760,
+            "repo:minBlockTransferSize": 1
+          },
+          "href": "https://platform-cs-edge-irl1.adobe.io/content/storage/path/urn:aaid:sc:EU:14dabcae-3fde-5566-b4fe-96a26060667d/:block_upload",
+          "mode": "path",
+          "templated": false
+        }
+      ],
+      "http://ns.adobe.com/adobecloud/rel/create": [
+        {
+          "additionalFields": {
+            "repo:maxSingleTransferSize": 10485760,
+            "repo:minBlockTransferSize": 1
+          },
+          "href": "https://platform-cs-edge-irl1.adobe.io/content/storage/id/urn:aaid:sc:EU:14dabcae-3fde-5566-b4fe-96a26060667d/:create{?path,intermediates,nameConflictPolicy,respondWith,repoMetaPatch*,create_alternate,versionHistoryPatch*}",
+          "mode": "id",
+          "templated": true
+        },
+        {
+          "additionalFields": {
+            "repo:maxSingleTransferSize": 10485760,
+            "repo:minBlockTransferSize": 1
+          },
+          "href": "https://platform-cs-edge-irl1.adobe.io/content/storage/path/urn:aaid:sc:EU:14dabcae-3fde-5566-b4fe-96a26060667d/:create{?path,intermediates,nameConflictPolicy,respondWith,repoMetaPatch*,create_alternate,versionHistoryPatch*}",
+          "mode": "path",
+          "templated": true
+        }
+      ]
+    },
+    "path": "/temp"
+  },
+  "expiry": 420000024,
+  "resources": {
+    "asset_transfer": {
+      "authorize_upload": {
+        "accept": {
+          "authorize_upload_v1.json": "application/vnd.adobe.dc+json;profile=\"https://dc-api-v2.adobe.io/schemas/authorize_upload_v1.json\""
+        },
+        "authentication": [
+          "auth_header_primary"
+        ],
+        "content_type": {
+          "application/json": "application/json"
+        },
+        "http_method": "POST",
+        "resource_parameter": {
+          "name": "asset_transfer_uri",
+          "type": "string"
+        },
+        "uri": "{+asset_transfer_uri}/session/{session_id}/authorize",
+        "uri_parameters": [
+          {
+            "name": "session_id",
+            "type": "string"
+          }
+        ]
+      },
+      "create_session": {
+        "accept": {
+          "create_session_v1.json": "application/vnd.adobe.dc+json;profile=\"https://dc-api-v2.adobe.io/schemas/create_session_v1.json\""
+        },
+        "authentication": [
+          "auth_header_primary"
+        ],
+        "content_type": {
+          "application/json": "application/json"
+        },
+        "http_method": "POST",
+        "resource_parameter": {
+          "name": "asset_transfer_uri",
+          "type": "string"
+        },
+        "uri": "{+asset_transfer_uri}/sessions",
+        "uri_parameters": []
+      },
+      "finalize_upload": {
+        "accept": {
+          "finalize_upload_v1.json": "application/vnd.adobe.dc+json;profile=\"https://dc-api-v2.adobe.io/schemas/finalize_upload_v1.json\""
+        },
+        "authentication": [
+          "auth_header_primary"
+        ],
+        "content_type": {
+          "application/json": "application/json"
+        },
+        "http_method": "POST",
+        "resource_parameter": {
+          "name": "asset_transfer_uri",
+          "type": "string"
+        },
+        "uri": "{+asset_transfer_uri}/session/{session_id}/finalize",
+        "uri_parameters": [
+          {
+            "name": "session_id",
+            "type": "string"
+          }
+        ]
+      },
+      "invalidate_session": {
+        "accept": {},
+        "authentication": [
+          "auth_header_primary"
+        ],
+        "content_type": {},
+        "http_method": "POST",
+        "resource_parameter": {
+          "name": "asset_transfer_uri",
+          "type": "string"
+        },
+        "uri": "{+asset_transfer_uri}/session/{session_id}/invalidate",
+        "uri_parameters": [
+          {
+            "name": "session_id",
+            "type": "string"
+          }
+        ]
+      },
+      "unauthorize_session": {
+        "accept": {},
+        "authentication": [
+          "auth_header_primary"
+        ],
+        "content_type": {},
+        "http_method": "POST",
+        "resource_parameter": {
+          "name": "asset_transfer_uri",
+          "type": "string"
+        },
+        "uri": "{+asset_transfer_uri}/session/{session_id}/unauthorize",
+        "uri_parameters": [
+          {
+            "name": "session_id",
+            "type": "string"
+          }
+        ]
+      }
+    },
+    "assets": {
+      "authorize_client_verb": {
+        "accept": {
+          "application/json": "application/json"
+        },
+        "authentication": [
+          "auth_header_primary"
+        ],
+        "content_type": {
+          "authorize_client_verb_v1.json": "application/vnd.adobe.dc+json;profile=\"https://dc-api-v2.adobe.io/schemas/authorize_client_verb_v1.json\""
+        },
+        "http_method": "PUT",
+        "uri": "https://dc-api-v2.adobe.io/420000024/assets/authorize/client/verb"
+      },
+      "block_upload_extend": {
+        "accept": {
+          "asset_block_upload_extend_v1.json": "application/vnd.adobe.dc+json;profile=\"https://dc-api-v2.adobe.io/schemas/asset_block_upload_extend_v1.json\""
+        },
+        "authentication": [
+          "auth_header_primary"
+        ],
+        "content_type": {
+          "asset_block_upload_extend_parameters_v1.json": "application/vnd.adobe.dc+json;profile=\"https://dc-api-v2.adobe.io/schemas/asset_block_upload_extend_parameters_v1.json\""
+        },
+        "http_method": "PUT",
+        "resource_parameter": {
+          "name": "asset_block_upload_extend_uri",
+          "type": "string"
+        },
+        "uri": "{+asset_block_upload_extend_uri}"
+      },
+      "block_upload_finalize": {
+        "accept": {
+          "asset_block_upload_finalize_v1.json": "application/vnd.adobe.dc+json;profile=\"https://dc-api-v2.adobe.io/schemas/asset_block_upload_finalize_v1.json\""
+        },
+        "authentication": [
+          "auth_header_primary"
+        ],
+        "content_type": {
+          "asset_block_upload_finalize_parameters_v1.json": "application/vnd.adobe.dc+json;profile=\"https://dc-api-v2.adobe.io/schemas/asset_block_upload_finalize_parameters_v1.json\""
+        },
+        "http_method": "PUT",
+        "resource_parameter": {
+          "name": "asset_block_upload_finalize_uri",
+          "type": "string"
+        },
+        "uri": "{+asset_block_upload_finalize_uri}"
+      },
+      "block_upload_initialize": {
+        "accept": {
+          "asset_block_upload_initialize_v1.json": "application/vnd.adobe.dc+json;profile=\"https://dc-api-v2.adobe.io/schemas/asset_block_upload_initialize_v1.json\""
+        },
+        "authentication": [
+          "auth_header_primary"
+        ],
+        "content_type": {
+          "asset_block_upload_initialize_parameters_v1.json": "application/vnd.adobe.dc+json;profile=\"https://dc-api-v2.adobe.io/schemas/asset_block_upload_initialize_parameters_v1.json\""
+        },
+        "http_method": "POST",
+        "uri": "https://dc-api-v2.adobe.io/420000024/assets/block_upload/initialize"
+      },
+      "compute_content_bboxes": {
+        "accept": {
+          "compute_content_bboxes_job_v1.json": "application/vnd.adobe.dc+json;profile=\"https://dc-api-v2.adobe.io/schemas/compute_content_bboxes_job_v1.json\""
+        },
+        "authentication": [
+          "auth_header_primary"
+        ],
+        "content_type": {
+          "compute_content_bboxes_parameters_v1.json": "application/vnd.adobe.dc+json;profile=\"https://dc-api-v2.adobe.io/schemas/compute_content_bboxes_parameters_v1.json\""
+        },
+        "http_method": "POST",
+        "uri": "https://dc-api-v2.adobe.io/420000024/assets?operation=compute_content_bboxes"
+      },
+      "createexpress_from_html": {
+        "accept": {
+          "new_asset_job_v1.json": "application/vnd.adobe.dc+json;profile=\"https://dc-api-v2.adobe.io/schemas/new_asset_job_v1.json\""
+        },
+        "authentication": [
+          "auth_header_primary"
+        ],
+        "content_type": {
+          "createexpress_from_html_parameters_v1.json": "application/vnd.adobe.dc+json;profile=\"https://dc-api-v2.adobe.io/schemas/createexpress_from_html_parameters_v1.json\""
+        },
+        "http_method": "POST",
+        "uri": "https://dc-api-v2.adobe.io/420000024/assets?operation=createexpress_from_html"
+      },
+      "createpdf": {
+        "accept": {
+          "new_asset_job_v1.json": "application/vnd.adobe.dc+json;profile=\"https://dc-api-v2.adobe.io/schemas/new_asset_job_v1.json\""
+        },
+        "authentication": [
+          "auth_header_primary"
+        ],
+        "content_type": {
+          "createpdf_parameters_v1.json": "application/vnd.adobe.dc+json;profile=\"https://dc-api-v2.adobe.io/schemas/createpdf_parameters_v1.json\""
+        },
+        "http_method": "POST",
+        "uri": "https://dc-api-v2.adobe.io/420000024/assets?operation=createpdf"
+      },
+      "createpdf_from_html": {
+        "accept": {
+          "new_asset_job_v1.json": "application/vnd.adobe.dc+json;profile=\"https://dc-api-v2.adobe.io/schemas/new_asset_job_v1.json\""
+        },
+        "authentication": [
+          "auth_header_primary"
+        ],
+        "content_type": {
+          "createpdf_from_html_parameters_v1.json": "application/vnd.adobe.dc+json;profile=\"https://dc-api-v2.adobe.io/schemas/createpdf_from_html_parameters_v1.json\""
+        },
+        "http_method": "POST",
+        "uri": "https://dc-api-v2.adobe.io/420000024/assets?operation=createpdf_from_html"
+      },
+      "createppt_from_html": {
+        "accept": {
+          "new_asset_job_v1.json": "application/vnd.adobe.dc+json;profile=\"https://dc-api-v2.adobe.io/schemas/new_asset_job_v1.json\""
+        },
+        "authentication": [
+          "auth_header_primary"
+        ],
+        "content_type": {
+          "createppt_from_html_parameters_v1.json": "application/vnd.adobe.dc+json;profile=\"https://dc-api-v2.adobe.io/schemas/createppt_from_html_parameters_v1.json\""
+        },
+        "http_method": "POST",
+        "uri": "https://dc-api-v2.adobe.io/420000024/assets?operation=createppt_from_html"
+      },
+      "delete": {
+        "accept": {},
+        "authentication": [
+          "auth_header_primary"
+        ],
+        "content_type": {},
+        "http_method": "DELETE",
+        "resource_parameter": {
+          "name": "asset_uri",
+          "type": "string"
+        },
+        "uri": "{+asset_uri}"
+      },
+      "delete_metadata_field": {
+        "accept": {},
+        "authentication": [
+          "auth_header_primary"
+        ],
+        "content_type": {},
+        "http_method": "DELETE",
+        "resource_parameter": {
+          "name": "asset_uri",
+          "type": "string"
+        },
+        "uri": "{+asset_uri}/metadata{/fields}",
+        "uri_parameters": [
+          {
+            "enum": [
+              "last_access"
+            ],
+            "name": "fields",
+            "type": "string"
+          }
+        ]
+      },
+      "document_rendition": {
+        "accept": {
+          "*/*": "*/*",
+          "application/cbor": "application/cbor",
+          "application/json": "application/json",
+          "application/octet-stream": "application/octet-stream",
+          "application/pdf": "application/pdf",
+          "text/html": "text/html"
+        },
+        "authentication": [
+          "auth_header_primary",
+          "ticket"
+        ],
+        "content_type": {},
+        "http_method": "GET",
+        "resource_parameter": {
+          "name": "asset_rendition_uri",
+          "type": "string"
+        },
+        "uri": "{+asset_rendition_uri}{&format,fallback}",
+        "uri_parameters": [
+          {
+            "enum": [
+              "ftpdf",
+              "jcos",
+              "owp"
+            ],
+            "name": "format",
+            "type": "string"
+          },
+          {
+            "default": "original",
+            "enum": [
+              "original",
+              "none"
+            ],
+            "name": "fallback",
+            "type": "string"
+          }
+        ]
+      },
+      "document_rendition_status": {
+        "accept": {
+          "asset_document_rendition_status_v1.json": "application/vnd.adobe.dc+json;profile=\"https://dc-api-v2.adobe.io/schemas/asset_document_rendition_status_v1.json\""
+        },
+        "authentication": [
+          "auth_header_primary"
+        ],
+        "content_type": {},
+        "http_method": "GET",
+        "resource_parameter": {
+          "name": "asset_uri",
+          "type": "string"
+        },
+        "uri": "{+asset_uri}/document/rendition/status"
+      },
+      "download": {
+        "accept": {},
+        "authentication": [
+          "auth_header_primary",
+          "ticket"
+        ],
+        "content_type": {},
+        "http_method": "GET",
+        "resource_parameter": {
+          "name": "asset_download_uri",
+          "type": "string"
+        },
+        "uri": "{+asset_download_uri}"
+      },
+      "download_uri": {
+        "accept": {
+          "asset_uri_download_v1.json": "application/vnd.adobe.dc+json;profile=\"https://dc-api-v2.adobe.io/schemas/asset_uri_download_v1.json\""
+        },
+        "authentication": [
+          "auth_header_primary"
+        ],
+        "content_type": {},
+        "http_method": "GET",
+        "resource_parameter": {
+          "name": "asset_uri",
+          "type": "string"
+        },
+        "uri": "{+asset_uri}/uri/download{?make_ticket,make_direct_storage_uri}",
+        "uri_parameters": [
+          {
+            "default": false,
+            "name": "make_ticket",
+            "type": "boolean"
+          },
+          {
+            "default": false,
+            "name": "make_direct_storage_uri",
+            "type": "boolean"
+          }
+        ]
+      },
+      "export": {
+        "accept": {
+          "new_asset_job_v1.json": "application/vnd.adobe.dc+json;profile=\"https://dc-api-v2.adobe.io/schemas/new_asset_job_v1.json\""
+        },
+        "authentication": [
+          "auth_header_primary"
+        ],
+        "content_type": {
+          "asset_export_v1.json": "application/vnd.adobe.dc+json;profile=\"https://dc-api-v2.adobe.io/schemas/asset_export_v1.json\""
+        },
+        "http_method": "POST",
+        "resource_parameter": {
+          "name": "export_uri",
+          "type": "string"
+        },
+        "uri": "{+export_uri}"
+      },
+      "exportnotedoc": {
+        "accept": {
+          "new_asset_job_v1.json": "application/vnd.adobe.dc+json;profile=\"https://dc-api-v2.adobe.io/schemas/new_asset_job_v1.json\""
+        },
+        "authentication": [
+          "auth_header_primary"
+        ],
+        "content_type": {
+          "exportnotedoc_parameters_v1.json": "application/vnd.adobe.dc+json;profile=\"https://dc-api-v2.adobe.io/schemas/exportnotedoc_parameters_v1.json\""
+        },
+        "http_method": "POST",
+        "uri": "https://dc-api-v2.adobe.io/420000024/assets?operation=exportnotedoc"
+      },
+      "exportpdf": {
+        "accept": {
+          "new_asset_job_v1.json": "application/vnd.adobe.dc+json;profile=\"https://dc-api-v2.adobe.io/schemas/new_asset_job_v1.json\""
+        },
+        "authentication": [
+          "auth_header_primary"
+        ],
+        "content_type": {
+          "exportpdf_parameters_v1.json": "application/vnd.adobe.dc+json;profile=\"https://dc-api-v2.adobe.io/schemas/exportpdf_parameters_v1.json\""
+        },
+        "http_method": "POST",
+        "uri": "https://dc-api-v2.adobe.io/420000024/assets?operation=exportpdf"
+      },
+      "get_metadata": {
+        "accept": {
+          "asset_metadata_basic_v1.json": "application/vnd.adobe.dc+json;profile=\"https://dc-api-v2.adobe.io/schemas/asset_metadata_basic_v1.json\""
+        },
+        "authentication": [
+          "auth_header_primary"
+        ],
+        "content_type": {},
+        "http_method": "GET",
+        "resource_parameter": {
+          "name": "asset_uri",
+          "type": "string"
+        },
+        "uri": "{+asset_uri}/metadata"
+      },
+      "get_metadata_field": {
+        "accept": {
+          "asset_metadata_field_v1.json": "application/vnd.adobe.dc+json;profile=\"https://dc-api-v2.adobe.io/schemas/asset_metadata_field_v1.json\""
+        },
+        "authentication": [
+          "auth_header_primary"
+        ],
+        "content_type": {},
+        "http_method": "GET",
+        "resource_parameter": {
+          "name": "asset_uri",
+          "type": "string"
+        },
+        "uri": "{+asset_uri}/metadata{/fields}",
+        "uri_parameters": [
+          {
+            "enum": [
+              "uri",
+              "name",
+              "asset_id",
+              "parent_uri",
+              "parent_id",
+              "size",
+              "type",
+              "md5_digest",
+              "page_count",
+              "created",
+              "modified",
+              "last_access",
+              "last_pagenum",
+              "source",
+              "created_by_client",
+              "favorite",
+              "starred",
+              "tags",
+              "custom_tags",
+              "sign (only for Adobe Cloud Platform (ACP) storage user)"
+            ],
+            "name": "fields",
+            "type": "string"
+          }
+        ]
+      },
+      "import": {
+        "accept": {
+          "new_asset_job_v1.json": "application/vnd.adobe.dc+json;profile=\"https://dc-api-v2.adobe.io/schemas/new_asset_job_v1.json\""
+        },
+        "authentication": [
+          "auth_header_primary"
+        ],
+        "content_type": {
+          "asset_import_v1.json": "application/vnd.adobe.dc+json;profile=\"https://dc-api-v2.adobe.io/schemas/asset_import_v1.json\""
+        },
+        "http_method": "POST",
+        "uri": "https://dc-api-v2.adobe.io/420000024/assets?operation=import"
+      },
+      "patch_metadata_field": {
+        "accept": {
+          "asset_metadata_field_v1.json": "application/vnd.adobe.dc+json;profile=\"https://dc-api-v2.adobe.io/schemas/asset_metadata_field_v1.json\""
+        },
+        "authentication": [
+          "auth_header_primary"
+        ],
+        "content_type": {
+          "asset_metadata_field_patch_v1.json": "application/vnd.adobe.dc+json;profile=\"https://dc-api-v2.adobe.io/schemas/asset_metadata_field_patch_v1.json\""
+        },
+        "http_method": "PATCH",
+        "resource_parameter": {
+          "name": "asset_uri",
+          "type": "string"
+        },
+        "uri": "{+asset_uri}/metadata{/fields}",
+        "uri_parameters": [
+          {
+            "enum": [
+              "tags",
+              "custom_tags"
+            ],
+            "name": "fields",
+            "type": "string"
+          }
+        ]
+      },
+      "pdf_actions": {
+        "accept": {
+          "new_asset_job_v1.json": "application/vnd.adobe.dc+json;profile=\"https://dc-api-v2.adobe.io/schemas/new_asset_job_v1.json\""
+        },
+        "authentication": [
+          "auth_header_primary"
+        ],
+        "content_type": {
+          "pdf_actions_parameters_v1.json": "application/vnd.adobe.dc+json;profile=\"https://dc-api-v2.adobe.io/schemas/pdf_actions_parameters_v1.json\""
+        },
+        "http_method": "POST",
+        "uri": "https://dc-api-v2.adobe.io/420000024/assets?operation=pdf_actions"
+      },
+      "put_metadata_field": {
+        "accept": {},
+        "authentication": [
+          "auth_header_primary"
+        ],
+        "content_type": {
+          "asset_metadata_field_v1.json": "application/vnd.adobe.dc+json;profile=\"https://dc-api-v2.adobe.io/schemas/asset_metadata_field_v1.json\""
+        },
+        "http_method": "PUT",
+        "resource_parameter": {
+          "name": "asset_uri",
+          "type": "string"
+        },
+        "uri": "{+asset_uri}/metadata{/fields}",
+        "uri_parameters": [
+          {
+            "enum": [
+              "last_access",
+              "last_pagenum",
+              "favorite",
+              "starred",
+              "sign (only for Adobe Cloud Platform (ACP) storage user)"
+            ],
+            "name": "fields",
+            "type": "string"
+          }
+        ]
+      },
+      "redactpdf": {
+        "accept": {
+          "new_asset_job_v1.json": "application/vnd.adobe.dc+json;profile=\"https://dc-api-v2.adobe.io/schemas/new_asset_job_v1.json\""
+        },
+        "authentication": [
+          "auth_header_primary"
+        ],
+        "content_type": {
+          "redactpdf_parameters_v1.json": "application/vnd.adobe.dc+json;profile=\"https://dc-api-v2.adobe.io/schemas/redactpdf_parameters_v1.json\""
+        },
+        "http_method": "POST",
+        "uri": "https://dc-api-v2.adobe.io/420000024/assets?operation=redactpdf"
+      },
+      "rendition": {
+        "accept": {
+          "*/*": "*/*",
+          "image/*": "image/*",
+          "image/jpeg": "image/jpeg",
+          "image/png": "image/png"
+        },
+        "authentication": [
+          "auth_header_primary",
+          "ticket"
+        ],
+        "content_type": {},
+        "http_method": "GET",
+        "resource_parameter": {
+          "name": "asset_rendition_uri",
+          "type": "string"
+        },
+        "uri": "{+asset_rendition_uri}{&format,size,wait,page,markup,processing_hint,download,rendition_class}",
+        "uri_parameters": [
+          {
+            "enum": [
+              "png",
+              "jpg"
+            ],
+            "name": "format",
+            "type": "string"
+          },
+          {
+            "name": "size",
+            "type": "string"
+          },
+          {
+            "default": 10,
+            "name": "wait",
+            "type": "integer"
+          },
+          {
+            "default": 0,
+            "name": "page",
+            "type": "integer"
+          },
+          {
+            "default": true,
+            "name": "markup",
+            "type": "boolean"
+          },
+          {
+            "default": "speed_over_quality",
+            "enum": [
+              "speed_over_quality",
+              "quality_over_speed"
+            ],
+            "name": "processing_hint",
+            "type": "string"
+          },
+          {
+            "default": false,
+            "name": "download",
+            "type": "boolean"
+          },
+          {
+            "name": "rendition_class",
+            "type": "string"
+          }
+        ]
+      },
+      "rendition_direct": {
+        "accept": {
+          "*/*": "*/*",
+          "image/*": "image/*",
+          "image/jpeg": "image/jpeg",
+          "image/png": "image/png"
+        },
+        "authentication": [
+          "auth_header_primary"
+        ],
+        "content_type": {},
+        "http_method": "GET",
+        "resource_parameter": {
+          "name": "asset_id",
+          "required": true,
+          "type": "string"
+        },
+        "uri": "https://dc-api-v2.adobecontent.io/420000024/assets/download/{+asset_id}/rendition{?format,size,wait,page,markup,processing_hint,download,rendition_class}",
+        "uri_parameters": [
+          {
+            "enum": [
+              "png",
+              "jpg"
+            ],
+            "name": "format",
+            "type": "string"
+          },
+          {
+            "name": "size",
+            "type": "string"
+          },
+          {
+            "default": 10,
+            "name": "wait",
+            "type": "integer"
+          },
+          {
+            "default": 0,
+            "name": "page",
+            "type": "integer"
+          },
+          {
+            "default": true,
+            "name": "markup",
+            "type": "boolean"
+          },
+          {
+            "default": "speed_over_quality",
+            "enum": [
+              "speed_over_quality",
+              "quality_over_speed"
+            ],
+            "name": "processing_hint",
+            "type": "string"
+          },
+          {
+            "default": false,
+            "name": "download",
+            "type": "boolean"
+          },
+          {
+            "name": "rendition_class",
+            "type": "string"
+          }
+        ]
+      },
+      "rendition_uri": {
+        "accept": {
+          "asset_uri_rendition_v1.json": "application/vnd.adobe.dc+json;profile=\"https://dc-api-v2.adobe.io/schemas/asset_uri_rendition_v1.json\""
+        },
+        "authentication": [
+          "auth_header_primary"
+        ],
+        "content_type": {},
+        "http_method": "GET",
+        "resource_parameter": {
+          "name": "asset_uri",
+          "type": "string"
+        },
+        "uri": "{+asset_uri}/uri/rendition{?make_ticket,type}",
+        "uri_parameters": [
+          {
+            "default": false,
+            "name": "make_ticket",
+            "type": "boolean"
+          },
+          {
+            "default": "paged",
+            "enum": [
+              "paged",
+              "document"
+            ],
+            "name": "type",
+            "type": "string"
+          }
+        ]
+      },
+      "splitpdf": {
+        "accept": {
+          "new_asset_job_v1.json": "application/vnd.adobe.dc+json;profile=\"https://dc-api-v2.adobe.io/schemas/new_asset_job_v1.json\""
+        },
+        "authentication": [
+          "auth_header_primary"
+        ],
+        "content_type": {
+          "splitpdf_parameters_v1.json": "application/vnd.adobe.dc+json;profile=\"https://dc-api-v2.adobe.io/schemas/splitpdf_parameters_v1.json\""
+        },
+        "http_method": "POST",
+        "uri": "https://dc-api-v2.adobe.io/420000024/assets?operation=splitpdf"
+      },
+      "tag": {
+        "accept": {
+          "application/pdf": "application/pdf",
+          "application/zip": "application/zip"
+        },
+        "authentication": [
+          "auth_header_primary"
+        ],
+        "content_type": {
+          "application/pdf": "application/pdf"
+        },
+        "http_method": "POST",
+        "uri": "https://taggedpdf.adobe.io/420000024/assets?operation=tag{&format,async,qualify,client_version}",
+        "uri_parameters": [
+          {
+            "default": "instance_data",
+            "enum": [
+              "instance_data",
+              "fully_tagged_pdf"
+            ],
+            "name": "format",
+            "type": "string"
+          },
+          {
+            "default": false,
+            "name": "async",
+            "type": "boolean"
+          },
+          {
+            "default": false,
+            "name": "qualify",
+            "type": "boolean"
+          },
+          {
+            "name": "client_version",
+            "type": "string"
+          }
+        ]
+      },
+      "tag_sensei": {
+        "accept": {
+          "asset_tag_sensei_v1.json": "application/json;profile=\"https://dc-api-v2.adobe.io/schemas/asset_tag_sensei_v1.json\""
+        },
+        "authentication": [
+          "auth_header_primary"
+        ],
+        "content_type": {
+          "multipart/form-data": "multipart/form-data"
+        },
+        "form_data_parameters": [
+          {
+            "content_type": {
+              "asset_tag_sensei_contentanalyzer_v1.json": "application/json;profile=\"https://dc-api-v2.adobe.io/schemas/asset_tag_sensei_contentanalyzer_v1.json\""
+            },
+            "description": "Additional content analyzer parameters required",
+            "name": "contentAnalyzerRequests",
+            "type": "object"
+          },
+          {
+            "description": "Asset uploaded as part of the request for tagging",
+            "name": "file",
+            "type": "file"
+          }
+        ],
+        "http_method": "POST",
+        "uri": "https://sensei.adobe.io/services/v1/predict"
+      },
+      "update": {
+        "accept": {},
+        "authentication": [
+          "auth_header_primary"
+        ],
+        "content_type": {
+          "multipart/form-data": "multipart/form-data",
+          "multipart/mixed": "multipart/mixed"
+        },
+        "form_data_parameters": [
+          {
+            "description": "The file contents.  Any filename in Content-Disposition will be ignored.",
+            "name": "file",
+            "type": "file"
+          }
+        ],
+        "http_method": "PUT",
+        "uri": "https://dc-api-v2.adobe.io/420000024/assets{?asset_uri}",
+        "uri_parameters": [
+          {
+            "name": "asset_uri",
+            "type": "string"
+          }
+        ]
+      },
+      "upload": {
+        "accept": {
+          "asset_v1.json": "application/vnd.adobe.dc+json;profile=\"https://dc-api-v2.adobe.io/schemas/asset_v1.json\""
+        },
+        "authentication": [
+          "auth_header_primary"
+        ],
+        "content_type": {
+          "multipart/form-data": "multipart/form-data",
+          "multipart/mixed": "multipart/mixed"
+        },
+        "form_data_parameters": [
+          {
+            "content_type": {
+              "asset_upload_parameters_v1.json": "application/vnd.adobe.dc+json;profile=\"https://dc-api-v2.adobe.io/schemas/asset_upload_parameters_v1.json\""
+            },
+            "description": "Additional file upload parameters.  If present, this must be the first part in the request body to facilitate streaming uploads.",
+            "name": "parameters",
+            "type": "object"
+          },
+          {
+            "description": "The file contents.  If the file name is not specified in `parameters.options`, it must be provided here as part of Content-Disposition.",
+            "name": "file",
+            "type": "file"
+          }
+        ],
+        "http_method": "POST",
+        "uri": "https://dc-api-v2.adobe.io/420000024/assets"
+      },
+      "upload_status": {
+        "accept": {
+          "upload_status_v1.json": "application/vnd.adobe.dc+json;profile=\"https://dc-api-v2.adobe.io/schemas/upload_status_v1.json\""
+        },
+        "authentication": [
+          "auth_header_primary"
+        ],
+        "content_type": {},
+        "http_method": "GET",
+        "resource_parameter": {
+          "name": "asset_upload_status_monitor_uri",
+          "required": true,
+          "type": "string"
+        },
+        "uri": "{+asset_upload_status_monitor_uri}",
+        "uri_parameters": []
+      },
+      "zip_download": {
+        "accept": {
+          "application/zip": "application/zip"
+        },
+        "authentication": [
+          "auth_header_primary",
+          "ticket"
+        ],
+        "content_type": {},
+        "http_method": "GET",
+        "resource_parameter": {
+          "name": "zip_download_uri",
+          "type": "string"
+        },
+        "uri": "{+zip_download_uri}"
+      },
+      "zip_download_uri": {
+        "accept": {
+          "zip_download_uri_v1.json": "application/vnd.adobe.dc+json;profile=\"https://dc-api-v2.adobe.io/schemas/zip_download_uri_v1.json\""
+        },
+        "authentication": [
+          "auth_header_primary"
+        ],
+        "content_type": {
+          "zip_download_params_v1.json": "application/vnd.adobe.dc+json;profile=\"https://dc-api-v2.adobe.io/schemas/zip_download_params_v1.json\""
+        },
+        "http_method": "POST",
+        "uri": "https://dc-api-v2.adobe.io/420000024/assets/zip/uri/download"
+      }
+    },
+    "citations": {
+      "create": {
+        "accept": {
+          "citation_v1.json": "application/vnd.adobe.dc+json;profile=\"https://dc-kwcollection.adobe.io/schemas/citation_v1.json\""
+        },
+        "authentication": [
+          "auth_header_primary"
+        ],
+        "content_type": {
+          "multipart/mixed": "multipart/mixed"
+        },
+        "http_method": "POST",
+        "resource_parameter": {
+          "name": "citation_uri",
+          "type": "string"
+        },
+        "uri": "{+citation_uri}",
+        "uri_parameters": []
+      },
+      "delete": {
+        "accept": {},
+        "authentication": [
+          "auth_header_primary"
+        ],
+        "content_type": {},
+        "http_method": "DELETE",
+        "resource_parameter": {
+          "name": "citation_uri",
+          "type": "string"
+        },
+        "uri": "{+citation_uri}/{citation_id}{?kwcollection_id,source_asset_ids}",
+        "uri_parameters": [
+          {
+            "name": "citation_id",
+            "type": "string"
+          },
+          {
+            "name": "kwcollection_id",
+            "type": "string"
+          },
+          {
+            "name": "source_asset_ids",
+            "type": "string"
+          }
+        ]
+      },
+      "get_content": {
+        "accept": {
+          "citation+json": "application/vnd.adobe.citation+json"
+        },
+        "authentication": [
+          "auth_header_primary"
+        ],
+        "content_type": {},
+        "http_method": "GET",
+        "resource_parameter": {
+          "name": "citation_uri",
+          "type": "string"
+        },
+        "uri": "{+citation_uri}/{citation_id}{?kwcollection_id,source_asset_ids}",
+        "uri_parameters": [
+          {
+            "name": "citation_id",
+            "type": "string"
+          },
+          {
+            "name": "kwcollection_id",
+            "type": "string"
+          },
+          {
+            "name": "source_asset_ids",
+            "type": "string"
+          }
+        ]
+      },
+      "get_metadata": {
+        "accept": {
+          "citation_v1.json": "application/vnd.adobe.dc+json;profile=\"https://dc-kwcollection.adobe.io/schemas/citation_v1.json\""
+        },
+        "authentication": [
+          "auth_header_primary"
+        ],
+        "content_type": {},
+        "http_method": "GET",
+        "resource_parameter": {
+          "name": "citation_uri",
+          "type": "string"
+        },
+        "uri": "{+citation_uri}/{citation_id}/metadata{?kwcollection_id,source_asset_ids}",
+        "uri_parameters": [
+          {
+            "name": "citation_id",
+            "type": "string"
+          },
+          {
+            "name": "kwcollection_id",
+            "type": "string"
+          },
+          {
+            "name": "source_asset_ids",
+            "type": "string"
+          }
+        ]
+      },
+      "list": {
+        "accept": {
+          "citations_listing_v1.json": "application/vnd.adobe.dc+json;profile=\"https://dc-kwcollection.adobe.io/schemas/citations_listing_v1.json\""
+        },
+        "authentication": [
+          "auth_header_primary"
+        ],
+        "content_type": {},
+        "http_method": "GET",
+        "resource_parameter": {
+          "name": "citation_uri",
+          "type": "string"
+        },
+        "uri": "{+citation_uri}{?kwcollection_id,source_asset_ids,page_size,page_key}",
+        "uri_parameters": [
+          {
+            "name": "kwcollection_id",
+            "type": "string"
+          },
+          {
+            "name": "source_asset_ids",
+            "type": "string"
+          },
+          {
+            "default": 100,
+            "maximum": 1000,
+            "minimum": 1,
+            "name": "page_size",
+            "type": "integer"
+          },
+          {
+            "name": "page_key",
+            "type": "string"
+          }
+        ]
+      },
+      "update": {
+        "accept": {},
+        "authentication": [
+          "auth_header_primary"
+        ],
+        "content_type": {
+          "multipart/mixed": "multipart/mixed"
+        },
+        "http_method": "PATCH",
+        "resource_parameter": {
+          "name": "citation_uri",
+          "type": "string"
+        },
+        "uri": "{+citation_uri}/{citation_id}",
+        "uri_parameters": [
+          {
+            "name": "citation_id",
+            "type": "string"
+          }
+        ]
+      }
+    },
+    "connector": {
+      "delete": {
+        "accept": {
+          "connector_delete_response_v1.json": "application/vnd.adobe.dc+json;profile=\"https://dc-api-v2.adobe.io/schemas/connector_delete_response_v1.json\""
+        },
+        "authentication": [
+          "auth_header_primary"
+        ],
+        "content_type": {},
+        "http_method": "DELETE",
+        "uri": "https://dc-api-v2.adobe.io/420000024/{cloud_id}/connector/{connector_id}",
+        "uri_parameters": [
+          {
+            "enum": [
+              "msft",
+              "teams",
+              "gdrive",
+              "box",
+              "dropbox"
+            ],
+            "name": "cloud_id",
+            "type": "string"
+          },
+          {
+            "name": "connector_id",
+            "type": "string"
+          }
+        ]
+      },
+      "link": {
+        "accept": {
+          "connector_info_v1.json": "application/vnd.adobe.dc+json;profile=\"https://dc-api-v2.adobe.io/schemas/connector_info_v1.json\""
+        },
+        "authentication": [
+          "auth_header_primary"
+        ],
+        "content_type": {
+          "connector_link_parameters_v1.json": "application/vnd.adobe.dc+json;profile=\"https://dc-api-v2.adobe.io/schemas/connector_link_parameters_v1.json\""
+        },
+        "http_method": "POST",
+        "uri": "https://dc-api-v2.adobe.io/420000024/{cloud_id}/connector/link",
+        "uri_parameters": [
+          {
+            "enum": [
+              "msft",
+              "teams",
+              "gdrive",
+              "box",
+              "dropbox"
+            ],
+            "name": "cloud_id",
+            "type": "string"
+          }
+        ]
+      },
+      "list": {
+        "accept": {
+          "connector_listing_v1.json": "application/vnd.adobe.dc+json;profile=\"https://dc-api-v2.adobe.io/schemas/connector_listing_v1.json\""
+        },
+        "authentication": [
+          "auth_header_primary"
+        ],
+        "content_type": {},
+        "http_method": "GET",
+        "uri": "https://dc-api-v2.adobe.io/420000024/{cloud_id}/connector/list",
+        "uri_parameters": [
+          {
+            "enum": [
+              "msft",
+              "teams",
+              "gdrive",
+              "box",
+              "dropbox"
+            ],
+            "name": "cloud_id",
+            "type": "string"
+          }
+        ]
+      }
+    },
+    "creations": {
+      "copy_creation": {
+        "accept": {
+          "creation_job_v1.json": "application/vnd.adobe.dc+json;profile=\"https://platform-cs-edge.adobe.io/dccreation/schemas/creation_job_v1.json\""
+        },
+        "authentication": [
+          "auth_header_primary"
+        ],
+        "content_type": {
+          "copy_creation_v1.json": "application/vnd.adobe.dc+json;profile=\"https://platform-cs-edge.adobe.io/dccreation/schemas/copy_creation_v1.json\""
+        },
+        "http_method": "POST",
+        "resource_parameter": {
+          "name": "creation_uri",
+          "type": "string"
+        },
+        "uri": "{+creation_uri}/creations/{creation_id}/copy",
+        "uri_parameters": [
+          {
+            "name": "creation_id",
+            "type": "string"
+          }
+        ]
+      },
+      "create_component": {
+        "accept": {
+          "creation_component_v1.json": "application/vnd.adobe.dc+json;profile=\"https://platform-cs-edge.adobe.io/dccreation/schemas/creation_component_v1.json\""
+        },
+        "authentication": [
+          "auth_header_primary"
+        ],
+        "content_type": {
+          "create_component_v1.json": "application/vnd.adobe.dc+json;profile=\"https://platform-cs-edge.adobe.io/dccreation/schemas/create_component_v1.json\"",
+          "multipart/mixed": "multipart/mixed"
+        },
+        "http_method": "POST",
+        "resource_parameter": {
+          "name": "creation_uri",
+          "type": "string"
+        },
+        "uri": "{+creation_uri}/creations/{creation_id}/components",
+        "uri_parameters": [
+          {
+            "name": "creation_id",
+            "type": "string"
+          }
+        ]
+      },
+      "create_creations": {
+        "accept": {
+          "creation_job_v1.json": "application/vnd.adobe.dc+json;profile=\"https://platform-cs-edge.adobe.io/dccreation/schemas/creation_job_v1.json\"",
+          "creations_v1.json": "application/vnd.adobe.dc+json;profile=\"https://platform-cs-edge.adobe.io/dccreation/schemas/creations_v1.json\""
+        },
+        "authentication": [
+          "auth_header_primary"
+        ],
+        "content_type": {
+          "creation_create_parameters_v1.json": "application/vnd.adobe.dc+json;profile=\"https://platform-cs-edge.adobe.io/dccreation/schemas/creation_create_parameters_v1.json\"",
+          "multipart/mixed": "multipart/mixed"
+        },
+        "http_method": "POST",
+        "resource_parameter": {
+          "name": "creation_uri",
+          "type": "string"
+        },
+        "uri": "{+creation_uri}/creations"
+      },
+      "delete_all_creations": {
+        "accept": {},
+        "authentication": [
+          "auth_header_primary"
+        ],
+        "content_type": {},
+        "http_method": "DELETE",
+        "resource_parameter": {
+          "name": "creation_uri",
+          "type": "string"
+        },
+        "uri": "{+creation_uri}/creations{?asset_id,conversation_id}",
+        "uri_parameters": [
+          {
+            "name": "asset_id",
+            "type": "string"
+          },
+          {
+            "name": "conversation_id",
+            "type": "string"
+          }
+        ]
+      },
+      "delete_asset": {
+        "accept": {},
+        "authentication": [
+          "auth_header_primary"
+        ],
+        "content_type": {},
+        "http_method": "DELETE",
+        "resource_parameter": {
+          "name": "creation_uri",
+          "type": "string"
+        },
+        "uri": "{+creation_uri}/creations/{creation_id}/assets/{asset_id}",
+        "uri_parameters": [
+          {
+            "name": "creation_id",
+            "type": "string"
+          },
+          {
+            "name": "asset_id",
+            "type": "string"
+          }
+        ]
+      },
+      "delete_component": {
+        "accept": {
+          "creation_job_v1.json": "application/vnd.adobe.dc+json;profile=\"https://platform-cs-edge.adobe.io/dccreation/schemas/creation_job_v1.json\""
+        },
+        "authentication": [
+          "auth_header_primary"
+        ],
+        "content_type": {},
+        "http_method": "DELETE",
+        "resource_parameter": {
+          "name": "creation_uri",
+          "type": "string"
+        },
+        "uri": "{+creation_uri}/creations/{creation_id}/components/{component_id}",
+        "uri_parameters": [
+          {
+            "name": "creation_id",
+            "type": "string"
+          },
+          {
+            "name": "component_id",
+            "type": "string"
+          }
+        ]
+      },
+      "delete_creation": {
+        "accept": {
+          "creation_job_v1.json": "application/vnd.adobe.dc+json;profile=\"https://platform-cs-edge.adobe.io/dccreation/schemas/creation_job_v1.json\""
+        },
+        "authentication": [
+          "auth_header_primary"
+        ],
+        "content_type": {},
+        "http_method": "DELETE",
+        "resource_parameter": {
+          "name": "creation_uri",
+          "type": "string"
+        },
+        "uri": "{+creation_uri}/creations/{creation_id}",
+        "uri_parameters": [
+          {
+            "name": "creation_id",
+            "type": "string"
+          }
+        ]
+      },
+      "export_creation": {
+        "accept": {
+          "creation_job_v1.json": "application/vnd.adobe.dc+json;profile=\"https://platform-cs-edge.adobe.io/dccreation/schemas/creation_job_v1.json\""
+        },
+        "authentication": [
+          "auth_header_primary"
+        ],
+        "content_type": {
+          "export_creation_v1.json": "application/vnd.adobe.dc+json;profile=\"https://platform-cs-edge.adobe.io/dccreation/schemas/export_creation_v1.json\""
+        },
+        "http_method": "POST",
+        "resource_parameter": {
+          "name": "creation_uri",
+          "type": "string"
+        },
+        "uri": "{+creation_uri}/creations/{creation_id}/export",
+        "uri_parameters": [
+          {
+            "name": "creation_id",
+            "type": "string"
+          }
+        ]
+      },
+      "fetch_list": {
+        "accept": {
+          "creations_listing_v2.json": "application/vnd.adobe.dc+json;profile=\"https://platform-cs-edge.adobe.io/dccreation/schemas/creations_listing_v2.json\"",
+          "kwcollection_creations_listing_v1.json": "application/vnd.adobe.dc+json;profile=\"https://platform-cs-edge.adobe.io/dccreation/schemas/kwcollection_creations_listing_v1.json\""
+        },
+        "authentication": [
+          "auth_header_primary"
+        ],
+        "content_type": {},
+        "http_method": "GET",
+        "resource_parameter": {
+          "name": "creation_uri",
+          "type": "string"
+        },
+        "uri": "{+creation_uri}/creations?publicId=kwc_curated{&type,order_by,sort_order,page_size,kwcollection_id,asset_id,page_key,app_locale,status,conversation_id}",
+        "uri_parameters": [
+          {
+            "name": "kwcollection_id",
+            "type": "string"
+          },
+          {
+            "name": "asset_id",
+            "type": "string"
+          },
+          {
+            "name": "app_locale",
+            "type": "string"
+          },
+          {
+            "default": "modified",
+            "enum": [
+              "name",
+              "created",
+              "modified",
+              "custom"
+            ],
+            "name": "order_by",
+            "type": "string"
+          },
+          {
+            "default": "descending",
+            "enum": [
+              "ascending",
+              "descending"
+            ],
+            "name": "sort_order",
+            "type": "string"
+          },
+          {
+            "enum": [
+              "QUIZ",
+              "FLASH_CARD",
+              "STUDY_GUIDE",
+              "CHEATSHEET",
+              "PRESENTATION",
+              "PODCAST",
+              "MIND_MAP",
+              "VIDEO",
+              "OVERVIEW_PANE",
+              "NOTE",
+              "AUDIO_SUMMARY"
+            ],
+            "name": "type",
+            "type": "string"
+          },
+          {
+            "default": 100,
+            "maximum": 100,
+            "minimum": 1,
+            "name": "page_size",
+            "type": "integer"
+          },
+          {
+            "default": "SUCCESS",
+            "enum": [
+              "SUCCESS",
+              "IN_PROGRESS"
+            ],
+            "name": "status",
+            "type": "string"
+          },
+          {
+            "name": "conversation_id",
+            "type": "string"
+          }
+        ]
+      },
+      "finalize_creation": {
+        "accept": {
+          "finalize_job_v1.json": "application/vnd.adobe.dc+json;profile=\"https://platform-cs-edge.adobe.io/dccreation/schemas/finalize_job_v1.json\""
+        },
+        "authentication": [
+          "auth_header_primary"
+        ],
+        "content_type": {
+          "finalize_asset_v1.json": "application/vnd.adobe.dc+json;profile=\"https://platform-cs-edge.adobe.io/dccreation/schemas/finalize_asset_v1.json\""
+        },
+        "http_method": "PUT",
+        "resource_parameter": {
+          "name": "creation_uri",
+          "type": "string"
+        },
+        "uri": "{+creation_uri}/creations/{creation_id}/finalize",
+        "uri_parameters": [
+          {
+            "name": "creation_id",
+            "type": "string"
+          }
+        ]
+      },
+      "get_component": {
+        "accept": {
+          "creation_component_url_v1.json": "application/vnd.adobe.dc+json;profile=\"https://platform-cs-edge.adobe.io/dccreation/schemas/creation_component_url_v1.json\""
+        },
+        "authentication": [
+          "auth_header_primary"
+        ],
+        "content_type": {},
+        "http_method": "GET",
+        "resource_parameter": {
+          "name": "creation_uri",
+          "type": "string"
+        },
+        "uri": "{+creation_uri}/creations/{creation_id}/components/{component_id}",
+        "uri_parameters": [
+          {
+            "name": "creation_id",
+            "type": "string"
+          },
+          {
+            "name": "component_id",
+            "type": "string"
+          }
+        ]
+      },
+      "get_component_metadata": {
+        "accept": {
+          "creation_component_metadata_v1.json": "application/vnd.adobe.dc+json;profile=\"https://platform-cs-edge.adobe.io/dccreation/schemas/creation_component_metadata_v1.json\""
+        },
+        "authentication": [
+          "auth_header_primary"
+        ],
+        "content_type": {},
+        "http_method": "GET",
+        "resource_parameter": {
+          "name": "creation_uri",
+          "type": "string"
+        },
+        "uri": "{+creation_uri}/creations/{creation_id}/component/{component_id}/metadata",
+        "uri_parameters": [
+          {
+            "name": "creation_id",
+            "type": "string"
+          },
+          {
+            "name": "component_id",
+            "type": "string"
+          }
+        ]
+      },
+      "get_component_metadata_per_user": {
+        "accept": {
+          "creation_component_metadata_peruser_v1.json": "application/vnd.adobe.dc+json;profile=\"https://platform-cs-edge.adobe.io/dccreation/schemas/creation_component_metadata_peruser_v1.json\""
+        },
+        "authentication": [
+          "auth_header_primary"
+        ],
+        "content_type": {},
+        "http_method": "GET",
+        "resource_parameter": {
+          "name": "creation_uri",
+          "type": "string"
+        },
+        "uri": "{+creation_uri}/creations/{creation_id}/component/{component_id}/metadata/peruser",
+        "uri_parameters": [
+          {
+            "name": "creation_id",
+            "type": "string"
+          },
+          {
+            "name": "component_id",
+            "type": "string"
+          }
+        ]
+      },
+      "get_configs": {
+        "accept": {
+          "creation_configs_v1.json": "application/vnd.adobe.dc+json;profile=\"https://platform-cs-edge.adobe.io/dccreation/schemas/creation_configs_v1.json\""
+        },
+        "authentication": [
+          "auth_header_primary"
+        ],
+        "content_type": {},
+        "http_method": "GET",
+        "resource_parameter": {
+          "name": "creation_uri",
+          "type": "string"
+        },
+        "uri": "{+creation_uri}/configs?publicId=kwc_curated",
+        "uri_parameters": [
+          {
+            "enum": [
+              "video_customization"
+            ],
+            "name": "options",
+            "type": "string"
+          }
+        ]
+      },
+      "get_creation_components": {
+        "accept": {
+          "creation_components_listing_v1.json": "application/vnd.adobe.dc+json;profile=\"https://platform-cs-edge.adobe.io/dccreation/schemas/creation_components_listing_v1.json\""
+        },
+        "authentication": [
+          "auth_header_primary"
+        ],
+        "content_type": {},
+        "http_method": "GET",
+        "resource_parameter": {
+          "name": "creation_uri",
+          "type": "string"
+        },
+        "uri": "{+creation_uri}/creations/{creation_id}/components",
+        "uri_parameters": [
+          {
+            "name": "creation_id",
+            "type": "string"
+          },
+          {
+            "default": "modified",
+            "enum": [
+              "name",
+              "created",
+              "modified"
+            ],
+            "name": "order_by",
+            "type": "string"
+          },
+          {
+            "default": "ascending",
+            "enum": [
+              "ascending",
+              "descending"
+            ],
+            "name": "sort_order",
+            "type": "string"
+          },
+          {
+            "default": 100,
+            "maximum": 100,
+            "minimum": 1,
+            "name": "page_size",
+            "type": "integer"
+          }
+        ]
+      },
+      "get_metadata": {
+        "accept": {
+          "creation_metadata_v1.json": "application/vnd.adobe.dc+json;profile=\"https://platform-cs-edge.adobe.io/dccreation/schemas/creation_metadata_v1.json\"",
+          "creation_metadata_v2.json": "application/vnd.adobe.dc+json;profile=\"https://platform-cs-edge.adobe.io/dccreation/schemas/creation_metadata_v2.json\""
+        },
+        "authentication": [
+          "auth_header_primary"
+        ],
+        "content_type": {},
+        "http_method": "GET",
+        "resource_parameter": {
+          "name": "creation_uri",
+          "type": "string"
+        },
+        "uri": "{+creation_uri}/creations/{creation_id}/metadata",
+        "uri_parameters": [
+          {
+            "name": "creation_id",
+            "type": "string"
+          }
+        ]
+      },
+      "get_metadata_per_user": {
+        "accept": {
+          "creation_metadata_peruser_v1.json": "application/vnd.adobe.dc+json;profile=\"https://platform-cs-edge.adobe.io/dccreation/schemas/creation_metadata_peruser_v1.json\""
+        },
+        "authentication": [
+          "auth_header_primary"
+        ],
+        "content_type": {},
+        "http_method": "GET",
+        "resource_parameter": {
+          "name": "creation_uri",
+          "type": "string"
+        },
+        "uri": "{+creation_uri}/creations/{creation_id}/metadata/peruser",
+        "uri_parameters": [
+          {
+            "name": "creation_id",
+            "type": "string"
+          }
+        ]
+      },
+      "import_asset": {
+        "accept": {
+          "creation_imported_asset_v1.json": "application/vnd.adobe.dc+json;profile=\"https://platform-cs-edge.adobe.io/dccreation/schemas/creation_imported_asset_v1.json\""
+        },
+        "authentication": [
+          "auth_header_primary"
+        ],
+        "content_type": {
+          "creation_asset_import_v1.json": "application/vnd.adobe.dc+json;profile=\"https://platform-cs-edge.adobe.io/dccreation/schemas/creation_asset_import_v1.json\""
+        },
+        "http_method": "POST",
+        "resource_parameter": {
+          "name": "creation_uri",
+          "type": "string"
+        },
+        "uri": "{+creation_uri}/creations/{creation_id}/assets",
+        "uri_parameters": [
+          {
+            "name": "creation_id",
+            "type": "string"
+          }
+        ]
+      },
+      "initialize": {
+        "accept": {
+          "initialize_creation_v1.json": "application/vnd.adobe.dc+json;profile=\"https://platform-cs-edge.adobe.io/dccreation/schemas/initialize_creation_v1.json\""
+        },
+        "authentication": [
+          "auth_header_primary"
+        ],
+        "content_type": {
+          "initialize_creation_parameters_v1.json": "application/vnd.adobe.dc+json;profile=\"https://platform-cs-edge.adobe.io/dccreation/schemas/initialize_creation_parameters_v1.json\""
+        },
+        "http_method": "POST",
+        "resource_parameter": {
+          "name": "creation_uri",
+          "type": "string"
+        },
+        "uri": "{+creation_uri}/creations/initialize"
+      },
+      "job_status": {
+        "accept": {
+          "creation_component_v1.json": "application/vnd.adobe.dc+json;profile=\"https://platform-cs-edge.adobe.io/dccreation/schemas/creation_component_v1.json\"",
+          "creation_imported_asset_v1.json": "application/vnd.adobe.dc+json;profile=\"https://platform-cs-edge.adobe.io/dccreation/schemas/creation_imported_asset_v1.json\"",
+          "creation_job_v1.json": "application/vnd.adobe.dc+json;profile=\"https://platform-cs-edge.adobe.io/dccreation/schemas/creation_job_v1.json\"",
+          "finalize_asset_v1.json": "application/vnd.adobe.dc+json;profile=\"https://platform-cs-edge.adobe.io/dccreation/schemas/finalize_asset_v1.json\""
+        },
+        "authentication": [
+          "auth_header_primary"
+        ],
+        "content_type": {},
+        "http_method": "GET",
+        "resource_parameter": {
+          "name": "creation_uri",
+          "type": "string"
+        },
+        "uri": "{+creation_uri}/creations/jobs/{id}/status",
+        "uri_parameters": [
+          {
+            "name": "id",
+            "type": "string"
+          }
+        ]
+      },
+      "list_assets": {
+        "accept": {
+          "creation_assets_listing_v1.json": "application/vnd.adobe.dc+json;profile=\"https://platform-cs-edge.adobe.io/dccreation/schemas/creation_assets_listing_v1.json\""
+        },
+        "authentication": [
+          "auth_header_primary"
+        ],
+        "content_type": {},
+        "http_method": "GET",
+        "resource_parameter": {
+          "name": "creation_uri",
+          "type": "string"
+        },
+        "uri": "{+creation_uri}/creations/{creation_id}/assets",
+        "uri_parameters": [
+          {
+            "name": "creation_id",
+            "type": "string"
+          },
+          {
+            "name": "kwcollection_id",
+            "type": "string"
+          },
+          {
+            "name": "page_key",
+            "type": "string"
+          },
+          {
+            "default": "created",
+            "enum": [
+              "name",
+              "created",
+              "modified"
+            ],
+            "name": "order_by",
+            "type": "string"
+          },
+          {
+            "default": "descending",
+            "enum": [
+              "ascending",
+              "descending"
+            ],
+            "name": "sort_order",
+            "type": "string"
+          },
+          {
+            "default": 100,
+            "maximum": 100,
+            "minimum": 1,
+            "name": "page_size",
+            "type": "integer"
+          }
+        ]
+      },
+      "list_kwc_creations": {
+        "accept": {
+          "kwcollection_creations_listing_v1.json": "application/vnd.adobe.dc+json;profile=\"https://platform-cs-edge.adobe.io/dccreation/schemas/kwcollection_creations_listing_v1.json\""
+        },
+        "authentication": [
+          "auth_header_primary"
+        ],
+        "content_type": {},
+        "http_method": "GET",
+        "resource_parameter": {
+          "name": "creation_uri",
+          "type": "string"
+        },
+        "uri": "{+creation_uri}/kwcollections/{kwcollection_id}/creations",
+        "uri_parameters": [
+          {
+            "name": "kwcollection_id",
+            "type": "string"
+          },
+          {
+            "default": "created",
+            "enum": [
+              "name",
+              "created",
+              "modified"
+            ],
+            "name": "order_by",
+            "type": "string"
+          },
+          {
+            "default": "descending",
+            "enum": [
+              "ascending",
+              "descending"
+            ],
+            "name": "sort_order",
+            "type": "string"
+          },
+          {
+            "enum": [
+              "QUIZ",
+              "FLASH_CARD",
+              "STUDY_GUIDE",
+              "CHEATSHEET",
+              "PRESENTATION",
+              "MIND_MAP",
+              "VIDEO"
+            ],
+            "name": "type",
+            "type": "string"
+          },
+          {
+            "default": 100,
+            "maximum": 100,
+            "minimum": 1,
+            "name": "page_size",
+            "type": "integer"
+          }
+        ]
+      },
+      "update_component": {
+        "accept": {
+          "creation_job_v1.json": "application/vnd.adobe.dc+json;profile=\"https://platform-cs-edge.adobe.io/dccreation/schemas/creation_job_v1.json\""
+        },
+        "authentication": [
+          "auth_header_primary"
+        ],
+        "content_type": {
+          "application/vnd.adobe.note+json": "application/vnd.adobe.note+json",
+          "image/*": "image/*",
+          "multipart/mixed": "multipart/mixed",
+          "update_component_v1.json": "application/vnd.adobe.dc+json;profile=\"https://platform-cs-edge.adobe.io/dccreation/schemas/update_component_v1.json\""
+        },
+        "http_method": "PUT",
+        "resource_parameter": {
+          "name": "creation_uri",
+          "type": "string"
+        },
+        "uri": "{+creation_uri}/creations/{creation_id}/components/{component_id}",
+        "uri_parameters": [
+          {
+            "name": "creation_id",
+            "type": "string"
+          },
+          {
+            "name": "component_id",
+            "type": "string"
+          }
+        ]
+      },
+      "update_component_metadata_per_user": {
+        "accept": {},
+        "authentication": [
+          "auth_header_primary"
+        ],
+        "content_type": {
+          "creation_component_metadata_peruser_v1.json": "application/vnd.adobe.dc+json;profile=\"https://platform-cs-edge.adobe.io/dccreation/schemas/creation_component_metadata_peruser_v1.json\""
+        },
+        "http_method": "PATCH",
+        "resource_parameter": {
+          "name": "creation_uri",
+          "type": "string"
+        },
+        "uri": "{+creation_uri}/creations/{creation_id}/component/{component_id}/metadata/peruser",
+        "uri_parameters": [
+          {
+            "name": "creation_id",
+            "type": "string"
+          },
+          {
+            "name": "component_id",
+            "type": "string"
+          }
+        ]
+      },
+      "update_creation": {
+        "accept": {
+          "creation_job_v1.json": "application/vnd.adobe.dc+json;profile=\"https://platform-cs-edge.adobe.io/dccreation/schemas/creation_job_v1.json\""
+        },
+        "authentication": [
+          "auth_header_primary"
+        ],
+        "content_type": {
+          "application/vnd.adobe.cheatsheet+json": "application/vnd.adobe.cheatsheet+json",
+          "application/vnd.adobe.flashcard+json": "application/vnd.adobe.flashcard+json",
+          "application/vnd.adobe.heading+json": "application/vnd.adobe.heading+json",
+          "application/vnd.adobe.hz.express+dcx": "application/vnd.adobe.hz.express+dcx",
+          "application/vnd.adobe.mindmap+json": "application/vnd.adobe.mindmap+json",
+          "application/vnd.adobe.quiz+json": "application/vnd.adobe.quiz+json",
+          "application/vnd.adobe.studyguide+json": "application/vnd.adobe.studyguide+json",
+          "application/vnd.adobe.textsummary+json": "application/vnd.adobe.textsummary+json",
+          "application/vnd.adobe.video+mp4": "application/vnd.adobe.video+mp4",
+          "multipart/mixed": "multipart/mixed",
+          "update_creation_v1.json": "application/vnd.adobe.dc+json;profile=\"https://platform-cs-edge.adobe.io/dccreation/schemas/update_creation_v1.json\""
+        },
+        "http_method": "PUT",
+        "resource_parameter": {
+          "name": "creation_uri",
+          "type": "string"
+        },
+        "uri": "{+creation_uri}/creations/{creation_id}",
+        "uri_parameters": [
+          {
+            "name": "creation_id",
+            "type": "string"
+          }
+        ]
+      },
+      "update_creations_order": {
+        "accept": {},
+        "authentication": [
+          "auth_header_primary"
+        ],
+        "content_type": {
+          "update_creations_order_v1.json": "application/vnd.adobe.dc+json;profile=\"https://platform-cs-edge.adobe.io/dccreation/schemas/update_creations_order_v1.json\""
+        },
+        "http_method": "PUT",
+        "resource_parameter": {
+          "name": "creation_uri",
+          "type": "string"
+        },
+        "uri": "{+creation_uri}/creations/order"
+      },
+      "update_linking": {
+        "accept": {},
+        "authentication": [
+          "auth_header_primary"
+        ],
+        "content_type": {
+          "creation_assets_linking_v1.json": "application/vnd.adobe.dc+json;profile=\"https://platform-cs-edge.adobe.io/dccreation/schemas/creation_assets_linking_v1.json\""
+        },
+        "http_method": "PUT",
+        "resource_parameter": {
+          "name": "creation_uri",
+          "type": "string"
+        },
+        "uri": "{+creation_uri}/kwcollections/{kwcollection_id}/creations/{creation_id}/assets",
+        "uri_parameters": [
+          {
+            "name": "creation_id",
+            "type": "string"
+          },
+          {
+            "name": "kwcollection_id",
+            "type": "string"
+          }
+        ]
+      },
+      "update_metadata": {
+        "accept": {},
+        "authentication": [
+          "auth_header_primary"
+        ],
+        "content_type": {
+          "patch_creation_metadata_v1.json": "application/vnd.adobe.dc+json;profile=\"https://platform-cs-edge.adobe.io/dccreation/schemas/patch_creation_metadata_v1.json\""
+        },
+        "http_method": "PATCH",
+        "resource_parameter": {
+          "name": "creation_uri",
+          "type": "string"
+        },
+        "uri": "{+creation_uri}/creations/{creation_id}/metadata",
+        "uri_parameters": [
+          {
+            "name": "creation_id",
+            "type": "string"
+          }
+        ]
+      },
+      "update_metadata_per_user": {
+        "accept": {
+          "creation_metadata_peruser_v1.json": "application/vnd.adobe.dc+json;profile=\"https://platform-cs-edge.adobe.io/dccreation/schemas/creation_metadata_peruser_v1.json\""
+        },
+        "authentication": [
+          "auth_header_primary"
+        ],
+        "content_type": {
+          "creation_metadata_peruser_v1.json": "application/vnd.adobe.dc+json;profile=\"https://platform-cs-edge.adobe.io/dccreation/schemas/creation_metadata_peruser_v1.json\""
+        },
+        "http_method": "PATCH",
+        "resource_parameter": {
+          "name": "creation_uri",
+          "type": "string"
+        },
+        "uri": "{+creation_uri}/creations/{creation_id}/metadata/peruser",
+        "uri_parameters": [
+          {
+            "name": "creation_id",
+            "type": "string"
+          }
+        ]
+      }
+    },
+    "custom_agent": {
+      "create_kwc_custom_agent": {
+        "accept": {
+          "kwcollection_custom_agent_v1.json": "application/vnd.adobe.dc+json;profile=\"https://dc-kwcollection.adobe.io/schemas/kwcollection_custom_agent_v1.json\""
+        },
+        "authentication": [
+          "auth_header_primary"
+        ],
+        "content_type": {
+          "kwcollection_custom_agent_creation_v1.json": "application/vnd.adobe.dc+json;profile=\"https://dc-kwcollection.adobe.io/schemas/kwcollection_custom_agent_creation_v1.json\""
+        },
+        "http_method": "POST",
+        "resource_parameter": {
+          "name": "custom_agent_uri",
+          "type": "string"
+        },
+        "uri": "{+custom_agent_uri}?publicId=kwc_curated"
+      },
+      "delete_kwc_custom_agent": {
+        "accept": {},
+        "authentication": [
+          "auth_header_primary"
+        ],
+        "content_type": {},
+        "http_method": "DELETE",
+        "resource_parameter": {
+          "name": "custom_agent_uri",
+          "type": "string"
+        },
+        "uri": "{+custom_agent_uri}/{custom_agent_id}?publicId=kwc_curated",
+        "uri_parameters": [
+          {
+            "name": "custom_agent_id",
+            "type": "string"
+          }
+        ]
+      },
+      "get_custom_agent_job_status": {
+        "accept": {
+          "kwcollection_custom_agent_v1.json": "application/vnd.adobe.dc+json;profile=\"https://dc-kwcollection.adobe.io/schemas/kwcollection_custom_agent_v1.json\""
+        },
+        "authentication": [
+          "auth_header_primary"
+        ],
+        "content_type": {},
+        "http_method": "GET",
+        "resource_parameter": {
+          "name": "custom_agent_job_uri",
+          "type": "string"
+        },
+        "uri": "{+custom_agent_job_uri}?publicId=kwc_curated",
+        "uri_parameters": []
+      },
+      "list_kwc_custom_agents": {
+        "accept": {
+          "kwcollection_custom_agents_listing_v1.json": "application/vnd.adobe.dc+json;profile=\"https://dc-kwcollection.adobe.io/schemas/kwcollection_custom_agents_listing_v1.json\""
+        },
+        "authentication": [
+          "auth_header_primary"
+        ],
+        "content_type": {},
+        "http_method": "GET",
+        "resource_parameter": {
+          "name": "custom_agent_uri",
+          "type": "string"
+        },
+        "uri": "{+custom_agent_uri}?publicId=kwc_curated{&global_agents_locale}",
+        "uri_parameters": [
+          {
+            "default": "en-US",
+            "name": "global_agents_locale",
+            "type": "string"
+          }
+        ]
+      },
+      "update_kwc_custom_agent": {
+        "accept": {
+          "kwcollection_custom_agent_v1.json": "application/vnd.adobe.dc+json;profile=\"https://dc-kwcollection.adobe.io/schemas/kwcollection_custom_agent_v1.json\""
+        },
+        "authentication": [
+          "auth_header_primary"
+        ],
+        "content_type": {
+          "kwcollection_custom_agent_patch_v1.json": "application/vnd.adobe.dc+json;profile=\"https://dc-kwcollection.adobe.io/schemas/kwcollection_custom_agent_patch_v1.json\""
+        },
+        "http_method": "PATCH",
+        "resource_parameter": {
+          "name": "custom_agent_uri",
+          "type": "string"
+        },
+        "uri": "{+custom_agent_uri}/{custom_agent_id}?publicId=kwc_curated",
+        "uri_parameters": [
+          {
+            "name": "custom_agent_id",
+            "type": "string"
+          }
+        ]
+      }
+    },
+    "discovery": {
+      "createpdf_options": {
+        "accept": {
+          "createpdf_options_v1.json": "application/vnd.adobe.dc+json;profile=\"https://dc-api-v2.adobe.io/schemas/createpdf_options_v1.json\""
+        },
+        "authentication": [
+          "auth_header_primary"
+        ],
+        "content_type": {},
+        "http_method": "GET",
+        "uri": "https://dc-api-v2.adobe.io/420000024/discovery/resources/assets/createpdf/options"
+      },
+      "discover": {
+        "accept": {
+          "discovery_v1.json": "application/vnd.adobe.dc+json;profile=\"https://dc-api-v2.adobe.io/schemas/discovery_v1.json\""
+        },
+        "authentication": [
+          "auth_header_primary"
+        ],
+        "content_type": {},
+        "http_method": "GET",
+        "uri": "https://dc-api-v2.adobe.io/discovery"
+      },
+      "exportpdf_options": {
+        "accept": {
+          "exportpdf_options_v1.json": "application/vnd.adobe.dc+json;profile=\"https://dc-api-v2.adobe.io/schemas/exportpdf_options_v1.json\""
+        },
+        "authentication": [
+          "auth_header_primary"
+        ],
+        "content_type": {},
+        "http_method": "GET",
+        "uri": "https://dc-api-v2.adobe.io/420000024/discovery/resources/assets/exportpdf/options"
+      },
+      "get_services": {
+        "accept": {
+          "services_v1.json": "application/vnd.adobe.dc+json;profile=\"https://dc-api-v2.adobe.io/schemas/services_v1.json\""
+        },
+        "authentication": [
+          "auth_header_primary"
+        ],
+        "content_type": {},
+        "http_method": "GET",
+        "uri": "https://dc-api-v2.adobe.io/420000024/discovery/services",
+        "uri_parameters": [
+          {
+            "name": "fields",
+            "type": "string"
+          }
+        ]
+      },
+      "source_options": {
+        "accept": {
+          "source_options_v1.json": "application/vnd.adobe.dc+json;profile=\"https://dc-api-v2.adobe.io/schemas/source_options_v1.json\""
+        },
+        "authentication": [
+          "auth_header_primary"
+        ],
+        "content_type": {},
+        "http_method": "GET",
+        "uri": "https://dc-api-v2.adobe.io/420000024/discovery/resources/assets/source/options",
+        "uri_parameters": [
+          {
+            "name": "asset_uri",
+            "type": "string"
+          }
+        ]
+      }
+    },
+    "feedback": {
+      "create": {
+        "accept": {},
+        "authentication": [
+          "auth_header_primary"
+        ],
+        "content_type": {
+          "feedback_creation_v1.json": "application/vnd.adobe.dc+json;profile=\"https://dc-api-v2.adobe.io/schemas/feedback_creation_v1.json\""
+        },
+        "http_method": "POST",
+        "uri": "https://dc-api-v2.adobe.io/420000024/feedback/create"
+      }
+    },
+    "folders": {
+      "breadcrumbs": {
+        "accept": {
+          "folder_breadcrumbs_v1.json": "application/vnd.adobe.dc+json;profile=\"https://dc-api-v2.adobe.io/schemas/folder_breadcrumbs_v1.json\""
+        },
+        "authentication": [
+          "auth_header_primary"
+        ],
+        "content_type": {},
+        "http_method": "GET",
+        "resource_parameter": {
+          "name": "folder_uri",
+          "type": "string"
+        },
+        "uri": "{+folder_uri}/breadcrumbs"
+      },
+      "create": {
+        "accept": {
+          "folder_v1.json": "application/vnd.adobe.dc+json;profile=\"https://dc-api-v2.adobe.io/schemas/folder_v1.json\""
+        },
+        "authentication": [
+          "auth_header_primary"
+        ],
+        "content_type": {
+          "folder_creation_v1.json": "application/vnd.adobe.dc+json;profile=\"https://dc-api-v2.adobe.io/schemas/folder_creation_v1.json\""
+        },
+        "http_method": "POST",
+        "uri": "https://dc-api-v2.adobe.io/420000024/folders"
+      },
+      "delete": {
+        "accept": {},
+        "authentication": [
+          "auth_header_primary"
+        ],
+        "content_type": {},
+        "http_method": "DELETE",
+        "resource_parameter": {
+          "name": "folder_uri",
+          "type": "string"
+        },
+        "uri": "{+folder_uri}"
+      },
+      "get_metadata": {
+        "accept": {
+          "folder_metadata_basic_v1.json": "application/vnd.adobe.dc+json;profile=\"https://dc-api-v2.adobe.io/schemas/folder_metadata_basic_v1.json\""
+        },
+        "authentication": [
+          "auth_header_primary"
+        ],
+        "content_type": {},
+        "http_method": "GET",
+        "resource_parameter": {
+          "name": "folder_uri",
+          "type": "string"
+        },
+        "uri": "{+folder_uri}/metadata"
+      },
+      "get_metadata_field": {
+        "accept": {
+          "folder_metadata_field_v1.json": "application/vnd.adobe.dc+json;profile=\"https://dc-api-v2.adobe.io/schemas/folder_metadata_field_v1.json\""
+        },
+        "authentication": [
+          "auth_header_primary"
+        ],
+        "content_type": {},
+        "http_method": "GET",
+        "resource_parameter": {
+          "name": "folder_uri",
+          "type": "string"
+        },
+        "uri": "{+folder_uri}/metadata{/fields}",
+        "uri_parameters": [
+          {
+            "enum": [
+              "uri",
+              "name",
+              "folder_id",
+              "parent_uri",
+              "parent_id",
+              "created",
+              "modified",
+              "source",
+              "favorite",
+              "starred",
+              "tags",
+              "custom_tags"
+            ],
+            "name": "fields",
+            "type": "string"
+          }
+        ]
+      },
+      "get_root": {
+        "accept": {
+          "root_v1.json": "application/vnd.adobe.dc+json;profile=\"https://dc-api-v2.adobe.io/schemas/root_v1.json\""
+        },
+        "authentication": [
+          "auth_header_primary"
+        ],
+        "content_type": {},
+        "http_method": "GET",
+        "uri": "https://dc-api-v2.adobe.io/420000024/folders/root"
+      },
+      "get_system_folders": {
+        "accept": {
+          "system_folders_v1.json": "application/vnd.adobe.dc+json;profile=\"https://dc-api-v2.adobe.io/schemas/system_folders_v1.json\""
+        },
+        "authentication": [
+          "auth_header_primary"
+        ],
+        "content_type": {},
+        "http_method": "GET",
+        "uri": "https://dc-api-v2.adobe.io/420000024/folders/system_folders"
+      },
+      "list": {
+        "accept": {
+          "folder_listing_v1.json": "application/vnd.adobe.dc+json;profile=\"https://dc-api-v2.adobe.io/schemas/folder_listing_v1.json\""
+        },
+        "authentication": [
+          "auth_header_primary"
+        ],
+        "content_type": {},
+        "http_method": "GET",
+        "resource_parameter": {
+          "name": "folder_uri",
+          "type": "string"
+        },
+        "uri": "{+folder_uri}/contents{?order_by,sort_order,page_size,metadata,include_composite_types}",
+        "uri_parameters": [
+          {
+            "enum": [
+              "name",
+              "size",
+              "type",
+              "extension",
+              "created",
+              "modified",
+              "last_access"
+            ],
+            "name": "order_by",
+            "type": "string"
+          },
+          {
+            "enum": [
+              "ascending",
+              "descending"
+            ],
+            "name": "sort_order",
+            "type": "string"
+          },
+          {
+            "default": 5000,
+            "name": "page_size",
+            "type": "integer"
+          },
+          {
+            "default": "basic",
+            "enum": [
+              "min",
+              "basic"
+            ],
+            "name": "metadata",
+            "type": "string"
+          },
+          {
+            "enum": [
+              "horizon"
+            ],
+            "name": "include_composite_types",
+            "type": "string"
+          }
+        ]
+      },
+      "list_next_page": {
+        "accept": {
+          "folder_listing_v1.json": "application/vnd.adobe.dc+json;profile=\"https://dc-api-v2.adobe.io/schemas/folder_listing_v1.json\""
+        },
+        "authentication": [
+          "auth_header_primary"
+        ],
+        "content_type": {},
+        "http_method": "GET",
+        "resource_parameter": {
+          "name": "next_page_uri",
+          "type": "string"
+        },
+        "uri": "{+next_page_uri}"
+      },
+      "patch_metadata_field": {
+        "accept": {
+          "folder_metadata_field_v1.json": "application/vnd.adobe.dc+json;profile=\"https://dc-api-v2.adobe.io/schemas/folder_metadata_field_v1.json\""
+        },
+        "authentication": [
+          "auth_header_primary"
+        ],
+        "content_type": {
+          "folder_metadata_field_patch_v1.json": "application/vnd.adobe.dc+json;profile=\"https://dc-api-v2.adobe.io/schemas/folder_metadata_field_patch_v1.json\""
+        },
+        "http_method": "PATCH",
+        "resource_parameter": {
+          "name": "folder_uri",
+          "type": "string"
+        },
+        "uri": "{+folder_uri}/metadata{/fields}",
+        "uri_parameters": [
+          {
+            "enum": [
+              "tags",
+              "custom_tags"
+            ],
+            "name": "fields",
+            "type": "string"
+          }
+        ]
+      },
+      "put_metadata_field": {
+        "accept": {},
+        "authentication": [
+          "auth_header_primary"
+        ],
+        "content_type": {
+          "folder_metadata_field_v1.json": "application/vnd.adobe.dc+json;profile=\"https://dc-api-v2.adobe.io/schemas/folder_metadata_field_v1.json\""
+        },
+        "http_method": "PUT",
+        "resource_parameter": {
+          "name": "folder_uri",
+          "type": "string"
+        },
+        "uri": "{+folder_uri}/metadata{/fields}",
+        "uri_parameters": [
+          {
+            "enum": [
+              "favorite",
+              "starred"
+            ],
+            "name": "fields",
+            "type": "string"
+          }
+        ]
+      }
+    },
+    "genai_conversations": {
+      "delete_all_asset_conversations": {
+        "accept": {
+          "conversation_job_status_v1.json": "application/vnd.adobe.dc+json;profile=\"https://dc-conversationhistory.adobe.io/schemas/conversation_job_status_v1.json\""
+        },
+        "authentication": [
+          "auth_header_primary"
+        ],
+        "content_type": {},
+        "http_method": "DELETE",
+        "uri": "https://dc-conversationhistory-irl1.adobe.io/420000024/assets/conversations"
+      },
+      "delete_asset_conversation": {
+        "accept": {},
+        "authentication": [
+          "auth_header_primary"
+        ],
+        "content_type": {},
+        "http_method": "DELETE",
+        "uri": "https://dc-conversationhistory-irl1.adobe.io/420000024/assets/{asset_id}/conversations/{conversation_id}",
+        "uri_parameters": [
+          {
+            "name": "asset_id",
+            "type": "string"
+          },
+          {
+            "name": "conversation_id",
+            "type": "string"
+          }
+        ]
+      },
+      "delete_kwcollection_conversations": {
+        "accept": {},
+        "authentication": [
+          "auth_header_primary"
+        ],
+        "content_type": {},
+        "http_method": "DELETE",
+        "uri": "https://dc-conversationhistory-irl1.adobe.io/420000024/kwcollections/{collection_id}/conversations/{conversation_id}",
+        "uri_parameters": [
+          {
+            "name": "collection_id",
+            "type": "string"
+          },
+          {
+            "name": "conversation_id",
+            "type": "string"
+          }
+        ]
+      },
+      "generate_asset_id": {
+        "accept": {
+          "generated_asset_id_v1.json": "application/vnd.adobe.dc+json;profile=\"https://dc-conversationhistory.adobe.io/schemas/generated_asset_id_v1.json\""
+        },
+        "authentication": [
+          "auth_header_primary"
+        ],
+        "content_type": {
+          "source_asset_details_v1.json": "application/vnd.adobe.dc+json;profile=\"https://dc-conversationhistory.adobe.io/schemas/source_asset_details_v1.json\""
+        },
+        "http_method": "POST",
+        "uri": "https://dc-conversationhistory-irl1.adobe.io/420000024/assets/id"
+      },
+      "get_asset_conversation_events": {
+        "accept": {
+          "multipart/mixed; boundary=\"event_boundary\"": "multipart/mixed; boundary=\"event_boundary\""
+        },
+        "authentication": [
+          "auth_header_primary"
+        ],
+        "content_type": {},
+        "http_method": "GET",
+        "uri": "https://dc-conversationhistory-irl1.adobe.io/420000024/assets/{asset_id}/conversations/{conversation_id}/events",
+        "uri_parameters": [
+          {
+            "name": "asset_id",
+            "type": "string"
+          },
+          {
+            "name": "conversation_id",
+            "type": "string"
+          }
+        ]
+      },
+      "get_job_status": {
+        "accept": {
+          "conversation_job_output_v1.json": "application/vnd.adobe.dc+json;profile=\"https://dc-conversationhistory.adobe.io/schemas/conversation_job_output_v1.json\""
+        },
+        "authentication": [
+          "auth_header_primary"
+        ],
+        "content_type": {},
+        "http_method": "GET",
+        "uri": "https://dc-conversationhistory-irl1.adobe.io/420000024/jobs/{job_id}/status",
+        "uri_parameters": [
+          {
+            "name": "job_id",
+            "type": "string"
+          }
+        ]
+      },
+      "get_kwcollection_conversation_events": {
+        "accept": {
+          "multipart/mixed; boundary=\"event_boundary\"": "multipart/mixed; boundary=\"event_boundary\""
+        },
+        "authentication": [
+          "auth_header_primary"
+        ],
+        "content_type": {},
+        "http_method": "GET",
+        "uri": "https://dc-conversationhistory-irl1.adobe.io/420000024/kwcollections/{collection_id}/conversations/{conversation_id}/events",
+        "uri_parameters": [
+          {
+            "name": "collection_id",
+            "type": "string"
+          },
+          {
+            "name": "conversation_id",
+            "type": "string"
+          }
+        ]
+      },
+      "list_asset_conversations": {
+        "accept": {
+          "asset_conversations_listing_v1.json": "application/vnd.adobe.dc+json;profile=\"https://dc-conversationhistory.adobe.io/schemas/asset_conversations_listing_v1.json\""
+        },
+        "authentication": [
+          "auth_header_primary"
+        ],
+        "content_type": {
+          "source_asset_details_v1.json": "application/vnd.adobe.dc+json;profile=\"https://dc-conversationhistory.adobe.io/schemas/source_asset_details_v1.json\""
+        },
+        "http_method": "POST",
+        "uri": "https://dc-conversationhistory-irl1.adobe.io/420000024/fetch_asset_conversations{?order_by,sort_order,page_size}",
+        "uri_parameters": [
+          {
+            "default": "ascending",
+            "enum": [
+              "ascending",
+              "descending"
+            ],
+            "name": "sort_order",
+            "type": "string"
+          },
+          {
+            "default": "name",
+            "enum": [
+              "name",
+              "created",
+              "modified"
+            ],
+            "name": "order_by",
+            "type": "string"
+          },
+          {
+            "default": 50,
+            "name": "page_size",
+            "type": "integer"
+          }
+        ]
+      },
+      "list_kwcollection_conversations": {
+        "accept": {
+          "kwcollection_conversations_listing_v1.json": "application/vnd.adobe.dc+json;profile=\"https://dc-conversationhistory.adobe.io/schemas/kwcollection_conversations_listing_v1.json\""
+        },
+        "authentication": [
+          "auth_header_primary"
+        ],
+        "content_type": {},
+        "http_method": "GET",
+        "uri": "https://dc-conversationhistory-irl1.adobe.io/420000024/kwcollections/{collection_id}/conversations{?order_by,sort_order,page_size}",
+        "uri_parameters": [
+          {
+            "name": "collection_id",
+            "type": "string"
+          },
+          {
+            "default": "ascending",
+            "enum": [
+              "ascending",
+              "descending"
+            ],
+            "name": "sort_order",
+            "type": "string"
+          },
+          {
+            "default": "name",
+            "enum": [
+              "name",
+              "created",
+              "modified"
+            ],
+            "name": "order_by",
+            "type": "string"
+          },
+          {
+            "default": 50,
+            "name": "page_size",
+            "type": "integer"
+          }
+        ]
+      },
+      "patch_conversation_metadata": {
+        "accept": {},
+        "authentication": [
+          "auth_header_primary"
+        ],
+        "content_type": {
+          "patch_conversation_metadata_v1.json": "application/vnd.adobe.dc+json;profile=\"https://dc-conversationhistory.adobe.io/schemas/patch_conversation_metadata_v1.json\""
+        },
+        "http_method": "PATCH",
+        "uri": "https://dc-conversationhistory-irl1.adobe.io/420000024/assets/{asset_id}/conversations/{conversation_id}/metadata",
+        "uri_parameters": [
+          {
+            "name": "asset_id",
+            "type": "string"
+          },
+          {
+            "name": "conversation_id",
+            "type": "string"
+          }
+        ]
+      }
+    },
+    "jobs": {
+      "bbox_status": {
+        "accept": {
+          "compute_content_bboxes_job_v1.json": "application/vnd.adobe.dc+json;profile=\"https://dc-api-v2.adobe.io/schemas/compute_content_bboxes_job_v1.json\""
+        },
+        "authentication": [
+          "auth_header_primary"
+        ],
+        "content_type": {},
+        "http_method": "GET",
+        "resource_parameter": {
+          "name": "bbox_job_uri",
+          "type": "string"
+        },
+        "uri": "{+bbox_job_uri}/bbox_status"
+      },
+      "status": {
+        "accept": {
+          "new_asset_job_v1.json": "application/vnd.adobe.dc+json;profile=\"https://dc-api-v2.adobe.io/schemas/new_asset_job_v1.json\""
+        },
+        "authentication": [
+          "auth_header_primary"
+        ],
+        "content_type": {},
+        "http_method": "GET",
+        "resource_parameter": {
+          "name": "job_uri",
+          "type": "string"
+        },
+        "uri": "{+job_uri}/status"
+      }
+    },
+    "kwc_collaboration": {
+      "add_collaborators": {
+        "accept": {
+          "kwcollection_collab_add_v1.json": "application/vnd.adobe.dc+json;profile=\"https://dc-shareandcollab.adobe.io/schemas/kwcollection_collab_add_v1.json\""
+        },
+        "authentication": [
+          "auth_header_primary"
+        ],
+        "content_type": {
+          "application/json": "application/json"
+        },
+        "http_method": "POST",
+        "resource_parameter": {
+          "name": "collection_id",
+          "type": "string"
+        },
+        "uri": "https://platform-cs-edge-irl1.adobe.io/dccollab/420000024/kwcollections/{+collection_id}/collaborators?publicId=kwc_curated",
+        "uri_parameters": []
+      },
+      "add_collaborators_asset": {
+        "accept": {
+          "kwcollection_asset_collab_add_v1.json": "application/vnd.adobe.dc+json;profile=\"https://dc-shareandcollab.adobe.io/schemas/kwcollection_asset_collab_add_v1.json\""
+        },
+        "authentication": [
+          "auth_header_primary"
+        ],
+        "content_type": {
+          "application/json": "application/json"
+        },
+        "http_method": "POST",
+        "resource_parameter": {
+          "name": "asset_id",
+          "type": "string"
+        },
+        "uri": "https://platform-cs-edge-irl1.adobe.io/dccollab/420000024/kwcollections/{collection_id}/assets/{+asset_id}/collaborators?publicId=kwc_curated",
+        "uri_parameters": [
+          {
+            "name": "collection_id",
+            "type": "string"
+          }
+        ]
+      },
+      "add_collaborators_asset_job_status": {
+        "accept": {
+          "kwcollection_asset_collab_add_v1.json": "application/vnd.adobe.dc+json;profile=\"https://dc-shareandcollab.adobe.io/schemas/kwcollection_asset_collab_add_v1.json\""
+        },
+        "authentication": [
+          "auth_header_primary"
+        ],
+        "content_type": {},
+        "http_method": "GET",
+        "uri": "https://platform-cs-edge-irl1.adobe.io/dccollab/420000024/kwcollections/jobs/{job_id}/status?publicId=kwc_curated",
+        "uri_parameters": [
+          {
+            "name": "job_id",
+            "type": "string"
+          }
+        ]
+      },
+      "get_collaborators": {
+        "accept": {
+          "kwcollection_collab_get_v1.json": "application/vnd.adobe.dc+json;profile=\"https://dc-shareandcollab.adobe.io/schemas/kwcollection_collab_get_v1.json\""
+        },
+        "authentication": [
+          "auth_header_primary"
+        ],
+        "content_type": {},
+        "http_method": "GET",
+        "resource_parameter": {
+          "name": "collection_id",
+          "type": "string"
+        },
+        "uri": "https://platform-cs-edge-irl1.adobe.io/dccollab/420000024/kwcollections/{+collection_id}/collaborators?publicId=kwc_curated{&includeActivity}",
+        "uri_parameters": [
+          {
+            "name": "includeActivity",
+            "type": "boolean"
+          }
+        ]
+      },
+      "get_configs": {
+        "accept": {
+          "kwcollection_collab_configs_v1.json": "application/vnd.adobe.dc+json;profile=\"https://dc-shareandcollab.adobe.io/schemas/kwcollection_collab_configs_v1.json\""
+        },
+        "authentication": [
+          "auth_header_primary"
+        ],
+        "content_type": {},
+        "http_method": "GET",
+        "uri": "https://platform-cs-edge-irl1.adobe.io/dccollab/420000024/configs?publicId=kwc_curated"
+      },
+      "get_metadata": {
+        "accept": {
+          "kwcollection_collab_metadata_v1.json": "application/vnd.adobe.dc+json;profile=\"https://dc-shareandcollab.adobe.io/schemas/kwcollection_collab_metadata_v1.json\""
+        },
+        "authentication": [
+          "auth_header_primary"
+        ],
+        "content_type": {},
+        "http_method": "GET",
+        "resource_parameter": {
+          "name": "collection_id",
+          "type": "string"
+        },
+        "uri": "https://platform-cs-edge-irl1.adobe.io/dccollab/420000024/kwcollections/{+collection_id}/collaborators/me?publicId=kwc_curated{&include}",
+        "uri_parameters": [
+          {
+            "name": "include",
+            "type": "string"
+          }
+        ]
+      },
+      "get_stats": {
+        "accept": {
+          "kwcollection_collab_stats_v1.json": "application/vnd.adobe.dc+json;profile=\"https://dc-shareandcollab.adobe.io/schemas/kwcollection_collab_stats_v1.json\""
+        },
+        "authentication": [
+          "auth_header_primary"
+        ],
+        "content_type": {},
+        "http_method": "GET",
+        "resource_parameter": {
+          "name": "collection_id",
+          "type": "string"
+        },
+        "uri": "https://platform-cs-edge-irl1.adobe.io/dccollab/420000024/kwcollections/{+collection_id}/collaborators/stats",
+        "uri_parameters": []
+      },
+      "instant_link": {
+        "accept": {
+          "instant_link_v1.json": "application/vnd.adobe.dc+json;profile=\"https://dc-shareandcollab.adobe.io/schemas/instant_link_v1.json\""
+        },
+        "authentication": [
+          "auth_header_primary"
+        ],
+        "content_type": {
+          "create_instant_link_v1.json": "application/vnd.adobe.dc+json;profile=\"https://dc-shareandcollab.adobe.io/schemas/create_instant_link_v1.json\""
+        },
+        "http_method": "POST",
+        "uri": "https://platform-cs-edge-irl1.adobe.io/dccollab/420000024/instant_link"
+      },
+      "remove_collaborators": {
+        "accept": {
+          "kwcollection_collab_remove_v1.json": "application/vnd.adobe.dc+json;profile=\"https://dc-shareandcollab.adobe.io/schemas/kwcollection_collab_remove_v1.json\""
+        },
+        "authentication": [
+          "auth_header_primary"
+        ],
+        "content_type": {},
+        "http_method": "DELETE",
+        "resource_parameter": {
+          "name": "collection_id",
+          "type": "string"
+        },
+        "uri": "https://platform-cs-edge-irl1.adobe.io/dccollab/420000024/kwcollections/{+collection_id}/collaborators?publicId=kwc_curated",
+        "uri_parameters": []
+      },
+      "update_collaborators": {
+        "accept": {
+          "kwcollection_collab_patch_v1.json": "application/vnd.adobe.dc+json;profile=\"https://dc-shareandcollab.adobe.io/schemas/kwcollection_collab_patch_v1.json\""
+        },
+        "authentication": [
+          "auth_header_primary"
+        ],
+        "content_type": {
+          "application/json": "application/json"
+        },
+        "http_method": "PATCH",
+        "resource_parameter": {
+          "name": "collection_id",
+          "type": "string"
+        },
+        "uri": "https://platform-cs-edge-irl1.adobe.io/dccollab/420000024/kwcollections/{+collection_id}/collaborators?publicId=kwc_curated",
+        "uri_parameters": []
+      }
+    },
+    "kwc_goal_recommendations": {
+      "get": {
+        "accept": {
+          "kwcollection_goal_recommendations_v1.json": "application/vnd.adobe.dc+json;profile=\"https://dc-kwcollection.adobe.io/schemas/kwcollection_goal_recommendations_v1.json\""
+        },
+        "authentication": [
+          "auth_header_primary"
+        ],
+        "content_type": {},
+        "http_method": "GET",
+        "resource_parameter": {
+          "name": "goal_recommendations_uri",
+          "type": "string"
+        },
+        "uri": "{+goal_recommendations_uri}/kwcollections/{kwcollection_id}/goal_recommendations?publicId=kwc_curated",
+        "uri_parameters": [
+          {
+            "name": "kwcollection_id",
+            "type": "string"
+          }
+        ]
+      }
+    },
+    "kwc_notes": {
+      "create": {
+        "accept": {
+          "kwcollection_note_job_v1.json": "application/vnd.adobe.dc+json;profile=\"https://dc-notes.adobe.io/schemas/kwcollection_note_job_v1.json\"",
+          "kwcollection_note_v1.json": "application/vnd.adobe.dc+json;profile=\"https://dc-notes.adobe.io/schemas/kwcollection_note_v1.json\""
+        },
+        "authentication": [
+          "auth_header_primary"
+        ],
+        "content_type": {
+          "kwcollection_note_create_parameters_v1.json": "application/vnd.adobe.dc+json;profile=\"https://dc-notes.adobe.io/schemas/kwcollection_note_create_parameters_v1.json\"",
+          "multipart/mixed": "multipart/mixed"
+        },
+        "http_method": "POST",
+        "resource_parameter": {
+          "name": "notes_uri",
+          "type": "string"
+        },
+        "uri": "{+notes_uri}/kwcollections/{kwcollection_id}/notes?publicId=kwc_curated",
+        "uri_parameters": [
+          {
+            "name": "kwcollection_id",
+            "type": "string"
+          }
+        ]
+      },
+      "delete": {
+        "accept": {},
+        "authentication": [
+          "auth_header_primary"
+        ],
+        "content_type": {},
+        "http_method": "DELETE",
+        "resource_parameter": {
+          "name": "notes_uri",
+          "type": "string"
+        },
+        "uri": "{+notes_uri}/kwcollections/{kwcollection_id}/notes/{note_id}?publicId=kwc_curated",
+        "uri_parameters": [
+          {
+            "name": "kwcollection_id",
+            "type": "string"
+          },
+          {
+            "name": "note_id",
+            "type": "string"
+          }
+        ]
+      },
+      "get_configs": {
+        "accept": {
+          "kwcollection_note_configs_v1.json": "application/vnd.adobe.dc+json;profile=\"https://dc-notes.adobe.io/schemas/kwcollection_note_configs_v1.json\""
+        },
+        "authentication": [
+          "auth_header_primary"
+        ],
+        "content_type": {},
+        "http_method": "GET",
+        "resource_parameter": {
+          "name": "notes_uri",
+          "type": "string"
+        },
+        "uri": "{+notes_uri}/configs?publicId=kwc_curated",
+        "uri_parameters": []
+      },
+      "get_content": {
+        "accept": {
+          "application/vnd.adobe.note+json": "application/vnd.adobe.note+json"
+        },
+        "authentication": [
+          "auth_header_primary"
+        ],
+        "content_type": {},
+        "http_method": "GET",
+        "resource_parameter": {
+          "name": "notes_uri",
+          "type": "string"
+        },
+        "uri": "{+notes_uri}/kwcollections/{kwcollection_id}/notes/{note_id}/content?publicId=kwc_curated",
+        "uri_parameters": [
+          {
+            "name": "kwcollection_id",
+            "type": "string"
+          },
+          {
+            "name": "note_id",
+            "type": "string"
+          }
+        ]
+      },
+      "get_metadata": {
+        "accept": {
+          "kwcollection_note_metadata_v1.json": "application/vnd.adobe.dc+json;profile=\"https://dc-notes.adobe.io/schemas/kwcollection_note_metadata_v1.json\""
+        },
+        "authentication": [
+          "auth_header_primary"
+        ],
+        "content_type": {},
+        "http_method": "GET",
+        "resource_parameter": {
+          "name": "notes_uri",
+          "type": "string"
+        },
+        "uri": "{+notes_uri}/kwcollections/{kwcollection_id}/notes/{note_id}/metadata?publicId=kwc_curated",
+        "uri_parameters": [
+          {
+            "name": "kwcollection_id",
+            "type": "string"
+          },
+          {
+            "name": "note_id",
+            "type": "string"
+          }
+        ]
+      },
+      "job_status": {
+        "accept": {
+          "note_job_output_v1.json": "application/vnd.adobe.dc+json;profile=\"https://dc-notes.adobe.io/schemas/note_job_output_v1.json\""
+        },
+        "authentication": [
+          "auth_header_primary"
+        ],
+        "content_type": {},
+        "http_method": "GET",
+        "resource_parameter": {
+          "name": "notes_uri",
+          "type": "string"
+        },
+        "uri": "{+notes_uri}/jobs/{job_id}/status?publicId=kwc_curated",
+        "uri_parameters": [
+          {
+            "name": "job_id",
+            "type": "string"
+          }
+        ]
+      },
+      "list": {
+        "accept": {
+          "kwcollection_notes_listing_v1.json": "application/vnd.adobe.dc+json;profile=\"https://dc-notes.adobe.io/schemas/kwcollection_notes_listing_v1.json\""
+        },
+        "authentication": [
+          "auth_header_primary"
+        ],
+        "content_type": {},
+        "http_method": "GET",
+        "resource_parameter": {
+          "name": "notes_uri",
+          "type": "string"
+        },
+        "uri": "{+notes_uri}/kwcollections/{kwcollection_id}/notes?publicId=kwc_curated{&type,access_level,order_by,sort_order,page_size}",
+        "uri_parameters": [
+          {
+            "name": "kwcollection_id",
+            "type": "string"
+          },
+          {
+            "default": "user_note",
+            "enum": [
+              "user_note",
+              "lp_card"
+            ],
+            "name": "type",
+            "type": "string"
+          },
+          {
+            "default": "name",
+            "enum": [
+              "name",
+              "created",
+              "modified"
+            ],
+            "name": "order_by",
+            "type": "string"
+          },
+          {
+            "default": "ascending",
+            "enum": [
+              "ascending",
+              "descending"
+            ],
+            "name": "sort_order",
+            "type": "string"
+          },
+          {
+            "default": 100,
+            "name": "page_size",
+            "type": "integer"
+          },
+          {
+            "enum": [
+              "private",
+              "shared"
+            ],
+            "name": "access_level",
+            "type": "string"
+          }
+        ]
+      },
+      "patch_metadata": {
+        "accept": {},
+        "authentication": [
+          "auth_header_primary"
+        ],
+        "content_type": {
+          "patch_kwcollection_note_metadata_v1.json": "application/vnd.adobe.dc+json;profile=\"https://dc-notes.adobe.io/schemas/patch_kwcollection_note_metadata_v1.json\""
+        },
+        "http_method": "PATCH",
+        "resource_parameter": {
+          "name": "notes_uri",
+          "type": "string"
+        },
+        "uri": "{+notes_uri}/kwcollections/{kwcollection_id}/notes/{note_id}/metadata?publicId=kwc_curated",
+        "uri_parameters": [
+          {
+            "name": "kwcollection_id",
+            "type": "string"
+          },
+          {
+            "name": "note_id",
+            "type": "string"
+          }
+        ]
+      },
+      "update_content": {
+        "accept": {
+          "kwcollection_note_job_v1.json": "application/vnd.adobe.dc+json;profile=\"https://dc-notes.adobe.io/schemas/kwcollection_note_job_v1.json\""
+        },
+        "authentication": [
+          "auth_header_primary"
+        ],
+        "content_type": {
+          "application/vnd.adobe.note+json": "application/vnd.adobe.note+json",
+          "update_kwcollection_note_content_v1.json": "application/vnd.adobe.dc+json;profile=\"https://dc-notes.adobe.io/schemas/update_kwcollection_note_content_v1.json\""
+        },
+        "http_method": "PUT",
+        "resource_parameter": {
+          "name": "notes_uri",
+          "type": "string"
+        },
+        "uri": "{+notes_uri}/kwcollections/{kwcollection_id}/notes/{note_id}/content?publicId=kwc_curated",
+        "uri_parameters": [
+          {
+            "name": "kwcollection_id",
+            "type": "string"
+          },
+          {
+            "name": "note_id",
+            "type": "string"
+          }
+        ]
+      }
+    },
+    "kwcollections": {
+      "add_input_asset": {
+        "accept": {
+          "kwcollection_imported_asset_v1.json": "application/vnd.adobe.dc+json;profile=\"https://dc-kwcollection.adobe.io/schemas/kwcollection_imported_asset_v1.json\""
+        },
+        "authentication": [
+          "auth_header_primary"
+        ],
+        "content_type": {
+          "kwcollection_asset_import_v1.json": "application/vnd.adobe.dc+json;profile=\"https://dc-kwcollection.adobe.io/schemas/kwcollection_asset_import_v1.json\""
+        },
+        "http_method": "POST",
+        "resource_parameter": {
+          "name": "kwcollection_uri",
+          "type": "string"
+        },
+        "uri": "{+kwcollection_uri}/assets?publicId=kwc_curated",
+        "uri_parameters": []
+      },
+      "copy": {
+        "accept": {
+          "kwcollection_copied_asset_v1.json": "application/vnd.adobe.dc+json;profile=\"https://dc-kwcollection.adobe.io/schemas/kwcollection_copied_asset_v1.json\""
+        },
+        "authentication": [
+          "auth_header_primary"
+        ],
+        "content_type": {
+          "kwcollection_asset_copy_v1.json": "application/vnd.adobe.dc+json;profile=\"https://dc-kwcollection.adobe.io/schemas/kwcollection_asset_copy_v1.json\""
+        },
+        "http_method": "POST",
+        "uri": "https://platform-cs-edge-irl1.adobe.io/dckwcs/420000024/kwcollections/copy?publicId=kwc_curated"
+      },
+      "create": {
+        "accept": {
+          "kwcollection_v1.json": "application/vnd.adobe.dc+json;profile=\"https://dc-kwcollection.adobe.io/schemas/kwcollection_v1.json\"",
+          "kwcollection_v2.json": "application/vnd.adobe.dc+json;profile=\"https://dc-kwcollection.adobe.io/schemas/kwcollection_v2.json\""
+        },
+        "authentication": [
+          "auth_header_primary"
+        ],
+        "content_type": {
+          "kwcollection_creation_v1.json": "application/vnd.adobe.dc+json;profile=\"https://dc-kwcollection.adobe.io/schemas/kwcollection_creation_v1.json\""
+        },
+        "http_method": "POST",
+        "uri": "https://platform-cs-edge-irl1.adobe.io/dckwcs/420000024/kwcollections?publicId=kwc_curated"
+      },
+      "delete": {
+        "accept": {
+          "delete_kwcollection_v1.json": "application/vnd.adobe.dc+json;profile=\"https://dc-kwcollection.adobe.io/schemas/delete_kwcollection_v1.json\""
+        },
+        "authentication": [
+          "auth_header_primary"
+        ],
+        "content_type": {},
+        "http_method": "DELETE",
+        "resource_parameter": {
+          "name": "kwcollection_uri",
+          "type": "string"
+        },
+        "uri": "{+kwcollection_uri}?publicId=kwc_curated",
+        "uri_parameters": []
+      },
+      "delete_asset": {
+        "accept": {},
+        "authentication": [
+          "auth_header_primary"
+        ],
+        "content_type": {},
+        "http_method": "DELETE",
+        "resource_parameter": {
+          "name": "kwcollection_uri",
+          "type": "string"
+        },
+        "uri": "{+kwcollection_uri}/assets/{asset_id}?publicId=kwc_curated",
+        "uri_parameters": [
+          {
+            "name": "asset_id",
+            "type": "string"
+          }
+        ]
+      },
+      "delete_linkedasset": {
+        "accept": {},
+        "authentication": [
+          "auth_header_primary"
+        ],
+        "content_type": {},
+        "http_method": "DELETE",
+        "resource_parameter": {
+          "name": "kwcollection_uri",
+          "type": "string"
+        },
+        "uri": "{+kwcollection_uri}/linkedassets/{linkedasset_id}",
+        "uri_parameters": [
+          {
+            "name": "linkedasset_id",
+            "type": "string"
+          }
+        ]
+      },
+      "get": {
+        "accept": {
+          "kwcollection_v1.json": "application/vnd.adobe.dc+json;profile=\"https://dc-kwcollection.adobe.io/schemas/kwcollection_v1.json\"",
+          "kwcollection_v2.json": "application/vnd.adobe.dc+json;profile=\"https://dc-kwcollection.adobe.io/schemas/kwcollection_v2.json\""
+        },
+        "authentication": [
+          "auth_header_primary"
+        ],
+        "content_type": {},
+        "http_method": "GET",
+        "resource_parameter": {
+          "name": "kwcollection_uri",
+          "type": "string"
+        },
+        "uri": "{+kwcollection_uri}?publicId=kwc_curated",
+        "uri_parameters": []
+      },
+      "get_configs": {
+        "accept": {
+          "kwcollection_configs_v1.json": "application/vnd.adobe.dc+json;profile=\"https://dc-kwcollection.adobe.io/schemas/kwcollection_configs_v1.json\""
+        },
+        "authentication": [
+          "auth_header_primary"
+        ],
+        "content_type": {},
+        "http_method": "GET",
+        "uri": "https://platform-cs-edge-irl1.adobe.io/dckwcs/420000024/configs?publicId=kwc_curated"
+      },
+      "get_curated_collections": {
+        "accept": {
+          "kwcollection_curated_listing_v1.json": "application/vnd.adobe.dc+json;profile=\"https://dc-kwcollection.adobe.io/schemas/kwcollection_curated_listing_v1.json\"",
+          "kwcollection_curated_listing_v2.json": "application/vnd.adobe.dc+json;profile=\"https://dc-kwcollection.adobe.io/schemas/kwcollection_curated_listing_v2.json\""
+        },
+        "authentication": [
+          "auth_header_primary"
+        ],
+        "content_type": {},
+        "http_method": "GET",
+        "uri": "https://platform-cs-edge-irl1.adobe.io/dckwcs/420000024/kwcollections/curated?publicId=kwc_curated{&country,language,version}",
+        "uri_parameters": [
+          {
+            "default": "US",
+            "name": "country",
+            "type": "string"
+          },
+          {
+            "default": "en-US",
+            "name": "language",
+            "type": "string"
+          },
+          {
+            "enum": [
+              "examples_view"
+            ],
+            "name": "version",
+            "type": "string"
+          }
+        ]
+      },
+      "get_input_asset_job_status": {
+        "accept": {
+          "delete_kwcollection_v1.json": "application/vnd.adobe.dc+json;profile=\"https://dc-kwcollection.adobe.io/schemas/delete_kwcollection_v1.json\"",
+          "kwcollection_copied_asset_v1.json": "application/vnd.adobe.dc+json;profile=\"https://dc-kwcollection.adobe.io/schemas/kwcollection_copied_asset_v1.json\"",
+          "kwcollection_imported_asset_v1.json": "application/vnd.adobe.dc+json;profile=\"https://dc-kwcollection.adobe.io/schemas/kwcollection_imported_asset_v1.json\""
+        },
+        "authentication": [
+          "auth_header_primary"
+        ],
+        "content_type": {},
+        "http_method": "GET",
+        "resource_parameter": {
+          "name": "kwcollection_asset_job_uri",
+          "type": "string"
+        },
+        "uri": "{+kwcollection_asset_job_uri}?publicId=kwc_curated",
+        "uri_parameters": []
+      },
+      "get_job_status": {
+        "accept": {
+          "delete_kwcollection_v1.json": "application/vnd.adobe.dc+json;profile=\"https://dc-kwcollection.adobe.io/schemas/delete_kwcollection_v1.json\"",
+          "kwcollection_copied_asset_v1.json": "application/vnd.adobe.dc+json;profile=\"https://dc-kwcollection.adobe.io/schemas/kwcollection_copied_asset_v1.json\"",
+          "kwcollection_imported_asset_v1.json": "application/vnd.adobe.dc+json;profile=\"https://dc-kwcollection.adobe.io/schemas/kwcollection_imported_asset_v1.json\""
+        },
+        "authentication": [
+          "auth_header_primary"
+        ],
+        "content_type": {},
+        "http_method": "GET",
+        "resource_parameter": {
+          "name": "kwcollection_job_uri",
+          "type": "string"
+        },
+        "uri": "{+kwcollection_job_uri}?publicId=kwc_curated",
+        "uri_parameters": []
+      },
+      "get_kwcollection_asset_metadata": {
+        "accept": {
+          "kwcollection_asset_metadata_v1.json": "application/vnd.adobe.dc+json;profile=\"https://dc-kwcollection.adobe.io/schemas/kwcollection_asset_metadata_v1.json\""
+        },
+        "authentication": [
+          "auth_header_primary"
+        ],
+        "content_type": {},
+        "http_method": "GET",
+        "resource_parameter": {
+          "name": "kwcollection_uri",
+          "type": "string"
+        },
+        "uri": "{+kwcollection_uri}/assets/{asset_id}/metadata?publicId=kwc_curated",
+        "uri_parameters": [
+          {
+            "name": "asset_id",
+            "type": "string"
+          }
+        ]
+      },
+      "get_kwcollection_asset_origin_metadata": {
+        "accept": {
+          "kwcollection_asset_origin_metadata_v1.json": "application/vnd.adobe.dc+json;profile=\"https://dc-kwcollection.adobe.io/schemas/kwcollection_asset_origin_metadata_v1.json\""
+        },
+        "authentication": [
+          "auth_header_primary"
+        ],
+        "content_type": {},
+        "http_method": "GET",
+        "resource_parameter": {
+          "name": "kwcollection_uri",
+          "type": "string"
+        },
+        "uri": "{+kwcollection_uri}/asset/{asset_id}/origin/metadata",
+        "uri_parameters": [
+          {
+            "name": "asset_id",
+            "type": "string"
+          }
+        ]
+      },
+      "link_asset": {
+        "accept": {
+          "kwcollection_linkedasset_v1.json": "application/vnd.adobe.dc+json;profile=\"https://dc-kwcollection.adobe.io/schemas/kwcollection_linkedasset_v1.json\""
+        },
+        "authentication": [
+          "auth_header_primary"
+        ],
+        "content_type": {
+          "kwcollection_linkedasset_creation_v1.json": "application/vnd.adobe.dc+json;profile=\"https://dc-kwcollection.adobe.io/schemas/kwcollection_linkedasset_creation_v1.json\""
+        },
+        "http_method": "POST",
+        "resource_parameter": {
+          "name": "kwcollection_uri",
+          "type": "string"
+        },
+        "uri": "{+kwcollection_uri}/linkedassets",
+        "uri_parameters": []
+      },
+      "list": {
+        "accept": {
+          "kwcollection_listing_v1.json": "application/vnd.adobe.dc+json;profile=\"https://dc-kwcollection.adobe.io/schemas/kwcollection_listing_v1.json\""
+        },
+        "authentication": [
+          "auth_header_primary"
+        ],
+        "content_type": {},
+        "http_method": "GET",
+        "uri": "https://platform-cs-edge-irl1.adobe.io/dckwcs/420000024/kwcollections?publicId=kwc_curated{&order_by,sort_order,page_size}",
+        "uri_parameters": [
+          {
+            "default": "name",
+            "enum": [
+              "name",
+              "created",
+              "modified"
+            ],
+            "name": "order_by",
+            "type": "string"
+          },
+          {
+            "default": "ascending",
+            "enum": [
+              "ascending",
+              "descending"
+            ],
+            "name": "sort_order",
+            "type": "string"
+          },
+          {
+            "default": 100,
+            "name": "page_size",
+            "type": "integer"
+          },
+          {
+            "enum": [
+              "sales_space",
+              "study_space"
+            ],
+            "name": "type",
+            "type": "string"
+          }
+        ]
+      },
+      "list_kwcollection_assets": {
+        "accept": {
+          "kwcollection_assets_listing_v1.json": "application/vnd.adobe.dc+json;profile=\"https://dc-kwcollection.adobe.io/schemas/kwcollection_assets_listing_v1.json\""
+        },
+        "authentication": [
+          "auth_header_primary"
+        ],
+        "content_type": {},
+        "http_method": "GET",
+        "resource_parameter": {
+          "name": "kwcollection_uri",
+          "type": "string"
+        },
+        "uri": "{+kwcollection_uri}/assets?publicId=kwc_curated{&order_by,sort_order,page_size}",
+        "uri_parameters": [
+          {
+            "default": "name",
+            "enum": [
+              "name",
+              "created",
+              "modified"
+            ],
+            "name": "order_by",
+            "type": "string"
+          },
+          {
+            "default": "ascending",
+            "enum": [
+              "ascending",
+              "descending"
+            ],
+            "name": "sort_order",
+            "type": "string"
+          },
+          {
+            "default": 100,
+            "name": "page_size",
+            "type": "integer"
+          }
+        ]
+      },
+      "list_linkedassets": {
+        "accept": {
+          "kwcollection_linkedassets_listing_v1.json": "application/vnd.adobe.dc+json;profile=\"https://dc-kwcollection.adobe.io/schemas/kwcollection_linkedassets_listing_v1.json\""
+        },
+        "authentication": [
+          "auth_header_primary"
+        ],
+        "content_type": {},
+        "http_method": "GET",
+        "resource_parameter": {
+          "name": "kwcollection_uri",
+          "type": "string"
+        },
+        "uri": "{+kwcollection_uri}/linkedassets{?order_by,sort_order,page_size}",
+        "uri_parameters": [
+          {
+            "default": "linked_at",
+            "enum": [
+              "linked_at"
+            ],
+            "name": "order_by",
+            "type": "string"
+          },
+          {
+            "default": "descending",
+            "enum": [
+              "ascending",
+              "descending"
+            ],
+            "name": "sort_order",
+            "type": "string"
+          },
+          {
+            "default": 100,
+            "name": "page_size",
+            "type": "integer"
+          }
+        ]
+      },
+      "patch": {
+        "accept": {},
+        "authentication": [
+          "auth_header_primary"
+        ],
+        "content_type": {
+          "patch_kwcollection_v1.json": "application/vnd.adobe.dc+json;profile=\"https://dc-kwcollection.adobe.io/schemas/patch_kwcollection_v1.json\""
+        },
+        "http_method": "PATCH",
+        "resource_parameter": {
+          "name": "kwcollection_uri",
+          "type": "string"
+        },
+        "uri": "{+kwcollection_uri}?publicId=kwc_curated",
+        "uri_parameters": []
+      },
+      "patch_kwcollection_asset_metadata": {
+        "accept": {},
+        "authentication": [
+          "auth_header_primary"
+        ],
+        "content_type": {
+          "patch_kwcollection_asset_metadata_v1.json": "application/vnd.adobe.dc+json;profile=\"https://dc-kwcollection.adobe.io/schemas/patch_kwcollection_asset_metadata_v1.json\""
+        },
+        "http_method": "PATCH",
+        "resource_parameter": {
+          "name": "kwcollection_uri",
+          "type": "string"
+        },
+        "uri": "{+kwcollection_uri}/assets/{asset_id}/metadata?publicId=kwc_curated",
+        "uri_parameters": [
+          {
+            "name": "asset_id",
+            "type": "string"
+          }
+        ]
+      },
+      "update_asset_order": {
+        "accept": {},
+        "authentication": [
+          "auth_header_primary"
+        ],
+        "content_type": {
+          "update_kwcollection_asset_order_v1.json": "application/vnd.adobe.dc+json;profile=\"https://dc-kwcollection.adobe.io/schemas/update_kwcollection_asset_order_v1.json\""
+        },
+        "http_method": "PUT",
+        "resource_parameter": {
+          "name": "kwcollection_uri",
+          "type": "string"
+        },
+        "uri": "{+kwcollection_uri}/assets/order?publicId=kwc_curated",
+        "uri_parameters": []
+      },
+      "update_input_asset": {
+        "accept": {
+          "update_kwcollection_imported_asset_v1.json": "application/vnd.adobe.dc+json;profile=\"https://dc-kwcollection.adobe.io/schemas/update_kwcollection_imported_asset_v1.json\""
+        },
+        "authentication": [
+          "auth_header_primary"
+        ],
+        "content_type": {
+          "update_kwcollection_asset_import_v1.json": "application/vnd.adobe.dc+json;profile=\"https://dc-kwcollection.adobe.io/schemas/update_kwcollection_asset_import_v1.json\""
+        },
+        "http_method": "PUT",
+        "resource_parameter": {
+          "name": "kwcollection_uri",
+          "type": "string"
+        },
+        "uri": "{+kwcollection_uri}/assets/{asset_id}?publicId=kwc_curated",
+        "uri_parameters": [
+          {
+            "name": "asset_id",
+            "type": "string"
+          }
+        ]
+      }
+    },
+    "livefeed": {
+      "create_registration": {
+        "accept": {
+          "application/json": "application/json"
+        },
+        "authentication": [
+          "auth_header_primary"
+        ],
+        "content_type": {
+          "application/json": "application/json"
+        },
+        "http_method": "POST",
+        "resource_parameter": {
+          "name": "livefeed_uri",
+          "type": "string"
+        },
+        "uri": "{+livefeed_uri}/registrations"
+      },
+      "get_config": {
+        "accept": {
+          "application/json": "application/json"
+        },
+        "authentication": [
+          "auth_header_primary"
+        ],
+        "content_type": {},
+        "http_method": "GET",
+        "resource_parameter": {
+          "name": "livefeed_uri",
+          "type": "string"
+        },
+        "uri": "{+livefeed_uri}/config"
+      },
+      "update_registration": {
+        "accept": {},
+        "authentication": [
+          "auth_header_primary"
+        ],
+        "content_type": {
+          "application/json": "application/json"
+        },
+        "http_method": "PATCH",
+        "resource_parameter": {
+          "name": "livefeed_uri",
+          "type": "string"
+        },
+        "uri": "{+livefeed_uri}/registrations/{registration_id}",
+        "uri_parameters": [
+          {
+            "name": "registration_id",
+            "type": "string"
+          }
+        ]
+      }
+    },
+    "livefeed_streams": {
+      "get_events": {
+        "accept": {
+          "text/event-stream": "text/event-stream"
+        },
+        "authentication": [
+          "auth_header_primary"
+        ],
+        "content_type": {},
+        "http_method": "GET",
+        "resource_parameter": {
+          "name": "livefeed_streams_uri",
+          "type": "string"
+        },
+        "uri": "{+livefeed_streams_uri}/registrations/{registration_id}/events",
+        "uri_parameters": [
+          {
+            "name": "registration_id",
+            "type": "string"
+          }
+        ]
+      }
+    },
+    "operations": {
+      "copy": {
+        "accept": {
+          "new_asset_job_v1.json": "application/vnd.adobe.dc+json;profile=\"https://dc-api-v2.adobe.io/schemas/new_asset_job_v1.json\""
+        },
+        "authentication": [
+          "auth_header_primary"
+        ],
+        "content_type": {
+          "copy_op_params_v1.json": "application/vnd.adobe.dc+json;profile=\"https://dc-api-v2.adobe.io/schemas/copy_op_params_v1.json\""
+        },
+        "http_method": "POST",
+        "uri": "https://dc-api-v2.adobe.io/420000024/operations/copy"
+      },
+      "copy_to_user": {
+        "accept": {
+          "asset_v1.json": "application/vnd.adobe.dc+json;profile=\"https://dc-api-v2.adobe.io/schemas/asset_v1.json\""
+        },
+        "authentication": [
+          "auth_header_primary"
+        ],
+        "content_type": {
+          "copy_to_user_parameters_v1.json": "application/vnd.adobe.dc+json;profile=\"https://dc-api-v2.adobe.io/schemas/copy_to_user_parameters_v1.json\""
+        },
+        "http_method": "POST",
+        "uri": "https://pdfnow.adobe.io/420000024/operations/copy_to_user"
+      },
+      "move": {
+        "accept": {
+          "move_op_result_v1.json": "application/vnd.adobe.dc+json;profile=\"https://dc-api-v2.adobe.io/schemas/move_op_result_v1.json\"",
+          "multiple_move_op_result_v1.json": "application/vnd.adobe.dc+json;profile=\"https://dc-api-v2.adobe.io/schemas/multiple_move_op_result_v1.json\""
+        },
+        "authentication": [
+          "auth_header_primary"
+        ],
+        "content_type": {
+          "move_op_params_v1.json": "application/vnd.adobe.dc+json;profile=\"https://dc-api-v2.adobe.io/schemas/move_op_params_v1.json\""
+        },
+        "http_method": "POST",
+        "uri": "https://dc-api-v2.adobe.io/420000024/operations/move"
+      }
+    },
+    "pelican": {
+      "create_record": {
+        "accept": {
+          "record_identifier.json": "application/vnd.adobe.dc+json;profile=\"https://dc-api-v2.adobe.io/schemas/record_identifier.json\";schema_id={schema_id};schema_version={schema_version};charset=utf-8"
+        },
+        "authentication": [
+          "auth_service_token"
+        ],
+        "content_type": {
+          "create_record.json": "application/vnd.adobe.dc+json;profile=\"https://dc-api-v2.adobe.io/schemas/create_record.json\";schema_id={schema_id};schema_version={schema_version};charset=utf-8"
+        },
+        "http_method": "POST",
+        "resource_parameter": {
+          "default": "https://dc-api-v2-irl1.adobe.io/420000024/pelican",
+          "name": "pelican_uri",
+          "required": false,
+          "type": "string"
+        },
+        "schema_id": {
+          "enum": [
+            "user_registry",
+            "user_prefs",
+            "asset_collab",
+            "dc_user_actions_profile",
+            "view_sdk",
+            "redact_playground_ui"
+          ],
+          "required": true,
+          "type": "string"
+        },
+        "schema_version": {
+          "enum": [
+            "v1"
+          ],
+          "required": true,
+          "type": "string"
+        },
+        "uri": "{+pelican_uri}/create_record",
+        "uri_parameters": []
+      },
+      "fetch_record": {
+        "accept": {
+          "record.json": "application/vnd.adobe.dc+json;profile=\"https://dc-api-v2.adobe.io/schemas/record.json\";schema_id={schema_id};schema_version={schema_version};charset=utf-8"
+        },
+        "authentication": [
+          "auth_service_token"
+        ],
+        "content_type": {
+          "record_identifier.json": "application/vnd.adobe.dc+json;profile=\"https://dc-api-v2.adobe.io/schemas/record_identifier.json\";schema_id={schema_id};schema_version={schema_version};charset=utf-8"
+        },
+        "http_method": "POST",
+        "resource_parameter": {
+          "default": "https://dc-api-v2-irl1.adobe.io/420000024/pelican",
+          "name": "pelican_uri",
+          "required": false,
+          "type": "string"
+        },
+        "schema_id": {
+          "enum": [
+            "user_registry",
+            "user_prefs",
+            "asset_collab",
+            "dc_user_actions_profile",
+            "view_sdk",
+            "redact_playground_ui"
+          ],
+          "required": true,
+          "type": "string"
+        },
+        "schema_version": {
+          "enum": [
+            "v1"
+          ],
+          "required": true,
+          "type": "string"
+        },
+        "uri": "{+pelican_uri}/fetch_record",
+        "uri_parameters": []
+      },
+      "patch_record": {
+        "accept": {},
+        "authentication": [
+          "auth_service_token"
+        ],
+        "content_type": {
+          "atomic_patch_record.json": "application/vnd.adobe.dc+json;profile=\"https://dc-api-v2.adobe.io/schemas/atomic_patch_record.json\";schema_id={schema_id};schema_version={schema_version};charset=utf-8",
+          "patch_record.json": "application/vnd.adobe.dc+json;profile=\"https://dc-api-v2.adobe.io/schemas/patch_record.json\";schema_id={schema_id};schema_version={schema_version};charset=utf-8"
+        },
+        "http_method": "PATCH",
+        "resource_parameter": {
+          "default": "https://dc-api-v2-irl1.adobe.io/420000024/pelican",
+          "name": "pelican_uri",
+          "required": false,
+          "type": "string"
+        },
+        "schema_id": {
+          "enum": [
+            "user_registry",
+            "user_prefs",
+            "asset_collab",
+            "dc_user_actions_profile",
+            "view_sdk",
+            "redact_playground_ui"
+          ],
+          "required": true,
+          "type": "string"
+        },
+        "schema_version": {
+          "enum": [
+            "v1"
+          ],
+          "required": true,
+          "type": "string"
+        },
+        "uri": "{+pelican_uri}/patch_record",
+        "uri_parameters": []
+      },
+      "put_record": {
+        "accept": {},
+        "authentication": [
+          "auth_service_token"
+        ],
+        "content_type": {
+          "record.json": "application/vnd.adobe.dc+json;profile=\"https://dc-api-v2.adobe.io/schemas/record.json\";schema_id={schema_id};schema_version={schema_version};charset=utf-8"
+        },
+        "http_method": "PUT",
+        "resource_parameter": {
+          "default": "https://dc-api-v2-irl1.adobe.io/420000024/pelican",
+          "name": "pelican_uri",
+          "required": false,
+          "type": "string"
+        },
+        "schema_id": {
+          "enum": [
+            "user_registry",
+            "user_prefs",
+            "asset_collab",
+            "dc_user_actions_profile",
+            "view_sdk",
+            "redact_playground_ui"
+          ],
+          "required": true,
+          "type": "string"
+        },
+        "schema_version": {
+          "enum": [
+            "v1"
+          ],
+          "required": true,
+          "type": "string"
+        },
+        "uri": "{+pelican_uri}/put_record",
+        "uri_parameters": []
+      }
+    },
+    "system": {
+      "csp": {
+        "accept": {},
+        "authentication": [
+          "auth_header_primary",
+          "unauthenticated"
+        ],
+        "content_type": {
+          "application/csp-report": "application/csp-report",
+          "application/json": "application/json",
+          "application/x-www-form-urlencoded": "application/x-www-form-urlencoded"
+        },
+        "http_method": "POST",
+        "uri": "https://dc-api-v2.adobe.io/420000024/system/csp"
+      },
+      "log": {
+        "accept": {},
+        "authentication": [
+          "auth_header_primary",
+          "unauthenticated"
+        ],
+        "content_type": {
+          "system_log_parameters_v1.json": "application/vnd.adobe.dc+json;profile=\"https://dc-api-v2.adobe.io/schemas/system_log_parameters_v1.json\""
+        },
+        "http_method": "POST",
+        "uri": "https://dc-api-v2.adobe.io/system/log"
+      },
+      "tag_sensei_warmup": {
+        "accept": {
+          "text/plain": "text/plain"
+        },
+        "authentication": [
+          "unauthenticated"
+        ],
+        "content_type": {},
+        "http_method": "GET",
+        "uri": "https://sensei.adobe.io/sensei-core/ping"
+      },
+      "time": {
+        "accept": {
+          "text/plain": "text/plain"
+        },
+        "authentication": [
+          "auth_header_primary",
+          "unauthenticated"
+        ],
+        "content_type": {},
+        "http_method": "GET",
+        "uri": "https://taggedpdf.adobe.io/420000024/system/time"
+      }
+    },
+    "users": {
+      "delete_state_recentsearches": {
+        "accept": {},
+        "authentication": [
+          "auth_header_primary"
+        ],
+        "content_type": {},
+        "http_method": "DELETE",
+        "resource_parameter": {
+          "default": "https://dc-api-v2.adobe.io/420000024/users/self",
+          "name": "user_uri",
+          "required": false,
+          "type": "string"
+        },
+        "uri": "{+user_uri}/state/recentsearches",
+        "uri_parameters": []
+      },
+      "get_cohorts": {
+        "accept": {
+          "user_cohorts_v1.json": "application/vnd.adobe.dc+json;profile=\"https://dc-api-v2.adobe.io/schemas/user_cohorts_v1.json\""
+        },
+        "authentication": [
+          "auth_header_primary"
+        ],
+        "content_type": {},
+        "http_method": "GET",
+        "resource_parameter": {
+          "default": "https://dc-api-v2.adobe.io/420000024/users/self",
+          "name": "user_uri",
+          "required": false,
+          "type": "string"
+        },
+        "uri": "{+user_uri}/cohorts",
+        "uri_parameters": []
+      },
+      "get_identity": {
+        "accept": {
+          "user_identity_v1.json": "application/vnd.adobe.dc+json;profile=\"https://dc-api-v2.adobe.io/schemas/user_identity_v1.json\""
+        },
+        "authentication": [
+          "auth_header_primary"
+        ],
+        "content_type": {},
+        "http_method": "GET",
+        "resource_parameter": {
+          "default": "https://dc-api-v2.adobe.io/420000024/users/self",
+          "name": "user_uri",
+          "required": false,
+          "type": "string"
+        },
+        "uri": "{+user_uri}/identity",
+        "uri_parameters": []
+      },
+      "get_limits_acrobat": {
+        "accept": {
+          "user_limits_acrobat_v1.json": "application/vnd.adobe.dc+json;profile=\"https://dc-api-v2.adobe.io/schemas/user_limits_acrobat_v1.json\""
+        },
+        "authentication": [
+          "auth_header_primary"
+        ],
+        "content_type": {},
+        "http_method": "GET",
+        "resource_parameter": {
+          "default": "https://dc-api-v2.adobe.io/420000024/users/self",
+          "name": "user_uri",
+          "required": false,
+          "type": "string"
+        },
+        "uri": "{+user_uri}/limits/acrobat",
+        "uri_parameters": []
+      },
+      "get_limits_conversions": {
+        "accept": {
+          "user_limits_conversions_v1.json": "application/vnd.adobe.dc+json;profile=\"https://dc-api-v2.adobe.io/schemas/user_limits_conversions_v1.json\""
+        },
+        "authentication": [
+          "auth_header_primary"
+        ],
+        "content_type": {},
+        "http_method": "GET",
+        "resource_parameter": {
+          "default": "https://dc-api-v2.adobe.io/420000024/users/self",
+          "name": "user_uri",
+          "required": false,
+          "type": "string"
+        },
+        "uri": "{+user_uri}/limits/conversions",
+        "uri_parameters": []
+      },
+      "get_limits_esign": {
+        "accept": {
+          "user_limits_esign_v1.json": "application/vnd.adobe.dc+json;profile=\"https://dc-api-v2.adobe.io/schemas/user_limits_esign_v1.json\""
+        },
+        "authentication": [
+          "auth_header_primary"
+        ],
+        "content_type": {},
+        "http_method": "GET",
+        "resource_parameter": {
+          "default": "https://dc-api-v2.adobe.io/420000024/users/self",
+          "name": "user_uri",
+          "required": false,
+          "type": "string"
+        },
+        "uri": "{+user_uri}/limits/esign",
+        "uri_parameters": []
+      },
+      "get_limits_fillsign": {
+        "accept": {
+          "user_limits_fillsign_v1.json": "application/vnd.adobe.dc+json;profile=\"https://dc-api-v2.adobe.io/schemas/user_limits_fillsign_v1.json\""
+        },
+        "authentication": [
+          "auth_header_primary"
+        ],
+        "content_type": {},
+        "http_method": "GET",
+        "resource_parameter": {
+          "default": "https://dc-api-v2.adobe.io/420000024/users/self",
+          "name": "user_uri",
+          "required": false,
+          "type": "string"
+        },
+        "uri": "{+user_uri}/limits/fillsign",
+        "uri_parameters": []
+      },
+      "get_limits_pdf_services": {
+        "accept": {
+          "user_limits_pdf_services_v1.json": "application/vnd.adobe.dc+json;profile=\"https://dc-api-v2.adobe.io/schemas/user_limits_pdf_services_v1.json\""
+        },
+        "authentication": [
+          "auth_header_primary"
+        ],
+        "content_type": {},
+        "http_method": "GET",
+        "resource_parameter": {
+          "default": "https://dc-api-v2.adobe.io/420000024/users/self",
+          "name": "user_uri",
+          "required": false,
+          "type": "string"
+        },
+        "uri": "{+user_uri}/limits/pdf_services",
+        "uri_parameters": []
+      },
+      "get_limits_review": {
+        "accept": {
+          "user_limits_review_v1.json": "application/vnd.adobe.dc+json;profile=\"https://dc-api-v2.adobe.io/schemas/user_limits_review_v1.json\""
+        },
+        "authentication": [
+          "auth_header_primary"
+        ],
+        "content_type": {},
+        "http_method": "GET",
+        "resource_parameter": {
+          "default": "https://dc-api-v2.adobe.io/420000024/users/self",
+          "name": "user_uri",
+          "required": false,
+          "type": "string"
+        },
+        "uri": "{+user_uri}/limits/review",
+        "uri_parameters": []
+      },
+      "get_limits_send": {
+        "accept": {
+          "user_limits_send_v1.json": "application/vnd.adobe.dc+json;profile=\"https://dc-api-v2.adobe.io/schemas/user_limits_send_v1.json\""
+        },
+        "authentication": [
+          "auth_header_primary"
+        ],
+        "content_type": {},
+        "http_method": "GET",
+        "resource_parameter": {
+          "default": "https://dc-api-v2.adobe.io/420000024/users/self",
+          "name": "user_uri",
+          "required": false,
+          "type": "string"
+        },
+        "uri": "{+user_uri}/limits/send",
+        "uri_parameters": []
+      },
+      "get_limits_storage_document_cloud": {
+        "accept": {
+          "user_limits_storage_document_cloud_v1.json": "application/vnd.adobe.dc+json;profile=\"https://dc-api-v2.adobe.io/schemas/user_limits_storage_document_cloud_v1.json\""
+        },
+        "authentication": [
+          "auth_header_primary"
+        ],
+        "content_type": {},
+        "http_method": "GET",
+        "resource_parameter": {
+          "default": "https://dc-api-v2.adobe.io/420000024/users/self",
+          "name": "user_uri",
+          "required": false,
+          "type": "string"
+        },
+        "uri": "{+user_uri}/limits/storage/document_cloud",
+        "uri_parameters": []
+      },
+      "get_limits_verbs": {
+        "accept": {
+          "user_limits_verbs_v1.json": "application/vnd.adobe.dc+json;profile=\"https://dc-api-v2.adobe.io/schemas/user_limits_verbs_v1.json\""
+        },
+        "authentication": [
+          "auth_header_primary"
+        ],
+        "content_type": {},
+        "http_method": "GET",
+        "resource_parameter": {
+          "default": "https://dc-api-v2.adobe.io/420000024/users/self",
+          "name": "user_uri",
+          "required": false,
+          "type": "string"
+        },
+        "uri": "{+user_uri}/limits/verbs",
+        "uri_parameters": []
+      },
+      "get_limits_verbs_v2": {
+        "accept": {
+          "user_limits_verbs_v2.json": "application/vnd.adobe.dc+json;profile=\"https://dc-meteriq.adobe.io/schemas/user_limits_verbs_v2.json\""
+        },
+        "authentication": [
+          "auth_header_primary"
+        ],
+        "content_type": {},
+        "http_method": "GET",
+        "resource_parameter": {
+          "default": "https://dc-meteriq.adobe.io/420000024",
+          "name": "meteriq_uri",
+          "required": false,
+          "type": "string"
+        },
+        "uri": "{+meteriq_uri}/limits/verbs",
+        "uri_parameters": []
+      },
+      "get_prefs": {
+        "accept": {
+          "user_prefs_v1.json": "application/vnd.adobe.dc+json;profile=\"https://dc-api-v2.adobe.io/schemas/user_prefs_v1.json\""
+        },
+        "authentication": [
+          "auth_header_primary"
+        ],
+        "content_type": {},
+        "http_method": "GET",
+        "resource_parameter": {
+          "default": "https://dc-api-v2.adobe.io/420000024/users/self",
+          "name": "user_uri",
+          "required": false,
+          "type": "string"
+        },
+        "uri": "{+user_uri}/prefs/{category}",
+        "uri_parameters": [
+          {
+            "enum": [
+              "dcweb",
+              "recent_assets",
+              "recent_assets_timestamp",
+              "common",
+              "acrobat",
+              "fillsign"
+            ],
+            "name": "category",
+            "type": "string"
+          }
+        ]
+      },
+      "get_state_recentsearches": {
+        "accept": {
+          "recent_searches_v1.json": "application/vnd.adobe.dc+json;profile=\"https://dc-api-v2.adobe.io/schemas/recent_searches_v1.json\""
+        },
+        "authentication": [
+          "auth_header_primary"
+        ],
+        "content_type": {},
+        "http_method": "GET",
+        "resource_parameter": {
+          "default": "https://dc-api-v2.adobe.io/420000024/users/self",
+          "name": "user_uri",
+          "required": false,
+          "type": "string"
+        },
+        "uri": "{+user_uri}/state/recentsearches",
+        "uri_parameters": []
+      },
+      "get_storage_document_cloud": {
+        "accept": {
+          "user_storage_document_cloud_v1.json": "application/vnd.adobe.dc+json;profile=\"https://dc-api-v2.adobe.io/schemas/user_storage_document_cloud_v1.json\""
+        },
+        "authentication": [
+          "auth_header_primary"
+        ],
+        "content_type": {},
+        "http_method": "GET",
+        "resource_parameter": {
+          "default": "https://dc-api-v2.adobe.io/420000024/users/self",
+          "name": "user_uri",
+          "required": false,
+          "type": "string"
+        },
+        "uri": "{+user_uri}/storage/document_cloud",
+        "uri_parameters": []
+      },
+      "get_subscriptions": {
+        "accept": {
+          "user_subscriptions_v1.json": "application/vnd.adobe.dc+json;profile=\"https://dc-api-v2.adobe.io/schemas/user_subscriptions_v1.json\"",
+          "user_subscriptions_v2.json": "application/vnd.adobe.dc+json;profile=\"https://dc-api-v2.adobe.io/schemas/user_subscriptions_v2.json\""
+        },
+        "authentication": [
+          "auth_header_primary"
+        ],
+        "content_type": {},
+        "http_method": "GET",
+        "resource_parameter": {
+          "default": "https://dc-api-v2.adobe.io/420000024/users/self",
+          "name": "user_uri",
+          "required": false,
+          "type": "string"
+        },
+        "uri": "{+user_uri}/subscriptions",
+        "uri_parameters": [
+          {
+            "enum": [
+              "true",
+              "false"
+            ],
+            "name": "extended",
+            "type": "string"
+          }
+        ]
+      },
+      "get_upsell": {
+        "accept": {
+          "user_upsell_v1.json": "application/vnd.adobe.dc+json;profile=\"https://dc-api-v2.adobe.io/schemas/user_upsell_v1.json\""
+        },
+        "authentication": [
+          "auth_header_primary"
+        ],
+        "content_type": {},
+        "http_method": "GET",
+        "resource_parameter": {
+          "default": "https://dc-api-v2.adobe.io/420000024/users/self",
+          "name": "user_uri",
+          "required": false,
+          "type": "string"
+        },
+        "uri": "{+user_uri}/upsell{?entitlement}",
+        "uri_parameters": [
+          {
+            "enum": [
+              "can_send_to_individuals",
+              "can_send_av",
+              "create_pdf_conversions",
+              "combine_pdf_conversions",
+              "export_pdf_conversions",
+              "export_pdf2ppt_conversions",
+              "export_pdf2img_conversions",
+              "acrobat_pro"
+            ],
+            "name": "entitlement",
+            "type": "string"
+          }
+        ]
+      },
+      "get_user": {
+        "accept": {
+          "user_v1.json": "application/vnd.adobe.dc+json;profile=\"https://dc-api-v2.adobe.io/schemas/user_v1.json\""
+        },
+        "authentication": [
+          "auth_header_primary"
+        ],
+        "content_type": {},
+        "http_method": "GET",
+        "resource_parameter": {
+          "default": "https://dc-api-v2.adobe.io/420000024/users/self",
+          "name": "user_uri",
+          "required": false,
+          "type": "string"
+        },
+        "uri": "{+user_uri}{?fields}",
+        "uri_parameters": [
+          {
+            "name": "fields",
+            "type": "string"
+          }
+        ]
+      },
+      "post_state_recentsearches": {
+        "accept": {},
+        "authentication": [
+          "auth_header_primary"
+        ],
+        "content_type": {
+          "recent_search_v1.json": "application/vnd.adobe.dc+json;profile=\"https://dc-api-v2.adobe.io/schemas/recent_search_v1.json\""
+        },
+        "http_method": "POST",
+        "resource_parameter": {
+          "default": "https://dc-api-v2.adobe.io/420000024/users/self",
+          "name": "user_uri",
+          "required": false,
+          "type": "string"
+        },
+        "uri": "{+user_uri}/state/recentsearches",
+        "uri_parameters": []
+      },
+      "put_identity": {
+        "accept": {},
+        "authentication": [
+          "auth_header_primary"
+        ],
+        "content_type": {
+          "user_put_identity_v1.json": "application/vnd.adobe.dc+json;profile=\"https://dc-api-v2.adobe.io/schemas/user_put_identity_v1.json\""
+        },
+        "http_method": "PUT",
+        "resource_parameter": {
+          "default": "https://dc-api-v2.adobe.io/420000024/users/self",
+          "name": "user_uri",
+          "required": false,
+          "type": "string"
+        },
+        "uri": "{+user_uri}/identity",
+        "uri_parameters": []
+      },
+      "put_prefs": {
+        "accept": {},
+        "authentication": [
+          "auth_header_primary"
+        ],
+        "content_type": {
+          "user_prefs_v1.json": "application/vnd.adobe.dc+json;profile=\"https://dc-api-v2.adobe.io/schemas/user_prefs_v1.json\""
+        },
+        "http_method": "PUT",
+        "resource_parameter": {
+          "default": "https://dc-api-v2.adobe.io/420000024/users/self",
+          "name": "user_uri",
+          "required": false,
+          "type": "string"
+        },
+        "uri": "{+user_uri}/prefs/{category}",
+        "uri_parameters": [
+          {
+            "enum": [
+              "dcweb",
+              "recent_assets",
+              "recent_assets_timestamp",
+              "common",
+              "acrobat",
+              "fillsign"
+            ],
+            "name": "category",
+            "type": "string"
+          }
+        ]
+      }
+    }
+  },
+  "templates": {
+    "acpc_base_uri": "https://platform-cs-edge.adobe.io",
+    "ans_uri": "https://notify.adobe.io/ans/{+version}/notifications",
+    "asset_transfer_uri": "https://dc-asset-transfer-irl1.adobe.io/420000024",
+    "asset_uri": "https://dc-api-v2.adobe.io/420000024/assets/{+asset_id}",
+    "citation_uri": "https://platform-cs-edge-irl1.adobe.io/dckwcs/420000024/citations",
+    "collaboration_uri": "https://platform-cs-edge-irl1.adobe.io/dccollab/420000024",
+    "commenting_uri": "https://comments.adobe.io",
+    "creation_uri": "https://platform-cs-edge-irl1.adobe.io/dccreation/420000024",
+    "custom_agent_uri": "https://platform-cs-edge-irl1.adobe.io/dckwcs/420000024/kwcollections/{+kwcollection_id}/custom_agents",
+    "dc_index_uri": "https://dcdiscovery.adobe.io/420000024/index",
+    "durable_link_base_uri": "https://acrobat.adobe.com/id/{+asset_id}",
+    "express_uri_document_templates": "https://new.express.adobe.com/explore/templates?assetCollection=urn%3Aaaid%3Asc%3AVA6C2%3A68ddc0fd-a3bd-4a4a-961c-8fb382066ea2",
+    "folder_uri": "https://dc-api-v2.adobe.io/420000024/folders/{+folder_id}",
+    "genai_conversations_uri": "https://dc-conversationhistory-irl1.adobe.io/420000024",
+    "goal_recommendations_uri": "https://platform-cs-edge-irl1.adobe.io/dckwcs/420000024",
+    "invitation_base_uri": "https://invitations.adobe.io/api/v4",
+    "kwcollection_uri": "https://platform-cs-edge-irl1.adobe.io/dckwcs/420000024/kwcollections/{+kwcollection_id}",
+    "livefeed_streams_uri": "https://lfs-streams-irl1.adobe.io/420000024",
+    "livefeed_uri": "https://lfs-irl1.adobe.io/420000024",
+    "meteriq_uri": "https://dc-meteriq.adobe.io/420000024",
+    "notes_uri": "https://platform-cs-edge-irl1.adobe.io/dcnotes/420000024",
+    "pelican_uri": "https://dc-api-v2-irl1.adobe.io/420000024/pelican",
+    "report_abuse_uri": "https://leia.adobe.io/v1/acp_report_abuse",
+    "review_uri": "https://reviews.adobe.io",
+    "search_uri": "https://adobesearch-sec-uss.adobe.io/universal-search/v2/search",
+    "search_uri_autocomplete": "https://discovery-guidance.adobe.io/uss/v3/query",
+    "search_uri_primary": "{+search_uri_v2}",
+    "search_uri_secondary": "{+search_uri}",
+    "search_uri_templates_autocomplete": "https://discovery-guidance-sdc-edge.adobe.io/uss/v3/query?experienceId=dc-template-aggregator",
+    "search_uri_v2": "https://adobesearch.adobe.io/universal-search/v2/search",
+    "search_uri_v2_uss_v3": "https://uss-content-search.adobe.io/uss/v2/query",
+    "search_uri_v3": "https://dc-unified-discovery.adobe.io/uss/v3/query",
+    "sign_authoring_uri": "https://dc-signauthoring.adobe.io"
+  }
+}

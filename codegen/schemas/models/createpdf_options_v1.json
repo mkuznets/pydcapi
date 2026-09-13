@@ -1,0 +1,25 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "properties": {
+    "file_formats": {
+      "description": "File Extensions and mime types. In the future, this list may be extended without a change in version.",
+      "items": {
+        "additionalProperties": {
+          "description": "A supported file extension for conversion to PDF.",
+          "properties": {
+            "mime_type": {
+              "description": "The mime type corresponding to this file extension.",
+              "type": "string"
+            }
+          },
+          "required": [
+            "mime_type"
+          ],
+          "type": "object"
+        },
+        "type": "object"
+      },
+      "type": "array"
+    }
+  }
+}

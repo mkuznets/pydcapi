@@ -1,0 +1,106 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "properties": {
+    "upsell": {
+      "items": {
+        "additionalProperties": false,
+        "properties": {
+          "billing_term": {
+            "enum": [
+              "Monthly",
+              "AnnualBilledMonthly",
+              "AnnualBilledAnnually"
+            ],
+            "type": "string"
+          },
+          "entitlement_name": {
+            "description": "Will match `entitlement` parameter if specified.",
+            "enum": [
+              "can_send_to_individuals",
+              "can_send_av",
+              "create_pdf_conversions",
+              "combine_pdf_conversions",
+              "export_pdf_conversions",
+              "export_pdf2ppt_conversions",
+              "export_pdf2img_conversions",
+              "acrobat_pro"
+            ],
+            "type": "string"
+          },
+          "mandatory": {
+            "description": "'true' if showing the upsell is mandatory and 'false' otherwise. For purchases, there are locations where showing multiple purchase options are mandatory. This flag will be true for those geos.",
+            "type": "boolean"
+          },
+          "purchase_sku": {
+            "description": "The purchase sku number using which a user could get to the given entitlement. his field is available for both purchase and upgrade as there were use cases where upgrade was invoked with a purchase sku and clients need to translate from a purchase sku to an upgrade sku..",
+            "type": "string"
+          },
+          "sitecatalyst_plan_code": {
+            "description": "This is the string that will be sent to sitecatalyst with the purchase/upgrade event.<br/> -> Refer to the \"In-app upgrades\" section of the SiteCatalyst Instrumentation - Plan Info wiki to get the analytics name for upgrades<br/> -> Refer to the \"<New Plan>\" row in the \"Anyware cart instrumentation\" section of SiteCatalyst Instrumentation - Page Name and Custom Variables to get the analytics name for purchases.",
+            "type": "string"
+          },
+          "subscription_name": {
+            "description": "Additional subscriptions may be added in the future.",
+            "enum": [
+              "CreatePDF",
+              "PDFPack",
+              "ExportPDF",
+              "Files",
+              "DCGlobal",
+              "DCEnterprise",
+              "AcrobatPlus",
+              "AcrobatStd",
+              "SendNow",
+              "FillAndSign",
+              "ESign",
+              "Review",
+              "FormsCentral",
+              "EditPDF",
+              "OcrPDF",
+              "DCLite",
+              "ScanPlus",
+              "AdobeScan",
+              "GenAIServices",
+              "PersistentChatHistory",
+              "SecuredLinkSharing",
+              "AcrobatDesktopMode"
+            ],
+            "type": "string"
+          },
+          "upgrade_sku": {
+            "description": "The upgrade sku number for this user for the given entitlement. This field is an empty string when upsell_type is purchase.",
+            "type": "string"
+          },
+          "upsell_type": {
+            "enum": [
+              "purchase",
+              "upgrade"
+            ],
+            "type": "string"
+          },
+          "url": {
+            "description": "URL which can be used by the client to invoke the upgrade or purchase workflow. Clients already running in the app may need to process the URL to navigate without reloading the app.",
+            "type": "string"
+          }
+        },
+        "required": [
+          "entitlement_name",
+          "upsell_type",
+          "url",
+          "subscription_name",
+          "upgrade_sku",
+          "purchase_sku",
+          "billing_term",
+          "mandatory",
+          "sitecatalyst_plan_code"
+        ],
+        "type": "object"
+      },
+      "type": "array"
+    }
+  },
+  "required": [
+    "upsell"
+  ],
+  "type": "object"
+}

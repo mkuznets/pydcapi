@@ -1,0 +1,94 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "description": "For multiple-object moves only (\"object_uris\" specified in move parameters).  An array of status object for the assets and/or folders that were moved.",
+  "properties": {
+    "multistatus": {
+      "items": {
+        "description": "The object that the move was attempted on.",
+        "properties": {
+          "body": {
+            "properties": {
+              "rename_info": {
+                "description": "If on_dup_name was auto_rename and the name was illegal or a duplicate was encountered, contains details on the rename.",
+                "properties": {
+                  "duplicate_of": {
+                    "properties": {
+                      "asset_uri": {
+                        "description": "If present, the uri of the asset the original_name collided with.",
+                        "format": "uri",
+                        "type": "string"
+                      },
+                      "folder_uri": {
+                        "description": "If present, the uri of the folder the original_name collided with.",
+                        "format": "uri",
+                        "type": "string"
+                      }
+                    },
+                    "type": "object"
+                  },
+                  "name": {
+                    "description": "The name actually used.",
+                    "type": "string"
+                  },
+                  "original_name": {
+                    "description": "The original name.",
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "original_name",
+                  "name"
+                ],
+                "type": "object"
+              }
+            },
+            "type": "object"
+          },
+          "error": {
+            "description": "In the case where status is not success, the error information.",
+            "properties": {
+              "code": {
+                "description": "The error code.",
+                "type": "string"
+              },
+              "details": {
+                "description": "A JSON object that contains information specific to the error. The schema and semantics are specified with the individual method. This allows machine readable extra information.",
+                "type": "object"
+              },
+              "message": {
+                "description": "An English language string that contains more information about the error. This is not intended as information to be presented to an end user, is instead be helpful for logging and debugging.",
+                "type": "string"
+              }
+            },
+            "required": [
+              "code",
+              "message"
+            ],
+            "type": "object"
+          },
+          "object_uri": {
+            "description": "The uri of object (asset or folder) that was moved.",
+            "format": "uri",
+            "type": "string"
+          },
+          "status": {
+            "description": "The status code that resulted from moving (or attempting to move) this object.",
+            "type": "number"
+          }
+        },
+        "required": [
+          "object_uri",
+          "status"
+        ],
+        "type": "object"
+      },
+      "minItems": 1,
+      "type": "array"
+    }
+  },
+  "required": [
+    "multistatus"
+  ],
+  "title": "Multiple move operation result schema",
+  "type": "object"
+}

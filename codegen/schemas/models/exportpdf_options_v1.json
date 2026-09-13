@@ -1,0 +1,47 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "additionalProperties": false,
+  "properties": {
+    "formats": {
+      "additionalProperties": {
+        "description": "File Extension (e.g. pptx, doc, docx). In the future, this list may be extended without a change in version.",
+        "properties": {
+          "provisioned": {
+            "description": "Boolean indicator to show whether the current user is provisioned to convert PDF to this file type.",
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "provisioned"
+        ],
+        "type": "object"
+      },
+      "description": "A list of export file types -- and an indication which formats are provisioned for this user",
+      "type": "object"
+    },
+    "locales": {
+      "description": "A list of all the locales supported for OCR",
+      "items": {
+        "additionalProperties": false,
+        "properties": {
+          "code": {
+            "description": "locale name in the form of xx-YY e.g. en-US. In the future, this list may be extended without a change in version.",
+            "pattern": "^[a-z][a-z]-[A-Z][A-Z]$",
+            "type": "string"
+          }
+        },
+        "required": [
+          "code"
+        ],
+        "type": "object"
+      },
+      "minItems": 13,
+      "type": "array"
+    }
+  },
+  "required": [
+    "locales",
+    "formats"
+  ],
+  "type": "object"
+}

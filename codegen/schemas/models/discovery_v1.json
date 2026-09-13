@@ -1,0 +1,312 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "additionalProperties": false,
+  "properties": {
+    "acpc_temp_folder_details": {
+      "additionalProperties": false,
+      "description": "The temporary folder in ACPC with its path and associated links for operations.",
+      "properties": {
+        "links": {
+          "additionalProperties": false,
+          "description": "A collection of links providing details for operations on the ACPC folder.",
+          "properties": {
+            "http://ns.adobe.com/adobecloud/rel/block/init": {
+              "description": "Links for initializing block uploads. We recommend that clients pass 'intermediates=true' in the path parameters.",
+              "items": {
+                "additionalProperties": false,
+                "description": "Details for a block upload link.",
+                "properties": {
+                  "href": {
+                    "description": "The URI for initializing block uploads. Example - 'https://<platform-url>/content/storage/id/<urn>/:block_upload'",
+                    "format": "uri",
+                    "type": "string"
+                  },
+                  "mode": {
+                    "description": "The mode of the link, typically 'id'.",
+                    "type": "string"
+                  },
+                  "repo:maxSingleTransferSize": {
+                    "description": "Maximum size for a single transfer in bytes. Example - 10456798",
+                    "type": "integer"
+                  },
+                  "repo:minBlockTransferSize": {
+                    "description": "Minimum size for a block transfer in bytes. Example - 1",
+                    "type": "integer"
+                  }
+                },
+                "type": "object"
+              },
+              "type": "array"
+            },
+            "http://ns.adobe.com/adobecloud/rel/create": {
+              "description": "Links for creating resources in the ACPC folder. We recommend that clients pass 'intermediates=true' in the path parameters.",
+              "items": {
+                "additionalProperties": false,
+                "description": "Details for a resource creation link.",
+                "properties": {
+                  "href": {
+                    "description": "The URI for creating resources. Example - 'https://<platform-url>/content/storage/id/<urn>/:create{?path,intermediates,respondWith,repoMetaPatch*,create_alternate}'",
+                    "format": "uri",
+                    "type": "string"
+                  },
+                  "mode": {
+                    "description": "The mode of the link, typically 'id'.",
+                    "type": "string"
+                  },
+                  "repo:maxSingleTransferSize": {
+                    "description": "Maximum size for a single transfer in bytes. Example - 10485760",
+                    "type": "integer"
+                  },
+                  "repo:minBlockTransferSize": {
+                    "description": "Minimum size for a block transfer in bytes. Example - 1",
+                    "type": "integer"
+                  },
+                  "templated": {
+                    "description": "Indicates whether the URI is templated. Example - true",
+                    "type": "boolean"
+                  }
+                },
+                "type": "object"
+              },
+              "type": "array"
+            }
+          },
+          "type": "object"
+        },
+        "path": {
+          "description": "We recommend that clients upload files to the /temp directory using a uniquely generated name, such as a UUID. This approach helps avoid name conflicts within the /temp folder. While calling the ACP APIs for uploading the asset, please provide the file path as '{{acpc_temp_folder.path}}' + '/' + 'fileName' in UUID format. Example: '/temp/filename'",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "expiry": {
+      "description": "Unix timestamp (UTC) which indicates the expiration date of the current URLs. Users of DCAPI are expected to refresh their URLs before this expiration. Once expired, URLS will return 404 errors.",
+      "type": "integer"
+    },
+    "resources": {
+      "additionalProperties": {
+        "additionalProperties": {
+          "additionalProperties": false,
+          "description": "An operation on a resource",
+          "properties": {
+            "accept": {
+              "additionalProperties": {
+                "description": "Expected content type to receive from a resource operation",
+                "type": "string"
+              },
+              "description": "Map of different versions of the accept content",
+              "type": "object"
+            },
+            "authentication": {
+              "items": {
+                "description": "The authentication scheme(s) supported by this endpoint. In the future, this list may be extended without a change in version.",
+                "enum": [
+                  "auth_header_primary",
+                  "ticket",
+                  "unauthenticated"
+                ],
+                "type": "string"
+              },
+              "type": "array"
+            },
+            "content_type": {
+              "additionalProperties": {
+                "description": "The mime type for data to provide for the resource operation",
+                "type": "string"
+              },
+              "description": "Map of different versions of the content type response",
+              "type": "object"
+            },
+            "form_data_parameters": {
+              "description": "List of the various allowable form data parameters",
+              "items": {
+                "additionalProperties": false,
+                "properties": {
+                  "content_type": {
+                    "additionalProperties": {
+                      "description": "The mime type to provide for the form data parameter",
+                      "type": "string"
+                    },
+                    "description": "Map of different versions of the content type response",
+                    "type": "object"
+                  },
+                  "description": {
+                    "description": "Parameter description",
+                    "type": "string"
+                  },
+                  "name": {
+                    "description": "Parameter name",
+                    "type": "string"
+                  },
+                  "type": {
+                    "enum": [
+                      "string",
+                      "number",
+                      "boolean",
+                      "integer",
+                      "array",
+                      "file",
+                      "object"
+                    ],
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "name",
+                  "type"
+                ],
+                "type": "object"
+              },
+              "type": "array"
+            },
+            "http_method": {
+              "description": "The HTTP method used for this call",
+              "enum": [
+                "GET",
+                "PUT",
+                "POST",
+                "PATCH",
+                "DELETE",
+                "HEAD"
+              ],
+              "type": "string"
+            },
+            "resource_parameter": {
+              "additionalProperties": false,
+              "description": "If this is method is on an individual resources, the resource_parameter identifies the URI template parameter to substitute",
+              "properties": {
+                "default": {
+                  "description": "The default value of the parameter",
+                  "type": "string"
+                },
+                "description": {
+                  "description": "URI pointing to a resource",
+                  "type": "string"
+                },
+                "name": {
+                  "description": "Substitution name in the URI template",
+                  "type": "string"
+                },
+                "required": {
+                  "default": false,
+                  "type": "boolean"
+                },
+                "type": {
+                  "enum": [
+                    "string"
+                  ],
+                  "type": "string"
+                }
+              },
+              "required": [
+                "name",
+                "type"
+              ],
+              "type": "object"
+            },
+            "uri": {
+              "description": "[URI template](https://tools.ietf.org/html/rfc6570) for this call.  Aplications must use a template library to expand any path or query parameters.",
+              "type": "string"
+            },
+            "uri_parameters": {
+              "description": "If there are parameters in the URI path or in the query string, this identifies all the required variables.",
+              "items": {
+                "additionalProperties": false,
+                "properties": {
+                  "default": {
+                    "description": "The default value of the parameter"
+                  },
+                  "description": {
+                    "description": "Parameter description",
+                    "type": "string"
+                  },
+                  "enum": {
+                    "items": {
+                      "description": "The acceptable values for the URI parameter",
+                      "type": "string"
+                    },
+                    "type": "array"
+                  },
+                  "name": {
+                    "description": "Parameter name",
+                    "type": "string"
+                  },
+                  "type": {
+                    "enum": [
+                      "string",
+                      "number",
+                      "boolean",
+                      "integer",
+                      "array",
+                      "file",
+                      "object"
+                    ],
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "name",
+                  "type"
+                ],
+                "type": "object"
+              },
+              "type": "array"
+            }
+          },
+          "required": [
+            "uri",
+            "http_method",
+            "authentication"
+          ],
+          "type": "object"
+        },
+        "description": "\"resource_name\" - A resource call",
+        "type": "object"
+      },
+      "description": "All the resource objects in this API",
+      "type": "object"
+    },
+    "templates": {
+      "description": "URI templates to convert ids to uris in client code.",
+      "properties": {
+        "ans_uri": {
+          "type": "string"
+        },
+        "asset_uri": {
+          "type": "string"
+        },
+        "commenting_uri": {
+          "type": "string"
+        },
+        "folder_uri": {
+          "type": "string"
+        },
+        "review_uri": {
+          "type": "string"
+        },
+        "search_uri": {
+          "type": "string"
+        },
+        "search_uri_primary": {
+          "type": "string"
+        },
+        "search_uri_secondary": {
+          "type": "string"
+        },
+        "search_uri_v2": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "user_uri": {
+      "description": "The base URI to use for queries to retrieve user account information for the current authenticated user.",
+      "type": "string"
+    }
+  },
+  "required": [
+    "resources",
+    "expiry"
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "additionalProperties": false,
+  "properties": {
+    "name": {
+      "description": "Name of the new asset.",
+      "minLength": 1,
+      "type": "string"
+    },
+    "pdfnow_asset_uri": {
+      "description": "URI identifying the Asset to convert to PDF. This is a pdfnow asset uri, including encrypted resource token.",
+      "format": "uri",
+      "minLength": 1,
+      "type": "string"
+    }
+  },
+  "required": [
+    "pdfnow_asset_uri",
+    "name"
+  ]
+}

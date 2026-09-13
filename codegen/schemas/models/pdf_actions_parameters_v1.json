@@ -1,0 +1,338 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "additionalProperties": false,
+  "dependencies": {
+    "parent_uri": {
+      "properties": {
+        "persistence": {
+          "enum": [
+            "permanent"
+          ]
+        }
+      },
+      "required": [
+        "persistence"
+      ]
+    },
+    "pdf_actions": {
+      "description": "The pdf_action for OCR and tagged_pdf may not include page_actions, or be combined with other pdf_actions"
+    }
+  },
+  "properties": {
+    "assets": {
+      "description": "Asset URIs and operations for the final document.  Note that this array may contain a maximum of 12 unique asset URIs. Specifically, the array may contain more than 12 entries, but may not reference more than 12 assets.",
+      "items": {
+        "additionalProperties": false,
+        "properties": {
+          "asset_uri": {
+            "description": "URI identifying the asset to convert to PDF.",
+            "format": "uri",
+            "type": "string"
+          },
+          "include": {
+            "description": "A description of the pages to be included. Page numbers are 1-based, comma seperated, and can include spaces (0x20, ignored) and a dash ('-', 0x2D) -- used to denote a range of pages. Note that individual pages may be included more than once -- but with limits.  Any given page range may not result in more than 5 times the number of pages in the source PDF.  If no range is specified, all pages are included: \"1-\".",
+            "pattern": "^([1-9 ]+[0-9 ]*-?[0-9 ]*)(,[1-9 ]+[0-9 ]*-?[0-9 ]*)*$",
+            "type": "string"
+          },
+          "page_actions": {
+            "description": "An array of page manipulation operations. Currently only the \"rotate\" operation is supported.",
+            "items": {
+              "additionalProperties": false,
+              "properties": {
+                "rotate": {
+                  "properties": {
+                    "angle": {
+                      "description": "Required for 'rotate' cmd. It specifies the clockwise rotation angle relative to the starting orientation of the page. e.g. if a page is already rotated 90 degrees (landscape), specifying a rotation of 90 degrees will rotate it a further 90 degrees.  The valid rotation angles are: 90, 180, 270.",
+                      "enum": [
+                        90,
+                        180,
+                        270
+                      ],
+                      "type": "number"
+                    },
+                    "pages": {
+                      "description": "A page range relative to the input document. See \"include\".",
+                      "pattern": "^([1-9 ]+[0-9 ]*-?[0-9 ]*)(,[1-9 ]+[0-9 ]*-?[0-9 ]*)*$",
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "angle"
+                  ],
+                  "type": "object"
+                }
+              },
+              "type": "object"
+            },
+            "type": "array"
+          }
+        },
+        "required": [
+          "asset_uri"
+        ],
+        "type": "object"
+      },
+      "minItems": 1,
+      "type": "array"
+    },
+    "name": {
+      "description": "Name of the new asset. Duplicate asset name behavior can be set by on_dup_policy.",
+      "minLength": 1,
+      "type": "string"
+    },
+    "on_dup_name": {
+      "default": [
+        "auto_rename"
+      ],
+      "description": "How to handle a duplicate name conflict in target collection for output file.",
+      "enum": [
+        "error",
+        "auto_rename",
+        "overwrite"
+      ],
+      "type": "string"
+    },
+    "parent_uri": {
+      "description": "The uri of folder to put the asset in.  This parameter is relevant only for permanent assets.  If not specified, the default depends on the operation.  Conversions will be placed in the same folder as the source asset.",
+      "format": "uri",
+      "type": "string"
+    },
+    "pdf_actions": {
+      "description": "A set of actions to apply to the output PDF.",
+      "items": {
+        "additionalProperties": false,
+        "minProperties": 1,
+        "properties": {
+          "ocr": {
+            "additionalProperties": false,
+            "description": "Perform OCR on the PDF file.  Note that the ocr action may not be combined with page_actions or page includes or other pdf_actions.",
+            "properties": {
+              "lang": {
+                "default": "en-US",
+                "description": "The input language to use for OCR",
+                "enum": [
+                  "da-DK",
+                  "lt-LT",
+                  "sl-SI",
+                  "el-GR",
+                  "ru-RU",
+                  "en-US",
+                  "zh-HK",
+                  "hu-HU",
+                  "et-EE",
+                  "pt-BR",
+                  "uk-UA",
+                  "nb-NO",
+                  "pl-PL",
+                  "lv-LV",
+                  "fi-FI",
+                  "ja-JP",
+                  "es-ES",
+                  "bg-BG",
+                  "en-GB",
+                  "cs-CZ",
+                  "mt-MT",
+                  "de-DE",
+                  "hr-HR",
+                  "sk-SK",
+                  "sr-SR",
+                  "ca-CA",
+                  "mk-MK",
+                  "ko-KR",
+                  "de-CH",
+                  "nl-NL",
+                  "zh-CN",
+                  "sv-SE",
+                  "it-IT",
+                  "no-NO",
+                  "tr-TR",
+                  "fr-FR",
+                  "ro-RO",
+                  "iw-IL"
+                ],
+                "type": "string"
+              }
+            },
+            "type": "object"
+          },
+          "optimize": {
+            "additionalProperties": false,
+            "description": "Optimize this PDF",
+            "properties": {
+              "compress": {
+                "default": false,
+                "description": "Reduce the file size of the pdf. Note that the compress action may not be combined with linearize, page_actions or page includes or other pdf_actions.",
+                "type": "boolean"
+              },
+              "linearize": {
+                "default": true,
+                "description": "Specify whether to optimize the result for fast web viewing.",
+                "type": "boolean"
+              },
+              "params": {
+                "additionalProperties": false,
+                "description": "Params for optimizing the pdf.",
+                "properties": {
+                  "compression_level": {
+                    "description": "Specify the level of compression to reduce the file size of the pdf. Low compression level reduces resolution of the coloured and grayscale images above 250 dpi to 200 dpi. Medium compression level reduces resolution of the coloured and grayscale images above 200 dpi to 144 dpi. High compression level reduces resolution of the coloured and grayscale images above 100 dpi to 72 dpi. Advanced compression level uses JP2K with low quality level to compress color and gray images.",
+                    "enum": [
+                      "low",
+                      "medium",
+                      "high",
+                      "advanced"
+                    ],
+                    "type": "string"
+                  }
+                },
+                "type": "object"
+              }
+            },
+            "type": "object"
+          },
+          "password_encrypt": {
+            "additionalProperties": false,
+            "dependencies": {
+              "permissions": [
+                "permissions_password"
+              ]
+            },
+            "description": "Encrypts a PDF document using password(s) and permissions.",
+            "properties": {
+              "content_to_encrypt": {
+                "default": "all_content",
+                "description": "Sets the type of content to be encrypted. If only_embedded_files option is set, it will render any provided access permissions as ineffective.",
+                "enum": [
+                  "all_content",
+                  "all_content_except_metadata",
+                  "only_embedded_files"
+                ],
+                "type": "string"
+              },
+              "encryption_algorithm": {
+                "default": "aes_128",
+                "description": "Sets the encryption algorithm. For AES-128 encryption, the password supports LATIN-I characters only. For AES-256 encryption, the password supports Unicode character set.",
+                "enum": [
+                  "aes_128",
+                  "aes_256"
+                ],
+                "type": "string"
+              },
+              "password": {
+                "description": "Password used to control opening of an encrypted PDF document. When this property is included and non-empty, the use of a password (either this one or, if specified, the permissions password) is necessary to open/view the document. If this password is empty or omitted the document can be opened automatically by conforming PDF viewers.",
+                "maxLength": 128,
+                "type": "string"
+              },
+              "permissions": {
+                "description": "Permissions to allow printing, editing and content copying in the PDF document. By default, none of the specified actions are permitted. print_high_quality permission includes print_low_quality permission. edit_content permission includes edit_document_assembly and edit_fill_and_sign_form_fields permissions. Permissions settings will only be used in case the permissions_password is set.",
+                "items": {
+                  "enum": [
+                    "print_low_quality",
+                    "print_high_quality",
+                    "edit_content",
+                    "edit_fill_and_sign_form_fields",
+                    "edit_annotations",
+                    "edit_document_assembly",
+                    "copy_content"
+                  ],
+                  "type": "string"
+                },
+                "type": "array"
+              },
+              "permissions_password": {
+                "description": "Password used to control permissions in a PDF document. Conforming PDF viewers require this password to change the permissions. This password can also be used to open/view the PDF document.",
+                "maxLength": 128,
+                "type": "string"
+              }
+            },
+            "type": "object"
+          },
+          "remove_password_encryption": {
+            "additionalProperties": false,
+            "description": "Use a password to remove all the passwords as well as security and permissions from the PDF document. Note that the remove_password_encryption action may not be combined with page_actions or page includes or other pdf_actions.",
+            "properties": {
+              "password": {
+                "description": "Password for removing the security from the PDF document. Document with permission restrictions requires owner password and document with only viewing/opening restriction set requires a user password to remove the security.",
+                "maxLength": 150,
+                "type": "string"
+              }
+            },
+            "required": [
+              "password"
+            ],
+            "type": "object"
+          },
+          "tagged_pdf": {
+            "additionalProperties": false,
+            "description": "Convert a PDF to tagged PDF file.  Note that the tagged_pdf action may not be combined with page_actions or page includes or other pdf_actions(Feature not supported anymore).",
+            "properties": {
+              "client_version": {
+                "description": "Version(s) of components on the client in the format of \\\"componentA=<version>,componentB=<version>, ...\\\"",
+                "type": "string"
+              },
+              "compatibility_version": {
+                "default": "latest",
+                "description": "Deprecated version parameter.",
+                "enum": [
+                  "0.3",
+                  "latest"
+                ],
+                "type": "string"
+              },
+              "format": {
+                "default": "fully_tagged_pdf",
+                "description": "What format is the output.  \\\"well_tagged_pdf \\\" contains structure tags. \\\"fully_tagged_pdf\\\" contains additional information for dynamic viewing. \\\"instance_data\\\" contains machine learning output to allow clients to construct fully-taggged-pdf.",
+                "enum": [
+                  "fully_tagged_pdf",
+                  "well_tagged_pdf",
+                  "instance_data"
+                ]
+              },
+              "qualified_at_client": {
+                "default": true,
+                "description": "If the client has not qualified this file for conversion, run the qualifier to ensure the likelihood the pdf will successfully convert",
+                "type": "boolean"
+              }
+            },
+            "type": "object"
+          }
+        },
+        "type": "object"
+      },
+      "minItems": 1,
+      "type": "array"
+    },
+    "persistence": {
+      "default": "transient",
+      "description": "Asset storage aspect as short-term transient vs. long-term permanent. \"transient\" creates an asset that will be available for several hours before being garbage collected and deleted.  For operations that convert and download immediately, \"transient\" is the appropriate choice",
+      "enum": [
+        "transient",
+        "permanent"
+      ],
+      "type": "string"
+    },
+    "primary_sign_asset": {
+      "additionalProperties": false,
+      "description": "Specify the primary sign asset of this operation. Should only be specified if the primary asset is a Sign agreement draft. Also, this parameter is applicable only if there is a primary document (such as Organize under Edit, Optimize or Protected PDF) The primary Sign agreement draft will serve as the baseline to align and carry over PDF Sign metadata to the output asset.",
+      "properties": {
+        "asset_uri": {
+          "description": "URI identifying the primary sign asset",
+          "minLength": 1,
+          "type": "string"
+        },
+        "copy_asset_metadata": {
+          "default": false,
+          "description": "Specify if the sign asset metadata (stored as ACP metadata) will be copied to the output asset",
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "asset_uri"
+      ],
+      "type": "object"
+    }
+  },
+  "required": [
+    "assets",
+    "name"
+  ]
+}

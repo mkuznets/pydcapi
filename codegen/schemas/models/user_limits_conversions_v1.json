@@ -1,0 +1,303 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "additionalProperties": false,
+  "properties": {
+    "combine_pdf_conversions": {
+      "additionalProperties": false,
+      "description": "Number of combine operations that user is allowed to do",
+      "properties": {
+        "remaining": {
+          "type": "integer"
+        }
+      },
+      "required": [
+        "remaining"
+      ],
+      "type": "object"
+    },
+    "combine_pdf_documents": {
+      "additionalProperties": false,
+      "description": "Maximum number of files that may be combined in one CombinePDF operation",
+      "properties": {
+        "limit": {
+          "type": "integer"
+        }
+      },
+      "required": [
+        "limit"
+      ],
+      "type": "object"
+    },
+    "combine_pdf_max_file_size": {
+      "additionalProperties": false,
+      "description": "Maximum size (in kilobytes) of a file that can be accepted by CombinePDF",
+      "properties": {
+        "limit": {
+          "type": "integer"
+        }
+      },
+      "required": [
+        "limit"
+      ],
+      "type": "object"
+    },
+    "create_pdf_conversions": {
+      "additionalProperties": false,
+      "description": "Number of documents that can be converted to PDF",
+      "properties": {
+        "remaining": {
+          "type": "integer"
+        }
+      },
+      "required": [
+        "remaining"
+      ],
+      "type": "object"
+    },
+    "create_pdf_max_file_size": {
+      "additionalProperties": false,
+      "description": "Maximum size (in kilobytes) of a file that can be converted by CreatePDF",
+      "properties": {
+        "limit": {
+          "type": "integer"
+        }
+      },
+      "required": [
+        "limit"
+      ],
+      "type": "object"
+    },
+    "edit_pdf_max_file_size": {
+      "additionalProperties": false,
+      "description": "Maximum size (in kilobytes) of a PDF that can be edited",
+      "properties": {
+        "limit": {
+          "type": "integer"
+        }
+      },
+      "required": [
+        "limit"
+      ],
+      "type": "object"
+    },
+    "edit_pdf_ops": {
+      "additionalProperties": false,
+      "description": "Number of PDF documents that can be edited",
+      "properties": {
+        "remaining": {
+          "type": "integer"
+        }
+      },
+      "required": [
+        "remaining"
+      ],
+      "type": "object"
+    },
+    "export_pdf_conversions": {
+      "additionalProperties": false,
+      "description": "Number of documents that can be exported from PDF",
+      "properties": {
+        "remaining": {
+          "type": "integer"
+        }
+      },
+      "required": [
+        "remaining"
+      ],
+      "type": "object"
+    },
+    "export_pdf_max_file_size": {
+      "additionalProperties": false,
+      "description": "Maximum size (in kilobytes) of a file that can be exported by ExportPDF",
+      "properties": {
+        "limit": {
+          "type": "integer"
+        }
+      },
+      "required": [
+        "limit"
+      ],
+      "type": "object"
+    },
+    "ocr_pdf_conversions": {
+      "additionalProperties": false,
+      "description": "Number of PDF documents that can have an OCR operation applied",
+      "properties": {
+        "remaining": {
+          "type": "integer"
+        }
+      },
+      "required": [
+        "remaining"
+      ],
+      "type": "object"
+    },
+    "ocr_pdf_max_file_size": {
+      "additionalProperties": false,
+      "description": "Maximum size (in kilobytes) of a PDF that can be accepted for OCR",
+      "properties": {
+        "limit": {
+          "type": "integer"
+        }
+      },
+      "required": [
+        "limit"
+      ],
+      "type": "object"
+    },
+    "optimize_pdf_max_file_size": {
+      "additionalProperties": false,
+      "description": "Maximum size (in kilobytes) of a PDF that can be accepted for optimization",
+      "properties": {
+        "limit": {
+          "type": "integer"
+        }
+      },
+      "required": [
+        "limit"
+      ],
+      "type": "object"
+    },
+    "optimize_pdf_ops": {
+      "additionalProperties": false,
+      "description": "Number of PDF documents that can be optimized",
+      "properties": {
+        "remaining": {
+          "type": "integer"
+        }
+      },
+      "required": [
+        "remaining"
+      ],
+      "type": "object"
+    },
+    "organize_pdf_conversions": {
+      "additionalProperties": false,
+      "description": "Number of organize operations that user is allowed to do",
+      "properties": {
+        "remaining": {
+          "type": "integer"
+        }
+      },
+      "required": [
+        "remaining"
+      ],
+      "type": "object"
+    },
+    "organize_pdf_documents": {
+      "additionalProperties": false,
+      "description": "Maximum number of files that may be combined in one organize operation",
+      "properties": {
+        "limit": {
+          "type": "integer"
+        }
+      },
+      "required": [
+        "limit"
+      ],
+      "type": "object"
+    },
+    "organize_pdf_max_file_size": {
+      "additionalProperties": false,
+      "description": "Maximum size (in kilobytes) of a file that can be accepted by organize",
+      "properties": {
+        "limit": {
+          "type": "integer"
+        }
+      },
+      "required": [
+        "limit"
+      ],
+      "type": "object"
+    },
+    "password_encrypt_max_file_size": {
+      "additionalProperties": false,
+      "description": "Maximum size (in kilobytes) of a PDF that can be accepted for password encryption",
+      "properties": {
+        "limit": {
+          "type": "integer"
+        }
+      },
+      "required": [
+        "limit"
+      ],
+      "type": "object"
+    },
+    "password_encrypt_ops": {
+      "additionalProperties": false,
+      "description": "Number of PDF documents that can be password encrypted",
+      "properties": {
+        "remaining": {
+          "type": "integer"
+        }
+      },
+      "required": [
+        "remaining"
+      ],
+      "type": "object"
+    },
+    "split_pdf_conversions": {
+      "additionalProperties": false,
+      "description": "Number of PDF documents that can be splitted",
+      "properties": {
+        "remaining": {
+          "type": "integer"
+        }
+      },
+      "required": [
+        "remaining"
+      ],
+      "type": "object"
+    },
+    "split_pdf_max_file_size": {
+      "additionalProperties": false,
+      "description": "Maximum size (in kilobytes) of a PDF that can be splitted",
+      "properties": {
+        "limit": {
+          "type": "integer"
+        }
+      },
+      "required": [
+        "limit"
+      ],
+      "type": "object"
+    },
+    "split_pdf_max_split_points": {
+      "additionalProperties": false,
+      "description": "Maximum number of split points in input PDF file that will be allowed in one SplitPDF operation",
+      "properties": {
+        "limit": {
+          "type": "integer"
+        }
+      },
+      "required": [
+        "limit"
+      ],
+      "type": "object"
+    }
+  },
+  "required": [
+    "combine_pdf_conversions",
+    "combine_pdf_max_file_size",
+    "combine_pdf_documents",
+    "organize_pdf_conversions",
+    "organize_pdf_max_file_size",
+    "organize_pdf_documents",
+    "create_pdf_conversions",
+    "create_pdf_max_file_size",
+    "export_pdf_conversions",
+    "export_pdf_max_file_size",
+    "ocr_pdf_conversions",
+    "ocr_pdf_max_file_size",
+    "password_encrypt_ops",
+    "password_encrypt_max_file_size",
+    "optimize_pdf_ops",
+    "optimize_pdf_max_file_size",
+    "edit_pdf_ops",
+    "edit_pdf_max_file_size",
+    "split_pdf_conversions",
+    "split_pdf_max_file_size",
+    "split_pdf_max_split_points"
+  ],
+  "type": "object"
+}

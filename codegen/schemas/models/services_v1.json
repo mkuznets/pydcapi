@@ -1,0 +1,27 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "properties": {
+    "services": {
+      "additionalProperties": {
+        "additionalProperties": false,
+        "properties": {
+          "compatible_range": {
+            "description": "The `compatible_range` property specifies a semantic version range (see https://www.npmjs.com/package/semver).<br/>Changes that might trigger some action on the client side can be described using appropriate values of `compatible_range`, independent of the value of version. For example, it may be possible that there is a functionally incompatible version change (say 1.2.3 to 2.0.0) that does not change output characteristics and therefore does not require any action on the part of the client, so compatible_range can be `>=1.2.3 <=2.0.0`.<br/><br/>*NOTE* Interface changes are not tracked using this mechanism.<br/><br/>In the case of the pdf_structure service, if a client is asked to redisplay a cached version of a file that has previously been processed by this service, the client should compare the version of the service that performed the original conversion against the compatibility range. If the range test fails, then the client is recommended to re-process the file through the service.",
+            "type": "string"
+          },
+          "version": {
+            "description": "The `version` property gives the current version of the service in semantic version format (see http://semver.org/).",
+            "pattern": "^\\d+\\.\\d+\\.\\d+(-[0-9A-Za-z-]+)?(\\+[0-9A-Za-z-\\.]+)?$",
+            "type": "string"
+          }
+        },
+        "required": [
+          "version"
+        ],
+        "type": "object"
+      },
+      "type": "object"
+    }
+  },
+  "type": "object"
+}

@@ -1,0 +1,152 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "additionalProperties": false,
+  "dependencies": {
+    "parent_uri": {
+      "properties": {
+        "persistence": {
+          "enum": [
+            "permanent"
+          ]
+        }
+      },
+      "required": [
+        "persistence"
+      ]
+    }
+  },
+  "properties": {
+    "asset_uri": {
+      "description": "URI identifying the Zip file to convert to PDF.  In order to render correctly, the Zip file must have a file named ```index.html``` at its root. Caller must provide either a URL or an asset_uri.",
+      "format": "uri",
+      "type": "string"
+    },
+    "json": {
+      "description": "JavaScript variables to be placed in global scope to reference while rendering the HTML.  This mechanism is intended to be used to supply data that might otherwise be retrieved using ajax requests.  The actual mechanics of accessing this content varies depending if rendering from a zip file or from a url.  When rendering from a zip file, the source collateral must include a script element such as:<br> ```<script src='./json.js' type='text/javascript'></script>```<br> When rendering from a URL, the content of this json object is injected into the browser VM before the page is rendered. ",
+      "type": "object"
+    },
+    "maximum_wait": {
+      "default": 0,
+      "description": "The maximum time (in seconds) to wait for a document render.  When this parameter is specified, the converter will wait until the HTML page calls a JavaScript function: `adbe_content_loaded()`.  If the application script detects a problem, the job may also be terminated with failure by calling: `adbe_content_failed(msg)`.  If the `maximum_wait` time is reached before either `adbe_content_loaded` or `adbe_content_failed` are called, the conversion will fail.  The `maximum_wait` time period is measured from the window.load event.  A value of zero means the document will render immediately at the window.load event.",
+      "maximum": 900,
+      "minimum": 0,
+      "type": "number"
+    },
+    "name": {
+      "description": "Name of the new asset. Duplicate asset name behavior can be set by on_dup_policy.",
+      "minLength": 1,
+      "type": "string"
+    },
+    "on_dup_name": {
+      "default": [
+        "auto_rename"
+      ],
+      "description": "How to handle a duplicate name conflict in target collection for output file.",
+      "enum": [
+        "error",
+        "auto_rename",
+        "overwrite"
+      ],
+      "type": "string"
+    },
+    "page": {
+      "additionalProperties": false,
+      "description": "Parameters defining the properties of the output pages.  Page properties defined in CSS will take precendence: http://www.w3.org/TR/css3-page/ See also: http://www.w3.org/TR/css3-break/ ",
+      "properties": {
+        "height": {
+          "default": 8.5,
+          "description": "The height (in inches) of the output paper size.",
+          "type": "number"
+        },
+        "landscape": {
+          "default": false,
+          "description": "The output page orientation.",
+          "type": "boolean"
+        },
+        "margin_bottom": {
+          "default": 0.394,
+          "description": "The size of the bottom page margin (in inches).",
+          "minimum": 0,
+          "type": "number"
+        },
+        "margin_left": {
+          "default": 0.394,
+          "description": "The size of the left page margin (in inches).",
+          "minimum": 0,
+          "type": "number"
+        },
+        "margin_right": {
+          "default": 0.394,
+          "description": "The size of the right page margin (in inches).",
+          "minimum": 0,
+          "type": "number"
+        },
+        "margin_top": {
+          "default": 0.394,
+          "description": "The size of the top page margin (in inches).",
+          "minimum": 0,
+          "type": "number"
+        },
+        "width": {
+          "default": 11,
+          "description": "The width (in inches) of the output paper size.",
+          "type": "number"
+        }
+      },
+      "type": "object"
+    },
+    "parent_uri": {
+      "description": "The uri of folder to put the asset in.  This parameter is relevant only for permanent assets.  If not specified, the default depends on the operation.  Conversions will be placed in the same folder as the source asset.",
+      "format": "uri",
+      "type": "string"
+    },
+    "persistence": {
+      "default": "transient",
+      "description": "Asset storage aspect as short-term transient vs. long-term permanent. \"transient\" creates an asset that will be available for several hours before being garbage collected and deleted.  For operations that convert and download immediately, \"transient\" is the appropriate choice",
+      "enum": [
+        "transient",
+        "permanent"
+      ],
+      "type": "string"
+    },
+    "print_background_images": {
+      "default": true,
+      "description": "Determine whether to print background image properties.",
+      "type": "boolean"
+    },
+    "print_header_footer": {
+      "default": true,
+      "description": "Determine whether to add default headers and footers to the output pages.  The default header includes a short date and the contents of document.title.  The default footer includes a file name and a page n/m reference.",
+      "type": "boolean"
+    },
+    "start_script": {
+      "description": "A reference to a JavaScript file that will be executed immediately prior to loading the HTML page.  This allows a client to inject script that may modify the DOM before render.  This is particularly useful when rendering from a URL where the client has no control over the HTML content.  Common usage is to use this parameter in combination with `maximum_wait` in order to affect the output and also call either `adbe_content_loaded()` or `adbe_content_failed(msg)`.",
+      "format": "uri",
+      "type": "string"
+    },
+    "tagged_pdf_format": {
+      "default": [
+        "not_tagged_pdf"
+      ],
+      "description": "If specified, apply the selected type of PDF tagging.",
+      "enum": [
+        "well_tagged_pdf",
+        "not_tagged_pdf"
+      ],
+      "type": "string"
+    },
+    "url": {
+      "description": "The URL to render. Must be secure (https).  For URL-based requests requiring authentication, the best practice is to include authentication credentials via the `json` parameter.",
+      "pattern": "^https:",
+      "type": "string"
+    },
+    "use_print_stylesheet": {
+      "default": true,
+      "description": "Determine whether to use any available print stylesheet.  See: http://www.w3.org/TR/css-print/",
+      "type": "boolean"
+    }
+  },
+  "required": [
+    "name"
+  ]
+}

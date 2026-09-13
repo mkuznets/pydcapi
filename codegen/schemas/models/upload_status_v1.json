@@ -1,0 +1,124 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "dependencies": {
+    "asset_result": {
+      "properties": {
+        "status": {
+          "enum": [
+            "done"
+          ]
+        }
+      }
+    },
+    "error": {
+      "properties": {
+        "status": {
+          "enum": [
+            "failed"
+          ]
+        }
+      }
+    },
+    "monitor_link": {
+      "properties": {
+        "status": {
+          "enum": [
+            "in progress"
+          ]
+        }
+      }
+    },
+    "retry_interval": {
+      "properties": {
+        "status": {
+          "enum": [
+            "in progress"
+          ]
+        }
+      }
+    }
+  },
+  "properties": {
+    "asset_result": {
+      "description": "Asset details. Returned only if status is done. If the status is 'done', this will contain the details of the new asset.",
+      "properties": {
+        "asset_id": {
+          "description": "Id of the asset.",
+          "type": "string"
+        },
+        "asset_uri": {
+          "description": "Url to access the asset.",
+          "format": "uri",
+          "type": "string"
+        },
+        "content_md5": {
+          "description": "Content-md5 hash of the file uploaded.",
+          "type": "string"
+        },
+        "etag": {
+          "description": "ETag of the created/updated asset.",
+          "type": "string"
+        }
+      },
+      "required": [
+        "asset_uri",
+        "asset_id",
+        "etag",
+        "content_md5"
+      ],
+      "type": "object"
+    },
+    "error": {
+      "description": "If the status is 'FAILED', this will contain the error details.",
+      "properties": {
+        "code": {
+          "description": "An English language string that contains more information about the error. This is not intended as information to be presented to an end user, but will instead be helpful for logging and debugging.",
+          "type": "string"
+        },
+        "message": {
+          "description": "Message describing the reason for the failure.",
+          "type": "string"
+        },
+        "status": {
+          "description": "The http status code. List of error codes include 403 for \"Unsuccessful virus scan (infected file)\" or \"QuotaExceeded\", 412 for \"Precondition failed\". or other such error codes. ",
+          "type": "number"
+        }
+      },
+      "required": [
+        "status",
+        "code",
+        "message"
+      ],
+      "type": "object"
+    },
+    "monitor_link": {
+      "description": "If the upload status is 'in progress', use this link to poll for status. Note that this method should be called only after the interval specified in retry_interval.",
+      "properties": {
+        "uri": {
+          "description": "Monitor link for getting the upload status.",
+          "type": "string"
+        }
+      },
+      "required": [
+        "uri"
+      ],
+      "type": "object"
+    },
+    "retry_interval": {
+      "description": "If the status is 'in progress' this specifies the number of milliseconds to wait before re-querying the monitor/upload status.",
+      "type": "number"
+    },
+    "status": {
+      "description": "Current status of the upload.",
+      "enum": [
+        "done",
+        "in progress",
+        "failed"
+      ],
+      "type": "string"
+    }
+  },
+  "required": [
+    "status"
+  ]
+}

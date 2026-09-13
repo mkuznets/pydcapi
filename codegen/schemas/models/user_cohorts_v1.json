@@ -1,0 +1,8 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "additionalProperties": {
+    "type": "string"
+  },
+  "description": "A json object with key-value pairs corresponding to cohorts and their values assigned to the current user for all the currently active experiments.",
+  "type": "object"
+}

@@ -1,0 +1,117 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "additionalProperties": false,
+  "dependencies": {
+    "on_dup_name": {
+      "properties": {
+        "persistence": {
+          "enum": [
+            "permanent"
+          ]
+        }
+      },
+      "required": [
+        "persistence"
+      ]
+    },
+    "parent_uri": {
+      "properties": {
+        "persistence": {
+          "enum": [
+            "permanent"
+          ]
+        }
+      },
+      "required": [
+        "persistence"
+      ]
+    },
+    "persistence": {}
+  },
+  "properties": {
+    "_links": {
+      "additionalProperties": false,
+      "properties": {
+        "upload_links": {
+          "description": "In the finalize request, the upload links must be provided, which is returned in initialize/extend request. The upload links which are not used should be removed from upload_links.",
+          "items": {
+            "additionalProperties": false,
+            "description": "Upload URL object using which blocks are uploaded",
+            "properties": {
+              "uri": {
+                "description": "Pre-signed URL using which upload is done.",
+                "format": "uri",
+                "type": "string"
+              }
+            },
+            "required": [
+              "uri"
+            ],
+            "type": "object"
+          },
+          "minItems": 1,
+          "type": "array"
+        }
+      },
+      "required": [
+        "upload_links"
+      ],
+      "type": "object"
+    },
+    "asset_uri": {
+      "description": "If this attribute is not provided, new asset will be created. Applicable only while updating an existing asset. If provided, should match with the asset id provided in the initialize request.",
+      "format": "uri",
+      "type": "string"
+    },
+    "content_md5": {
+      "description": "Base64-encoded 128-bit MD5 digest/hash as per RFC 1864. Add a md5 string property containing the base64-encoded MD5 hash of the complete Resource. The uploaded resource MD5 hash will be computed and completion request will fail with status code 400 if the two hash values are not identical.",
+      "type": "string"
+    },
+    "content_type": {
+      "description": "Content type of the file uploaded on storage server.",
+      "type": "string"
+    },
+    "name": {
+      "description": "The name of the asset. Applicable only while creating a new asset.",
+      "type": "string"
+    },
+    "on_dup_name": {
+      "default": "error",
+      "description": "How to handle a duplicate name - legal values are \"error\" and \"auto_rename\". Applicable only while creating a new asset. ",
+      "enum": [
+        "error",
+        "auto_rename"
+      ],
+      "type": "string"
+    },
+    "parent_uri": {
+      "description": "Applicable only while creating a new asset. Should be passed only when persistence is \"permanent\". Do not pass when persistence is \"transient\".",
+      "format": "uri",
+      "type": "string"
+    },
+    "persistence": {
+      "description": "Asset storage aspect as short-term transient vs. long-term permanent. \"transient\" creates an asset that will be available for several hours before being garbage collected and deleted. For operations that convert and download immediately, \"transient\" is the appropriate choice. If the choice is \"permanent\", then \"parent_uri\" must also be specified. ",
+      "enum": [
+        "transient",
+        "permanent"
+      ],
+      "type": "string"
+    },
+    "size": {
+      "description": "Length of the content uploaded on storage server.",
+      "type": "number"
+    },
+    "upload_info": {
+      "description": "Upload info returned in initialize call.",
+      "type": "string"
+    }
+  },
+  "required": [
+    "_links",
+    "size",
+    "content_md5",
+    "content_type",
+    "upload_info"
+  ],
+  "title": "Asset finalize block upload parameters schema"
+}

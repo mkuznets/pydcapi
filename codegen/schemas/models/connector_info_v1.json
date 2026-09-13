@@ -1,0 +1,76 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "additionalProperties": false,
+  "properties": {
+    "connector": {
+      "additionalProperties": false,
+      "description": "Represents Connector Info details.",
+      "properties": {
+        "accessToken": {
+          "description": "External cloud linked account access token.",
+          "type": "string"
+        },
+        "cloudUserId": {
+          "description": "External cloud linked account user id.",
+          "type": "string"
+        },
+        "connectedAt": {
+          "description": "External cloud account connected time.",
+          "type": "number"
+        },
+        "connectorData": {
+          "description": "Stringified JSON data representing connector preferences to be stored in db.",
+          "type": "string"
+        },
+        "connectorId": {
+          "description": "GUID for uniquely identifying each external cloud account linked or ready to be linked.",
+          "minLength": 1,
+          "type": "string"
+        },
+        "connectorType": {
+          "description": "Identifier for Connector class.",
+          "enum": [
+            "Teams",
+            "OneDrive",
+            "SharePoint",
+            "GDrive",
+            "Box",
+            "DropBox"
+          ],
+          "type": "string"
+        },
+        "createdAt": {
+          "description": "Connector Info creation time.",
+          "type": "number"
+        },
+        "expiresIn": {
+          "description": "It represents remaining validity(in seconds) of the access token in connector Info.",
+          "type": "number"
+        },
+        "proxyToken": {
+          "description": "Proxy token linked to external cloud connector.",
+          "type": "string"
+        },
+        "status": {
+          "description": "Identifier for the Connector Info state.",
+          "enum": [
+            "ACTIVE",
+            "EXPIRED"
+          ],
+          "type": "string"
+        }
+      },
+      "required": [
+        "connectorId",
+        "connectorType",
+        "status",
+        "createdAt"
+      ],
+      "type": "object"
+    }
+  },
+  "required": [
+    "connector"
+  ],
+  "title": "Connector Info response"
+}

@@ -1,0 +1,72 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "properties": {
+    "asset_id": {
+      "description": "Id the asset created/updated in this API call.",
+      "type": "string"
+    },
+    "asset_uri": {
+      "description": "Asset URI of the asset created/updated.",
+      "format": "uri",
+      "type": "string"
+    },
+    "content_md5": {
+      "description": "Cloud provider checksum. Returned only if creation/updation is completed and successful. ",
+      "type": "string"
+    },
+    "etag": {
+      "description": "ETag of the created/updated asset. Returned only if creation/updation is completed and successful. ",
+      "type": "string"
+    },
+    "monitor_link": {
+      "description": "Monitor link object for getting the upload status. Returned only when asset upload/update is still in progress and http status is 202.",
+      "properties": {
+        "uri": {
+          "description": "Monitor link for getting the upload status.",
+          "type": "string"
+        }
+      },
+      "required": [
+        "uri"
+      ],
+      "type": "object"
+    },
+    "rename_info": {
+      "description": "If on_dup_name was auto_rename and the name was illegal or a duplicate was encountered, contains details on the rename.",
+      "properties": {
+        "duplicate_of": {
+          "properties": {
+            "asset_uri": {
+              "description": "If present, the uri of the asset the original_name collided with.",
+              "format": "uri",
+              "type": "string"
+            },
+            "folder_uri": {
+              "description": "If present, the uri of the folder the original_name collided with.",
+              "format": "uri",
+              "type": "string"
+            }
+          },
+          "type": "object"
+        },
+        "name": {
+          "description": "The name actually used.",
+          "type": "string"
+        },
+        "original_name": {
+          "description": "The original name.",
+          "type": "string"
+        }
+      },
+      "required": [
+        "original_name",
+        "name"
+      ],
+      "type": "object"
+    },
+    "size": {
+      "description": "Size of the uploaded file.(Reported by cloud provider)",
+      "type": "number"
+    }
+  }
+}

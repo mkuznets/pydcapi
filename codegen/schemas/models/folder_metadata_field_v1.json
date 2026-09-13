@@ -1,0 +1,68 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "description": "Object consisting of selected fields of metadata",
+  "minProperties": 1,
+  "properties": {
+    "created": {
+      "description": "The creation date of the folder.",
+      "format": "date-time",
+      "type": "string"
+    },
+    "custom_tags": {
+      "description": "An array of custom tags for client application use.",
+      "items": {
+        "description": "A short client application defined tag.",
+        "type": "string"
+      },
+      "type": "array"
+    },
+    "favorite": {
+      "description": "True if the user has marked this folder a favorite.",
+      "type": "boolean"
+    },
+    "folder_id": {
+      "description": "The folder id (in URN form).  Use the \"folder_uri\" uri template in the \"templates\" section of the discovery info to transform to a folder uri.",
+      "type": "string"
+    },
+    "modified": {
+      "description": "The modification date of the folder.",
+      "format": "date-time",
+      "type": "string"
+    },
+    "name": {
+      "description": "Name of the folder.",
+      "type": "string"
+    },
+    "parent_id": {
+      "description": "Folder id (in URN form) of the parent folder of this folder. If there is no parent (e.g. for a transient folder), this value is not present.",
+      "type": "string"
+    },
+    "parent_uri": {
+      "description": "URI of the parent folder of this folder.  If there is no parent (e.g. for a transient folder), this value is not present.",
+      "format": "uri",
+      "type": "string"
+    },
+    "source": {
+      "description": "Where the folder resides.  Currently either \"native\" or \"creative_cloud\"",
+      "type": "string"
+    },
+    "starred": {
+      "description": "True if the user has starred this folder.",
+      "type": "boolean"
+    },
+    "tags": {
+      "description": "An array of tags.",
+      "items": {
+        "description": "A short user defined tag.",
+        "type": "string"
+      },
+      "type": "array"
+    },
+    "uri": {
+      "description": "URI representing the folder",
+      "format": "uri",
+      "type": "string"
+    }
+  },
+  "type": "object"
+}
