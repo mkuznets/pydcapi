@@ -68,6 +68,10 @@ class LimitsAcrobat(BaseModel):
         extra='allow',
         frozen=True,
     )
+    acrobat_desktop_mode: Optional[str] = None
+    """
+    Indicates whether the user is entitled to Acrobat Lite GenAI.
+    """
     acrobat_pro: bool
     """
     Indicates whether the user is entitled to download/install Acrobat Pro.
@@ -434,6 +438,10 @@ class LimitsSend(BaseModel):
     can_send_av: bool
     """
     Users who have purchased a subscription to the service can send audio or video files to recipients.<br/>If this limit is false, a parcel created that includes audio or video files will fail with an error from the API request.
+    """
+    can_send_secure_link: bool
+    """
+    Users who have purchased a subscription to the service can create and send private sharing links within an organisation.
     """
     can_send_to_individuals: bool
     """
@@ -824,6 +832,32 @@ class ExtractPages(BaseModel):
     """
 
 
+class Limits9(BaseModel):
+    model_config = ConfigDict(
+        extra='allow',
+        frozen=True,
+    )
+    quota_details: Optional[QuotaDetails] = None
+    """
+    Adjacent to remaining, represents quota details including next available and applicable frequency per verb, operation level or uber level.
+    """
+    remaining: Optional[int] = None
+    """
+    tells how many transactions are remaining for the verb. 0 means none remaining, positive integer tells the count that are remaining, -1 means unlimited transactions remaining.
+    """
+
+
+class HighSpeedScan(BaseModel):
+    model_config = ConfigDict(
+        extra='allow',
+        frozen=True,
+    )
+    limits: Optional[Limits9] = None
+    """
+    specifies the applicable transactions details for the user.
+    """
+
+
 class Configuration9(BaseModel):
     model_config = ConfigDict(
         extra='allow',
@@ -835,7 +869,7 @@ class Configuration9(BaseModel):
     """
 
 
-class Limits9(BaseModel):
+class Limits10(BaseModel):
     model_config = ConfigDict(
         extra='allow',
         frozen=True,
@@ -859,7 +893,7 @@ class HtmlToPdf(BaseModel):
     """
     various configurations applicable to relevant tile for the user. For example, the max_file_size field which signifies the maximum file size that is support for this tile/pdf operation. More fields wrt operation configuration can be added here as and when needed.
     """
-    limits: Optional[Limits9] = None
+    limits: Optional[Limits10] = None
     """
     specifies the applicable transactions details for the user.
     """
@@ -880,7 +914,7 @@ class Configuration10(BaseModel):
     """
 
 
-class Limits10(BaseModel):
+class Limits11(BaseModel):
     model_config = ConfigDict(
         extra='allow',
         frozen=True,
@@ -904,7 +938,7 @@ class InsertPdf(BaseModel):
     """
     various configurations applicable to relevant tile for the user. For example, the max_file_size field which signifies the maximum file size that is support for this tile/pdf operation. More fields wrt operation configuration can be added here as and when needed.
     """
-    limits: Optional[Limits10] = None
+    limits: Optional[Limits11] = None
     """
     specifies the applicable transactions details for the user.
     """
@@ -918,36 +952,6 @@ class Configuration11(BaseModel):
     max_file_size: Optional[int] = None
     """
     Maximum file size supported by the operation, if applicable
-    """
-
-
-class Limits11(BaseModel):
-    model_config = ConfigDict(
-        extra='allow',
-        frozen=True,
-    )
-    quota_details: Optional[QuotaDetails] = None
-    """
-    Adjacent to remaining, represents quota details including next available and applicable frequency per verb, operation level or uber level.
-    """
-    remaining: Optional[int] = None
-    """
-    tells how many transactions are remaining for the verb. 0 means none remaining, positive integer tells the count that are remaining, -1 means unlimited transactions remaining.
-    """
-
-
-class JpgToPdf(BaseModel):
-    model_config = ConfigDict(
-        extra='allow',
-        frozen=True,
-    )
-    configuration: Optional[Configuration11] = None
-    """
-    various configurations applicable to relevant tile for the user. For example, the max_file_size field which signifies the maximum file size that is support for this tile/pdf operation. More fields wrt operation configuration can be added here as and when needed.
-    """
-    limits: Optional[Limits11] = None
-    """
-    specifies the applicable transactions details for the user.
     """
 
 
@@ -966,7 +970,7 @@ class Limits12(BaseModel):
     """
 
 
-class NumberPages(BaseModel):
+class JpgToPdf(BaseModel):
     model_config = ConfigDict(
         extra='allow',
         frozen=True,
@@ -996,7 +1000,7 @@ class Limits13(BaseModel):
     """
 
 
-class OcrPdf(BaseModel):
+class NumberPages(BaseModel):
     model_config = ConfigDict(
         extra='allow',
         frozen=True,
@@ -1006,6 +1010,36 @@ class OcrPdf(BaseModel):
     various configurations applicable to relevant tile for the user. For example, the max_file_size field which signifies the maximum file size that is support for this tile/pdf operation. More fields wrt operation configuration can be added here as and when needed.
     """
     limits: Optional[Limits13] = None
+    """
+    specifies the applicable transactions details for the user.
+    """
+
+
+class Limits14(BaseModel):
+    model_config = ConfigDict(
+        extra='allow',
+        frozen=True,
+    )
+    quota_details: Optional[QuotaDetails] = None
+    """
+    Adjacent to remaining, represents quota details including next available and applicable frequency per verb, operation level or uber level.
+    """
+    remaining: Optional[int] = None
+    """
+    tells how many transactions are remaining for the verb. 0 means none remaining, positive integer tells the count that are remaining, -1 means unlimited transactions remaining.
+    """
+
+
+class OcrPdf(BaseModel):
+    model_config = ConfigDict(
+        extra='allow',
+        frozen=True,
+    )
+    configuration: Optional[Configuration11] = None
+    """
+    various configurations applicable to relevant tile for the user. For example, the max_file_size field which signifies the maximum file size that is support for this tile/pdf operation. More fields wrt operation configuration can be added here as and when needed.
+    """
+    limits: Optional[Limits14] = None
     """
     specifies the applicable transactions details for the user.
     """
@@ -1026,7 +1060,7 @@ class Configuration14(BaseModel):
     """
 
 
-class Limits14(BaseModel):
+class Limits15(BaseModel):
     model_config = ConfigDict(
         extra='allow',
         frozen=True,
@@ -1050,7 +1084,7 @@ class CombinePdf1(BaseModel):
     """
     various configurations applicable to relevant tile for the user. For example, the max_file_size field which signifies the maximum file size that is support for this tile/pdf operation. More fields wrt operation configuration can be added here as and when needed.
     """
-    limits: Optional[Limits14] = None
+    limits: Optional[Limits15] = None
     """
     specifies the applicable transactions details for the user.
     """
@@ -1064,36 +1098,6 @@ class Configuration15(BaseModel):
     max_file_size: Optional[int] = None
     """
     Maximum file size supported by the operation, if applicable
-    """
-
-
-class Limits15(BaseModel):
-    model_config = ConfigDict(
-        extra='allow',
-        frozen=True,
-    )
-    quota_details: Optional[QuotaDetails] = None
-    """
-    Adjacent to remaining, represents quota details including next available and applicable frequency per verb, operation level or uber level.
-    """
-    remaining: Optional[int] = None
-    """
-    tells how many transactions are remaining for the verb. 0 means none remaining, positive integer tells the count that are remaining, -1 means unlimited transactions remaining.
-    """
-
-
-class CompressPdf1(BaseModel):
-    model_config = ConfigDict(
-        extra='allow',
-        frozen=True,
-    )
-    configuration: Optional[Configuration15] = None
-    """
-    various configurations applicable to relevant tile for the user. For example, the max_file_size field which signifies the maximum file size that is support for this tile/pdf operation. More fields wrt operation configuration can be added here as and when needed.
-    """
-    limits: Optional[Limits15] = None
-    """
-    specifies the applicable transactions details for the user.
     """
 
 
@@ -1112,7 +1116,7 @@ class Limits16(BaseModel):
     """
 
 
-class Createpdf1(BaseModel):
+class CompressPdf1(BaseModel):
     model_config = ConfigDict(
         extra='allow',
         frozen=True,
@@ -1142,7 +1146,7 @@ class Limits17(BaseModel):
     """
 
 
-class EditPdf1(BaseModel):
+class Createpdf1(BaseModel):
     model_config = ConfigDict(
         extra='allow',
         frozen=True,
@@ -1172,7 +1176,7 @@ class Limits18(BaseModel):
     """
 
 
-class ExportPdf1(BaseModel):
+class EditPdf1(BaseModel):
     model_config = ConfigDict(
         extra='allow',
         frozen=True,
@@ -1202,7 +1206,7 @@ class Limits19(BaseModel):
     """
 
 
-class OcrPdf1(BaseModel):
+class ExportPdf1(BaseModel):
     model_config = ConfigDict(
         extra='allow',
         frozen=True,
@@ -1212,6 +1216,62 @@ class OcrPdf1(BaseModel):
     various configurations applicable to relevant tile for the user. For example, the max_file_size field which signifies the maximum file size that is support for this tile/pdf operation. More fields wrt operation configuration can be added here as and when needed.
     """
     limits: Optional[Limits19] = None
+    """
+    specifies the applicable transactions details for the user.
+    """
+
+
+class Limits20(BaseModel):
+    model_config = ConfigDict(
+        extra='allow',
+        frozen=True,
+    )
+    quota_details: Optional[QuotaDetails] = None
+    """
+    Adjacent to remaining, represents quota details including next available and applicable frequency per verb, operation level or uber level.
+    """
+    remaining: Optional[int] = None
+    """
+    tells how many transactions are remaining for the verb. 0 means none remaining, positive integer tells the count that are remaining, -1 means unlimited transactions remaining.
+    """
+
+
+class HighSpeedScan1(BaseModel):
+    model_config = ConfigDict(
+        extra='allow',
+        frozen=True,
+    )
+    limits: Optional[Limits20] = None
+    """
+    specifies the applicable transactions details for the user.
+    """
+
+
+class Limits21(BaseModel):
+    model_config = ConfigDict(
+        extra='allow',
+        frozen=True,
+    )
+    quota_details: Optional[QuotaDetails] = None
+    """
+    Adjacent to remaining, represents quota details including next available and applicable frequency per verb, operation level or uber level.
+    """
+    remaining: Optional[int] = None
+    """
+    tells how many transactions are remaining for the verb. 0 means none remaining, positive integer tells the count that are remaining, -1 means unlimited transactions remaining.
+    """
+
+
+class OcrPdf1(BaseModel):
+    model_config = ConfigDict(
+        extra='allow',
+        frozen=True,
+    )
+    configuration: Optional[Configuration15] = None
+    """
+    various configurations applicable to relevant tile for the user. For example, the max_file_size field which signifies the maximum file size that is support for this tile/pdf operation. More fields wrt operation configuration can be added here as and when needed.
+    """
+    limits: Optional[Limits21] = None
     """
     specifies the applicable transactions details for the user.
     """
@@ -1232,7 +1292,7 @@ class Configuration20(BaseModel):
     """
 
 
-class Limits20(BaseModel):
+class Limits22(BaseModel):
     model_config = ConfigDict(
         extra='allow',
         frozen=True,
@@ -1256,7 +1316,7 @@ class OrganizePdf(BaseModel):
     """
     various configurations applicable to relevant tile for the user. For example, the max_file_size field which signifies the maximum file size that is support for this tile/pdf operation. More fields wrt operation configuration can be added here as and when needed.
     """
-    limits: Optional[Limits20] = None
+    limits: Optional[Limits22] = None
     """
     specifies the applicable transactions details for the user.
     """
@@ -1273,7 +1333,7 @@ class Configuration21(BaseModel):
     """
 
 
-class Limits21(BaseModel):
+class Limits23(BaseModel):
     model_config = ConfigDict(
         extra='allow',
         frozen=True,
@@ -1297,7 +1357,7 @@ class ProtectPdf(BaseModel):
     """
     various configurations applicable to relevant tile for the user. For example, the max_file_size field which signifies the maximum file size that is support for this tile/pdf operation. More fields wrt operation configuration can be added here as and when needed.
     """
-    limits: Optional[Limits21] = None
+    limits: Optional[Limits23] = None
     """
     specifies the applicable transactions details for the user.
     """
@@ -1325,6 +1385,10 @@ class Operations(BaseModel):
     Limits in uber response represents the actual limits provided for user at uber level. Client can refer remaining transactions, next_available and frequency fields. Interpretation of remaining, next_available and frequency is similar to verb response.
     """
     export_pdf: Optional[ExportPdf1] = Field(None, alias='export-pdf')
+    """
+    Limits in uber response represents the actual limits provided for user at uber level. Client can refer remaining transactions, next_available and frequency fields. Interpretation of remaining, next_available and frequency is similar to verb response.
+    """
+    high_speed_scan: Optional[HighSpeedScan1] = Field(None, alias='high-speed-scan')
     """
     Limits in uber response represents the actual limits provided for user at uber level. Client can refer remaining transactions, next_available and frequency fields. Interpretation of remaining, next_available and frequency is similar to verb response.
     """
@@ -1357,7 +1421,7 @@ class Configuration22(BaseModel):
     """
 
 
-class Limits22(BaseModel):
+class Limits24(BaseModel):
     model_config = ConfigDict(
         extra='allow',
         frozen=True,
@@ -1381,7 +1445,7 @@ class OrganizePdf1(BaseModel):
     """
     various configurations applicable to relevant tile for the user. For example, the max_file_size field which signifies the maximum file size that is support for this tile/pdf operation. More fields wrt operation configuration can be added here as and when needed.
     """
-    limits: Optional[Limits22] = None
+    limits: Optional[Limits24] = None
     """
     specifies the applicable transactions details for the user.
     """
@@ -1395,66 +1459,6 @@ class Configuration23(BaseModel):
     max_file_size: Optional[int] = None
     """
     Maximum file size supported by the operation, if applicable
-    """
-
-
-class Limits23(BaseModel):
-    model_config = ConfigDict(
-        extra='allow',
-        frozen=True,
-    )
-    quota_details: Optional[QuotaDetails] = None
-    """
-    Adjacent to remaining, represents quota details including next available and applicable frequency per verb, operation level or uber level.
-    """
-    remaining: Optional[int] = None
-    """
-    tells how many transactions are remaining for the verb. 0 means none remaining, positive integer tells the count that are remaining, -1 means unlimited transactions remaining.
-    """
-
-
-class PdfToExcel(BaseModel):
-    model_config = ConfigDict(
-        extra='allow',
-        frozen=True,
-    )
-    configuration: Optional[Configuration23] = None
-    """
-    various configurations applicable to relevant tile for the user. For example, the max_file_size field which signifies the maximum file size that is support for this tile/pdf operation. More fields wrt operation configuration can be added here as and when needed.
-    """
-    limits: Optional[Limits23] = None
-    """
-    specifies the applicable transactions details for the user.
-    """
-
-
-class Limits24(BaseModel):
-    model_config = ConfigDict(
-        extra='allow',
-        frozen=True,
-    )
-    quota_details: Optional[QuotaDetails] = None
-    """
-    Adjacent to remaining, represents quota details including next available and applicable frequency per verb, operation level or uber level.
-    """
-    remaining: Optional[int] = None
-    """
-    tells how many transactions are remaining for the verb. 0 means none remaining, positive integer tells the count that are remaining, -1 means unlimited transactions remaining.
-    """
-
-
-class PdfToImage(BaseModel):
-    model_config = ConfigDict(
-        extra='allow',
-        frozen=True,
-    )
-    configuration: Optional[Configuration23] = None
-    """
-    various configurations applicable to relevant tile for the user. For example, the max_file_size field which signifies the maximum file size that is support for this tile/pdf operation. More fields wrt operation configuration can be added here as and when needed.
-    """
-    limits: Optional[Limits24] = None
-    """
-    specifies the applicable transactions details for the user.
     """
 
 
@@ -1473,7 +1477,7 @@ class Limits25(BaseModel):
     """
 
 
-class PdfToPpt(BaseModel):
+class PdfToExcel(BaseModel):
     model_config = ConfigDict(
         extra='allow',
         frozen=True,
@@ -1503,7 +1507,7 @@ class Limits26(BaseModel):
     """
 
 
-class PdfToWord(BaseModel):
+class PdfToImage(BaseModel):
     model_config = ConfigDict(
         extra='allow',
         frozen=True,
@@ -1533,7 +1537,7 @@ class Limits27(BaseModel):
     """
 
 
-class PptToPdf(BaseModel):
+class PdfToPpt(BaseModel):
     model_config = ConfigDict(
         extra='allow',
         frozen=True,
@@ -1563,7 +1567,7 @@ class Limits28(BaseModel):
     """
 
 
-class ProtectPdf1(BaseModel):
+class PdfToWord(BaseModel):
     model_config = ConfigDict(
         extra='allow',
         frozen=True,
@@ -1575,21 +1579,6 @@ class ProtectPdf1(BaseModel):
     limits: Optional[Limits28] = None
     """
     specifies the applicable transactions details for the user.
-    """
-
-
-class Configuration29(BaseModel):
-    model_config = ConfigDict(
-        extra='allow',
-        frozen=True,
-    )
-    max_file_size: Optional[int] = None
-    """
-    Maximum file size supported by the operation, if applicable
-    """
-    max_number_files: Optional[int] = None
-    """
-    Maximum number of files supported by the operation, if applicable
     """
 
 
@@ -1608,12 +1597,12 @@ class Limits29(BaseModel):
     """
 
 
-class ReorderPages(BaseModel):
+class PptToPdf(BaseModel):
     model_config = ConfigDict(
         extra='allow',
         frozen=True,
     )
-    configuration: Optional[Configuration29] = None
+    configuration: Optional[Configuration23] = None
     """
     various configurations applicable to relevant tile for the user. For example, the max_file_size field which signifies the maximum file size that is support for this tile/pdf operation. More fields wrt operation configuration can be added here as and when needed.
     """
@@ -1638,12 +1627,12 @@ class Limits30(BaseModel):
     """
 
 
-class RotatePages(BaseModel):
+class ProtectPdf1(BaseModel):
     model_config = ConfigDict(
         extra='allow',
         frozen=True,
     )
-    configuration: Optional[Configuration29] = None
+    configuration: Optional[Configuration23] = None
     """
     various configurations applicable to relevant tile for the user. For example, the max_file_size field which signifies the maximum file size that is support for this tile/pdf operation. More fields wrt operation configuration can be added here as and when needed.
     """
@@ -1653,7 +1642,7 @@ class RotatePages(BaseModel):
     """
 
 
-class Configuration31(BaseModel):
+class Configuration29(BaseModel):
     model_config = ConfigDict(
         extra='allow',
         frozen=True,
@@ -1662,9 +1651,9 @@ class Configuration31(BaseModel):
     """
     Maximum file size supported by the operation, if applicable
     """
-    max_split_points: Optional[int] = None
+    max_number_files: Optional[int] = None
     """
-    Maximum number of split points supported by the operation, if applicable
+    Maximum number of files supported by the operation, if applicable
     """
 
 
@@ -1683,12 +1672,12 @@ class Limits31(BaseModel):
     """
 
 
-class SplitPdf(BaseModel):
+class ReorderPages(BaseModel):
     model_config = ConfigDict(
         extra='allow',
         frozen=True,
     )
-    configuration: Optional[Configuration31] = None
+    configuration: Optional[Configuration29] = None
     """
     various configurations applicable to relevant tile for the user. For example, the max_file_size field which signifies the maximum file size that is support for this tile/pdf operation. More fields wrt operation configuration can be added here as and when needed.
     """
@@ -1713,12 +1702,87 @@ class Limits32(BaseModel):
     """
 
 
+class RotatePages(BaseModel):
+    model_config = ConfigDict(
+        extra='allow',
+        frozen=True,
+    )
+    configuration: Optional[Configuration29] = None
+    """
+    various configurations applicable to relevant tile for the user. For example, the max_file_size field which signifies the maximum file size that is support for this tile/pdf operation. More fields wrt operation configuration can be added here as and when needed.
+    """
+    limits: Optional[Limits32] = None
+    """
+    specifies the applicable transactions details for the user.
+    """
+
+
+class Configuration31(BaseModel):
+    model_config = ConfigDict(
+        extra='allow',
+        frozen=True,
+    )
+    max_file_size: Optional[int] = None
+    """
+    Maximum file size supported by the operation, if applicable
+    """
+    max_split_points: Optional[int] = None
+    """
+    Maximum number of split points supported by the operation, if applicable
+    """
+
+
+class Limits33(BaseModel):
+    model_config = ConfigDict(
+        extra='allow',
+        frozen=True,
+    )
+    quota_details: Optional[QuotaDetails] = None
+    """
+    Adjacent to remaining, represents quota details including next available and applicable frequency per verb, operation level or uber level.
+    """
+    remaining: Optional[int] = None
+    """
+    tells how many transactions are remaining for the verb. 0 means none remaining, positive integer tells the count that are remaining, -1 means unlimited transactions remaining.
+    """
+
+
+class SplitPdf(BaseModel):
+    model_config = ConfigDict(
+        extra='allow',
+        frozen=True,
+    )
+    configuration: Optional[Configuration31] = None
+    """
+    various configurations applicable to relevant tile for the user. For example, the max_file_size field which signifies the maximum file size that is support for this tile/pdf operation. More fields wrt operation configuration can be added here as and when needed.
+    """
+    limits: Optional[Limits33] = None
+    """
+    specifies the applicable transactions details for the user.
+    """
+
+
+class Limits34(BaseModel):
+    model_config = ConfigDict(
+        extra='allow',
+        frozen=True,
+    )
+    quota_details: Optional[QuotaDetails] = None
+    """
+    Adjacent to remaining, represents quota details including next available and applicable frequency per verb, operation level or uber level.
+    """
+    remaining: Optional[int] = None
+    """
+    tells how many transactions are remaining for the verb. 0 means none remaining, positive integer tells the count that are remaining, -1 means unlimited transactions remaining.
+    """
+
+
 class Uber(BaseModel):
     model_config = ConfigDict(
         extra='allow',
         frozen=True,
     )
-    limits: Optional[Limits32] = None
+    limits: Optional[Limits34] = None
     """
     specifies the applicable transactions details for the user.
     """
@@ -1735,7 +1799,7 @@ class Configuration32(BaseModel):
     """
 
 
-class Limits33(BaseModel):
+class Limits35(BaseModel):
     model_config = ConfigDict(
         extra='allow',
         frozen=True,
@@ -1759,7 +1823,7 @@ class WordToPdf(BaseModel):
     """
     various configurations applicable to relevant tile for the user. For example, the max_file_size field which signifies the maximum file size that is support for this tile/pdf operation. More fields wrt operation configuration can be added here as and when needed.
     """
-    limits: Optional[Limits33] = None
+    limits: Optional[Limits35] = None
     """
     specifies the applicable transactions details for the user.
     """
@@ -1806,6 +1870,10 @@ class LimitsVerbs(BaseModel):
     """
     Limits in uber response represents the actual limits provided for user at uber level. Client can refer remaining transactions, next_available and frequency fields. Interpretation of remaining, next_available and frequency is similar to verb response.
     """
+    high_speed_scan: HighSpeedScan = Field(..., alias='high-speed-scan')
+    """
+    Limits in uber response represents the actual limits provided for user at uber level. Client can refer remaining transactions, next_available and frequency fields. Interpretation of remaining, next_available and frequency is similar to verb response.
+    """
     html_to_pdf: HtmlToPdf = Field(..., alias='html-to-pdf')
     """
     Limits in uber response represents the actual limits provided for user at uber level. Client can refer remaining transactions, next_available and frequency fields. Interpretation of remaining, next_available and frequency is similar to verb response.
@@ -1826,7 +1894,7 @@ class LimitsVerbs(BaseModel):
     """
     Limits in uber response represents the actual limits provided for user at uber level. Client can refer remaining transactions, next_available and frequency fields. Interpretation of remaining, next_available and frequency is similar to verb response.
     """
-    operations: Operations
+    operations: Optional[Operations] = None
     """
     Operation level response for user, if applicable
     """
@@ -1875,6 +1943,1128 @@ class LimitsVerbs(BaseModel):
     Limits in uber response represents the actual limits provided for user at uber level. Client can refer remaining transactions, next_available and frequency fields. Interpretation of remaining, next_available and frequency is similar to verb response.
     """
     word_to_pdf: WordToPdf = Field(..., alias='word-to-pdf')
+    """
+    Limits in uber response represents the actual limits provided for user at uber level. Client can refer remaining transactions, next_available and frequency fields. Interpretation of remaining, next_available and frequency is similar to verb response.
+    """
+
+
+class Configuration33(BaseModel):
+    model_config = ConfigDict(
+        extra='allow',
+        frozen=True,
+    )
+    max_file_size: Optional[int] = None
+    """
+    Maximum file size supported by the operation, if applicable
+    """
+    max_number_files: Optional[int] = None
+    """
+    Maximum number of files supported by the operation, if applicable
+    """
+
+
+class Limits36(BaseModel):
+    model_config = ConfigDict(
+        extra='allow',
+        frozen=True,
+    )
+    quota_details: Optional[QuotaDetails] = None
+    """
+    Adjacent to remaining, represents quota details including next available and applicable frequency per verb or uber level.
+    """
+    remaining: Optional[int] = None
+    """
+    tells how many transactions are remaining for the verb. 0 means none remaining, positive integer tells the count that are remaining, -1 means unlimited transactions remaining.
+    """
+
+
+class Combinepdf(BaseModel):
+    model_config = ConfigDict(
+        extra='allow',
+        frozen=True,
+    )
+    configuration: Optional[Configuration33] = None
+    """
+    various configurations applicable to relevant tile for the user. For example, the max_file_size field which signifies the maximum file size that is support for this tile/pdf operation. More fields wrt operation configuration can be added here as and when needed.
+    """
+    limits: Optional[Limits36] = None
+    """
+    specifies the applicable transactions details for the user.
+    """
+
+
+class Configuration34(BaseModel):
+    model_config = ConfigDict(
+        extra='allow',
+        frozen=True,
+    )
+    max_file_size: Optional[int] = None
+    """
+    Maximum file size supported by the operation, if applicable
+    """
+
+
+class Limits37(BaseModel):
+    model_config = ConfigDict(
+        extra='allow',
+        frozen=True,
+    )
+    quota_details: Optional[QuotaDetails] = None
+    """
+    Adjacent to remaining, represents quota details including next available and applicable frequency per verb or uber level.
+    """
+    remaining: Optional[int] = None
+    """
+    tells how many transactions are remaining for the verb. 0 means none remaining, positive integer tells the count that are remaining, -1 means unlimited transactions remaining.
+    """
+
+
+class Compresspdf(BaseModel):
+    model_config = ConfigDict(
+        extra='allow',
+        frozen=True,
+    )
+    configuration: Optional[Configuration34] = None
+    """
+    various configurations applicable to relevant tile for the user. For example, the max_file_size field which signifies the maximum file size that is support for this tile/pdf operation. More fields wrt operation configuration can be added here as and when needed.
+    """
+    limits: Optional[Limits37] = None
+    """
+    specifies the applicable transactions details for the user.
+    """
+
+
+class Limits38(BaseModel):
+    model_config = ConfigDict(
+        extra='allow',
+        frozen=True,
+    )
+    quota_details: Optional[QuotaDetails] = None
+    """
+    Adjacent to remaining, represents quota details including next available and applicable frequency per verb or uber level.
+    """
+    remaining: Optional[int] = None
+    """
+    tells how many transactions are remaining for the verb. 0 means none remaining, positive integer tells the count that are remaining, -1 means unlimited transactions remaining.
+    """
+
+
+class Createpdf2(BaseModel):
+    model_config = ConfigDict(
+        extra='allow',
+        frozen=True,
+    )
+    configuration: Optional[Configuration34] = None
+    """
+    various configurations applicable to relevant tile for the user. For example, the max_file_size field which signifies the maximum file size that is support for this tile/pdf operation. More fields wrt operation configuration can be added here as and when needed.
+    """
+    limits: Optional[Limits38] = None
+    """
+    specifies the applicable transactions details for the user.
+    """
+
+
+class Limits39(BaseModel):
+    model_config = ConfigDict(
+        extra='allow',
+        frozen=True,
+    )
+    quota_details: Optional[QuotaDetails] = None
+    """
+    Adjacent to remaining, represents quota details including next available and applicable frequency per verb or uber level.
+    """
+    remaining: Optional[int] = None
+    """
+    tells how many transactions are remaining for the verb. 0 means none remaining, positive integer tells the count that are remaining, -1 means unlimited transactions remaining.
+    """
+
+
+class Croppages(BaseModel):
+    model_config = ConfigDict(
+        extra='allow',
+        frozen=True,
+    )
+    configuration: Optional[Configuration34] = None
+    """
+    various configurations applicable to relevant tile for the user. For example, the max_file_size field which signifies the maximum file size that is support for this tile/pdf operation. More fields wrt operation configuration can be added here as and when needed.
+    """
+    limits: Optional[Limits39] = None
+    """
+    specifies the applicable transactions details for the user.
+    """
+
+
+class Configuration37(BaseModel):
+    model_config = ConfigDict(
+        extra='allow',
+        frozen=True,
+    )
+    max_file_size: Optional[int] = None
+    """
+    Maximum file size supported by the operation, if applicable
+    """
+    max_number_files: Optional[int] = None
+    """
+    Maximum number of files supported by the operation, if applicable
+    """
+
+
+class Limits40(BaseModel):
+    model_config = ConfigDict(
+        extra='allow',
+        frozen=True,
+    )
+    quota_details: Optional[QuotaDetails] = None
+    """
+    Adjacent to remaining, represents quota details including next available and applicable frequency per verb or uber level.
+    """
+    remaining: Optional[int] = None
+    """
+    tells how many transactions are remaining for the verb. 0 means none remaining, positive integer tells the count that are remaining, -1 means unlimited transactions remaining.
+    """
+
+
+class Deletepages(BaseModel):
+    model_config = ConfigDict(
+        extra='allow',
+        frozen=True,
+    )
+    configuration: Optional[Configuration37] = None
+    """
+    various configurations applicable to relevant tile for the user. For example, the max_file_size field which signifies the maximum file size that is support for this tile/pdf operation. More fields wrt operation configuration can be added here as and when needed.
+    """
+    limits: Optional[Limits40] = None
+    """
+    specifies the applicable transactions details for the user.
+    """
+
+
+class Configuration38(BaseModel):
+    model_config = ConfigDict(
+        extra='allow',
+        frozen=True,
+    )
+    max_file_size: Optional[int] = None
+    """
+    Maximum file size supported by the operation, if applicable
+    """
+
+
+class Limits41(BaseModel):
+    model_config = ConfigDict(
+        extra='allow',
+        frozen=True,
+    )
+    quota_details: Optional[QuotaDetails] = None
+    """
+    Adjacent to remaining, represents quota details including next available and applicable frequency per verb or uber level.
+    """
+    remaining: Optional[int] = None
+    """
+    tells how many transactions are remaining for the verb. 0 means none remaining, positive integer tells the count that are remaining, -1 means unlimited transactions remaining.
+    """
+
+
+class Editpdf(BaseModel):
+    model_config = ConfigDict(
+        extra='allow',
+        frozen=True,
+    )
+    configuration: Optional[Configuration38] = None
+    """
+    various configurations applicable to relevant tile for the user. For example, the max_file_size field which signifies the maximum file size that is support for this tile/pdf operation. More fields wrt operation configuration can be added here as and when needed.
+    """
+    limits: Optional[Limits41] = None
+    """
+    specifies the applicable transactions details for the user.
+    """
+
+
+class Limits42(BaseModel):
+    model_config = ConfigDict(
+        extra='allow',
+        frozen=True,
+    )
+    quota_details: Optional[QuotaDetails] = None
+    """
+    Adjacent to remaining, represents quota details including next available and applicable frequency per verb or uber level.
+    """
+    remaining: Optional[int] = None
+    """
+    tells how many transactions are remaining for the verb. 0 means none remaining, positive integer tells the count that are remaining, -1 means unlimited transactions remaining.
+    """
+
+
+class Exceltopdf(BaseModel):
+    model_config = ConfigDict(
+        extra='allow',
+        frozen=True,
+    )
+    configuration: Optional[Configuration38] = None
+    """
+    various configurations applicable to relevant tile for the user. For example, the max_file_size field which signifies the maximum file size that is support for this tile/pdf operation. More fields wrt operation configuration can be added here as and when needed.
+    """
+    limits: Optional[Limits42] = None
+    """
+    specifies the applicable transactions details for the user.
+    """
+
+
+class Limits43(BaseModel):
+    model_config = ConfigDict(
+        extra='allow',
+        frozen=True,
+    )
+    quota_details: Optional[QuotaDetails] = None
+    """
+    Adjacent to remaining, represents quota details including next available and applicable frequency per verb or uber level.
+    """
+    remaining: Optional[int] = None
+    """
+    tells how many transactions are remaining for the verb. 0 means none remaining, positive integer tells the count that are remaining, -1 means unlimited transactions remaining.
+    """
+
+
+class Exportpdf(BaseModel):
+    model_config = ConfigDict(
+        extra='allow',
+        frozen=True,
+    )
+    configuration: Optional[Configuration38] = None
+    """
+    various configurations applicable to relevant tile for the user. For example, the max_file_size field which signifies the maximum file size that is support for this tile/pdf operation. More fields wrt operation configuration can be added here as and when needed.
+    """
+    limits: Optional[Limits43] = None
+    """
+    specifies the applicable transactions details for the user.
+    """
+
+
+class Configuration41(BaseModel):
+    model_config = ConfigDict(
+        extra='allow',
+        frozen=True,
+    )
+    max_file_size: Optional[int] = None
+    """
+    Maximum file size supported by the operation, if applicable
+    """
+    max_number_files: Optional[int] = None
+    """
+    Maximum number of files supported by the operation, if applicable
+    """
+
+
+class Limits44(BaseModel):
+    model_config = ConfigDict(
+        extra='allow',
+        frozen=True,
+    )
+    quota_details: Optional[QuotaDetails] = None
+    """
+    Adjacent to remaining, represents quota details including next available and applicable frequency per verb or uber level.
+    """
+    remaining: Optional[int] = None
+    """
+    tells how many transactions are remaining for the verb. 0 means none remaining, positive integer tells the count that are remaining, -1 means unlimited transactions remaining.
+    """
+
+
+class Extractpages(BaseModel):
+    model_config = ConfigDict(
+        extra='allow',
+        frozen=True,
+    )
+    configuration: Optional[Configuration41] = None
+    """
+    various configurations applicable to relevant tile for the user. For example, the max_file_size field which signifies the maximum file size that is support for this tile/pdf operation. More fields wrt operation configuration can be added here as and when needed.
+    """
+    limits: Optional[Limits44] = None
+    """
+    specifies the applicable transactions details for the user.
+    """
+
+
+class Limits45(BaseModel):
+    model_config = ConfigDict(
+        extra='allow',
+        frozen=True,
+    )
+    quota_details: Optional[QuotaDetails] = None
+    """
+    Adjacent to remaining, represents quota details including next available and applicable frequency per verb or uber level.
+    """
+    remaining: Optional[int] = None
+    """
+    tells how many transactions are remaining for the verb. 0 means none remaining, positive integer tells the count that are remaining, -1 means unlimited transactions remaining.
+    """
+
+
+class Highspeedscan(BaseModel):
+    model_config = ConfigDict(
+        extra='allow',
+        frozen=True,
+    )
+    limits: Optional[Limits45] = None
+    """
+    specifies the applicable transactions details for the user.
+    """
+
+
+class Configuration42(BaseModel):
+    model_config = ConfigDict(
+        extra='allow',
+        frozen=True,
+    )
+    max_file_size: Optional[int] = None
+    """
+    Maximum file size supported by the operation, if applicable
+    """
+
+
+class Limits46(BaseModel):
+    model_config = ConfigDict(
+        extra='allow',
+        frozen=True,
+    )
+    quota_details: Optional[QuotaDetails] = None
+    """
+    Adjacent to remaining, represents quota details including next available and applicable frequency per verb or uber level.
+    """
+    remaining: Optional[int] = None
+    """
+    tells how many transactions are remaining for the verb. 0 means none remaining, positive integer tells the count that are remaining, -1 means unlimited transactions remaining.
+    """
+
+
+class Htmltopdf(BaseModel):
+    model_config = ConfigDict(
+        extra='allow',
+        frozen=True,
+    )
+    configuration: Optional[Configuration42] = None
+    """
+    various configurations applicable to relevant tile for the user. For example, the max_file_size field which signifies the maximum file size that is support for this tile/pdf operation. More fields wrt operation configuration can be added here as and when needed.
+    """
+    limits: Optional[Limits46] = None
+    """
+    specifies the applicable transactions details for the user.
+    """
+
+
+class Configuration43(BaseModel):
+    model_config = ConfigDict(
+        extra='allow',
+        frozen=True,
+    )
+    max_file_size: Optional[int] = None
+    """
+    Maximum file size supported by the operation, if applicable
+    """
+    max_number_files: Optional[int] = None
+    """
+    Maximum number of files supported by the operation, if applicable
+    """
+
+
+class Limits47(BaseModel):
+    model_config = ConfigDict(
+        extra='allow',
+        frozen=True,
+    )
+    quota_details: Optional[QuotaDetails] = None
+    """
+    Adjacent to remaining, represents quota details including next available and applicable frequency per verb or uber level.
+    """
+    remaining: Optional[int] = None
+    """
+    tells how many transactions are remaining for the verb. 0 means none remaining, positive integer tells the count that are remaining, -1 means unlimited transactions remaining.
+    """
+
+
+class Insertpdf(BaseModel):
+    model_config = ConfigDict(
+        extra='allow',
+        frozen=True,
+    )
+    configuration: Optional[Configuration43] = None
+    """
+    various configurations applicable to relevant tile for the user. For example, the max_file_size field which signifies the maximum file size that is support for this tile/pdf operation. More fields wrt operation configuration can be added here as and when needed.
+    """
+    limits: Optional[Limits47] = None
+    """
+    specifies the applicable transactions details for the user.
+    """
+
+
+class Configuration44(BaseModel):
+    model_config = ConfigDict(
+        extra='allow',
+        frozen=True,
+    )
+    max_file_size: Optional[int] = None
+    """
+    Maximum file size supported by the operation, if applicable
+    """
+
+
+class Limits48(BaseModel):
+    model_config = ConfigDict(
+        extra='allow',
+        frozen=True,
+    )
+    quota_details: Optional[QuotaDetails] = None
+    """
+    Adjacent to remaining, represents quota details including next available and applicable frequency per verb or uber level.
+    """
+    remaining: Optional[int] = None
+    """
+    tells how many transactions are remaining for the verb. 0 means none remaining, positive integer tells the count that are remaining, -1 means unlimited transactions remaining.
+    """
+
+
+class Jpgtopdf(BaseModel):
+    model_config = ConfigDict(
+        extra='allow',
+        frozen=True,
+    )
+    configuration: Optional[Configuration44] = None
+    """
+    various configurations applicable to relevant tile for the user. For example, the max_file_size field which signifies the maximum file size that is support for this tile/pdf operation. More fields wrt operation configuration can be added here as and when needed.
+    """
+    limits: Optional[Limits48] = None
+    """
+    specifies the applicable transactions details for the user.
+    """
+
+
+class Limits49(BaseModel):
+    model_config = ConfigDict(
+        extra='allow',
+        frozen=True,
+    )
+    quota_details: Optional[QuotaDetails] = None
+    """
+    Adjacent to remaining, represents quota details including next available and applicable frequency per verb or uber level.
+    """
+    remaining: Optional[int] = None
+    """
+    tells how many transactions are remaining for the verb. 0 means none remaining, positive integer tells the count that are remaining, -1 means unlimited transactions remaining.
+    """
+
+
+class Numberpages(BaseModel):
+    model_config = ConfigDict(
+        extra='allow',
+        frozen=True,
+    )
+    configuration: Optional[Configuration44] = None
+    """
+    various configurations applicable to relevant tile for the user. For example, the max_file_size field which signifies the maximum file size that is support for this tile/pdf operation. More fields wrt operation configuration can be added here as and when needed.
+    """
+    limits: Optional[Limits49] = None
+    """
+    specifies the applicable transactions details for the user.
+    """
+
+
+class Limits50(BaseModel):
+    model_config = ConfigDict(
+        extra='allow',
+        frozen=True,
+    )
+    quota_details: Optional[QuotaDetails] = None
+    """
+    Adjacent to remaining, represents quota details including next available and applicable frequency per verb or uber level.
+    """
+    remaining: Optional[int] = None
+    """
+    tells how many transactions are remaining for the verb. 0 means none remaining, positive integer tells the count that are remaining, -1 means unlimited transactions remaining.
+    """
+
+
+class Ocrpdf(BaseModel):
+    model_config = ConfigDict(
+        extra='allow',
+        frozen=True,
+    )
+    configuration: Optional[Configuration44] = None
+    """
+    various configurations applicable to relevant tile for the user. For example, the max_file_size field which signifies the maximum file size that is support for this tile/pdf operation. More fields wrt operation configuration can be added here as and when needed.
+    """
+    limits: Optional[Limits50] = None
+    """
+    specifies the applicable transactions details for the user.
+    """
+
+
+class Configuration47(BaseModel):
+    model_config = ConfigDict(
+        extra='allow',
+        frozen=True,
+    )
+    max_file_size: Optional[int] = None
+    """
+    Maximum file size supported by the operation, if applicable
+    """
+    max_number_files: Optional[int] = None
+    """
+    Maximum number of files supported by the operation, if applicable
+    """
+
+
+class Limits51(BaseModel):
+    model_config = ConfigDict(
+        extra='allow',
+        frozen=True,
+    )
+    quota_details: Optional[QuotaDetails] = None
+    """
+    Adjacent to remaining, represents quota details including next available and applicable frequency per verb or uber level.
+    """
+    remaining: Optional[int] = None
+    """
+    tells how many transactions are remaining for the verb. 0 means none remaining, positive integer tells the count that are remaining, -1 means unlimited transactions remaining.
+    """
+
+
+class Organizepdf(BaseModel):
+    model_config = ConfigDict(
+        extra='allow',
+        frozen=True,
+    )
+    configuration: Optional[Configuration47] = None
+    """
+    various configurations applicable to relevant tile for the user. For example, the max_file_size field which signifies the maximum file size that is support for this tile/pdf operation. More fields wrt operation configuration can be added here as and when needed.
+    """
+    limits: Optional[Limits51] = None
+    """
+    specifies the applicable transactions details for the user.
+    """
+
+
+class Configuration48(BaseModel):
+    model_config = ConfigDict(
+        extra='allow',
+        frozen=True,
+    )
+    max_file_size: Optional[int] = None
+    """
+    Maximum file size supported by the operation, if applicable
+    """
+
+
+class Limits52(BaseModel):
+    model_config = ConfigDict(
+        extra='allow',
+        frozen=True,
+    )
+    quota_details: Optional[QuotaDetails] = None
+    """
+    Adjacent to remaining, represents quota details including next available and applicable frequency per verb or uber level.
+    """
+    remaining: Optional[int] = None
+    """
+    tells how many transactions are remaining for the verb. 0 means none remaining, positive integer tells the count that are remaining, -1 means unlimited transactions remaining.
+    """
+
+
+class Pdftoexcel(BaseModel):
+    model_config = ConfigDict(
+        extra='allow',
+        frozen=True,
+    )
+    configuration: Optional[Configuration48] = None
+    """
+    various configurations applicable to relevant tile for the user. For example, the max_file_size field which signifies the maximum file size that is support for this tile/pdf operation. More fields wrt operation configuration can be added here as and when needed.
+    """
+    limits: Optional[Limits52] = None
+    """
+    specifies the applicable transactions details for the user.
+    """
+
+
+class Limits53(BaseModel):
+    model_config = ConfigDict(
+        extra='allow',
+        frozen=True,
+    )
+    quota_details: Optional[QuotaDetails] = None
+    """
+    Adjacent to remaining, represents quota details including next available and applicable frequency per verb or uber level.
+    """
+    remaining: Optional[int] = None
+    """
+    tells how many transactions are remaining for the verb. 0 means none remaining, positive integer tells the count that are remaining, -1 means unlimited transactions remaining.
+    """
+
+
+class Pdftoimage(BaseModel):
+    model_config = ConfigDict(
+        extra='allow',
+        frozen=True,
+    )
+    configuration: Optional[Configuration48] = None
+    """
+    various configurations applicable to relevant tile for the user. For example, the max_file_size field which signifies the maximum file size that is support for this tile/pdf operation. More fields wrt operation configuration can be added here as and when needed.
+    """
+    limits: Optional[Limits53] = None
+    """
+    specifies the applicable transactions details for the user.
+    """
+
+
+class Limits54(BaseModel):
+    model_config = ConfigDict(
+        extra='allow',
+        frozen=True,
+    )
+    quota_details: Optional[QuotaDetails] = None
+    """
+    Adjacent to remaining, represents quota details including next available and applicable frequency per verb or uber level.
+    """
+    remaining: Optional[int] = None
+    """
+    tells how many transactions are remaining for the verb. 0 means none remaining, positive integer tells the count that are remaining, -1 means unlimited transactions remaining.
+    """
+
+
+class Pdftoppt(BaseModel):
+    model_config = ConfigDict(
+        extra='allow',
+        frozen=True,
+    )
+    configuration: Optional[Configuration48] = None
+    """
+    various configurations applicable to relevant tile for the user. For example, the max_file_size field which signifies the maximum file size that is support for this tile/pdf operation. More fields wrt operation configuration can be added here as and when needed.
+    """
+    limits: Optional[Limits54] = None
+    """
+    specifies the applicable transactions details for the user.
+    """
+
+
+class Limits55(BaseModel):
+    model_config = ConfigDict(
+        extra='allow',
+        frozen=True,
+    )
+    quota_details: Optional[QuotaDetails] = None
+    """
+    Adjacent to remaining, represents quota details including next available and applicable frequency per verb or uber level.
+    """
+    remaining: Optional[int] = None
+    """
+    tells how many transactions are remaining for the verb. 0 means none remaining, positive integer tells the count that are remaining, -1 means unlimited transactions remaining.
+    """
+
+
+class Pdftoword(BaseModel):
+    model_config = ConfigDict(
+        extra='allow',
+        frozen=True,
+    )
+    configuration: Optional[Configuration48] = None
+    """
+    various configurations applicable to relevant tile for the user. For example, the max_file_size field which signifies the maximum file size that is support for this tile/pdf operation. More fields wrt operation configuration can be added here as and when needed.
+    """
+    limits: Optional[Limits55] = None
+    """
+    specifies the applicable transactions details for the user.
+    """
+
+
+class Limits56(BaseModel):
+    model_config = ConfigDict(
+        extra='allow',
+        frozen=True,
+    )
+    quota_details: Optional[QuotaDetails] = None
+    """
+    Adjacent to remaining, represents quota details including next available and applicable frequency per verb or uber level.
+    """
+    remaining: Optional[int] = None
+    """
+    tells how many transactions are remaining for the verb. 0 means none remaining, positive integer tells the count that are remaining, -1 means unlimited transactions remaining.
+    """
+
+
+class Ppttopdf(BaseModel):
+    model_config = ConfigDict(
+        extra='allow',
+        frozen=True,
+    )
+    configuration: Optional[Configuration48] = None
+    """
+    various configurations applicable to relevant tile for the user. For example, the max_file_size field which signifies the maximum file size that is support for this tile/pdf operation. More fields wrt operation configuration can be added here as and when needed.
+    """
+    limits: Optional[Limits56] = None
+    """
+    specifies the applicable transactions details for the user.
+    """
+
+
+class Limits57(BaseModel):
+    model_config = ConfigDict(
+        extra='allow',
+        frozen=True,
+    )
+    quota_details: Optional[QuotaDetails] = None
+    """
+    Adjacent to remaining, represents quota details including next available and applicable frequency per verb or uber level.
+    """
+    remaining: Optional[int] = None
+    """
+    tells how many transactions are remaining for the verb. 0 means none remaining, positive integer tells the count that are remaining, -1 means unlimited transactions remaining.
+    """
+
+
+class Protectpdf(BaseModel):
+    model_config = ConfigDict(
+        extra='allow',
+        frozen=True,
+    )
+    configuration: Optional[Configuration48] = None
+    """
+    various configurations applicable to relevant tile for the user. For example, the max_file_size field which signifies the maximum file size that is support for this tile/pdf operation. More fields wrt operation configuration can be added here as and when needed.
+    """
+    limits: Optional[Limits57] = None
+    """
+    specifies the applicable transactions details for the user.
+    """
+
+
+class Limits58(BaseModel):
+    model_config = ConfigDict(
+        extra='allow',
+        frozen=True,
+    )
+    quota_details: Optional[QuotaDetails] = None
+    """
+    Adjacent to remaining, represents quota details including next available and applicable frequency per verb or uber level.
+    """
+    remaining: Optional[int] = None
+    """
+    tells how many transactions are remaining for the verb. 0 means none remaining, positive integer tells the count that are remaining, -1 means unlimited transactions remaining.
+    """
+
+
+class Redactpdf(BaseModel):
+    model_config = ConfigDict(
+        extra='allow',
+        frozen=True,
+    )
+    configuration: Optional[Configuration48] = None
+    """
+    various configurations applicable to relevant tile for the user. For example, the max_file_size field which signifies the maximum file size that is support for this tile/pdf operation. More fields wrt operation configuration can be added here as and when needed.
+    """
+    limits: Optional[Limits58] = None
+    """
+    specifies the applicable transactions details for the user.
+    """
+
+
+class Configuration55(BaseModel):
+    model_config = ConfigDict(
+        extra='allow',
+        frozen=True,
+    )
+    max_file_size: Optional[int] = None
+    """
+    Maximum file size supported by the operation, if applicable
+    """
+    max_number_files: Optional[int] = None
+    """
+    Maximum number of files supported by the operation, if applicable
+    """
+
+
+class Limits59(BaseModel):
+    model_config = ConfigDict(
+        extra='allow',
+        frozen=True,
+    )
+    quota_details: Optional[QuotaDetails] = None
+    """
+    Adjacent to remaining, represents quota details including next available and applicable frequency per verb or uber level.
+    """
+    remaining: Optional[int] = None
+    """
+    tells how many transactions are remaining for the verb. 0 means none remaining, positive integer tells the count that are remaining, -1 means unlimited transactions remaining.
+    """
+
+
+class Reorderpages(BaseModel):
+    model_config = ConfigDict(
+        extra='allow',
+        frozen=True,
+    )
+    configuration: Optional[Configuration55] = None
+    """
+    various configurations applicable to relevant tile for the user. For example, the max_file_size field which signifies the maximum file size that is support for this tile/pdf operation. More fields wrt operation configuration can be added here as and when needed.
+    """
+    limits: Optional[Limits59] = None
+    """
+    specifies the applicable transactions details for the user.
+    """
+
+
+class Limits60(BaseModel):
+    model_config = ConfigDict(
+        extra='allow',
+        frozen=True,
+    )
+    quota_details: Optional[QuotaDetails] = None
+    """
+    Adjacent to remaining, represents quota details including next available and applicable frequency per verb or uber level.
+    """
+    remaining: Optional[int] = None
+    """
+    tells how many transactions are remaining for the verb. 0 means none remaining, positive integer tells the count that are remaining, -1 means unlimited transactions remaining.
+    """
+
+
+class Rotatepages(BaseModel):
+    model_config = ConfigDict(
+        extra='allow',
+        frozen=True,
+    )
+    configuration: Optional[Configuration55] = None
+    """
+    various configurations applicable to relevant tile for the user. For example, the max_file_size field which signifies the maximum file size that is support for this tile/pdf operation. More fields wrt operation configuration can be added here as and when needed.
+    """
+    limits: Optional[Limits60] = None
+    """
+    specifies the applicable transactions details for the user.
+    """
+
+
+class Configuration57(BaseModel):
+    model_config = ConfigDict(
+        extra='allow',
+        frozen=True,
+    )
+    max_file_size: Optional[int] = None
+    """
+    Maximum file size supported by the operation, if applicable
+    """
+    max_split_points: Optional[int] = None
+    """
+    Maximum number of split points supported by the operation, if applicable
+    """
+
+
+class Limits61(BaseModel):
+    model_config = ConfigDict(
+        extra='allow',
+        frozen=True,
+    )
+    quota_details: Optional[QuotaDetails] = None
+    """
+    Adjacent to remaining, represents quota details including next available and applicable frequency per verb or uber level.
+    """
+    remaining: Optional[int] = None
+    """
+    tells how many transactions are remaining for the verb. 0 means none remaining, positive integer tells the count that are remaining, -1 means unlimited transactions remaining.
+    """
+
+
+class Splitpdf(BaseModel):
+    model_config = ConfigDict(
+        extra='allow',
+        frozen=True,
+    )
+    configuration: Optional[Configuration57] = None
+    """
+    various configurations applicable to relevant tile for the user. For example, the max_file_size field which signifies the maximum file size that is support for this tile/pdf operation. More fields wrt operation configuration can be added here as and when needed.
+    """
+    limits: Optional[Limits61] = None
+    """
+    specifies the applicable transactions details for the user.
+    """
+
+
+class Limits62(BaseModel):
+    model_config = ConfigDict(
+        extra='allow',
+        frozen=True,
+    )
+    quota_details: Optional[QuotaDetails] = None
+    """
+    Adjacent to remaining, represents quota details including next available and applicable frequency per verb or uber level.
+    """
+    remaining: Optional[int] = None
+    """
+    tells how many transactions are remaining for the verb. 0 means none remaining, positive integer tells the count that are remaining, -1 means unlimited transactions remaining.
+    """
+
+
+class Uber1(BaseModel):
+    model_config = ConfigDict(
+        extra='allow',
+        frozen=True,
+    )
+    limits: Optional[Limits62] = None
+    """
+    specifies the applicable transactions details for the user.
+    """
+
+
+class Configuration58(BaseModel):
+    model_config = ConfigDict(
+        extra='allow',
+        frozen=True,
+    )
+    max_file_size: Optional[int] = None
+    """
+    Maximum file size supported by the operation, if applicable
+    """
+
+
+class Limits63(BaseModel):
+    model_config = ConfigDict(
+        extra='allow',
+        frozen=True,
+    )
+    quota_details: Optional[QuotaDetails] = None
+    """
+    Adjacent to remaining, represents quota details including next available and applicable frequency per verb or uber level.
+    """
+    remaining: Optional[int] = None
+    """
+    tells how many transactions are remaining for the verb. 0 means none remaining, positive integer tells the count that are remaining, -1 means unlimited transactions remaining.
+    """
+
+
+class Wordtopdf(BaseModel):
+    model_config = ConfigDict(
+        extra='allow',
+        frozen=True,
+    )
+    configuration: Optional[Configuration58] = None
+    """
+    various configurations applicable to relevant tile for the user. For example, the max_file_size field which signifies the maximum file size that is support for this tile/pdf operation. More fields wrt operation configuration can be added here as and when needed.
+    """
+    limits: Optional[Limits63] = None
+    """
+    specifies the applicable transactions details for the user.
+    """
+
+
+class LimitsVerbsV2(BaseModel):
+    model_config = ConfigDict(
+        extra='allow',
+        frozen=True,
+    )
+    combinepdf: Combinepdf
+    """
+    Limits in uber response represents the actual limits provided for user at uber level. Client can refer remaining transactions, next_available and frequency fields. Interpretation of remaining, next_available and frequency is similar to verb response.
+    """
+    compresspdf: Compresspdf
+    """
+    Limits in uber response represents the actual limits provided for user at uber level. Client can refer remaining transactions, next_available and frequency fields. Interpretation of remaining, next_available and frequency is similar to verb response.
+    """
+    createpdf: Createpdf2
+    """
+    Limits in uber response represents the actual limits provided for user at uber level. Client can refer remaining transactions, next_available and frequency fields. Interpretation of remaining, next_available and frequency is similar to verb response.
+    """
+    croppages: Croppages
+    """
+    Limits in uber response represents the actual limits provided for user at uber level. Client can refer remaining transactions, next_available and frequency fields. Interpretation of remaining, next_available and frequency is similar to verb response.
+    """
+    deletepages: Deletepages
+    """
+    Limits in uber response represents the actual limits provided for user at uber level. Client can refer remaining transactions, next_available and frequency fields. Interpretation of remaining, next_available and frequency is similar to verb response.
+    """
+    editpdf: Editpdf
+    """
+    Limits in uber response represents the actual limits provided for user at uber level. Client can refer remaining transactions, next_available and frequency fields. Interpretation of remaining, next_available and frequency is similar to verb response.
+    """
+    exceltopdf: Exceltopdf
+    """
+    Limits in uber response represents the actual limits provided for user at uber level. Client can refer remaining transactions, next_available and frequency fields. Interpretation of remaining, next_available and frequency is similar to verb response.
+    """
+    exportpdf: Exportpdf
+    """
+    Limits in uber response represents the actual limits provided for user at uber level. Client can refer remaining transactions, next_available and frequency fields. Interpretation of remaining, next_available and frequency is similar to verb response.
+    """
+    extractpages: Extractpages
+    """
+    Limits in uber response represents the actual limits provided for user at uber level. Client can refer remaining transactions, next_available and frequency fields. Interpretation of remaining, next_available and frequency is similar to verb response.
+    """
+    highspeedscan: Highspeedscan
+    """
+    Limits in uber response represents the actual limits provided for user at uber level. Client can refer remaining transactions, next_available and frequency fields. Interpretation of remaining, next_available and frequency is similar to verb response.
+    """
+    htmltopdf: Htmltopdf
+    """
+    Limits in uber response represents the actual limits provided for user at uber level. Client can refer remaining transactions, next_available and frequency fields. Interpretation of remaining, next_available and frequency is similar to verb response.
+    """
+    insertpdf: Insertpdf
+    """
+    Limits in uber response represents the actual limits provided for user at uber level. Client can refer remaining transactions, next_available and frequency fields. Interpretation of remaining, next_available and frequency is similar to verb response.
+    """
+    jpgtopdf: Jpgtopdf
+    """
+    Limits in uber response represents the actual limits provided for user at uber level. Client can refer remaining transactions, next_available and frequency fields. Interpretation of remaining, next_available and frequency is similar to verb response.
+    """
+    numberpages: Numberpages
+    """
+    Limits in uber response represents the actual limits provided for user at uber level. Client can refer remaining transactions, next_available and frequency fields. Interpretation of remaining, next_available and frequency is similar to verb response.
+    """
+    ocrpdf: Ocrpdf
+    """
+    Limits in uber response represents the actual limits provided for user at uber level. Client can refer remaining transactions, next_available and frequency fields. Interpretation of remaining, next_available and frequency is similar to verb response.
+    """
+    organizepdf: Organizepdf
+    """
+    Limits in uber response represents the actual limits provided for user at uber level. Client can refer remaining transactions, next_available and frequency fields. Interpretation of remaining, next_available and frequency is similar to verb response.
+    """
+    pdftoexcel: Pdftoexcel
+    """
+    Limits in uber response represents the actual limits provided for user at uber level. Client can refer remaining transactions, next_available and frequency fields. Interpretation of remaining, next_available and frequency is similar to verb response.
+    """
+    pdftoimage: Pdftoimage
+    """
+    Limits in uber response represents the actual limits provided for user at uber level. Client can refer remaining transactions, next_available and frequency fields. Interpretation of remaining, next_available and frequency is similar to verb response.
+    """
+    pdftoppt: Pdftoppt
+    """
+    Limits in uber response represents the actual limits provided for user at uber level. Client can refer remaining transactions, next_available and frequency fields. Interpretation of remaining, next_available and frequency is similar to verb response.
+    """
+    pdftoword: Pdftoword
+    """
+    Limits in uber response represents the actual limits provided for user at uber level. Client can refer remaining transactions, next_available and frequency fields. Interpretation of remaining, next_available and frequency is similar to verb response.
+    """
+    ppttopdf: Ppttopdf
+    """
+    Limits in uber response represents the actual limits provided for user at uber level. Client can refer remaining transactions, next_available and frequency fields. Interpretation of remaining, next_available and frequency is similar to verb response.
+    """
+    protectpdf: Protectpdf
+    """
+    Limits in uber response represents the actual limits provided for user at uber level. Client can refer remaining transactions, next_available and frequency fields. Interpretation of remaining, next_available and frequency is similar to verb response.
+    """
+    redactpdf: Redactpdf
+    """
+    Limits in uber response represents the actual limits provided for user at uber level. Client can refer remaining transactions, next_available and frequency fields. Interpretation of remaining, next_available and frequency is similar to verb response.
+    """
+    reorderpages: Reorderpages
+    """
+    Limits in uber response represents the actual limits provided for user at uber level. Client can refer remaining transactions, next_available and frequency fields. Interpretation of remaining, next_available and frequency is similar to verb response.
+    """
+    rotatepages: Rotatepages
+    """
+    Limits in uber response represents the actual limits provided for user at uber level. Client can refer remaining transactions, next_available and frequency fields. Interpretation of remaining, next_available and frequency is similar to verb response.
+    """
+    splitpdf: Splitpdf
+    """
+    Limits in uber response represents the actual limits provided for user at uber level. Client can refer remaining transactions, next_available and frequency fields. Interpretation of remaining, next_available and frequency is similar to verb response.
+    """
+    uber: Uber1
+    """
+    Limits in uber response represents the actual limits provided for user at uber level. Client can refer remaining transactions, next_available and frequency fields.
+    """
+    wordtopdf: Wordtopdf
     """
     Limits in uber response represents the actual limits provided for user at uber level. Client can refer remaining transactions, next_available and frequency fields. Interpretation of remaining, next_available and frequency is similar to verb response.
     """
@@ -2045,6 +3235,17 @@ class Subscription(BaseModel):
         'SendNow',
         'FillAndSign',
         'ESign',
+        'Review',
+        'FormsCentral',
+        'EditPDF',
+        'OcrPDF',
+        'DCLite',
+        'ScanPlus',
+        'AdobeScan',
+        'GenAIServices',
+        'PersistentChatHistory',
+        'SecuredLinkSharing',
+        'AcrobatDesktopMode',
     ]
     """
     The subscription name.
@@ -2114,6 +3315,17 @@ class UpsellItem(BaseModel):
         'SendNow',
         'FillAndSign',
         'ESign',
+        'Review',
+        'FormsCentral',
+        'EditPDF',
+        'OcrPDF',
+        'DCLite',
+        'ScanPlus',
+        'AdobeScan',
+        'GenAIServices',
+        'PersistentChatHistory',
+        'SecuredLinkSharing',
+        'AcrobatDesktopMode',
     ]
     """
     Additional subscriptions may be added in the future.
@@ -2162,6 +3374,7 @@ class Model(BaseModel):
         None, alias='limits/storage_document_cloud'
     )
     limits_verbs: Optional[LimitsVerbs] = Field(None, alias='limits/verbs')
+    limits_verbsV2: Optional[LimitsVerbsV2] = Field(None, alias='limits/verbsV2')
     prefs_common: Optional[PrefsCommon] = Field(None, alias='prefs/common')
     """
     DC Common Preferences across clients

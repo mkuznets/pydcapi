@@ -39,6 +39,17 @@ class Subscription(BaseModel):
         'SendNow',
         'FillAndSign',
         'ESign',
+        'Review',
+        'FormsCentral',
+        'EditPDF',
+        'OcrPDF',
+        'DCLite',
+        'ScanPlus',
+        'AdobeScan',
+        'GenAIServices',
+        'PersistentChatHistory',
+        'SecuredLinkSharing',
+        'AcrobatDesktopMode',
     ]
     """
     The subscription name.

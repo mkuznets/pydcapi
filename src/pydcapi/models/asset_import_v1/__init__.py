@@ -25,6 +25,10 @@ class AssetData(BaseModel):
     """
     Asset storage aspect as short-term transient vs. long-term permanent.
     """
+    temp_folder_urn: Optional[str] = None
+    """
+    The id of the temp folder of a directory to put the asset in. This parameter is relevant for temp folders only.
+    """
 
 
 class ExternalAssetData(BaseModel):

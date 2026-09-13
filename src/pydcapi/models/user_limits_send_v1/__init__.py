@@ -19,6 +19,10 @@ class Model(BaseModel):
     """
     Users who have purchased a subscription to the service can send audio or video files to recipients.<br/>If this limit is false, a parcel created that includes audio or video files will fail with an error from the API request.
     """
+    can_send_secure_link: bool
+    """
+    Users who have purchased a subscription to the service can create and send private sharing links within an organisation.
+    """
     can_send_to_individuals: bool
     """
     Users who have purchased a subscription to the service can have custom e-mails sent to recipients. Free users can generate only a single public url that they can paste into an e-mail or post on discussion boards.<br/>If this limit is `false`, a parcel created that includes recipients other than the constant `PARCEL_PUBLIC_SHARING` will result in an error from the API request.

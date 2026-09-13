@@ -31,6 +31,7 @@ class Model(BaseModel):
         'reorder-pages',
         'rotate-pages',
         'combine-pdf',
+        'edit-pdf',
     ]
     """
     The client side verb for which the limits need to be checked and consumed limits if user is entitled to perform the operation.

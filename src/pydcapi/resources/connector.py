@@ -26,6 +26,7 @@ class Connector:
                 "connector_id": connector_id,
             },
         ).uri
+        url = re.sub(r"\{[?&][^}]*\}", "", url)
         headers: Dict[str, str] = {}
         headers["Accept"] = 'application/vnd.adobe.dc+json; profile="https://dc-api.adobe.io/schemas/connector_delete_response_v1.json"'
 
@@ -50,6 +51,7 @@ class Connector:
                 "cloud_id": cloud_id,
             },
         ).uri
+        url = re.sub(r"\{[?&][^}]*\}", "", url)
         headers: Dict[str, str] = {}
         headers["Accept"] = 'application/vnd.adobe.dc+json; profile="https://dc-api.adobe.io/schemas/connector_info_v1.json"'
 
@@ -75,6 +77,7 @@ class Connector:
                 "cloud_id": cloud_id,
             },
         ).uri
+        url = re.sub(r"\{[?&][^}]*\}", "", url)
         headers: Dict[str, str] = {}
         headers["Accept"] = 'application/vnd.adobe.dc+json; profile="https://dc-api.adobe.io/schemas/connector_listing_v1.json"'
 

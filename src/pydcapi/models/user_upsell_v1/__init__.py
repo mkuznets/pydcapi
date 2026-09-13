@@ -51,6 +51,17 @@ class UpsellItem(BaseModel):
         'SendNow',
         'FillAndSign',
         'ESign',
+        'Review',
+        'FormsCentral',
+        'EditPDF',
+        'OcrPDF',
+        'DCLite',
+        'ScanPlus',
+        'AdobeScan',
+        'GenAIServices',
+        'PersistentChatHistory',
+        'SecuredLinkSharing',
+        'AcrobatDesktopMode',
     ]
     """
     Additional subscriptions may be added in the future.

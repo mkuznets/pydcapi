@@ -25,6 +25,7 @@ class Jobs:
                 "job_uri": job_uri,
             },
         ).uri
+        url = re.sub(r"\{[?&][^}]*\}", "", url)
         headers: Dict[str, str] = {}
         headers["Accept"] = 'application/vnd.adobe.dc+json; profile="https://dc-api.adobe.io/schemas/new_asset_job_v1.json"'
 
