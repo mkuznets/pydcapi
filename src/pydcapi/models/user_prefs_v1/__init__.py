@@ -111,7 +111,7 @@ class RecentAssets(BaseModel):
     )
     since: Optional[
         constr(
-            pattern=r'([0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}Z?|\${systemtime_rfc3339})'
+            pattern=r'([0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}Z?|\$\{systemtime_rfc3339\})'
         )
     ] = None
     """
@@ -146,7 +146,7 @@ class Model(BaseModel):
     """
     recent_assets_timestamp: Optional[
         constr(
-            pattern=r'([0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}Z?|^$|\${systemtime_rfc3339})'
+            pattern=r'([0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}Z?|^$|\$\{systemtime_rfc3339\})'
         )
     ] = ''
     """
