@@ -60,6 +60,9 @@ jobs:
       - name: Install
         run: uv sync --locked --group codegen
 
+      - name: Type check
+        run: uv run --group codegen mypy codegen
+
       - name: Regenerate
         run: uv run --group codegen python -m codegen generate
 

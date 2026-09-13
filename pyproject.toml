@@ -76,7 +76,7 @@ ignore = [
 
 [tool.mypy]
 disallow_untyped_defs = true
-files = ["src/pydcapi", "tests", "codegen"]
+files = ["src/pydcapi", "tests"]
 exclude = ["src/pydcapi/models"]  # TODO: reenable when all upstream issues are fixed
 
 [[tool.mypy.overrides]]
