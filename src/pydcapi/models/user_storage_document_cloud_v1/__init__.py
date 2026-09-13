@@ -3,7 +3,7 @@
 
 from __future__ import annotations
 
-from typing import Literal, Optional
+from typing import Literal
 
 from pydantic import BaseModel, ConfigDict
 
@@ -13,11 +13,11 @@ class Model(BaseModel):
         extra='allow',
         frozen=True,
     )
-    encryption_key_status: Optional[Literal['enabled', 'disabled']] = None
+    encryption_key_status: Literal['enabled', 'disabled'] | None = None
     """
     An enum indicating shared cloud encryption key status. The value could be either `enabled` or `disabled`.
     """
-    region: Optional[Literal['US', 'EU', 'AP']] = None
+    region: Literal['US', 'EU', 'AP'] | None = None
     """
     an enum indicating region for document cloud data storage. Currently, its value could be one of `US`, `EU`, or `AP`.
     """

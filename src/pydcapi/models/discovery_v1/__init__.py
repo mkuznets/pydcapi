@@ -3,7 +3,7 @@
 
 from __future__ import annotations
 
-from typing import Any, Dict, List, Literal, Optional
+from typing import Any, Literal
 
 from pydantic import BaseModel, ConfigDict
 
@@ -13,11 +13,11 @@ class FormDataParameter(BaseModel):
         extra='allow',
         frozen=True,
     )
-    content_type: Optional[Dict[str, str]] = None
+    content_type: dict[str, str] | None = None
     """
     Map of different versions of the content type response
     """
-    description: Optional[str] = None
+    description: str | None = None
     """
     Parameter description
     """
@@ -33,11 +33,11 @@ class ResourceParameter(BaseModel):
         extra='allow',
         frozen=True,
     )
-    default: Optional[str] = None
+    default: str | None = None
     """
     The default value of the parameter
     """
-    description: Optional[str] = None
+    description: str | None = None
     """
     URI pointing to a resource
     """
@@ -45,7 +45,7 @@ class ResourceParameter(BaseModel):
     """
     Substitution name in the URI template
     """
-    required: Optional[bool] = False
+    required: bool | None = False
     type: Literal['string']
 
 
@@ -54,15 +54,15 @@ class UriParameter(BaseModel):
         extra='allow',
         frozen=True,
     )
-    default: Optional[Any] = None
+    default: Any | None = None
     """
     The default value of the parameter
     """
-    description: Optional[str] = None
+    description: str | None = None
     """
     Parameter description
     """
-    enum: Optional[List[str]] = None
+    enum: list[str] | None = None
     name: str
     """
     Parameter name
@@ -75,20 +75,20 @@ class Resources(BaseModel):
         extra='allow',
         frozen=True,
     )
-    accept: Optional[Dict[str, str]] = None
+    accept: dict[str, str] | None = None
     """
     Map of different versions of the accept content
     """
-    authentication: List[
+    authentication: list[
         Literal[
             'auth_header_primary', 'ticket', 'unauthenticated', 'auth_service_token'
         ]
     ]
-    content_type: Optional[Dict[str, str]] = None
+    content_type: dict[str, str] | None = None
     """
     Map of different versions of the content type response
     """
-    form_data_parameters: Optional[List[FormDataParameter]] = None
+    form_data_parameters: list[FormDataParameter] | None = None
     """
     List of the various allowable form data parameters
     """
@@ -96,7 +96,7 @@ class Resources(BaseModel):
     """
     The HTTP method used for this call
     """
-    resource_parameter: Optional[ResourceParameter] = None
+    resource_parameter: ResourceParameter | None = None
     """
     If this is method is on an individual resources, the resource_parameter identifies the URI template parameter to substitute
     """
@@ -104,7 +104,7 @@ class Resources(BaseModel):
     """
     [URI template](https://tools.ietf.org/html/rfc6570) for this call.  Aplications must use a template library to expand any path or query parameters.
     """
-    uri_parameters: Optional[List[UriParameter]] = None
+    uri_parameters: list[UriParameter] | None = None
     """
     If there are parameters in the URI path or in the query string, this identifies all the required variables.
     """
@@ -115,15 +115,15 @@ class Templates(BaseModel):
         extra='allow',
         frozen=True,
     )
-    ans_uri: Optional[str] = None
-    asset_uri: Optional[str] = None
-    commenting_uri: Optional[str] = None
-    folder_uri: Optional[str] = None
-    review_uri: Optional[str] = None
-    search_uri: Optional[str] = None
-    search_uri_primary: Optional[str] = None
-    search_uri_secondary: Optional[str] = None
-    search_uri_v2: Optional[str] = None
+    ans_uri: str | None = None
+    asset_uri: str | None = None
+    commenting_uri: str | None = None
+    folder_uri: str | None = None
+    review_uri: str | None = None
+    search_uri: str | None = None
+    search_uri_primary: str | None = None
+    search_uri_secondary: str | None = None
+    search_uri_v2: str | None = None
 
 
 class Model(BaseModel):
@@ -135,15 +135,15 @@ class Model(BaseModel):
     """
     Unix timestamp (UTC) which indicates the expiration date of the current URLs. Users of DCAPI are expected to refresh their URLs before this expiration. Once expired, URLS will return 404 errors.
     """
-    resources: Dict[str, Dict[str, Resources]]
+    resources: dict[str, dict[str, Resources]]
     """
     All the resource objects in this API
     """
-    templates: Optional[Templates] = None
+    templates: Templates | None = None
     """
     URI templates to convert ids to uris in client code.
     """
-    user_uri: Optional[str] = None
+    user_uri: str | None = None
     """
     The base URI to use for queries to retrieve user account information for the current authenticated user.
     """

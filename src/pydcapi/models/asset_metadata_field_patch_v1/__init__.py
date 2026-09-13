@@ -3,7 +3,7 @@
 
 from __future__ import annotations
 
-from typing import List, Literal, Optional
+from typing import Literal
 
 from pydantic import BaseModel, ConfigDict, Field
 
@@ -13,11 +13,11 @@ class CustomTag(BaseModel):
         extra='allow',
         frozen=True,
     )
-    op: Optional[Literal['insert', 'delete']] = None
+    op: Literal['insert', 'delete'] | None = None
     """
     Wether to insert or delete the specified value from the tags array.
     """
-    value: Optional[str] = None
+    value: str | None = None
     """
     A short user defined tag value to insert or delete.
     """
@@ -28,11 +28,11 @@ class Tag(BaseModel):
         extra='allow',
         frozen=True,
     )
-    op: Optional[Literal['insert', 'delete']] = None
+    op: Literal['insert', 'delete'] | None = None
     """
     Wether to insert or delete the specified value from the tags array.
     """
-    value: Optional[str] = None
+    value: str | None = None
     """
     A short user defined tag value to insert or delete.
     """
@@ -43,11 +43,11 @@ class Model(BaseModel):
         extra='allow',
         frozen=True,
     )
-    custom_tags: Optional[List[CustomTag]] = Field(None, max_length=10, min_length=1)
+    custom_tags: list[CustomTag] | None = Field(None, max_length=10, min_length=1)
     """
     An array of patch instructions to modify the tags metadata field.
     """
-    tags: Optional[List[Tag]] = Field(None, max_length=10, min_length=1)
+    tags: list[Tag] | None = Field(None, max_length=10, min_length=1)
     """
     An array of patch instructions to modify the tags metadata field.
     """

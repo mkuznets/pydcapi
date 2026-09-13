@@ -3,7 +3,7 @@
 
 from __future__ import annotations
 
-from typing import List, Literal, Optional
+from typing import Literal
 
 from pydantic import AnyUrl, BaseModel, ConfigDict, Field, constr
 
@@ -17,9 +17,9 @@ class Rotate(BaseModel):
     """
     Required for 'rotate' cmd. It specifies the clockwise rotation angle relative to the starting orientation of the page. e.g. if a page is already rotated 90 degrees (landscape), specifying a rotation of 90 degrees will rotate it a further 90 degrees.  The valid rotation angles are: 90, 180, 270.
     """
-    pages: Optional[
-        constr(pattern=r'^([1-9 ]+[0-9 ]*-?[0-9 ]*)(,[1-9 ]+[0-9 ]*-?[0-9 ]*)*$')
-    ] = None
+    pages: (
+        constr(pattern=r'^([1-9 ]+[0-9 ]*-?[0-9 ]*)(,[1-9 ]+[0-9 ]*-?[0-9 ]*)*$') | None
+    ) = None
     """
     A page range relative to the input document. See "include".
     """
@@ -30,7 +30,7 @@ class PageAction(BaseModel):
         extra='allow',
         frozen=True,
     )
-    rotate: Optional[Rotate] = None
+    rotate: Rotate | None = None
 
 
 class Asset(BaseModel):
@@ -42,13 +42,13 @@ class Asset(BaseModel):
     """
     URI identifying the asset to convert to PDF.
     """
-    include: Optional[
-        constr(pattern=r'^([1-9 ]+[0-9 ]*-?[0-9 ]*)(,[1-9 ]+[0-9 ]*-?[0-9 ]*)*$')
-    ] = None
+    include: (
+        constr(pattern=r'^([1-9 ]+[0-9 ]*-?[0-9 ]*)(,[1-9 ]+[0-9 ]*-?[0-9 ]*)*$') | None
+    ) = None
     """
     A description of the pages to be included. Page numbers are 1-based, comma seperated, and can include spaces (0x20, ignored) and a dash ('-', 0x2D) -- used to denote a range of pages. Note that individual pages may be included more than once -- but with limits.  Any given page range may not result in more than 5 times the number of pages in the source PDF.  If no range is specified, all pages are included: "1-".
     """
-    page_actions: Optional[List[PageAction]] = None
+    page_actions: list[PageAction] | None = None
     """
     An array of page manipulation operations. Currently only the "rotate" operation is supported.
     """
@@ -59,7 +59,7 @@ class Ocr(BaseModel):
         extra='allow',
         frozen=True,
     )
-    lang: Optional[
+    lang: (
         Literal[
             'da-DK',
             'lt-LT',
@@ -100,7 +100,8 @@ class Ocr(BaseModel):
             'ro-RO',
             'iw-IL',
         ]
-    ] = 'en-US'
+        | None
+    ) = 'en-US'
     """
     The input language to use for OCR
     """
@@ -111,7 +112,7 @@ class Params(BaseModel):
         extra='allow',
         frozen=True,
     )
-    compression_level: Optional[Literal['low', 'medium', 'high', 'advanced']] = None
+    compression_level: Literal['low', 'medium', 'high', 'advanced'] | None = None
     """
     Specify the level of compression to reduce the file size of the pdf. Low compression level reduces resolution of the coloured and grayscale images above 250 dpi to 200 dpi. Medium compression level reduces resolution of the coloured and grayscale images above 200 dpi to 144 dpi. High compression level reduces resolution of the coloured and grayscale images above 100 dpi to 72 dpi. Advanced compression level uses JP2K with low quality level to compress color and gray images.
     """
@@ -122,15 +123,15 @@ class Optimize(BaseModel):
         extra='allow',
         frozen=True,
     )
-    compress: Optional[bool] = False
+    compress: bool | None = False
     """
     Reduce the file size of the pdf. Note that the compress action may not be combined with linearize, page_actions or page includes or other pdf_actions.
     """
-    linearize: Optional[bool] = True
+    linearize: bool | None = True
     """
     Specify whether to optimize the result for fast web viewing.
     """
-    params: Optional[Params] = None
+    params: Params | None = None
     """
     Params for optimizing the pdf.
     """
@@ -141,22 +142,23 @@ class PasswordEncrypt(BaseModel):
         extra='allow',
         frozen=True,
     )
-    content_to_encrypt: Optional[
+    content_to_encrypt: (
         Literal['all_content', 'all_content_except_metadata', 'only_embedded_files']
-    ] = 'all_content'
+        | None
+    ) = 'all_content'
     """
     Sets the type of content to be encrypted. If only_embedded_files option is set, it will render any provided access permissions as ineffective.
     """
-    encryption_algorithm: Optional[Literal['aes_128', 'aes_256']] = 'aes_128'
+    encryption_algorithm: Literal['aes_128', 'aes_256'] | None = 'aes_128'
     """
     Sets the encryption algorithm. For AES-128 encryption, the password supports LATIN-I characters only. For AES-256 encryption, the password supports Unicode character set.
     """
-    password: Optional[constr(max_length=128)] = None
+    password: constr(max_length=128) | None = None
     """
     Password used to control opening of an encrypted PDF document. When this property is included and non-empty, the use of a password (either this one or, if specified, the permissions password) is necessary to open/view the document. If this password is empty or omitted the document can be opened automatically by conforming PDF viewers.
     """
-    permissions: Optional[
-        List[
+    permissions: (
+        list[
             Literal[
                 'print_low_quality',
                 'print_high_quality',
@@ -167,11 +169,12 @@ class PasswordEncrypt(BaseModel):
                 'copy_content',
             ]
         ]
-    ] = None
+        | None
+    ) = None
     """
     Permissions to allow printing, editing and content copying in the PDF document. By default, none of the specified actions are permitted. print_high_quality permission includes print_low_quality permission. edit_content permission includes edit_document_assembly and edit_fill_and_sign_form_fields permissions. Permissions settings will only be used in case the permissions_password is set.
     """
-    permissions_password: Optional[constr(max_length=128)] = None
+    permissions_password: constr(max_length=128) | None = None
     """
     Password used to control permissions in a PDF document. Conforming PDF viewers require this password to change the permissions. This password can also be used to open/view the PDF document.
     """
@@ -193,21 +196,21 @@ class TaggedPdf(BaseModel):
         extra='allow',
         frozen=True,
     )
-    client_version: Optional[str] = None
+    client_version: str | None = None
     """
-    Version(s) of components on the client in the format of \"componentA=<version>,componentB=<version>, ...\"
+    Version(s) of components on the client in the format of \\"componentA=<version>,componentB=<version>, ...\\"
     """
-    compatibility_version: Optional[Literal['0.3', 'latest']] = 'latest'
+    compatibility_version: Literal['0.3', 'latest'] | None = 'latest'
     """
     Deprecated version parameter.
     """
-    format: Optional[
-        Literal['fully_tagged_pdf', 'well_tagged_pdf', 'instance_data']
-    ] = 'fully_tagged_pdf'
+    format: Literal['fully_tagged_pdf', 'well_tagged_pdf', 'instance_data'] | None = (
+        'fully_tagged_pdf'
+    )
     """
-    What format is the output.  \"well_tagged_pdf \" contains structure tags. \"fully_tagged_pdf\" contains additional information for dynamic viewing. \"instance_data\" contains machine learning output to allow clients to construct fully-taggged-pdf.
+    What format is the output.  \\"well_tagged_pdf \\" contains structure tags. \\"fully_tagged_pdf\\" contains additional information for dynamic viewing. \\"instance_data\\" contains machine learning output to allow clients to construct fully-taggged-pdf.
     """
-    qualified_at_client: Optional[bool] = True
+    qualified_at_client: bool | None = True
     """
     If the client has not qualified this file for conversion, run the qualifier to ensure the likelihood the pdf will successfully convert
     """
@@ -218,23 +221,23 @@ class PdfAction(BaseModel):
         extra='allow',
         frozen=True,
     )
-    ocr: Optional[Ocr] = None
+    ocr: Ocr | None = None
     """
     Perform OCR on the PDF file.  Note that the ocr action may not be combined with page_actions or page includes or other pdf_actions.
     """
-    optimize: Optional[Optimize] = None
+    optimize: Optimize | None = None
     """
     Optimize this PDF
     """
-    password_encrypt: Optional[PasswordEncrypt] = None
+    password_encrypt: PasswordEncrypt | None = None
     """
     Encrypts a PDF document using password(s) and permissions.
     """
-    remove_password_encryption: Optional[RemovePasswordEncryption] = None
+    remove_password_encryption: RemovePasswordEncryption | None = None
     """
     Use a password to remove all the passwords as well as security and permissions from the PDF document. Note that the remove_password_encryption action may not be combined with page_actions or page includes or other pdf_actions.
     """
-    tagged_pdf: Optional[TaggedPdf] = None
+    tagged_pdf: TaggedPdf | None = None
     """
     Convert a PDF to tagged PDF file.  Note that the tagged_pdf action may not be combined with page_actions or page includes or other pdf_actions(Feature not supported anymore).
     """
@@ -249,7 +252,7 @@ class PrimarySignAsset(BaseModel):
     """
     URI identifying the primary sign asset
     """
-    copy_asset_metadata: Optional[bool] = False
+    copy_asset_metadata: bool | None = False
     """
     Specify if the sign asset metadata (stored as ACP metadata) will be copied to the output asset
     """
@@ -260,7 +263,7 @@ class Model(BaseModel):
         extra='allow',
         frozen=True,
     )
-    assets: List[Asset] = Field(..., min_length=1)
+    assets: list[Asset] = Field(..., min_length=1)
     """
     Asset URIs and operations for the final document.  Note that this array may contain a maximum of 12 unique asset URIs. Specifically, the array may contain more than 12 entries, but may not reference more than 12 assets.
     """
@@ -268,25 +271,23 @@ class Model(BaseModel):
     """
     Name of the new asset. Duplicate asset name behavior can be set by on_dup_policy.
     """
-    on_dup_name: Optional[Literal['error', 'auto_rename', 'overwrite']] = [
-        'auto_rename'
-    ]
+    on_dup_name: Literal['error', 'auto_rename', 'overwrite'] | None = ['auto_rename']
     """
     How to handle a duplicate name conflict in target collection for output file.
     """
-    parent_uri: Optional[AnyUrl] = None
+    parent_uri: AnyUrl | None = None
     """
     The uri of folder to put the asset in.  This parameter is relevant only for permanent assets.  If not specified, the default depends on the operation.  Conversions will be placed in the same folder as the source asset.
     """
-    pdf_actions: Optional[List[PdfAction]] = Field(None, min_length=1)
+    pdf_actions: list[PdfAction] | None = Field(None, min_length=1)
     """
     A set of actions to apply to the output PDF.
     """
-    persistence: Optional[Literal['transient', 'permanent']] = 'transient'
+    persistence: Literal['transient', 'permanent'] | None = 'transient'
     """
     Asset storage aspect as short-term transient vs. long-term permanent. "transient" creates an asset that will be available for several hours before being garbage collected and deleted.  For operations that convert and download immediately, "transient" is the appropriate choice
     """
-    primary_sign_asset: Optional[PrimarySignAsset] = None
+    primary_sign_asset: PrimarySignAsset | None = None
     """
     Specify the primary sign asset of this operation. Should only be specified if the primary asset is a Sign agreement draft. Also, this parameter is applicable only if there is a primary document (such as Organize under Edit, Optimize or Protected PDF) The primary Sign agreement draft will serve as the baseline to align and carry over PDF Sign metadata to the output asset.
     """

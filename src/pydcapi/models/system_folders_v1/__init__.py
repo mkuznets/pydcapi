@@ -3,8 +3,6 @@
 
 from __future__ import annotations
 
-from typing import Dict, Optional
-
 from pydantic import AnyUrl, BaseModel, ConfigDict
 
 
@@ -43,7 +41,7 @@ class Roots(BaseModel):
         extra='allow',
         frozen=True,
     )
-    creative_cloud: Optional[CreativeCloud] = None
+    creative_cloud: CreativeCloud | None = None
     document_cloud: DocumentCloud
 
 
@@ -71,7 +69,7 @@ class Model(BaseModel):
     """
     An object with a field for each root folder available to this user.
     """
-    system_folders: Dict[str, SystemFolders]
+    system_folders: dict[str, SystemFolders]
     """
     An object containing a field for each system folder available to this user. The name of the property is the name of the system folder.  By nature these system folders are often considered private to the service that needs them, so the exact names aren't documented here.
     """

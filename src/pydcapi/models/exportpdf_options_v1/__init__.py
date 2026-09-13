@@ -3,8 +3,6 @@
 
 from __future__ import annotations
 
-from typing import Dict, List
-
 from pydantic import BaseModel, ConfigDict, Field, constr
 
 
@@ -35,11 +33,11 @@ class Model(BaseModel):
         extra='allow',
         frozen=True,
     )
-    formats: Dict[str, Formats]
+    formats: dict[str, Formats]
     """
     A list of export file types -- and an indication which formats are provisioned for this user
     """
-    locales: List[Locale] = Field(..., min_length=13)
+    locales: list[Locale] = Field(..., min_length=13)
     """
     A list of all the locales supported for OCR
     """

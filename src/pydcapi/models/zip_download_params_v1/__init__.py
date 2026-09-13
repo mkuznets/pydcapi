@@ -3,9 +3,7 @@
 
 from __future__ import annotations
 
-from typing import List, Optional
-
-from pydantic import AnyUrl, BaseModel, ConfigDict, confloat, constr
+from pydantic import AnyUrl, BaseModel, ConfigDict, Field, confloat, constr
 
 
 class Model(BaseModel):
@@ -13,23 +11,23 @@ class Model(BaseModel):
         extra='allow',
         frozen=True,
     )
-    asset_uris: Optional[List[AnyUrl]] = None
+    asset_uris: list[AnyUrl] | None = Field(None, min_length=1)
     """
     An array of asset uris.
     """
-    folder_uri: Optional[AnyUrl] = None
+    folder_uri: AnyUrl | None = None
     """
     The uri of folder to download as a zip file.
     """
-    make_ticket: Optional[bool] = False
+    make_ticket: bool | None = False
     """
     If true, generate a download ticket valid for 1 minute and include it in the uri.  Defaults to false.  Set true only for URLs that will be used from a web browser in cases that do not support setting an Authorization header. In all other circumstances, set false and use standard authorization.
     """
-    time_zone_offset_minutes: Optional[confloat(ge=-1440.0, le=1440.0)] = 0
+    time_zone_offset_minutes: confloat(ge=-1440.0, le=1440.0) | None = 0
     """
     Time zone offset, in minutes, of the client's local time from GMT (e.g. for EDT, tzo=240). If this parameter is not specified the file modification dates in the zip file will be in GMT, this parameter allows the client to get a zip file with client local time mod times.
     """
-    zip_file_name: Optional[constr(min_length=1)] = (
+    zip_file_name: constr(min_length=1) | None = (
         'documents.zip or the name of the folder for folders'
     )
     """

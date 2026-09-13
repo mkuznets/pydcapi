@@ -3,7 +3,7 @@
 
 from __future__ import annotations
 
-from typing import Literal, Optional
+from typing import Literal
 
 from pydantic import AnyUrl, BaseModel, ConfigDict, constr
 
@@ -36,15 +36,15 @@ class ExternalAssetData(BaseModel):
     """
     External cloud type identifier for 3rd party.
     """
-    conflict_behaviour: Optional[constr(min_length=1)] = None
+    conflict_behaviour: constr(min_length=1) | None = None
     """
     External asset conflict behavior for 3rd party.
     """
-    etag: Optional[constr(min_length=1)] = None
+    etag: constr(min_length=1) | None = None
     """
     External asset etag for 3rd party.
     """
-    name: Optional[constr(min_length=1)] = None
+    name: constr(min_length=1) | None = None
     """
     The name for the external asset. The preferred way of specifying the filename.
     """

@@ -3,7 +3,7 @@
 
 from __future__ import annotations
 
-from typing import Literal, Optional
+from typing import Literal
 
 from pydantic import AnyUrl, BaseModel, ConfigDict, constr
 
@@ -17,19 +17,19 @@ class Model(BaseModel):
     """
     URI identifying the Asset to convert to PDF
     """
-    bbox_page_range: Optional[str] = None
+    bbox_page_range: str | None = None
     """
     It is the page range to generate bounding boxes. A page range in the format X (a single page) or X-Y (a range of pages). Page numbers are 1-based. A hyphen after a page number will not be considered unless followed by another page number. E.g : 2-3 is a valid page range.(when compute_bbox is true).
     """
-    compute_bbox: Optional[bool] = False
+    compute_bbox: bool | None = False
     """
     Whether to generate bounding boxes on the input file or not. This setting is applicable only for pdf input files.
     """
-    do_ocr: Optional[bool] = False
+    do_ocr: bool | None = False
     """
     Whether OCR processing is performed on the input file or not. This setting is applicable only when converting image formats to PDF.
     """
-    markup: Optional[bool] = False
+    markup: bool | None = False
     """
     If specified, include comments and review markup from the source document in the PDF result. This setting only applies when converting Microsoft Word files with inline comments and markup to PDF.
     """
@@ -37,7 +37,7 @@ class Model(BaseModel):
     """
     Name of the new asset. Duplicate asset name behavior can be set by on_dup_policy.
     """
-    ocr_lang: Optional[
+    ocr_lang: (
         Literal[
             'da-DK',
             'lt-LT',
@@ -78,33 +78,33 @@ class Model(BaseModel):
             'ro-RO',
             'iw-IL',
         ]
-    ] = 'en-US'
+        | None
+    ) = 'en-US'
     """
     Locale to use for optical character recognition (when `do_ocr` is true).
     """
-    ocr_type: Optional[
+    ocr_type: (
         Literal[
             'searchable_image', 'editable_text_and_images', 'searchable_image_exact'
         ]
-    ] = 'searchable_image'
+        | None
+    ) = 'searchable_image'
     """
     OCR option to use for optical character recognition (when do_ocr is true).
     """
-    on_dup_name: Optional[Literal['error', 'auto_rename', 'overwrite']] = [
-        'auto_rename'
-    ]
+    on_dup_name: Literal['error', 'auto_rename', 'overwrite'] | None = ['auto_rename']
     """
     How to handle a duplicate name conflict in target collection for output file.
     """
-    parent_uri: Optional[AnyUrl] = None
+    parent_uri: AnyUrl | None = None
     """
     The uri of folder to put the asset in.  This parameter is relevant only for permanent assets.  If not specified, the default depends on the operation.  Conversions will be placed in the same folder as the source asset.
     """
-    persistence: Optional[Literal['transient', 'permanent']] = 'transient'
+    persistence: Literal['transient', 'permanent'] | None = 'transient'
     """
     Asset storage aspect as short-term transient vs. long-term permanent. "transient" creates an asset that will be available for several hours before being garbage collected and deleted.  For operations that convert and download immediately, "transient" is the appropriate choice
     """
-    tagged_pdf_format: Optional[Literal['fully_tagged_pdf', 'well_tagged_pdf']] = (
+    tagged_pdf_format: Literal['fully_tagged_pdf', 'well_tagged_pdf'] | None = (
         'well_tagged_pdf'
     )
     """

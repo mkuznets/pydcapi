@@ -3,7 +3,7 @@
 
 from __future__ import annotations
 
-from typing import Any, Dict, Optional
+from typing import Any
 
 from pydantic import BaseModel, ConfigDict
 
@@ -13,27 +13,27 @@ class Model(BaseModel):
         extra='allow',
         frozen=True,
     )
-    attachmentId: Optional[str] = None
+    attachmentId: str | None = None
     """
     The adobe cloud id of current file that this feedback is for.
     """
-    category: Optional[str] = None
+    category: str | None = None
     """
     This is an application specific value for categorising the feedback. It is recommended that category be the product name and any sub-category can be appended separated by colon.
     """
-    context: Optional[Dict[str, Any]] = None
+    context: dict[str, Any] | None = None
     """
     Miscellaneous contextual information that one want to capture. Colarodo needs to capture the version of backend engine which had generated the blob.
     """
-    description: Optional[str] = None
+    description: str | None = None
     """
     Optional additional details.
     """
-    rating: Optional[int] = None
+    rating: int | None = None
     """
     Rating given by user as a part of this feedback, 1 is the worst and 10 is the best.
     """
-    topic: Optional[str] = False
+    topic: str | None = False
     """
     The specific problem/error/ or area of feedback within the category of this feedback. Topics are application defined. (Example for liquid mode, Icon Disabled, File To Convert, Long Load Time, Missing Content, UnExpected Layout, Incorrect Heading, Other )
     """

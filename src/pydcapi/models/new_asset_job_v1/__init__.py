@@ -3,7 +3,7 @@
 
 from __future__ import annotations
 
-from typing import List, Literal, Optional
+from typing import Literal
 
 from pydantic import AnyUrl, BaseModel, ConfigDict
 
@@ -82,7 +82,7 @@ class Error(BaseModel):
     """
     An English language string that contains more information about the error. This is not intended as information to be presented to an end user, but will instead be helpful for logging and debugging.
     """
-    status: Optional[int] = None
+    status: int | None = None
     """
     The http status code.
     """
@@ -112,27 +112,27 @@ class Model(BaseModel):
         extra='allow',
         frozen=True,
     )
-    asset_result: Optional[AssetResult] = None
+    asset_result: AssetResult | None = None
     """
     If the status is 'done', this will contain the details of the new asset
     """
-    error: Optional[Error] = None
+    error: Error | None = None
     """
     If the status is 'failed', this will contain the error details
     """
-    job_uri: Optional[AnyUrl] = None
+    job_uri: AnyUrl | None = None
     """
     If the job state is either 'queued' or 'in progress', use this URI to poll for completion.  Note that this method should be called only after the interval specified in: retry_interval
     """
-    multiple_asset_result: Optional[List[MultipleAssetResultItem]] = None
+    multiple_asset_result: list[MultipleAssetResultItem] | None = None
     """
     If the status is 'done', this will contain the details of the new assets list
     """
-    progress: Optional[float] = None
+    progress: float | None = None
     """
     A value from zero to one hundred indicating the job completion progress
     """
-    retry_interval: Optional[int] = None
+    retry_interval: int | None = None
     """
     If the status is 'queued' or 'in progress' this specifies the number of milliseconds to wait before re-querying the job status
     """

@@ -3,7 +3,7 @@
 
 from __future__ import annotations
 
-from typing import Literal, Optional
+from typing import Literal
 
 from pydantic import BaseModel, ConfigDict, constr
 
@@ -13,19 +13,19 @@ class Connector(BaseModel):
         extra='allow',
         frozen=True,
     )
-    accessToken: Optional[str] = None
+    accessToken: str | None = None
     """
     External cloud linked account access token.
     """
-    cloudUserId: Optional[str] = None
+    cloudUserId: str | None = None
     """
     External cloud linked account user id.
     """
-    connectedAt: Optional[float] = None
+    connectedAt: float | None = None
     """
     External cloud account connected time.
     """
-    connectorData: Optional[str] = None
+    connectorData: str | None = None
     """
     Stringified JSON data representing connector preferences to be stored in db.
     """
@@ -43,11 +43,11 @@ class Connector(BaseModel):
     """
     Connector Info creation time.
     """
-    expiresIn: Optional[float] = None
+    expiresIn: float | None = None
     """
     It represents remaining validity(in seconds) of the access token in connector Info.
     """
-    proxyToken: Optional[str] = None
+    proxyToken: str | None = None
     """
     Proxy token linked to external cloud connector.
     """

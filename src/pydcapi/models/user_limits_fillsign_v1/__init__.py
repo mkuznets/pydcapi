@@ -3,8 +3,6 @@
 
 from __future__ import annotations
 
-from typing import Dict, List
-
 from pydantic import BaseModel, ConfigDict, Field
 
 
@@ -22,7 +20,7 @@ class Model(BaseModel):
         extra='allow',
         frozen=True,
     )
-    file_formats: List[Dict[str, FileFormats]] = Field(..., min_length=1)
+    file_formats: list[dict[str, FileFormats]] = Field(..., min_length=1)
     """
     List of supported file types that can be used to create a form
     """

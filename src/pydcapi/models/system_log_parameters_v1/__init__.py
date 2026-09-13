@@ -3,7 +3,7 @@
 
 from __future__ import annotations
 
-from typing import List, Literal, Union
+from typing import Dict, Literal
 
 from pydantic import BaseModel, ConfigDict, RootModel, constr
 
@@ -13,6 +13,9 @@ class ModelItem(BaseModel):
         extra='allow',
         frozen=True,
     )
+    __annotations__ = {
+        '__pydantic_extra__': Dict[str, str],
+    }
     level: Literal['debug', 'info', 'warn', 'error']
     """
     Log level: debug, info, warn, error.
@@ -28,6 +31,9 @@ class Model1(BaseModel):
         extra='allow',
         frozen=True,
     )
+    __annotations__ = {
+        '__pydantic_extra__': Dict[str, str],
+    }
     level: Literal['debug', 'info', 'warn', 'error']
     """
     Log level: debug, info, warn, error.
@@ -38,8 +44,8 @@ class Model1(BaseModel):
     """
 
 
-class Model(RootModel[Union[List[ModelItem], Model1]]):
+class Model(RootModel[list[ModelItem] | Model1]):
     model_config = ConfigDict(
         frozen=True,
     )
-    root: Union[List[ModelItem], Model1]
+    root: list[ModelItem] | Model1

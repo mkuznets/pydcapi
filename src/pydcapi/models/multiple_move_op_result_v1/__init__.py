@@ -3,7 +3,7 @@
 
 from __future__ import annotations
 
-from typing import Any, Dict, List, Optional
+from typing import Any
 
 from pydantic import AnyUrl, BaseModel, ConfigDict, Field
 
@@ -13,11 +13,11 @@ class DuplicateOf(BaseModel):
         extra='allow',
         frozen=True,
     )
-    asset_uri: Optional[AnyUrl] = None
+    asset_uri: AnyUrl | None = None
     """
     If present, the uri of the asset the original_name collided with.
     """
-    folder_uri: Optional[AnyUrl] = None
+    folder_uri: AnyUrl | None = None
     """
     If present, the uri of the folder the original_name collided with.
     """
@@ -28,7 +28,7 @@ class RenameInfo(BaseModel):
         extra='allow',
         frozen=True,
     )
-    duplicate_of: Optional[DuplicateOf] = None
+    duplicate_of: DuplicateOf | None = None
     name: str
     """
     The name actually used.
@@ -44,7 +44,7 @@ class Body(BaseModel):
         extra='allow',
         frozen=True,
     )
-    rename_info: Optional[RenameInfo] = None
+    rename_info: RenameInfo | None = None
     """
     If on_dup_name was auto_rename and the name was illegal or a duplicate was encountered, contains details on the rename.
     """
@@ -59,7 +59,7 @@ class Error(BaseModel):
     """
     The error code.
     """
-    details: Optional[Dict[str, Any]] = None
+    details: dict[str, Any] | None = None
     """
     A JSON object that contains information specific to the error. The schema and semantics are specified with the individual method. This allows machine readable extra information.
     """
@@ -74,8 +74,8 @@ class Multistatu(BaseModel):
         extra='allow',
         frozen=True,
     )
-    body: Optional[Body] = None
-    error: Optional[Error] = None
+    body: Body | None = None
+    error: Error | None = None
     """
     In the case where status is not success, the error information.
     """
@@ -94,4 +94,4 @@ class Model(BaseModel):
         extra='allow',
         frozen=True,
     )
-    multistatus: List[Multistatu] = Field(..., min_length=1)
+    multistatus: list[Multistatu] = Field(..., min_length=1)

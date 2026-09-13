@@ -3,7 +3,7 @@
 
 from __future__ import annotations
 
-from typing import Literal, Optional
+from typing import Literal
 
 from pydantic import AnyUrl, BaseModel, ConfigDict, constr
 
@@ -13,19 +13,19 @@ class AssetData(BaseModel):
         extra='allow',
         frozen=True,
     )
-    name: Optional[constr(min_length=1)] = None
+    name: constr(min_length=1) | None = None
     """
     The name for the asset. The preferred way of specifying the filename, because the encoding can be specified as utf-8 for the options part to ensure that names that aren't strict ascii are properly handled. If not present the name is taken from the filename in the Content-Disposition header of the file part.
     """
-    parent_uri: Optional[AnyUrl] = None
+    parent_uri: AnyUrl | None = None
     """
     The uri of folder to put the asset in.  This parameter is relevant only for permanent assets.
     """
-    persistence: Optional[Literal['transient', 'permanent']] = 'transient'
+    persistence: Literal['transient', 'permanent'] | None = 'transient'
     """
     Asset storage aspect as short-term transient vs. long-term permanent.
     """
-    temp_folder_urn: Optional[str] = None
+    temp_folder_urn: str | None = None
     """
     The id of the temp folder of a directory to put the asset in. This parameter is relevant for temp folders only.
     """
@@ -59,7 +59,7 @@ class Model(BaseModel):
         extra='allow',
         frozen=True,
     )
-    asset_data: Optional[AssetData] = None
+    asset_data: AssetData | None = None
     """
     Set of properties that are applicable for asset data.
     """

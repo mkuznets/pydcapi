@@ -3,7 +3,7 @@
 
 from __future__ import annotations
 
-from typing import List, Literal, Optional
+from typing import Literal
 
 from pydantic import AnyUrl, BaseModel, ConfigDict, Field
 
@@ -24,7 +24,7 @@ class FieldLinks(BaseModel):
         extra='allow',
         frozen=True,
     )
-    upload_links: List[UploadLink] = Field(..., min_length=1)
+    upload_links: list[UploadLink] = Field(..., min_length=1)
     """
     In the finalize request, the upload links must be provided, which is returned in initialize/extend request. The upload links which are not used should be removed from upload_links.
     """
@@ -36,7 +36,7 @@ class Model(BaseModel):
         frozen=True,
     )
     field_links: FieldLinks = Field(..., alias='_links')
-    asset_uri: Optional[AnyUrl] = None
+    asset_uri: AnyUrl | None = None
     """
     If this attribute is not provided, new asset will be created. Applicable only while updating an existing asset. If provided, should match with the asset id provided in the initialize request.
     """
@@ -48,19 +48,19 @@ class Model(BaseModel):
     """
     Content type of the file uploaded on storage server.
     """
-    name: Optional[str] = None
+    name: str | None = None
     """
     The name of the asset. Applicable only while creating a new asset.
     """
-    on_dup_name: Optional[Literal['error', 'auto_rename']] = 'error'
+    on_dup_name: Literal['error', 'auto_rename'] | None = 'error'
     """
     How to handle a duplicate name - legal values are "error" and "auto_rename". Applicable only while creating a new asset. 
     """
-    parent_uri: Optional[AnyUrl] = None
+    parent_uri: AnyUrl | None = None
     """
     Applicable only while creating a new asset. Should be passed only when persistence is "permanent". Do not pass when persistence is "transient".
     """
-    persistence: Optional[Literal['transient', 'permanent']] = None
+    persistence: Literal['transient', 'permanent'] | None = None
     """
     Asset storage aspect as short-term transient vs. long-term permanent. "transient" creates an asset that will be available for several hours before being garbage collected and deleted. For operations that convert and download immediately, "transient" is the appropriate choice. If the choice is "permanent", then "parent_uri" must also be specified. 
     """

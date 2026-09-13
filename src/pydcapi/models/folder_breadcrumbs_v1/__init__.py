@@ -3,8 +3,6 @@
 
 from __future__ import annotations
 
-from typing import List
-
 from pydantic import AnyUrl, BaseModel, ConfigDict
 
 
@@ -28,7 +26,7 @@ class Model(BaseModel):
         extra='allow',
         frozen=True,
     )
-    breadcrumbs: List[Breadcrumb]
+    breadcrumbs: list[Breadcrumb]
     """
     Folders in hierarchy order from root to this folder, inclusive.
     """

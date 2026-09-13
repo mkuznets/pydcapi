@@ -3,8 +3,6 @@
 
 from __future__ import annotations
 
-from typing import Optional
-
 from pydantic import AnyUrl, BaseModel, ConfigDict
 
 
@@ -24,11 +22,11 @@ class DuplicateOf(BaseModel):
         extra='allow',
         frozen=True,
     )
-    asset_uri: Optional[AnyUrl] = None
+    asset_uri: AnyUrl | None = None
     """
     If present, the uri of the asset the original_name collided with.
     """
-    folder_uri: Optional[AnyUrl] = None
+    folder_uri: AnyUrl | None = None
     """
     If present, the uri of the folder the original_name collided with.
     """
@@ -39,7 +37,7 @@ class RenameInfo(BaseModel):
         extra='allow',
         frozen=True,
     )
-    duplicate_of: Optional[DuplicateOf] = None
+    duplicate_of: DuplicateOf | None = None
     name: str
     """
     The name actually used.
@@ -55,31 +53,31 @@ class Model(BaseModel):
         extra='allow',
         frozen=True,
     )
-    asset_id: Optional[str] = None
+    asset_id: str | None = None
     """
     Id the asset created/updated in this API call.
     """
-    asset_uri: Optional[AnyUrl] = None
+    asset_uri: AnyUrl | None = None
     """
     Asset URI of the asset created/updated.
     """
-    content_md5: Optional[str] = None
+    content_md5: str | None = None
     """
     Cloud provider checksum. Returned only if creation/updation is completed and successful. 
     """
-    etag: Optional[str] = None
+    etag: str | None = None
     """
     ETag of the created/updated asset. Returned only if creation/updation is completed and successful. 
     """
-    monitor_link: Optional[MonitorLink] = None
+    monitor_link: MonitorLink | None = None
     """
     Monitor link object for getting the upload status. Returned only when asset upload/update is still in progress and http status is 202.
     """
-    rename_info: Optional[RenameInfo] = None
+    rename_info: RenameInfo | None = None
     """
     If on_dup_name was auto_rename and the name was illegal or a duplicate was encountered, contains details on the rename.
     """
-    size: Optional[float] = None
+    size: float | None = None
     """
     Size of the uploaded file.(Reported by cloud provider)
     """

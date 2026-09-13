@@ -3,7 +3,7 @@
 
 from __future__ import annotations
 
-from typing import Any, Dict, Literal, Optional
+from typing import Any, Literal
 
 from pydantic import AnyUrl, BaseModel, ConfigDict, Field, confloat, constr
 
@@ -13,31 +13,31 @@ class Page(BaseModel):
         extra='allow',
         frozen=True,
     )
-    height: Optional[float] = 8.5
+    height: float | None = 8.5
     """
     The height (in inches) of the output paper size.
     """
-    landscape: Optional[bool] = False
+    landscape: bool | None = False
     """
     The output page orientation.
     """
-    margin_bottom: Optional[confloat(ge=0.0)] = 0.394
+    margin_bottom: confloat(ge=0.0) | None = 0.394
     """
     The size of the bottom page margin (in inches).
     """
-    margin_left: Optional[confloat(ge=0.0)] = 0.394
+    margin_left: confloat(ge=0.0) | None = 0.394
     """
     The size of the left page margin (in inches).
     """
-    margin_right: Optional[confloat(ge=0.0)] = 0.394
+    margin_right: confloat(ge=0.0) | None = 0.394
     """
     The size of the right page margin (in inches).
     """
-    margin_top: Optional[confloat(ge=0.0)] = 0.394
+    margin_top: confloat(ge=0.0) | None = 0.394
     """
     The size of the top page margin (in inches).
     """
-    width: Optional[float] = 11
+    width: float | None = 11
     """
     The width (in inches) of the output paper size.
     """
@@ -48,15 +48,15 @@ class Model(BaseModel):
         extra='allow',
         frozen=True,
     )
-    asset_uri: Optional[AnyUrl] = None
+    asset_uri: AnyUrl | None = None
     """
     URI identifying the Zip file to convert to PDF.  In order to render correctly, the Zip file must have a file named ```index.html``` at its root. Caller must provide either a URL or an asset_uri.
     """
-    json_: Optional[Dict[str, Any]] = Field(None, alias='json')
+    json_: dict[str, Any] | None = Field(None, alias='json')
     """
     JavaScript variables to be placed in global scope to reference while rendering the HTML.  This mechanism is intended to be used to supply data that might otherwise be retrieved using ajax requests.  The actual mechanics of accessing this content varies depending if rendering from a zip file or from a url.  When rendering from a zip file, the source collateral must include a script element such as:<br> ```<script src='./json.js' type='text/javascript'></script>```<br> When rendering from a URL, the content of this json object is injected into the browser VM before the page is rendered. 
     """
-    maximum_wait: Optional[confloat(ge=0.0, le=900.0)] = 0
+    maximum_wait: confloat(ge=0.0, le=900.0) | None = 0
     """
     The maximum time (in seconds) to wait for a document render.  When this parameter is specified, the converter will wait until the HTML page calls a JavaScript function: `adbe_content_loaded()`.  If the application script detects a problem, the job may also be terminated with failure by calling: `adbe_content_failed(msg)`.  If the `maximum_wait` time is reached before either `adbe_content_loaded` or `adbe_content_failed` are called, the conversion will fail.  The `maximum_wait` time period is measured from the window.load event.  A value of zero means the document will render immediately at the window.load event.
     """
@@ -64,47 +64,45 @@ class Model(BaseModel):
     """
     Name of the new asset. Duplicate asset name behavior can be set by on_dup_policy.
     """
-    on_dup_name: Optional[Literal['error', 'auto_rename', 'overwrite']] = [
-        'auto_rename'
-    ]
+    on_dup_name: Literal['error', 'auto_rename', 'overwrite'] | None = ['auto_rename']
     """
     How to handle a duplicate name conflict in target collection for output file.
     """
-    page: Optional[Page] = None
+    page: Page | None = None
     """
     Parameters defining the properties of the output pages.  Page properties defined in CSS will take precendence: http://www.w3.org/TR/css3-page/ See also: http://www.w3.org/TR/css3-break/ 
     """
-    parent_uri: Optional[AnyUrl] = None
+    parent_uri: AnyUrl | None = None
     """
     The uri of folder to put the asset in.  This parameter is relevant only for permanent assets.  If not specified, the default depends on the operation.  Conversions will be placed in the same folder as the source asset.
     """
-    persistence: Optional[Literal['transient', 'permanent']] = 'transient'
+    persistence: Literal['transient', 'permanent'] | None = 'transient'
     """
     Asset storage aspect as short-term transient vs. long-term permanent. "transient" creates an asset that will be available for several hours before being garbage collected and deleted.  For operations that convert and download immediately, "transient" is the appropriate choice
     """
-    print_background_images: Optional[bool] = True
+    print_background_images: bool | None = True
     """
     Determine whether to print background image properties.
     """
-    print_header_footer: Optional[bool] = True
+    print_header_footer: bool | None = True
     """
     Determine whether to add default headers and footers to the output pages.  The default header includes a short date and the contents of document.title.  The default footer includes a file name and a page n/m reference.
     """
-    start_script: Optional[AnyUrl] = None
+    start_script: AnyUrl | None = None
     """
     A reference to a JavaScript file that will be executed immediately prior to loading the HTML page.  This allows a client to inject script that may modify the DOM before render.  This is particularly useful when rendering from a URL where the client has no control over the HTML content.  Common usage is to use this parameter in combination with `maximum_wait` in order to affect the output and also call either `adbe_content_loaded()` or `adbe_content_failed(msg)`.
     """
-    tagged_pdf_format: Optional[Literal['well_tagged_pdf', 'not_tagged_pdf']] = [
+    tagged_pdf_format: Literal['well_tagged_pdf', 'not_tagged_pdf'] | None = [
         'not_tagged_pdf'
     ]
     """
     If specified, apply the selected type of PDF tagging.
     """
-    url: Optional[constr(pattern=r'^https:')] = None
+    url: constr(pattern=r'^https:') | None = None
     """
     The URL to render. Must be secure (https).  For URL-based requests requiring authentication, the best practice is to include authentication credentials via the `json` parameter.
     """
-    use_print_stylesheet: Optional[bool] = True
+    use_print_stylesheet: bool | None = True
     """
     Determine whether to use any available print stylesheet.  See: http://www.w3.org/TR/css-print/
     """

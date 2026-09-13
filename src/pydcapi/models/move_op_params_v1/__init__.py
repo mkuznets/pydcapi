@@ -3,9 +3,9 @@
 
 from __future__ import annotations
 
-from typing import List, Literal, Optional
+from typing import Literal
 
-from pydantic import AnyUrl, BaseModel, ConfigDict, constr
+from pydantic import AnyUrl, BaseModel, ConfigDict, Field, constr
 
 
 class Source(BaseModel):
@@ -13,11 +13,11 @@ class Source(BaseModel):
         extra='allow',
         frozen=True,
     )
-    object_uri: Optional[AnyUrl] = None
+    object_uri: AnyUrl | None = None
     """
     The uri of object (asset or folder) to move.
     """
-    object_uris: Optional[List[AnyUrl]] = None
+    object_uris: list[AnyUrl] | None = Field(None, max_length=200, min_length=1)
     """
     An array of uris of assets and/or folders to move.
     """
@@ -28,11 +28,11 @@ class Target(BaseModel):
         extra='allow',
         frozen=True,
     )
-    name: Optional[constr(min_length=1)] = None
+    name: constr(min_length=1) | None = None
     """
     If present, the new name for the object.
     """
-    parent_uri: Optional[AnyUrl] = None
+    parent_uri: AnyUrl | None = None
     """
     If present, the uri of the folder to move this object into.
     """
@@ -43,7 +43,7 @@ class Model(BaseModel):
         extra='allow',
         frozen=True,
     )
-    on_dup_name: Optional[Literal['error', 'auto_rename']] = 'error'
+    on_dup_name: Literal['error', 'auto_rename'] | None = 'error'
     """
     How to handle a duplicate name.
     """

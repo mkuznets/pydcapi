@@ -3,7 +3,7 @@
 
 from __future__ import annotations
 
-from typing import List, Literal, Optional
+from typing import Literal
 
 from pydantic import AnyUrl, BaseModel, ConfigDict, constr
 
@@ -36,7 +36,7 @@ class RedactLocation(BaseModel):
         extra='allow',
         frozen=True,
     )
-    coordinates: List[Coordinate]
+    coordinates: list[Coordinate]
     """
     Bounding box rectangles defining the redaction area on the page.
     """
@@ -55,7 +55,7 @@ class Model(BaseModel):
     """
     URI identifying the PDF asset to redact.
     """
-    format: Optional[Literal['pdf']] = 'pdf'
+    format: Literal['pdf'] | None = 'pdf'
     """
     Output format of the redacted document.
     """
@@ -63,15 +63,15 @@ class Model(BaseModel):
     """
     Name of the output asset.
     """
-    persistence: Optional[Literal['transient', 'permanent']] = 'transient'
+    persistence: Literal['transient', 'permanent'] | None = 'transient'
     """
     Asset storage aspect as short-term transient vs. long-term permanent. "transient" creates an asset that will be available for several hours before being garbage collected and deleted.  For operations that convert and download immediately, "transient" is the appropriate choice
     """
-    redact_locations: Optional[List[RedactLocation]] = None
+    redact_locations: list[RedactLocation] | None = None
     """
     List of page locations to redact.
     """
-    sanitize: Optional[bool] = False
+    sanitize: bool | None = False
     """
     Whether to sanitize the PDF document metadata.
     """

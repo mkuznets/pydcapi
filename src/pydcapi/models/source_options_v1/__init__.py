@@ -3,8 +3,6 @@
 
 from __future__ import annotations
 
-from typing import Dict, Optional
-
 from pydantic import BaseModel, ConfigDict, RootModel
 
 
@@ -19,8 +17,8 @@ class Model1(BaseModel):
     """
 
 
-class Model(RootModel[Optional[Dict[str, Dict[str, Model1]]]]):
+class Model(RootModel[dict[str, dict[str, Model1]]]):
     model_config = ConfigDict(
         frozen=True,
     )
-    root: Optional[Dict[str, Dict[str, Model1]]] = None
+    root: dict[str, dict[str, Model1]]

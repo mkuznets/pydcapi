@@ -3,8 +3,6 @@
 
 from __future__ import annotations
 
-from typing import Optional
-
 from pydantic import AnyUrl, BaseModel, ConfigDict
 
 
@@ -13,11 +11,11 @@ class DuplicateOf(BaseModel):
         extra='allow',
         frozen=True,
     )
-    asset_uri: Optional[AnyUrl] = None
+    asset_uri: AnyUrl | None = None
     """
     If present, the uri of the asset the original_name collided with.
     """
-    folder_uri: Optional[AnyUrl] = None
+    folder_uri: AnyUrl | None = None
     """
     If present, the uri of the folder the original_name collided with.
     """
@@ -28,7 +26,7 @@ class RenameInfo(BaseModel):
         extra='allow',
         frozen=True,
     )
-    duplicate_of: Optional[DuplicateOf] = None
+    duplicate_of: DuplicateOf | None = None
     name: str
     """
     The name actually used.
@@ -44,7 +42,7 @@ class Model(BaseModel):
         extra='allow',
         frozen=True,
     )
-    rename_info: Optional[RenameInfo] = None
+    rename_info: RenameInfo | None = None
     """
     If on_dup_name was auto_rename and the name was illegal or a duplicate was encountered, contains details on the rename.
     """

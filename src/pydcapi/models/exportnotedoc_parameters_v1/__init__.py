@@ -3,7 +3,7 @@
 
 from __future__ import annotations
 
-from typing import Literal, Optional
+from typing import Literal
 
 from pydantic import AnyUrl, BaseModel, ConfigDict, constr
 
@@ -17,7 +17,7 @@ class Model(BaseModel):
     """
     URI identifying the Asset.
     """
-    format: Optional[Literal['docx']] = 'docx'
+    format: Literal['docx'] | None = 'docx'
     """
     The exportnotedoc format.
     """
@@ -25,15 +25,15 @@ class Model(BaseModel):
     """
     Name of the new asset. Duplicate asset name behavior can be set by on_dup_policy.
     """
-    on_dup_name: Optional[Literal['error', 'auto_rename', 'overwrite']] = 'auto_rename'
+    on_dup_name: Literal['error', 'auto_rename', 'overwrite'] | None = 'auto_rename'
     """
     How to handle a duplicate name conflict in target collection for output file.
     """
-    parent_uri: Optional[AnyUrl] = None
+    parent_uri: AnyUrl | None = None
     """
     The uri of folder to put the asset in. If not specified, the default depends on the operation. Conversions will be placed in the same folder as the source asset.
     """
-    persistence: Optional[Literal['transient', 'permanent']] = 'transient'
+    persistence: Literal['transient', 'permanent'] | None = 'transient'
     """
     Asset storage aspect as short-term transient vs. long-term permanent. "transient" creates an asset that will be available for several hours before being garbage collected and deleted. For operations that convert and download immediately, "transient" is the appropriate choice.
     """

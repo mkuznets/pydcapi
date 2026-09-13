@@ -3,13 +3,11 @@
 
 from __future__ import annotations
 
-from typing import Dict, Optional
-
 from pydantic import ConfigDict, RootModel
 
 
-class Model(RootModel[Optional[Dict[str, str]]]):
+class Model(RootModel[dict[str, str]]):
     model_config = ConfigDict(
         frozen=True,
     )
-    root: Optional[Dict[str, str]] = None
+    root: dict[str, str]

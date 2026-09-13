@@ -3,7 +3,7 @@
 
 from __future__ import annotations
 
-from typing import Literal, Optional
+from typing import Literal
 
 from pydantic import BaseModel, ConfigDict
 
@@ -17,7 +17,7 @@ class Model(BaseModel):
     """
     Authorization code recieved after OAuth URL redirection.
     """
-    connectorData: Optional[str] = None
+    connectorData: str | None = None
     """
     Stringified JSON data representing connector preferences to be stored in db.
     """

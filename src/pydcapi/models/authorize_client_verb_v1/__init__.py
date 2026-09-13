@@ -3,7 +3,7 @@
 
 from __future__ import annotations
 
-from typing import Literal, Optional
+from typing import Literal
 
 from pydantic import BaseModel, ConfigDict, constr
 
@@ -13,11 +13,12 @@ class Model(BaseModel):
         extra='allow',
         frozen=True,
     )
-    domain: Optional[
+    domain: (
         constr(
             pattern=r'(?:[a-z0-9](?:[a-z0-9-]{0,61}[a-z0-9])?\\.)+[a-z0-9][a-z0-9-]{0,61}[a-z0-9]'
         )
-    ] = None
+        | None
+    ) = None
     """
     Domain of the client. Incase origin header is not present, domain from request body is picked. If domain is not available then error is thrown.
     """

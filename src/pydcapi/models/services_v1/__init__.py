@@ -3,8 +3,6 @@
 
 from __future__ import annotations
 
-from typing import Dict, Optional
-
 from pydantic import BaseModel, ConfigDict, constr
 
 
@@ -13,7 +11,7 @@ class Services(BaseModel):
         extra='allow',
         frozen=True,
     )
-    compatible_range: Optional[str] = None
+    compatible_range: str | None = None
     """
     The `compatible_range` property specifies a semantic version range (see https://www.npmjs.com/package/semver).<br/>Changes that might trigger some action on the client side can be described using appropriate values of `compatible_range`, independent of the value of version. For example, it may be possible that there is a functionally incompatible version change (say 1.2.3 to 2.0.0) that does not change output characteristics and therefore does not require any action on the part of the client, so compatible_range can be `>=1.2.3 <=2.0.0`.<br/><br/>*NOTE* Interface changes are not tracked using this mechanism.<br/><br/>In the case of the pdf_structure service, if a client is asked to redisplay a cached version of a file that has previously been processed by this service, the client should compare the version of the service that performed the original conversion against the compatibility range. If the range test fails, then the client is recommended to re-process the file through the service.
     """
@@ -28,4 +26,4 @@ class Model(BaseModel):
         extra='allow',
         frozen=True,
     )
-    services: Optional[Dict[str, Services]] = None
+    services: dict[str, Services] | None = None

@@ -3,8 +3,6 @@
 
 from __future__ import annotations
 
-from typing import Dict, List, Optional
-
 from pydantic import BaseModel, ConfigDict
 
 
@@ -24,7 +22,7 @@ class Model(BaseModel):
         extra='allow',
         frozen=True,
     )
-    file_formats: Optional[List[Dict[str, FileFormats]]] = None
+    file_formats: list[dict[str, FileFormats]] | None = None
     """
     File Extensions and mime types. In the future, this list may be extended without a change in version.
     """

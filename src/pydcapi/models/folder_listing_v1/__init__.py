@@ -3,8 +3,6 @@
 
 from __future__ import annotations
 
-from typing import List, Optional, Union
-
 from pydantic import AnyUrl, AwareDatetime, BaseModel, ConfigDict, Field
 
 
@@ -13,7 +11,7 @@ class FieldPages(BaseModel):
         extra='allow',
         frozen=True,
     )
-    next_page_uri: Optional[AnyUrl] = None
+    next_page_uri: AnyUrl | None = None
     """
     URI used to fetch the next page of results in this folder listing.  Only present if there is another page of results.
     """
@@ -24,7 +22,7 @@ class Members(BaseModel):
         extra='allow',
         frozen=True,
     )
-    asset_id: Optional[str] = None
+    asset_id: str | None = None
     """
     The asset id (in URN form).  Use the "asset_uri" uri template in the "templates" section of the discovery info to transform to an asset uri.
     """
@@ -32,35 +30,35 @@ class Members(BaseModel):
     """
     URI representing a member that's an asset
     """
-    created: Optional[AwareDatetime] = None
+    created: AwareDatetime | None = None
     """
     The creation date of the asset.
     """
-    created_by_client: Optional[str] = None
+    created_by_client: str | None = None
     """
     An indication of which API client first uploaded the asset.
     """
-    custom_tags: Optional[List[str]] = None
+    custom_tags: list[str] | None = None
     """
     An array of custom tags for client application use.
     """
-    favorite: Optional[bool] = None
+    favorite: bool | None = None
     """
     True if the user has marked this asset a favorite.
     """
-    last_access: Optional[AwareDatetime] = None
+    last_access: AwareDatetime | None = None
     """
     The time the asset was last accessed.
     """
-    last_pagenum: Optional[float] = None
+    last_pagenum: float | None = None
     """
     The number of the page last viewed.  This number is 0 based - the first page is 0, second page is 1, etc.
     """
-    md5_digest: Optional[str] = None
+    md5_digest: str | None = None
     """
     The hex digest of 128 bit MD5 digest of the asset - a 32 character string containing only hexadecimal digits.  May not be available immediately after uploading or updating a file.
     """
-    modified: Optional[AwareDatetime] = None
+    modified: AwareDatetime | None = None
     """
     The modification date of the asset.
     """
@@ -68,39 +66,39 @@ class Members(BaseModel):
     """
     Name of the asset.
     """
-    page_count: Optional[float] = None
+    page_count: float | None = None
     """
     The number of pages in the asset.  Only present for assets in which the page count has been determined.  Page count discovery happens while generating renditions for supported asset types (e.g. pdf).
     """
-    parent_id: Optional[str] = None
+    parent_id: str | None = None
     """
     Folder id (in URN form) of the parent folder of this asset.  If there is no parent (e.g. for a transient asset), this value is not present.
     """
-    parent_uri: Optional[AnyUrl] = None
+    parent_uri: AnyUrl | None = None
     """
     URI of the parent folder of this asset.  If there is no parent (e.g. for a transient asset), this value is not present.
     """
-    sign: Optional[str] = None
+    sign: str | None = None
     """
     sign metadata for Adobe Cloud Platform (ACP) storage users (Signatures experience in Acrobat), Sign metadata :[Sign metadata](https://wiki.corp.adobe.com/x/CSj9o).
     """
-    size: Optional[float] = None
+    size: float | None = None
     """
     File size in bytes
     """
-    source: Optional[str] = None
+    source: str | None = None
     """
     Where the asset resides.  Currently either "native" or "creative_cloud"
     """
-    starred: Optional[bool] = None
+    starred: bool | None = None
     """
     True if the user has starred this asset.
     """
-    tags: Optional[List[str]] = None
+    tags: list[str] | None = None
     """
     An array of tags.
     """
-    type: Optional[str] = None
+    type: str | None = None
     """
     The file's content type (mime-type)
     """
@@ -111,19 +109,19 @@ class Members1(BaseModel):
         extra='allow',
         frozen=True,
     )
-    created: Optional[AwareDatetime] = None
+    created: AwareDatetime | None = None
     """
     The creation date of the folder.
     """
-    custom_tags: Optional[List[str]] = None
+    custom_tags: list[str] | None = None
     """
     An array of custom tags for client application use.
     """
-    favorite: Optional[bool] = None
+    favorite: bool | None = None
     """
     True if the user has marked this folder a favorite.
     """
-    folder_id: Optional[str] = None
+    folder_id: str | None = None
     """
     The folder id (in URN form).  Use the "folder_uri" uri template in the "templates" section of the discovery info to transform to a folder uri.
     """
@@ -131,7 +129,7 @@ class Members1(BaseModel):
     """
     URI representing a member that's a folder
     """
-    modified: Optional[AwareDatetime] = None
+    modified: AwareDatetime | None = None
     """
     The modification date of the folder.
     """
@@ -139,23 +137,23 @@ class Members1(BaseModel):
     """
     Name of the folder.
     """
-    parent_id: Optional[str] = None
+    parent_id: str | None = None
     """
     Folder id (in URN form) of the parent folder of this folder. If there is no parent (e.g. for a transient folder), this value is not present.
     """
-    parent_uri: Optional[AnyUrl] = None
+    parent_uri: AnyUrl | None = None
     """
     URI of the parent folder of this folder.  If there is no parent (e.g. for a transient folder), this value is not present.
     """
-    source: Optional[str] = None
+    source: str | None = None
     """
     Where the folder resides.  Currently either "native" or "creative_cloud"
     """
-    starred: Optional[bool] = None
+    starred: bool | None = None
     """
     True if the user has starred this folder.
     """
-    tags: Optional[List[str]] = None
+    tags: list[str] | None = None
     """
     An array of tags.
     """
@@ -170,7 +168,7 @@ class Model(BaseModel):
     """
     Information for paging through results.
     """
-    members: List[Union[Members, Members1]]
+    members: list[Members | Members1]
     """
     An array of objects representing the members of this folder.
     """
@@ -178,7 +176,7 @@ class Model(BaseModel):
     """
     Name of the folder.
     """
-    parent_uri: Optional[AnyUrl] = None
+    parent_uri: AnyUrl | None = None
     """
     URI of the parent folder of this folder.  If there is no parent (e.g. for the root), this value is not present.
     """

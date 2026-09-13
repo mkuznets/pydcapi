@@ -3,7 +3,7 @@
 
 from __future__ import annotations
 
-from typing import List, Literal, Optional
+from typing import Literal
 
 from pydantic import AnyUrl, BaseModel, ConfigDict, constr
 
@@ -13,7 +13,7 @@ class PageRange(BaseModel):
         extra='allow',
         frozen=True,
     )
-    end: Optional[float] = None
+    end: float | None = None
     """
     End page of this page range.
     """
@@ -28,7 +28,7 @@ class Params(BaseModel):
         extra='allow',
         frozen=True,
     )
-    page_ranges: List[PageRange]
+    page_ranges: list[PageRange]
     """
     Page ranges on the basis of which to split the input PDF file. Each page range corresponds to a single output file having the pages specified in the page range. The page ranges may not overlap.
     """
@@ -43,9 +43,7 @@ class Model(BaseModel):
     """
     URI identifying the Asset.
     """
-    on_dup_name: Optional[Literal['error', 'auto_rename', 'overwrite']] = [
-        'auto_rename'
-    ]
+    on_dup_name: Literal['error', 'auto_rename', 'overwrite'] | None = ['auto_rename']
     """
     How to handle a duplicate name conflict in target collection for output file.
     """
@@ -53,15 +51,15 @@ class Model(BaseModel):
     """
     Params for specifying how to split a PDF document into multiple documents by simply specifying the page ranges.
     """
-    parent_uri: Optional[AnyUrl] = None
+    parent_uri: AnyUrl | None = None
     """
     The uri of folder to put the asset in.  This parameter is relevant only for permanent assets.  If not specified, the default depends on the operation.  Conversions will be placed in the same folder as the source asset.
     """
-    persistence: Optional[Literal['transient', 'permanent']] = 'transient'
+    persistence: Literal['transient', 'permanent'] | None = 'transient'
     """
     Asset storage aspect as short-term transient vs. long-term permanent. "transient" creates an asset that will be available for several hours before being garbage collected and deleted.  For operations that convert and download immediately, "transient" is the appropriate choice
     """
-    prefix_name: Optional[constr(min_length=1)] = None
+    prefix_name: constr(min_length=1) | None = None
     """
     Prefix name of the new asset(s). Duplicate asset name behaviour can be set by on_dup_policy.
     """

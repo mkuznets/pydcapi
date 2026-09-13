@@ -3,8 +3,6 @@
 
 from __future__ import annotations
 
-from typing import Optional
-
 from pydantic import AnyUrl, BaseModel, ConfigDict, constr
 
 
@@ -24,11 +22,11 @@ class Target(BaseModel):
         extra='allow',
         frozen=True,
     )
-    name: Optional[constr(min_length=1)] = None
+    name: constr(min_length=1) | None = None
     """
     If present, the new name for the asset.
     """
-    parent_uri: Optional[AnyUrl] = None
+    parent_uri: AnyUrl | None = None
     """
     If present, the uri of the folder to copy this asset into.
     """

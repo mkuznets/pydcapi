@@ -3,7 +3,7 @@
 
 from __future__ import annotations
 
-from typing import Literal, Optional
+from typing import Literal
 
 from pydantic import AnyUrl, BaseModel, ConfigDict, constr
 
@@ -17,7 +17,7 @@ class Model(BaseModel):
     """
     The name for the folder.
     """
-    on_dup_name: Optional[Literal['error', 'auto_rename']] = 'error'
+    on_dup_name: Literal['error', 'auto_rename'] | None = 'error'
     """
     How to handle a duplicate name.
     """

@@ -3,7 +3,7 @@
 
 from __future__ import annotations
 
-from typing import Literal, Optional
+from typing import Literal
 
 from pydantic import BaseModel, ConfigDict, constr
 
@@ -13,7 +13,7 @@ class Model(BaseModel):
         extra='allow',
         frozen=True,
     )
-    first_name: Optional[constr(min_length=1, max_length=255)] = None
+    first_name: constr(min_length=1, max_length=255) | None = None
     """
     Deprecated, no longer editable. This parameter should be omitted and will be ignored if provided.
     """
@@ -42,11 +42,11 @@ class Model(BaseModel):
     """
     The language chosen for communication with this user.
     """
-    last_name: Optional[constr(min_length=1, max_length=255)] = None
+    last_name: constr(min_length=1, max_length=255) | None = None
     """
     Deprecated, no longer editable. This parameter should be omitted and will be ignored if provided.
     """
-    mrkt_perm_email: Optional[bool] = None
+    mrkt_perm_email: bool | None = None
     """
     Deprecated, no longer editable. This parameter should be omitted and will be ignored if provided.
     """

@@ -3,7 +3,7 @@
 
 from __future__ import annotations
 
-from typing import Literal, Optional
+from typing import Literal
 
 from pydantic import AnyUrl, BaseModel, ConfigDict
 
@@ -66,19 +66,19 @@ class Model(BaseModel):
         extra='allow',
         frozen=True,
     )
-    asset_result: Optional[AssetResult] = None
+    asset_result: AssetResult | None = None
     """
     Asset details. Returned only if status is done. If the status is 'done', this will contain the details of the new asset.
     """
-    error: Optional[Error] = None
+    error: Error | None = None
     """
     If the status is 'FAILED', this will contain the error details.
     """
-    monitor_link: Optional[MonitorLink] = None
+    monitor_link: MonitorLink | None = None
     """
     If the upload status is 'in progress', use this link to poll for status. Note that this method should be called only after the interval specified in retry_interval.
     """
-    retry_interval: Optional[float] = None
+    retry_interval: float | None = None
     """
     If the status is 'in progress' this specifies the number of milliseconds to wait before re-querying the monitor/upload status.
     """

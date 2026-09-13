@@ -3,8 +3,6 @@
 
 from __future__ import annotations
 
-from typing import List
-
 from pydantic import AnyUrl, BaseModel, ConfigDict, Field
 
 
@@ -54,7 +52,7 @@ class FieldLinks(BaseModel):
     """
     URL object for completing the upload.
     """
-    upload_links: List[UploadLink] = Field(..., min_length=1)
+    upload_links: list[UploadLink] = Field(..., min_length=1)
     """
     List of Pre-signed URLs for doing the upload for each block. The client applications should use these pre-signed URLs for doing the upload. In the finalize upload call, the client needs to return these URLs. The upload_urls which are not used by the client should be removed from the request body in the finalize call..
     """

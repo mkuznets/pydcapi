@@ -3,7 +3,7 @@
 
 from __future__ import annotations
 
-from typing import Any, Dict, List, Literal, Optional
+from typing import Any, Literal
 
 from pydantic import BaseModel, ConfigDict, Field
 
@@ -13,13 +13,13 @@ class Subscription(BaseModel):
         extra='allow',
         frozen=True,
     )
-    billing_term: Optional[
-        Literal['Monthly', 'AnnualBilledMonthly', 'AnnualBilledAnnually']
-    ] = None
+    billing_term: (
+        Literal['Monthly', 'AnnualBilledMonthly', 'AnnualBilledAnnually'] | None
+    ) = None
     """
     This value will not be available for document cloud offerings sold to team (CCT) and enterprise (CCE) subscriptions.
     """
-    biz_source: Optional[str] = None
+    biz_source: str | None = None
     """
     The business source associated with this product purchase.
     """
@@ -58,11 +58,11 @@ class Subscription(BaseModel):
     """
     Account status.  Any status other than `Active` indicates that services are not available to this account.
     """
-    sub_ref: Optional[str] = None
+    sub_ref: str | None = None
     """
     A UUID value that allows this product to be correlated to the Adobe store API values. This will be NULL for document cloud offerings sold to team (CCT) and enterprise (CCE) subscriptions as these users are entitled by an admin and do not have subscription record associated with them.
     """
-    subscription_params: Optional[Dict[str, Any]] = None
+    subscription_params: dict[str, Any] | None = None
     """
     Map of additional params present for this subscription, if any.
     """
@@ -73,4 +73,4 @@ class Model(BaseModel):
         extra='allow',
         frozen=True,
     )
-    subscriptions: List[Subscription] = Field(..., min_length=1)
+    subscriptions: list[Subscription] = Field(..., min_length=1)

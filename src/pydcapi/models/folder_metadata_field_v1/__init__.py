@@ -3,8 +3,6 @@
 
 from __future__ import annotations
 
-from typing import List, Optional
-
 from pydantic import AnyUrl, AwareDatetime, BaseModel, ConfigDict
 
 
@@ -13,51 +11,51 @@ class Model(BaseModel):
         extra='allow',
         frozen=True,
     )
-    created: Optional[AwareDatetime] = None
+    created: AwareDatetime | None = None
     """
     The creation date of the folder.
     """
-    custom_tags: Optional[List[str]] = None
+    custom_tags: list[str] | None = None
     """
     An array of custom tags for client application use.
     """
-    favorite: Optional[bool] = None
+    favorite: bool | None = None
     """
     True if the user has marked this folder a favorite.
     """
-    folder_id: Optional[str] = None
+    folder_id: str | None = None
     """
     The folder id (in URN form).  Use the "folder_uri" uri template in the "templates" section of the discovery info to transform to a folder uri.
     """
-    modified: Optional[AwareDatetime] = None
+    modified: AwareDatetime | None = None
     """
     The modification date of the folder.
     """
-    name: Optional[str] = None
+    name: str | None = None
     """
     Name of the folder.
     """
-    parent_id: Optional[str] = None
+    parent_id: str | None = None
     """
     Folder id (in URN form) of the parent folder of this folder. If there is no parent (e.g. for a transient folder), this value is not present.
     """
-    parent_uri: Optional[AnyUrl] = None
+    parent_uri: AnyUrl | None = None
     """
     URI of the parent folder of this folder.  If there is no parent (e.g. for a transient folder), this value is not present.
     """
-    source: Optional[str] = None
+    source: str | None = None
     """
     Where the folder resides.  Currently either "native" or "creative_cloud"
     """
-    starred: Optional[bool] = None
+    starred: bool | None = None
     """
     True if the user has starred this folder.
     """
-    tags: Optional[List[str]] = None
+    tags: list[str] | None = None
     """
     An array of tags.
     """
-    uri: Optional[AnyUrl] = None
+    uri: AnyUrl | None = None
     """
     URI representing the folder
     """

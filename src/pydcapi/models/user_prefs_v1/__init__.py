@@ -3,7 +3,7 @@
 
 from __future__ import annotations
 
-from typing import Any, Dict, Literal, Optional
+from typing import Any, Literal
 
 from pydantic import BaseModel, ConfigDict, Field, constr
 
@@ -13,7 +13,7 @@ class Acroprefs(BaseModel):
         extra='allow',
         frozen=True,
     )
-    prefsync_enabled: Optional[bool] = None
+    prefsync_enabled: bool | None = None
 
 
 class DcConsent(BaseModel):
@@ -21,15 +21,15 @@ class DcConsent(BaseModel):
         extra='allow',
         frozen=True,
     )
-    latest_version: Optional[str] = Field(None, alias='latest version')
+    latest_version: str | None = Field(None, alias='latest version')
     """
     version of the latest consent needed
     """
-    status: Optional[bool] = None
+    status: bool | None = None
     """
     indicates the current status of user consent
     """
-    version: Optional[str] = None
+    version: str | None = None
     """
     version of the consent data
     """
@@ -40,7 +40,7 @@ class Genai(BaseModel):
         extra='allow',
         frozen=True,
     )
-    dc_consent: Optional[DcConsent] = None
+    dc_consent: DcConsent | None = None
     """
     provides essential information about user consent
     """
@@ -51,19 +51,19 @@ class Common(BaseModel):
         extra='allow',
         frozen=True,
     )
-    acroprefs: Optional[Acroprefs] = None
+    acroprefs: Acroprefs | None = None
     """
     user preference to sync his acrobat  preferences
     """
-    genai: Optional[Genai] = None
+    genai: Genai | None = None
     """
     user preference related to genAI feature
     """
-    lastToolUsed: Optional[str] = None
+    lastToolUsed: str | None = None
     """
     last tool used by user
     """
-    sync_favorite_files: Optional[bool] = None
+    sync_favorite_files: bool | None = None
     """
     users pin to cloud preferences
     """
@@ -74,8 +74,8 @@ class Fte(BaseModel):
         extra='allow',
         frozen=True,
     )
-    launch_count: Optional[float] = 0
-    welcome_dialog_dismissed: Optional[bool] = False
+    launch_count: float | None = 0
+    welcome_dialog_dismissed: bool | None = False
 
 
 class Dcweb(BaseModel):
@@ -83,7 +83,7 @@ class Dcweb(BaseModel):
         extra='allow',
         frozen=True,
     )
-    fte: Optional[Fte] = None
+    fte: Fte | None = None
     """
     First Time Experience Tracking
     """
@@ -94,11 +94,11 @@ class Fillsign(BaseModel):
         extra='allow',
         frozen=True,
     )
-    ac_s: Optional[Literal[0, 1]] = 1
+    ac_s: Literal[0, 1] | None = 1
     """
     user  preference for auto complete suggestions
     """
-    disableFlattenOnSaveDialog: Optional[bool] = False
+    disableFlattenOnSaveDialog: bool | None = False
     """
     user preference for showing warning for flatten on save
     """
@@ -109,11 +109,12 @@ class RecentAssets(BaseModel):
         extra='allow',
         frozen=True,
     )
-    since: Optional[
+    since: (
         constr(
             pattern=r'([0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}Z?|\$\{systemtime_rfc3339\})'
         )
-    ] = None
+        | None
+    ) = None
     """
     The last time the users recent assets list was cleared, represented in UTC formatted to RFC3339. Clients can also pass a special value `${systemtime_rfc3339}` which will use the current time. If recents have not been cleared `since` may be missing.
     """
@@ -124,31 +125,32 @@ class Model(BaseModel):
         extra='allow',
         frozen=True,
     )
-    acrobat: Optional[Dict[str, Any]] = None
+    acrobat: dict[str, Any] | None = None
     """
     DC Acrobat Preferences shared across different machines
     """
-    common: Optional[Common] = None
+    common: Common | None = None
     """
     DC Common Preferences across clients
     """
-    dcweb: Optional[Dcweb] = None
+    dcweb: Dcweb | None = None
     """
     DC Web common preferences
     """
-    fillsign: Optional[Fillsign] = None
+    fillsign: Fillsign | None = None
     """
     DC Fillsign Preferences across clients
     """
-    recent_assets: Optional[RecentAssets] = None
+    recent_assets: RecentAssets | None = None
     """
     Last time recent assets was cleared
     """
-    recent_assets_timestamp: Optional[
+    recent_assets_timestamp: (
         constr(
             pattern=r'([0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}Z?|^$|\$\{systemtime_rfc3339\})'
         )
-    ] = ''
+        | None
+    ) = ''
     """
     The last time the users recent assets list was cleared, represented in UTC formatted to RFC3339. If the value is an empty string recent assets may not have been set yet. Clients can pass a special value `${systemtime_rfc3339}` which will use the current time or an empty string to clear the recent assets. Example: 2018-01-01T12:00:00Z
     """

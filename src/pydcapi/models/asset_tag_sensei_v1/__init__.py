@@ -3,7 +3,7 @@
 
 from __future__ import annotations
 
-from typing import Any, Dict, List, Optional
+from typing import Any
 
 from pydantic import BaseModel, ConfigDict, Field
 
@@ -13,9 +13,9 @@ class ClassificationEntry(BaseModel):
         extra='allow',
         frozen=True,
     )
-    field_comment: Optional[str] = Field(None, alias='_comment')
-    class_label: Optional[str] = None
-    score: Optional[float] = None
+    field_comment: str | None = Field(None, alias='_comment')
+    class_label: str | None = None
+    score: float | None = None
 
 
 class ClassificationItem(BaseModel):
@@ -23,7 +23,7 @@ class ClassificationItem(BaseModel):
         extra='allow',
         frozen=True,
     )
-    classification_entries: Optional[List[ClassificationEntry]] = None
+    classification_entries: list[ClassificationEntry] | None = None
 
 
 class CoordListItem(BaseModel):
@@ -31,8 +31,8 @@ class CoordListItem(BaseModel):
         extra='allow',
         frozen=True,
     )
-    x: Optional[float] = None
-    y: Optional[float] = None
+    x: float | None = None
+    y: float | None = None
 
 
 class Polygon(BaseModel):
@@ -40,7 +40,7 @@ class Polygon(BaseModel):
         extra='allow',
         frozen=True,
     )
-    coordList: Optional[List[CoordListItem]] = None
+    coordList: list[CoordListItem] | None = None
 
 
 class Location(BaseModel):
@@ -48,7 +48,7 @@ class Location(BaseModel):
         extra='allow',
         frozen=True,
     )
-    polygon: Optional[Polygon] = None
+    polygon: Polygon | None = None
 
 
 class MetaInfo(BaseModel):
@@ -56,8 +56,8 @@ class MetaInfo(BaseModel):
         extra='allow',
         frozen=True,
     )
-    page_number: Optional[float] = None
-    type: Optional[str] = None
+    page_number: float | None = None
+    type: str | None = None
 
 
 class ResponseItem(BaseModel):
@@ -65,10 +65,10 @@ class ResponseItem(BaseModel):
         extra='allow',
         frozen=True,
     )
-    field_comment: Optional[str] = Field(None, alias='_comment')
-    classification: Optional[List[ClassificationItem]] = None
-    location: Optional[Location] = None
-    meta_info: Optional[MetaInfo] = None
+    field_comment: str | None = Field(None, alias='_comment')
+    classification: list[ClassificationItem] | None = None
+    location: Location | None = None
+    meta_info: MetaInfo | None = None
 
 
 class Result(BaseModel):
@@ -76,8 +76,8 @@ class Result(BaseModel):
         extra='allow',
         frozen=True,
     )
-    response: Optional[List[ResponseItem]] = None
-    response_type: Optional[str] = None
+    response: list[ResponseItem] | None = None
+    response_type: str | None = None
     """
     ANNOTATION
     """
@@ -88,12 +88,12 @@ class CasResponse(BaseModel):
         extra='allow',
         frozen=True,
     )
-    analyzer_id: Optional[str] = None
+    analyzer_id: str | None = None
     """
     Unique service ID, also known as Analyzer ID
     """
-    result: Optional[Result] = None
-    status: Optional[int] = None
+    result: Result | None = None
+    status: int | None = None
     """
     Status code for the response
     """
@@ -104,13 +104,13 @@ class Model(BaseModel):
         extra='allow',
         frozen=True,
     )
-    cas_responses: Optional[List[CasResponse]] = None
-    content_id: Optional[str] = None
+    cas_responses: list[CasResponse] | None = None
+    content_id: str | None = None
     """
     A string that identifies the request; if the request included the content_id field, the response will have that value as well.  Otherwise, it will be the URL or file name of the input image
     """
-    error: Optional[List[Dict[str, Any]]] = None
-    status: Optional[int] = None
+    error: list[dict[str, Any]] | None = None
+    status: int | None = None
     """
     HTTP response status code
     """

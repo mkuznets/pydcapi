@@ -3,7 +3,7 @@
 
 from __future__ import annotations
 
-from typing import Literal, Optional
+from typing import Literal
 
 from pydantic import AnyUrl, BaseModel, ConfigDict, constr
 
@@ -21,15 +21,15 @@ class Model(BaseModel):
     """
     Name of the output PPTX asset (e.g. presentation.pptx). Duplicate name behaviour is controlled by on_dup_name.
     """
-    on_dup_name: Optional[Literal['error', 'auto_rename', 'overwrite']] = 'auto_rename'
+    on_dup_name: Literal['error', 'auto_rename', 'overwrite'] | None = 'auto_rename'
     """
     How to handle a duplicate name conflict for the output file.
     """
-    parent_uri: Optional[AnyUrl] = None
+    parent_uri: AnyUrl | None = None
     """
     The uri of folder to put the asset in.  This parameter is relevant only for permanent assets.  If not specified, the default depends on the operation.  Conversions will be placed in the same folder as the source asset.
     """
-    persistence: Optional[Literal['transient', 'permanent']] = 'transient'
+    persistence: Literal['transient', 'permanent'] | None = 'transient'
     """
     Asset storage aspect as short-term transient vs. long-term permanent. "transient" creates an asset that will be available for several hours before being garbage collected and deleted.  For operations that convert and download immediately, "transient" is the appropriate choice
     """

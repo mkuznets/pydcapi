@@ -3,7 +3,7 @@
 
 from __future__ import annotations
 
-from typing import Literal, Optional
+from typing import Literal
 
 from pydantic import AnyUrl, BaseModel, ConfigDict, conint, constr
 
@@ -13,33 +13,33 @@ class ImageParams(BaseModel):
         extra='allow',
         frozen=True,
     )
-    draw_annotations: Optional[bool] = True
+    draw_annotations: bool | None = True
     """
     Specify whether to include PDF annotations in the output image file(s).
     """
-    image_format: Optional[Literal['jpeg', 'png', 'tiff']] = ['jpeg']
+    image_format: Literal['jpeg', 'png', 'tiff'] | None = ['jpeg']
     """
     The format of the image to generate.
     """
-    max_dimension: Optional[conint(ge=32, le=8192)] = None
+    max_dimension: conint(ge=32, le=8192) | None = None
     """
     Max dimension of any image in pixels. This can range from 32 to 8192.
     """
-    pages: Optional[
-        constr(pattern=r'^([1-9 ]+[0-9 ]*-?[0-9 ]*)(,[1-9 ]+[0-9 ]*-?[0-9 ]*)*$')
-    ] = '1-'
+    pages: (
+        constr(pattern=r'^([1-9 ]+[0-9 ]*-?[0-9 ]*)(,[1-9 ]+[0-9 ]*-?[0-9 ]*)*$') | None
+    ) = '1-'
     """
     Page range to be included. Page numbers are 1-based, comma seperated, and can include spaces (0x20, ignored) and a dash ('-', 0x2D) -- used to denote a range of pages.
     """
-    quality: Optional[Literal['min', 'low', 'medium', 'high', 'max']] = 'medium'
+    quality: Literal['min', 'low', 'medium', 'high', 'max'] | None = 'medium'
     """
     Controls the lossy compression setting.  "max" is best quality.  "min" is smallest file size
     """
-    resolution_dpi: Optional[conint(ge=9, le=600)] = 72
+    resolution_dpi: conint(ge=9, le=600) | None = 72
     """
     Dots per inch. This can range from 9 to 600.
     """
-    use_transparent_background: Optional[bool] = False
+    use_transparent_background: bool | None = False
     """
     If true, render the page backgrounds transparent.  Not applicable if the output is jpeg.
     """
@@ -54,17 +54,17 @@ class Model(BaseModel):
     """
     URI identifying the Asset.
     """
-    do_ocr: Optional[bool] = False
+    do_ocr: bool | None = False
     """
     Whether OCR processing is performed on the PDF file or not. This setting is ignored for exportpdf to image.
     """
-    format: Optional[Literal['doc', 'docx', 'xls', 'xlsx', 'pptx', 'rtf', 'image']] = (
+    format: Literal['doc', 'docx', 'xls', 'xlsx', 'pptx', 'rtf', 'image'] | None = (
         'docx'
     )
     """
     The exportpdf format. For image file formats, the output is a zip file containing images of all the pages.
     """
-    image_params: Optional[ImageParams] = None
+    image_params: ImageParams | None = None
     """
     Set of properties that are applicable when exporting to an image format.
     """
@@ -72,7 +72,7 @@ class Model(BaseModel):
     """
     Name of the new asset. Duplicate asset name behavior can be set by on_dup_policy.
     """
-    ocr_lang: Optional[
+    ocr_lang: (
         Literal[
             'da-DK',
             'lt-LT',
@@ -113,21 +113,20 @@ class Model(BaseModel):
             'ro-RO',
             'iw-IL',
         ]
-    ] = 'en-US'
+        | None
+    ) = 'en-US'
     """
     Locale to use for optical character recognition (when `do_ocr` is true).
     """
-    on_dup_name: Optional[Literal['error', 'auto_rename', 'overwrite']] = [
-        'auto_rename'
-    ]
+    on_dup_name: Literal['error', 'auto_rename', 'overwrite'] | None = ['auto_rename']
     """
     How to handle a duplicate name conflict in target collection for output file.
     """
-    parent_uri: Optional[AnyUrl] = None
+    parent_uri: AnyUrl | None = None
     """
     The uri of folder to put the asset in.  This parameter is relevant only for permanent assets.  If not specified, the default depends on the operation.  Conversions will be placed in the same folder as the source asset.
     """
-    persistence: Optional[Literal['transient', 'permanent']] = 'transient'
+    persistence: Literal['transient', 'permanent'] | None = 'transient'
     """
     Asset storage aspect as short-term transient vs. long-term permanent. "transient" creates an asset that will be available for several hours before being garbage collected and deleted.  For operations that convert and download immediately, "transient" is the appropriate choice
     """

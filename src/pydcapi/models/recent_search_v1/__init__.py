@@ -3,8 +3,6 @@
 
 from __future__ import annotations
 
-from typing import List, Optional
-
 from pydantic import BaseModel, ConfigDict, Field, RootModel, conint, constr
 
 
@@ -21,7 +19,7 @@ class UssPacket(BaseModel):
         frozen=True,
     )
     q: constr(min_length=1, max_length=1024)
-    scope: List[ScopeItem] = Field(..., max_length=10, min_length=0)
+    scope: list[ScopeItem] = Field(..., max_length=10, min_length=0)
 
 
 class Model(BaseModel):
@@ -29,7 +27,7 @@ class Model(BaseModel):
         extra='allow',
         frozen=True,
     )
-    created: Optional[conint(ge=0)] = None
+    created: conint(ge=0) | None = None
     """
     The UNIX UTC timestamp of when the recent search was created
     """

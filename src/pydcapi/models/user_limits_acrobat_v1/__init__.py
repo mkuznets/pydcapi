@@ -3,8 +3,6 @@
 
 from __future__ import annotations
 
-from typing import Optional
-
 from pydantic import BaseModel, ConfigDict
 
 
@@ -13,7 +11,7 @@ class Model(BaseModel):
         extra='allow',
         frozen=True,
     )
-    acrobat_desktop_mode: Optional[str] = None
+    acrobat_desktop_mode: str | None = None
     """
     Indicates whether the user is entitled to Acrobat Lite GenAI.
     """

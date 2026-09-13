@@ -3,7 +3,7 @@
 
 from __future__ import annotations
 
-from typing import Literal, Optional
+from typing import Literal
 
 from pydantic import AnyUrl, BaseModel, ConfigDict
 
@@ -13,7 +13,7 @@ class Model(BaseModel):
         extra='allow',
         frozen=True,
     )
-    asset_uri: Optional[AnyUrl] = None
+    asset_uri: AnyUrl | None = None
     """
     Asset uri of the asset which is to be updated via block file upload. This is a mandatory attribute while updating an existing asset.
     """

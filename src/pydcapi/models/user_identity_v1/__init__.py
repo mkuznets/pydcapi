@@ -3,7 +3,7 @@
 
 from __future__ import annotations
 
-from typing import Any, Dict, Literal, Optional
+from typing import Any, Literal
 
 from pydantic import BaseModel, ConfigDict
 
@@ -13,7 +13,7 @@ class Model(BaseModel):
         extra='allow',
         frozen=True,
     )
-    analytics_plan_code: Optional[str] = None
+    analytics_plan_code: str | None = None
     """
     An account description to include with analytics events.
     """
@@ -37,7 +37,7 @@ class Model(BaseModel):
     """
     A first name associated with this user.
     """
-    first_time: Dict[str, Any]
+    first_time: dict[str, Any]
     """
     A map of first-time indicators. e.g. dex_web_app. In the case of dex_web_app, this value will be true if they have never visited cloud.acrobat.com.
     """
