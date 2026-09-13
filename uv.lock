@@ -802,7 +802,10 @@ dependencies = [
 [package.dev-dependencies]
 codegen = [
     { name = "autoflake" },
+    { name = "black" },
     { name = "datamodel-code-generator" },
+    { name = "isort" },
+    { name = "jinja2" },
 ]
 dev = [
     { name = "mypy" },
@@ -821,7 +824,10 @@ requires-dist = [
 [package.metadata.requires-dev]
 codegen = [
     { name = "autoflake", specifier = ">=2.4" },
+    { name = "black", specifier = ">=26" },
     { name = "datamodel-code-generator", specifier = ">=0.80" },
+    { name = "isort", specifier = ">=8" },
+    { name = "jinja2", specifier = ">=3.1" },
 ]
 dev = [
     { name = "mypy", specifier = ">=1.17" },
