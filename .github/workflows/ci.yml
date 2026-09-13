@@ -43,3 +43,25 @@ jobs:
         run: uv run pytest
         env:
           IMS_SID: ${{ secrets.IMS_SID }}
+
+  codegen:
+    name: Generated code is up to date
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          fetch-depth: 0
+
+      - uses: astral-sh/setup-uv@bec219d24cd3e171d82865faccec33120bb574f4 # v10.1.0
+        with:
+          python-version: "3.14"
+
+      - name: Install
+        run: uv sync --locked --group codegen
+
+      - name: Regenerate
+        run: uv run --group codegen python -m codegen generate
+
+      - name: Check for differences
+        run: git diff --exit-code --stat -- src/pydcapi
