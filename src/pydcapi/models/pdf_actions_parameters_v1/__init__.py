@@ -17,9 +17,7 @@ class Rotate(BaseModel):
     """
     Required for 'rotate' cmd. It specifies the clockwise rotation angle relative to the starting orientation of the page. e.g. if a page is already rotated 90 degrees (landscape), specifying a rotation of 90 degrees will rotate it a further 90 degrees.  The valid rotation angles are: 90, 180, 270.
     """
-    pages: (
-        constr(pattern=r'^([1-9 ]+[0-9 ]*-?[0-9 ]*)(,[1-9 ]+[0-9 ]*-?[0-9 ]*)*$') | None
-    ) = None
+    pages: constr(pattern=r'^([1-9 ]+[0-9 ]*-?[0-9 ]*)(,[1-9 ]+[0-9 ]*-?[0-9 ]*)*$') | None = None
     """
     A page range relative to the input document. See "include".
     """
@@ -42,9 +40,7 @@ class Asset(BaseModel):
     """
     URI identifying the asset to convert to PDF.
     """
-    include: (
-        constr(pattern=r'^([1-9 ]+[0-9 ]*-?[0-9 ]*)(,[1-9 ]+[0-9 ]*-?[0-9 ]*)*$') | None
-    ) = None
+    include: constr(pattern=r'^([1-9 ]+[0-9 ]*-?[0-9 ]*)(,[1-9 ]+[0-9 ]*-?[0-9 ]*)*$') | None = None
     """
     A description of the pages to be included. Page numbers are 1-based, comma seperated, and can include spaces (0x20, ignored) and a dash ('-', 0x2D) -- used to denote a range of pages. Note that individual pages may be included more than once -- but with limits.  Any given page range may not result in more than 5 times the number of pages in the source PDF.  If no range is specified, all pages are included: "1-".
     """
@@ -142,10 +138,7 @@ class PasswordEncrypt(BaseModel):
         extra='allow',
         frozen=True,
     )
-    content_to_encrypt: (
-        Literal['all_content', 'all_content_except_metadata', 'only_embedded_files']
-        | None
-    ) = 'all_content'
+    content_to_encrypt: Literal['all_content', 'all_content_except_metadata', 'only_embedded_files'] | None = 'all_content'
     """
     Sets the type of content to be encrypted. If only_embedded_files option is set, it will render any provided access permissions as ineffective.
     """
@@ -157,20 +150,7 @@ class PasswordEncrypt(BaseModel):
     """
     Password used to control opening of an encrypted PDF document. When this property is included and non-empty, the use of a password (either this one or, if specified, the permissions password) is necessary to open/view the document. If this password is empty or omitted the document can be opened automatically by conforming PDF viewers.
     """
-    permissions: (
-        list[
-            Literal[
-                'print_low_quality',
-                'print_high_quality',
-                'edit_content',
-                'edit_fill_and_sign_form_fields',
-                'edit_annotations',
-                'edit_document_assembly',
-                'copy_content',
-            ]
-        ]
-        | None
-    ) = None
+    permissions: list[Literal['print_low_quality', 'print_high_quality', 'edit_content', 'edit_fill_and_sign_form_fields', 'edit_annotations', 'edit_document_assembly', 'copy_content']] | None = None
     """
     Permissions to allow printing, editing and content copying in the PDF document. By default, none of the specified actions are permitted. print_high_quality permission includes print_low_quality permission. edit_content permission includes edit_document_assembly and edit_fill_and_sign_form_fields permissions. Permissions settings will only be used in case the permissions_password is set.
     """
@@ -204,9 +184,7 @@ class TaggedPdf(BaseModel):
     """
     Deprecated version parameter.
     """
-    format: Literal['fully_tagged_pdf', 'well_tagged_pdf', 'instance_data'] | None = (
-        'fully_tagged_pdf'
-    )
+    format: Literal['fully_tagged_pdf', 'well_tagged_pdf', 'instance_data'] | None = 'fully_tagged_pdf'
     """
     What format is the output.  \\"well_tagged_pdf \\" contains structure tags. \\"fully_tagged_pdf\\" contains additional information for dynamic viewing. \\"instance_data\\" contains machine learning output to allow clients to construct fully-taggged-pdf.
     """

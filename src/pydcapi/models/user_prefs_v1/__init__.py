@@ -109,12 +109,7 @@ class RecentAssets(BaseModel):
         extra='allow',
         frozen=True,
     )
-    since: (
-        constr(
-            pattern=r'([0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}Z?|\$\{systemtime_rfc3339\})'
-        )
-        | None
-    ) = None
+    since: constr(pattern=r'([0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}Z?|\$\{systemtime_rfc3339\})') | None = None
     """
     The last time the users recent assets list was cleared, represented in UTC formatted to RFC3339. Clients can also pass a special value `${systemtime_rfc3339}` which will use the current time. If recents have not been cleared `since` may be missing.
     """
@@ -145,12 +140,7 @@ class Model(BaseModel):
     """
     Last time recent assets was cleared
     """
-    recent_assets_timestamp: (
-        constr(
-            pattern=r'([0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}Z?|^$|\$\{systemtime_rfc3339\})'
-        )
-        | None
-    ) = ''
+    recent_assets_timestamp: constr(pattern=r'([0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}Z?|^$|\$\{systemtime_rfc3339\})') | None = ''
     """
     The last time the users recent assets list was cleared, represented in UTC formatted to RFC3339. If the value is an empty string recent assets may not have been set yet. Clients can pass a special value `${systemtime_rfc3339}` which will use the current time or an empty string to clear the recent assets. Example: 2018-01-01T12:00:00Z
     """

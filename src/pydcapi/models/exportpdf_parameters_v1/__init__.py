@@ -25,9 +25,7 @@ class ImageParams(BaseModel):
     """
     Max dimension of any image in pixels. This can range from 32 to 8192.
     """
-    pages: (
-        constr(pattern=r'^([1-9 ]+[0-9 ]*-?[0-9 ]*)(,[1-9 ]+[0-9 ]*-?[0-9 ]*)*$') | None
-    ) = '1-'
+    pages: constr(pattern=r'^([1-9 ]+[0-9 ]*-?[0-9 ]*)(,[1-9 ]+[0-9 ]*-?[0-9 ]*)*$') | None = '1-'
     """
     Page range to be included. Page numbers are 1-based, comma seperated, and can include spaces (0x20, ignored) and a dash ('-', 0x2D) -- used to denote a range of pages.
     """
@@ -58,9 +56,7 @@ class Model(BaseModel):
     """
     Whether OCR processing is performed on the PDF file or not. This setting is ignored for exportpdf to image.
     """
-    format: Literal['doc', 'docx', 'xls', 'xlsx', 'pptx', 'rtf', 'image'] | None = (
-        'docx'
-    )
+    format: Literal['doc', 'docx', 'xls', 'xlsx', 'pptx', 'rtf', 'image'] | None = 'docx'
     """
     The exportpdf format. For image file formats, the output is a zip file containing images of all the pages.
     """

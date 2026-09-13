@@ -27,9 +27,7 @@ class Model(BaseModel):
     """
     Time zone offset, in minutes, of the client's local time from GMT (e.g. for EDT, tzo=240). If this parameter is not specified the file modification dates in the zip file will be in GMT, this parameter allows the client to get a zip file with client local time mod times.
     """
-    zip_file_name: constr(min_length=1) | None = (
-        'documents.zip or the name of the folder for folders'
-    )
+    zip_file_name: constr(min_length=1) | None = 'documents.zip or the name of the folder for folders'
     """
     The name to give the downloaded zip file.  If not provided, the default is documents.zip for assets, or the name of the folder for folders.
     """

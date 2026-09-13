@@ -33,9 +33,7 @@ class ListItem(BaseModel):
     """
     GUID for uniquely identifying each external cloud account linked or ready to be linked.
     """
-    connectorType: Literal[
-        'Teams', 'OneDrive', 'SharePoint', 'GDrive', 'Box', 'DropBox'
-    ]
+    connectorType: Literal['Teams', 'OneDrive', 'SharePoint', 'GDrive', 'Box', 'DropBox']
     """
     Identifier for Connector class.
     """

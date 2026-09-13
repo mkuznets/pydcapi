@@ -75,6 +75,8 @@ def generate_model(model_name: str, schema_path: str) -> None:
             # "--use-annotated",
             "--target-python-version",
             "3.10",
+            "--formatters",
+            "builtin",
         ]
     )
 

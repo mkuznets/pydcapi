@@ -21,9 +21,7 @@ class Model(BaseModel):
     """
     Stringified JSON data representing connector preferences to be stored in db.
     """
-    connectorType: Literal[
-        'Teams', 'OneDrive', 'SharePoint', 'GDrive', 'Box', 'DropBox'
-    ]
+    connectorType: Literal['Teams', 'OneDrive', 'SharePoint', 'GDrive', 'Box', 'DropBox']
     """
     Identifier for Connector class.
     """

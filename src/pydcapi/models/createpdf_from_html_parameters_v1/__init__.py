@@ -54,7 +54,7 @@ class Model(BaseModel):
     """
     json_: dict[str, Any] | None = Field(None, alias='json')
     """
-    JavaScript variables to be placed in global scope to reference while rendering the HTML.  This mechanism is intended to be used to supply data that might otherwise be retrieved using ajax requests.  The actual mechanics of accessing this content varies depending if rendering from a zip file or from a url.  When rendering from a zip file, the source collateral must include a script element such as:<br> ```<script src='./json.js' type='text/javascript'></script>```<br> When rendering from a URL, the content of this json object is injected into the browser VM before the page is rendered. 
+    JavaScript variables to be placed in global scope to reference while rendering the HTML.  This mechanism is intended to be used to supply data that might otherwise be retrieved using ajax requests.  The actual mechanics of accessing this content varies depending if rendering from a zip file or from a url.  When rendering from a zip file, the source collateral must include a script element such as:<br> ```<script src='./json.js' type='text/javascript'></script>```<br> When rendering from a URL, the content of this json object is injected into the browser VM before the page is rendered.
     """
     maximum_wait: confloat(ge=0.0, le=900.0) | None = 0
     """
@@ -70,7 +70,7 @@ class Model(BaseModel):
     """
     page: Page | None = None
     """
-    Parameters defining the properties of the output pages.  Page properties defined in CSS will take precendence: http://www.w3.org/TR/css3-page/ See also: http://www.w3.org/TR/css3-break/ 
+    Parameters defining the properties of the output pages.  Page properties defined in CSS will take precendence: http://www.w3.org/TR/css3-page/ See also: http://www.w3.org/TR/css3-break/
     """
     parent_uri: AnyUrl | None = None
     """
@@ -92,9 +92,7 @@ class Model(BaseModel):
     """
     A reference to a JavaScript file that will be executed immediately prior to loading the HTML page.  This allows a client to inject script that may modify the DOM before render.  This is particularly useful when rendering from a URL where the client has no control over the HTML content.  Common usage is to use this parameter in combination with `maximum_wait` in order to affect the output and also call either `adbe_content_loaded()` or `adbe_content_failed(msg)`.
     """
-    tagged_pdf_format: Literal['well_tagged_pdf', 'not_tagged_pdf'] | None = [
-        'not_tagged_pdf'
-    ]
+    tagged_pdf_format: Literal['well_tagged_pdf', 'not_tagged_pdf'] | None = ['not_tagged_pdf']
     """
     If specified, apply the selected type of PDF tagging.
     """

@@ -13,9 +13,7 @@ class Subscription(BaseModel):
         extra='allow',
         frozen=True,
     )
-    billing_term: (
-        Literal['Monthly', 'AnnualBilledMonthly', 'AnnualBilledAnnually'] | None
-    ) = None
+    billing_term: Literal['Monthly', 'AnnualBilledMonthly', 'AnnualBilledAnnually'] | None = None
     """
     This value will not be available for document cloud offerings sold to team (CCT) and enterprise (CCE) subscriptions.
     """
@@ -27,30 +25,7 @@ class Subscription(BaseModel):
     """
     The service level.  All paid products have only a 'Basic' service level.
     """
-    name: Literal[
-        'CreatePDF',
-        'PDFPack',
-        'ExportPDF',
-        'Files',
-        'DCGlobal',
-        'DCEnterprise',
-        'AcrobatPlus',
-        'AcrobatStd',
-        'SendNow',
-        'FillAndSign',
-        'ESign',
-        'Review',
-        'FormsCentral',
-        'EditPDF',
-        'OcrPDF',
-        'DCLite',
-        'ScanPlus',
-        'AdobeScan',
-        'GenAIServices',
-        'PersistentChatHistory',
-        'SecuredLinkSharing',
-        'AcrobatDesktopMode',
-    ]
+    name: Literal['CreatePDF', 'PDFPack', 'ExportPDF', 'Files', 'DCGlobal', 'DCEnterprise', 'AcrobatPlus', 'AcrobatStd', 'SendNow', 'FillAndSign', 'ESign', 'Review', 'FormsCentral', 'EditPDF', 'OcrPDF', 'DCLite', 'ScanPlus', 'AdobeScan', 'GenAIServices', 'PersistentChatHistory', 'SecuredLinkSharing', 'AcrobatDesktopMode']
     """
     The subscription name.
     """

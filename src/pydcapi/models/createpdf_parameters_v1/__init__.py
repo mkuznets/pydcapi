@@ -83,12 +83,7 @@ class Model(BaseModel):
     """
     Locale to use for optical character recognition (when `do_ocr` is true).
     """
-    ocr_type: (
-        Literal[
-            'searchable_image', 'editable_text_and_images', 'searchable_image_exact'
-        ]
-        | None
-    ) = 'searchable_image'
+    ocr_type: Literal['searchable_image', 'editable_text_and_images', 'searchable_image_exact'] | None = 'searchable_image'
     """
     OCR option to use for optical character recognition (when do_ocr is true).
     """
@@ -104,9 +99,7 @@ class Model(BaseModel):
     """
     Asset storage aspect as short-term transient vs. long-term permanent. "transient" creates an asset that will be available for several hours before being garbage collected and deleted.  For operations that convert and download immediately, "transient" is the appropriate choice
     """
-    tagged_pdf_format: Literal['fully_tagged_pdf', 'well_tagged_pdf'] | None = (
-        'well_tagged_pdf'
-    )
+    tagged_pdf_format: Literal['fully_tagged_pdf', 'well_tagged_pdf'] | None = 'well_tagged_pdf'
     """
     If specified, apply the selected type of PDF tagging. This setting applies only when converting Microsoft Word files to PDF.
     """

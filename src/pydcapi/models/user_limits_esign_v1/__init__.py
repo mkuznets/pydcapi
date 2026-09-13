@@ -13,9 +13,7 @@ class Model(BaseModel):
         extra='allow',
         frozen=True,
     )
-    esign_access: Literal[
-        'no_access', 'read_only', 'pro', 'team', 'enterprise', 'global'
-    ]
+    esign_access: Literal['no_access', 'read_only', 'pro', 'team', 'enterprise', 'global']
     """
      * `no_access` - User does not have access to Echosign. This represents a new user to Echosign.
     * `read_only` - User can read his contracts but cannot use any paid functionality like sending contracts. This represents a user who had Echosign at some point but has cancelled his subscription or allowed it to expire.

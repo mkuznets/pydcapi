@@ -14,16 +14,7 @@ class UpsellItem(BaseModel):
         frozen=True,
     )
     billing_term: Literal['Monthly', 'AnnualBilledMonthly', 'AnnualBilledAnnually']
-    entitlement_name: Literal[
-        'can_send_to_individuals',
-        'can_send_av',
-        'create_pdf_conversions',
-        'combine_pdf_conversions',
-        'export_pdf_conversions',
-        'export_pdf2ppt_conversions',
-        'export_pdf2img_conversions',
-        'acrobat_pro',
-    ]
+    entitlement_name: Literal['can_send_to_individuals', 'can_send_av', 'create_pdf_conversions', 'combine_pdf_conversions', 'export_pdf_conversions', 'export_pdf2ppt_conversions', 'export_pdf2img_conversions', 'acrobat_pro']
     """
     Will match `entitlement` parameter if specified.
     """
@@ -39,30 +30,7 @@ class UpsellItem(BaseModel):
     """
     This is the string that will be sent to sitecatalyst with the purchase/upgrade event.<br/> -> Refer to the "In-app upgrades" section of the SiteCatalyst Instrumentation - Plan Info wiki to get the analytics name for upgrades<br/> -> Refer to the "<New Plan>" row in the "Anyware cart instrumentation" section of SiteCatalyst Instrumentation - Page Name and Custom Variables to get the analytics name for purchases.
     """
-    subscription_name: Literal[
-        'CreatePDF',
-        'PDFPack',
-        'ExportPDF',
-        'Files',
-        'DCGlobal',
-        'DCEnterprise',
-        'AcrobatPlus',
-        'AcrobatStd',
-        'SendNow',
-        'FillAndSign',
-        'ESign',
-        'Review',
-        'FormsCentral',
-        'EditPDF',
-        'OcrPDF',
-        'DCLite',
-        'ScanPlus',
-        'AdobeScan',
-        'GenAIServices',
-        'PersistentChatHistory',
-        'SecuredLinkSharing',
-        'AcrobatDesktopMode',
-    ]
+    subscription_name: Literal['CreatePDF', 'PDFPack', 'ExportPDF', 'Files', 'DCGlobal', 'DCEnterprise', 'AcrobatPlus', 'AcrobatStd', 'SendNow', 'FillAndSign', 'ESign', 'Review', 'FormsCentral', 'EditPDF', 'OcrPDF', 'DCLite', 'ScanPlus', 'AdobeScan', 'GenAIServices', 'PersistentChatHistory', 'SecuredLinkSharing', 'AcrobatDesktopMode']
     """
     Additional subscriptions may be added in the future.
     """

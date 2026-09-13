@@ -17,28 +17,7 @@ class Model(BaseModel):
     """
     Deprecated, no longer editable. This parameter should be omitted and will be ignored if provided.
     """
-    language: Literal[
-        'en-US',
-        'en-GB',
-        'de-DE',
-        'es-ES',
-        'fr-FR',
-        'it-IT',
-        'ja-JP',
-        'da-DK',
-        'nl-NL',
-        'nb-NO',
-        'pt-BR',
-        'fi-FI',
-        'sv-SE',
-        'ko-KR',
-        'zh-CN',
-        'zh-TW',
-        'cs-CZ',
-        'pl-PL',
-        'ru-RU',
-        'tr-TR',
-    ]
+    language: Literal['en-US', 'en-GB', 'de-DE', 'es-ES', 'fr-FR', 'it-IT', 'ja-JP', 'da-DK', 'nl-NL', 'nb-NO', 'pt-BR', 'fi-FI', 'sv-SE', 'ko-KR', 'zh-CN', 'zh-TW', 'cs-CZ', 'pl-PL', 'ru-RU', 'tr-TR']
     """
     The language chosen for communication with this user.
     """

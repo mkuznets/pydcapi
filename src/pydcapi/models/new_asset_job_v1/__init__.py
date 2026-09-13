@@ -61,11 +61,11 @@ class Error(BaseModel):
     InvalidAssetOrigins | Unable to mix assets from multiple origins. | pdf_actions, export | Only perform operations with assets from the same origin.
     ExternalAssetError | Unable to complete the request operation with the specified external asset(s). | All | Review error message for details on the external asset failure.
     DuplicateName | You can't have two things with the same name in the same folder. | All | Use a different name.
-    FileNotQualified | This PDF file will not convert well into fully taggged pdf | pdf_actions | View file in classic view 
+    FileNotQualified | This PDF file will not convert well into fully taggged pdf | pdf_actions | View file in classic view
     IncompatibleClientVersion | The version specified in the client_version field is not supported by the server. | pdf_actions | Render file in classic view and, optionally, prompt user to upgrade client software.
     UserPasswordLengthExceeded | User password too long | pdf_actions | Keep password length less than 128 characters.
     OwnerPasswordLengthExceeded | Owner password too long. | pdf_actions | Keep password length less than 128 characters.
-    InvalidPermission | The document access permission is either invalid or not supported. | pdf_actions | Use valid values for permissions.	
+    InvalidPermission | The document access permission is either invalid or not supported. | pdf_actions | Use valid values for permissions.
     InvalidContentToEncrypt | Specified content encryption setting is invalid. | pdf_actions | Use a valid type for the content to encrypt.
     InvalidEncryptionAlgorithm | Encryption algorithm is either invalid or not supported. | pdf_actions | Use a valid encryption algorithm.
     SameUserAndOwnerPassword | User and owner password can not be same. | pdf_actions | Provide different values for user and owner passwords.

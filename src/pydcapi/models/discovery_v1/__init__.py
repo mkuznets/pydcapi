@@ -79,11 +79,7 @@ class Resources(BaseModel):
     """
     Map of different versions of the accept content
     """
-    authentication: list[
-        Literal[
-            'auth_header_primary', 'ticket', 'unauthenticated', 'auth_service_token'
-        ]
-    ]
+    authentication: list[Literal['auth_header_primary', 'ticket', 'unauthenticated', 'auth_service_token']]
     content_type: dict[str, str] | None = None
     """
     Map of different versions of the content type response

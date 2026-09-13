@@ -13,27 +13,11 @@ class Model(BaseModel):
         extra='allow',
         frozen=True,
     )
-    domain: (
-        constr(
-            pattern=r'(?:[a-z0-9](?:[a-z0-9-]{0,61}[a-z0-9])?\\.)+[a-z0-9][a-z0-9-]{0,61}[a-z0-9]'
-        )
-        | None
-    ) = None
+    domain: constr(pattern=r'(?:[a-z0-9](?:[a-z0-9-]{0,61}[a-z0-9])?\\.)+[a-z0-9][a-z0-9-]{0,61}[a-z0-9]') | None = None
     """
     Domain of the client. Incase origin header is not present, domain from request body is picked. If domain is not available then error is thrown.
     """
-    intent: Literal[
-        'crop-pages',
-        'number-pages',
-        'organize-pdf',
-        'delete-pages',
-        'extract-pages',
-        'insert-pdf',
-        'reorder-pages',
-        'rotate-pages',
-        'combine-pdf',
-        'edit-pdf',
-    ]
+    intent: Literal['crop-pages', 'number-pages', 'organize-pdf', 'delete-pages', 'extract-pages', 'insert-pdf', 'reorder-pages', 'rotate-pages', 'combine-pdf', 'edit-pdf']
     """
     The client side verb for which the limits need to be checked and consumed limits if user is entitled to perform the operation.
     """

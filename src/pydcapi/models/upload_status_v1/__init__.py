@@ -46,7 +46,7 @@ class Error(BaseModel):
     """
     status: float
     """
-    The http status code. List of error codes include 403 for "Unsuccessful virus scan (infected file)" or "QuotaExceeded", 412 for "Precondition failed". or other such error codes. 
+    The http status code. List of error codes include 403 for "Unsuccessful virus scan (infected file)" or "QuotaExceeded", 412 for "Precondition failed". or other such error codes.
     """
 
 

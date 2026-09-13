@@ -13,18 +13,7 @@ class DocumentRenditionStatus(BaseModel):
         extra='allow',
         frozen=True,
     )
-    ftpdf: (
-        Literal[
-            'not_started',
-            'in_progress',
-            'failed',
-            'eligible',
-            'not_eligible',
-            'original',
-            'available',
-        ]
-        | None
-    ) = None
+    ftpdf: Literal['not_started', 'in_progress', 'failed', 'eligible', 'not_eligible', 'original', 'available'] | None = None
     """
     FTPDF document rendition status:
       * "not_started" - Rendition generation process has not yet started
@@ -36,18 +25,7 @@ class DocumentRenditionStatus(BaseModel):
       * "available" - Requested rendition format is now available
 
     """
-    jcos: (
-        Literal[
-            'not_started',
-            'in_progress',
-            'failed',
-            'eligible',
-            'not_eligible',
-            'original',
-            'available',
-        ]
-        | None
-    ) = None
+    jcos: Literal['not_started', 'in_progress', 'failed', 'eligible', 'not_eligible', 'original', 'available'] | None = None
     """
     jCOS document rendition status:
       * "not_started" - Rendition generation process has not yet started
@@ -59,18 +37,7 @@ class DocumentRenditionStatus(BaseModel):
       * "available" - Requested rendition format is now available
 
     """
-    owp: (
-        Literal[
-            'not_started',
-            'in_progress',
-            'failed',
-            'eligible',
-            'not_eligible',
-            'original',
-            'available',
-        ]
-        | None
-    ) = None
+    owp: Literal['not_started', 'in_progress', 'failed', 'eligible', 'not_eligible', 'original', 'available'] | None = None
     """
     OWP document rendition status:
       * "not_started" - Rendition generation process has not yet started

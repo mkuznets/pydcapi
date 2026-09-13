@@ -63,11 +63,11 @@ class Model(BaseModel):
     """
     content_md5: str | None = None
     """
-    Cloud provider checksum. Returned only if creation/updation is completed and successful. 
+    Cloud provider checksum. Returned only if creation/updation is completed and successful.
     """
     etag: str | None = None
     """
-    ETag of the created/updated asset. Returned only if creation/updation is completed and successful. 
+    ETag of the created/updated asset. Returned only if creation/updation is completed and successful.
     """
     monitor_link: MonitorLink | None = None
     """

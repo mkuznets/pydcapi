@@ -54,7 +54,7 @@ class Model(BaseModel):
     """
     on_dup_name: Literal['error', 'auto_rename'] | None = 'error'
     """
-    How to handle a duplicate name - legal values are "error" and "auto_rename". Applicable only while creating a new asset. 
+    How to handle a duplicate name - legal values are "error" and "auto_rename". Applicable only while creating a new asset.
     """
     parent_uri: AnyUrl | None = None
     """
@@ -62,7 +62,7 @@ class Model(BaseModel):
     """
     persistence: Literal['transient', 'permanent'] | None = None
     """
-    Asset storage aspect as short-term transient vs. long-term permanent. "transient" creates an asset that will be available for several hours before being garbage collected and deleted. For operations that convert and download immediately, "transient" is the appropriate choice. If the choice is "permanent", then "parent_uri" must also be specified. 
+    Asset storage aspect as short-term transient vs. long-term permanent. "transient" creates an asset that will be available for several hours before being garbage collected and deleted. For operations that convert and download immediately, "transient" is the appropriate choice. If the choice is "permanent", then "parent_uri" must also be specified.
     """
     size: float
     """

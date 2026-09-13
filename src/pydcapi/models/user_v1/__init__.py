@@ -346,9 +346,7 @@ class LimitsEsign(BaseModel):
         extra='allow',
         frozen=True,
     )
-    esign_access: Literal[
-        'no_access', 'read_only', 'pro', 'team', 'enterprise', 'global'
-    ]
+    esign_access: Literal['no_access', 'read_only', 'pro', 'team', 'enterprise', 'global']
     """
      * `no_access` - User does not have access to Echosign. This represents a new user to Echosign.
     * `read_only` - User can read his contracts but cannot use any paid functionality like sending contracts. This represents a user who had Echosign at some point but has cancelled his subscription or allowed it to expire.
@@ -3209,9 +3207,7 @@ class Subscription(BaseModel):
         extra='allow',
         frozen=True,
     )
-    billing_term: (
-        Literal['Monthly', 'AnnualBilledMonthly', 'AnnualBilledAnnually'] | None
-    ) = None
+    billing_term: Literal['Monthly', 'AnnualBilledMonthly', 'AnnualBilledAnnually'] | None = None
     """
     This value will not be available for document cloud offerings sold to team (CCT) and enterprise (CCE) subscriptions.
     """
@@ -3223,30 +3219,7 @@ class Subscription(BaseModel):
     """
     The service level.  All paid products have only a 'Basic' service level.
     """
-    name: Literal[
-        'CreatePDF',
-        'PDFPack',
-        'ExportPDF',
-        'Files',
-        'DCGlobal',
-        'DCEnterprise',
-        'AcrobatPlus',
-        'AcrobatStd',
-        'SendNow',
-        'FillAndSign',
-        'ESign',
-        'Review',
-        'FormsCentral',
-        'EditPDF',
-        'OcrPDF',
-        'DCLite',
-        'ScanPlus',
-        'AdobeScan',
-        'GenAIServices',
-        'PersistentChatHistory',
-        'SecuredLinkSharing',
-        'AcrobatDesktopMode',
-    ]
+    name: Literal['CreatePDF', 'PDFPack', 'ExportPDF', 'Files', 'DCGlobal', 'DCEnterprise', 'AcrobatPlus', 'AcrobatStd', 'SendNow', 'FillAndSign', 'ESign', 'Review', 'FormsCentral', 'EditPDF', 'OcrPDF', 'DCLite', 'ScanPlus', 'AdobeScan', 'GenAIServices', 'PersistentChatHistory', 'SecuredLinkSharing', 'AcrobatDesktopMode']
     """
     The subscription name.
     """
@@ -3278,16 +3251,7 @@ class UpsellItem(BaseModel):
         frozen=True,
     )
     billing_term: Literal['Monthly', 'AnnualBilledMonthly', 'AnnualBilledAnnually']
-    entitlement_name: Literal[
-        'can_send_to_individuals',
-        'can_send_av',
-        'create_pdf_conversions',
-        'combine_pdf_conversions',
-        'export_pdf_conversions',
-        'export_pdf2ppt_conversions',
-        'export_pdf2img_conversions',
-        'acrobat_pro',
-    ]
+    entitlement_name: Literal['can_send_to_individuals', 'can_send_av', 'create_pdf_conversions', 'combine_pdf_conversions', 'export_pdf_conversions', 'export_pdf2ppt_conversions', 'export_pdf2img_conversions', 'acrobat_pro']
     """
     Will match `entitlement` parameter if specified.
     """
@@ -3303,30 +3267,7 @@ class UpsellItem(BaseModel):
     """
     This is the string that will be sent to sitecatalyst with the purchase/upgrade event.<br/> -> Refer to the "In-app upgrades" section of the SiteCatalyst Instrumentation - Plan Info wiki to get the analytics name for upgrades<br/> -> Refer to the "<New Plan>" row in the "Anyware cart instrumentation" section of SiteCatalyst Instrumentation - Page Name and Custom Variables to get the analytics name for purchases.
     """
-    subscription_name: Literal[
-        'CreatePDF',
-        'PDFPack',
-        'ExportPDF',
-        'Files',
-        'DCGlobal',
-        'DCEnterprise',
-        'AcrobatPlus',
-        'AcrobatStd',
-        'SendNow',
-        'FillAndSign',
-        'ESign',
-        'Review',
-        'FormsCentral',
-        'EditPDF',
-        'OcrPDF',
-        'DCLite',
-        'ScanPlus',
-        'AdobeScan',
-        'GenAIServices',
-        'PersistentChatHistory',
-        'SecuredLinkSharing',
-        'AcrobatDesktopMode',
-    ]
+    subscription_name: Literal['CreatePDF', 'PDFPack', 'ExportPDF', 'Files', 'DCGlobal', 'DCEnterprise', 'AcrobatPlus', 'AcrobatStd', 'SendNow', 'FillAndSign', 'ESign', 'Review', 'FormsCentral', 'EditPDF', 'OcrPDF', 'DCLite', 'ScanPlus', 'AdobeScan', 'GenAIServices', 'PersistentChatHistory', 'SecuredLinkSharing', 'AcrobatDesktopMode']
     """
     Additional subscriptions may be added in the future.
     """
@@ -3360,19 +3301,13 @@ class Model(BaseModel):
     """
     identity: Identity | None = None
     limits_acrobat: LimitsAcrobat | None = Field(None, alias='limits/acrobat')
-    limits_conversions: LimitsConversions | None = Field(
-        None, alias='limits/conversions'
-    )
+    limits_conversions: LimitsConversions | None = Field(None, alias='limits/conversions')
     limits_esign: LimitsEsign | None = Field(None, alias='limits/esign')
     limits_fillsign: LimitsFillsign | None = Field(None, alias='limits/fillsign')
-    limits_pdf_services: LimitsPdfServices | None = Field(
-        None, alias='limits/pdf_services'
-    )
+    limits_pdf_services: LimitsPdfServices | None = Field(None, alias='limits/pdf_services')
     limits_review: LimitsReview | None = Field(None, alias='limits/review')
     limits_send: LimitsSend | None = Field(None, alias='limits/send')
-    limits_storage_document_cloud: LimitsStorageDocumentCloud | None = Field(
-        None, alias='limits/storage_document_cloud'
-    )
+    limits_storage_document_cloud: LimitsStorageDocumentCloud | None = Field(None, alias='limits/storage_document_cloud')
     limits_verbs: LimitsVerbs | None = Field(None, alias='limits/verbs')
     limits_verbsV2: LimitsVerbsV2 | None = Field(None, alias='limits/verbsV2')
     prefs_common: PrefsCommon | None = Field(None, alias='prefs/common')
@@ -3384,8 +3319,6 @@ class Model(BaseModel):
     DC Web common preferences
     """
     request_access: RequestAccess | None = None
-    storage_document_cloud: StorageDocumentCloud | None = Field(
-        None, alias='storage/document_cloud'
-    )
+    storage_document_cloud: StorageDocumentCloud | None = Field(None, alias='storage/document_cloud')
     subscriptions: Subscriptions | None = None
     upsell: Upsell | None = None
